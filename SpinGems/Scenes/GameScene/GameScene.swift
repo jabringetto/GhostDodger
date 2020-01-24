@@ -1,0 +1,70 @@
+//
+//  GameScene.swift
+//  SpinGems
+//
+//  Created by Jeremy Bringetto on 12/22/18.
+//  Copyright © 2018 Jeremy Bringetto. All rights reserved.
+//
+
+import UIKit
+import SpriteKit
+import AVFoundation
+
+
+struct GameSceneConstants
+{
+    static let background = SKSpriteNode(imageNamed:"Background_Cropped")
+    static let backLayer = SKNode()
+    static let frontLayer = SKNode()
+    static let bat = Bat()
+    static let batScale:CGFloat = 0.4
+    static let batVerticalPositionMultiplier:CGFloat = 0.1
+    static let batFollowFingerRatio:CGFloat = 0.1
+    static let batFollowFingerThreshold:CGFloat = 1.0
+    static let batPhysicsBodySizeRatio:CGFloat = 0.2
+    static let batAnimationTimePerFrame:TimeInterval = 0.01
+    static let gemScale:CGFloat = 0.3
+    static let gemConvergeSpeed:CGFloat = 1.3
+    static let skullFollowSpeed:CGFloat = 1.5
+    static let gridColumnHeight:CGFloat = 60.0
+    static let gridNumColumns:Int = 6
+    static let gridNumRows:Int = 1300
+}
+struct GameSceneVars
+{
+    var grid = Grid()
+    var screenWidth:CGFloat = 0.0
+    var screenHeight:CGFloat = 0.0
+    var backgroundSpeed:CGFloat = 1.0
+    var screenTouched = false
+    var currentlyCapturedItem:SKSpriteNode?
+    var currentTouchLocation:CGPoint?
+    var kachingEffect: AVAudioPlayer?
+    var columnHalfWidth:CGFloat = 0.0
+    var columnHeight:CGFloat = 60.0
+    
+    mutating func setScreenDimensions(_ width:CGFloat, _ height:CGFloat)->Void
+    {
+        screenWidth = width
+        screenHeight = height
+    }
+    
+}
+
+final class GameScene: SKScene
+{
+   
+    var gameVars = GameSceneVars()
+   
+    override func didMove(to view: SKView)
+    {
+        self.anchorPoint = CGPoint(x:0.5,y:0.5)
+        addLayersAndGrid()
+        addBat()
+        configurePhysicsWorld()
+        loadSounds()
+        
+    }
+
+
+}
