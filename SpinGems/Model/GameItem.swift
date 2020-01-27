@@ -75,8 +75,10 @@ extension SKSpriteNode
     }
     func followPointY(_ layerPosition:CGPoint, _ targetPosition:CGPoint, _ followSpeed:CGFloat)->Void
     {
+
        let effectiveY = self.position.y - layerPosition.y
-       let yDistance = effectiveY - targetPosition.y
+       let yDistance = targetPosition.y - effectiveY
+
        if(yDistance > 0)
        {
            self.position.y += followSpeed

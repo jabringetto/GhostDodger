@@ -11,9 +11,9 @@ import SpriteKit
 
 final class Skull: SKSpriteNode {
     
-    let scaleFactor:CGFloat = 0.2
+   
     private var skullTextures = [SKTexture]()
-    var skullAnimation = SKAction()
+    private var skullAnimation = SKAction()
     
     convenience init(_ itemType: GameItemType)
     {
@@ -26,15 +26,15 @@ final class Skull: SKSpriteNode {
         {
             self.init()
         }
-        self.xScale = scaleFactor
-        self.yScale = scaleFactor
+        self.xScale = GameSceneConstants.skullScaleFactor
+        self.yScale = GameSceneConstants.skullScaleFactor
         setupSkull()
         setupPhysics()
     }
     
     func setupPhysics()->Void
     {
-        self.physicsBody = SKPhysicsBody.init(circleOfRadius:self.size.width*0.4)
+        self.physicsBody = SKPhysicsBody.init(circleOfRadius:self.size.width*GameSceneConstants.gameItemPhysicsRadius)
         self.physicsBody!.affectedByGravity = false
         self.physicsBody?.categoryBitMask = PhysicsCategory.Skull
         self.physicsBody?.contactTestBitMask = PhysicsCategory.Bat
@@ -42,7 +42,8 @@ final class Skull: SKSpriteNode {
     func setupSkull()->Void
     {
         let atlas = SKTextureAtlas(named:"skull")
-        for index in 1...20
+     
+        for index in 1...atlas.textureNames.count
         {
             var name:String = ""
             if(index < 10)

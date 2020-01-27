@@ -46,7 +46,7 @@ final class Gem: SKSpriteNode {
     {
         
         let atlas = SKTextureAtlas(named:"ruby")
-        for index in 1...40
+        for index in 1...atlas.textureNames.count
         {
             var name:String = ""
             if(index < 10)
@@ -74,7 +74,7 @@ final class Gem: SKSpriteNode {
     {
         
         let atlas = SKTextureAtlas(named:"emerald")
-        for index in 1...40
+        for index in 1...atlas.textureNames.count
         {
             var name:String = ""
             if(index < 10)
@@ -100,7 +100,7 @@ final class Gem: SKSpriteNode {
     }
     func setupPhysics()->Void
     {
-        self.physicsBody = SKPhysicsBody.init(circleOfRadius:self.size.width*0.4)
+        self.physicsBody = SKPhysicsBody.init(circleOfRadius:self.size.width*GameSceneConstants.gameItemPhysicsRadius)
         self.physicsBody!.affectedByGravity = false
         self.physicsBody?.categoryBitMask = PhysicsCategory.Gem
         self.physicsBody?.contactTestBitMask = PhysicsCategory.Bat

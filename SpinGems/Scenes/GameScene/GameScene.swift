@@ -26,20 +26,23 @@ struct GameSceneConstants
     static let gemScale:CGFloat = 0.3
     static let gemConvergeSpeed:CGFloat = 1.3
     static let skullFollowSpeed:CGFloat = 1.5
+    static let skullScaleFactor:CGFloat = 0.2
+    static let skullFollowRange:CGFloat = 500.0
     static let gridColumnHeight:CGFloat = 60.0
     static let gridNumColumns:Int = 6
     static let gridNumRows:Int = 1300
+    static let gameItemPhysicsRadius:CGFloat = 0.4
 }
 struct GameSceneVars
 {
     var grid = Grid()
     var screenWidth:CGFloat = 0.0
     var screenHeight:CGFloat = 0.0
-    var backgroundSpeed:CGFloat = 1.0
+    var backgroundSpeed:CGFloat = 0.01
     var screenTouched = false
     var currentlyCapturedItem:SKSpriteNode?
     var currentTouchLocation:CGPoint?
-    var kachingEffect: AVAudioPlayer?
+    var gemSoundEffect:AVAudioPlayer?
     var columnHalfWidth:CGFloat = 0.0
     var columnHeight:CGFloat = 60.0
     

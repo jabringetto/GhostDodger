@@ -14,7 +14,6 @@ import SpriteKit
 final class Grid
 {
     var columnHalfWidth:CGFloat = 0.0
-    var skullFollowRange:CGFloat = 500.0
     var itemPositions = [CGPoint]()
     var gameItems = [GameItem]()
     var skulls = [Skull]()
@@ -140,7 +139,8 @@ final class Grid
     {
         for skull in skulls
         {
-             skull.followPointXWithinYRange(layerPosition, targetPosition, followSpeed, yRange: skullFollowRange)
+//            skull.followPointXWithinYRange(layerPosition, targetPosition, followSpeed, yRange:GameSceneConstants.skullFollowRange)
+            skull.followPoint(layerPosition, targetPosition, followSpeed)
         }
        
         

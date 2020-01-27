@@ -20,25 +20,25 @@ extension GameScene
         let url = URL(fileURLWithPath: path)
 
         do {
-            gameVars.kachingEffect = try AVAudioPlayer(contentsOf: url)
-            gameVars.kachingEffect?.prepareToPlay()
+            gameVars.gemSoundEffect = try AVAudioPlayer(contentsOf: url)
+            gameVars.gemSoundEffect?.prepareToPlay()
         } catch {
             // couldn't load file :(
         }
     }
     func playKachingSound()->Void
     {
-        if (gameVars.kachingEffect?.isPlaying) != nil
+        if (gameVars.gemSoundEffect?.isPlaying) != nil
         {
-            if(gameVars.kachingEffect?.isPlaying ?? false)
+            if(gameVars.gemSoundEffect?.isPlaying ?? false)
             {
-                gameVars.kachingEffect?.pause()
-                gameVars.kachingEffect?.currentTime = 0.0
-                gameVars.kachingEffect?.play()
+                gameVars.gemSoundEffect?.pause()
+                gameVars.gemSoundEffect?.currentTime = 0.0
+                gameVars.gemSoundEffect?.play()
             }
             else
             {
-                 gameVars.kachingEffect?.play()
+                 gameVars.gemSoundEffect?.play()
             }
            
         }
