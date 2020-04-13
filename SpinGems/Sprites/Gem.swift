@@ -14,7 +14,7 @@ final class Gem: SKSpriteNode {
     
     private (set) var spinSpeed:Int = 1
     private var spinTextures = [SKTexture]()
-    var perFrame = 0.02
+    var perFrame:TimeInterval = GameSceneConstants.getRotationConstant
     var spinAnimation = SKAction()
 
     convenience init(_ gemType: GameItemType)

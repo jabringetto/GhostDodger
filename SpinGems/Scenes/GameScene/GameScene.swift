@@ -15,19 +15,20 @@ struct GameSceneConstants
 {
     static let background = SKSpriteNode(imageNamed:"Background_Cropped")
     static let backLayer = SKNode()
-    static let frontLayer = SKNode()
     static let bat = Bat()
     static let batScale:CGFloat = 0.4
     static let batVerticalPositionMultiplier:CGFloat = 0.1
-    static let batFollowFingerRatio:CGFloat = 0.1
+    static let batFollowFingerRatio:CGFloat = 0.04
     static let batFollowFingerThreshold:CGFloat = 1.0
     static let batPhysicsBodySizeRatio:CGFloat = 0.2
     static let batAnimationTimePerFrame:TimeInterval = 0.01
     static let gemScale:CGFloat = 0.3
     static let gemConvergeSpeed:CGFloat = 1.3
-    static let skullFollowSpeed:CGFloat = 1.5
+    static let getRotationConstant:TimeInterval = 0.02
+   
     static let skullScaleFactor:CGFloat = 0.2
-    static let skullFollowRange:CGFloat = 500.0
+    static let skullFollowRange:CGFloat = 200.0
+    static let skullFollowMarginY:CGFloat = -30.0
     static let gridColumnHeight:CGFloat = 60.0
     static let gridNumColumns:Int = 6
     static let gridNumRows:Int = 1300
@@ -38,7 +39,8 @@ struct GameSceneVars
     var grid = Grid()
     var screenWidth:CGFloat = 0.0
     var screenHeight:CGFloat = 0.0
-    var backgroundSpeed:CGFloat = 0.01
+    var backgroundSpeed:CGFloat = 2.0
+    var skullFollowSpeed:CGFloat = 2.4
     var screenTouched = false
     var currentlyCapturedItem:SKSpriteNode?
     var currentTouchLocation:CGPoint?

@@ -16,7 +16,7 @@ extension GameScene
      {
         addBackground()
         addBackLayer()
-        addFrontLayer()
+        //addFrontLayer()
         setupGrid(gameVars.screenWidth,gameVars.screenHeight)
         
      }
@@ -35,14 +35,14 @@ extension GameScene
      {
          self.addChild(GameSceneConstants.backLayer)
      }
-     private func addFrontLayer()->Void
-     {
-         self.addChild(GameSceneConstants.frontLayer)
-     }
+//     private func addFrontLayer()->Void
+//     {
+//         self.addChild(GameSceneConstants.frontLayer)
+//     }
      private func setupGrid(_ width:CGFloat, _ height: CGFloat)->Void
      {
          gameVars.grid = Grid.init(width,height)
-         gameVars.grid.populateGridItems(GameSceneConstants.frontLayer)
+         gameVars.grid.populateGridItems(GameSceneConstants.backLayer)
      }
     
 }

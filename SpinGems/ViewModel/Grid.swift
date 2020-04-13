@@ -139,8 +139,10 @@ final class Grid
     {
         for skull in skulls
         {
-//            skull.followPointXWithinYRange(layerPosition, targetPosition, followSpeed, yRange:GameSceneConstants.skullFollowRange)
-            skull.followPoint(layerPosition, targetPosition, followSpeed)
+
+           // skull.followPoint(layerPosition, targetPosition, followSpeed)
+            skull.followPointWithinYRange(layerPosition, targetPosition, followSpeed, yRange: GameSceneConstants.skullFollowRange)
+            
         }
        
         

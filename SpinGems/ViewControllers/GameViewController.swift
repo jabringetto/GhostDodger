@@ -26,7 +26,6 @@ class GameViewController: UIViewController {
         gameView.showsFPS = true
         gameView.showsNodeCount = true
         
-        // Do any additional setup after loading the view.
     }
     
 

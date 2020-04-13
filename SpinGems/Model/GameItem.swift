@@ -76,7 +76,7 @@ extension SKSpriteNode
     func followPointY(_ layerPosition:CGPoint, _ targetPosition:CGPoint, _ followSpeed:CGFloat)->Void
     {
 
-       let effectiveY = self.position.y - layerPosition.y
+       let effectiveY = self.position.y + layerPosition.y
        let yDistance = targetPosition.y - effectiveY
 
        if(yDistance > 0)
@@ -88,9 +88,14 @@ extension SKSpriteNode
            self.position.y -= followSpeed
        }
     }
-    func followPointXWithinYRange(_ layerPosition:CGPoint, _ targetPosition:CGPoint, _ followSpeed:CGFloat, yRange:CGFloat)->Void
+    func followPointWithinYRange(_ layerPosition:CGPoint, _ targetPosition:CGPoint, _ followSpeed:CGFloat, yRange:CGFloat)->Void
     {
-        followPointX(layerPosition, targetPosition, followSpeed)
+        let effectiveY = self.position.y + layerPosition.y
+        let yDistance = targetPosition.y - effectiveY
+        if(abs(yDistance) < yRange && yDistance > GameSceneConstants.skullFollowMarginY)
+        {
+            followPoint(layerPosition, targetPosition, followSpeed)
+        }
 
     }
    
