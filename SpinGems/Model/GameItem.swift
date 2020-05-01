@@ -22,6 +22,8 @@ enum GameItemType:Int
     case goldCoin
     
     case skull
+    
+    case virus
 }
 
 final class GameItem: SKNode {

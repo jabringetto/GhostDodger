@@ -17,6 +17,7 @@ struct PhysicsCategory
      static let Gem   :UInt32 = 0b10  // 2
      static let Coin  :UInt32 = 0b11  // 3
      static let Skull :UInt32 = 0b100 // 4
+     static let Virus :UInt32 = 0b101 // 5
  }
 
 extension GameScene: SKPhysicsContactDelegate
@@ -45,8 +46,9 @@ extension GameScene: SKPhysicsContactDelegate
         let firstBodyTheBat:Bool = firstBody.categoryBitMask == PhysicsCategory.Bat
         let secondBodyAGem:Bool = secondBody.categoryBitMask == PhysicsCategory.Gem
         let secondBodyACoin:Bool = secondBody.categoryBitMask == PhysicsCategory.Coin
+        let secondBodyAVirus:Bool = secondBody.categoryBitMask == PhysicsCategory.Virus
         
-        if(firstBodyTheBat && (secondBodyAGem || secondBodyACoin))
+        if(firstBodyTheBat && (secondBodyAGem || secondBodyACoin || secondBodyAVirus))
         {
 
             if let itemSprite = secondBody.node as? SKSpriteNode

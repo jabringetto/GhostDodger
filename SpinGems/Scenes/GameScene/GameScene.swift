@@ -21,7 +21,9 @@ struct GameSceneConstants
     static let batFollowFingerRatio:CGFloat = 0.04
     static let batFollowFingerThreshold:CGFloat = 1.0
     static let batPhysicsBodySizeRatio:CGFloat = 0.2
+    static let virusPhysicsBodySizeRatio:CGFloat = 0.4
     static let batAnimationTimePerFrame:TimeInterval = 0.01
+    static let virusAnimationTimePerFrame:TimeInterval = 0.2
     static let gemScale:CGFloat = 0.3
     static let gemConvergeSpeed:CGFloat = 1.3
     static let getRotationConstant:TimeInterval = 0.02
@@ -29,6 +31,7 @@ struct GameSceneConstants
     static let skullScaleFactor:CGFloat = 0.2
     static let skullFollowRange:CGFloat = 200.0
     static let skullFollowMarginY:CGFloat = -30.0
+    static let virusScaleFactor:CGFloat = 0.15
     static let gridColumnHeight:CGFloat = 60.0
     static let gridNumColumns:Int = 6
     static let gridNumRows:Int = 1300

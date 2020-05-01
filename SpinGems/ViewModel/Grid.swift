@@ -80,6 +80,9 @@ final class Grid
         case GameItemType.skull:
              return Skull.init(type)
             
+        case GameItemType.virus:
+            return Virus.init(type)
+            
         default:
             return nil
         }
@@ -93,19 +96,23 @@ final class Grid
            }
            if(diceRoll > 93 && diceRoll <= 98 )
            {
-               type = GameItemType.ruby
+              type = GameItemType.ruby
+              //type = GameItemType.virus
            }
            if(diceRoll > 88 && diceRoll <= 93)
            {
                type = GameItemType.silverCoin
+               //type = GameItemType.virus
            }
            if(diceRoll > 85 && diceRoll <= 88)
            {
                type = GameItemType.goldCoin
+              // type = GameItemType.virus
            }
            if(diceRoll == 85)
            {
                 type = GameItemType.skull
+               // type = GameItemType.virus
            }
            return type
     }

@@ -26,6 +26,8 @@
 		D0CA810421CF162400BE7E96 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CA810321CF162400BE7E96 /* GameScene.swift */; };
 		D0CA810621CF1AF400BE7E96 /* ruby.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D0CA810521CF1AF400BE7E96 /* ruby.atlas */; };
 		D0CA810921CF2CE800BE7E96 /* Gem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CA810821CF2CE800BE7E96 /* Gem.swift */; };
+		D0D3C74B245A8F3C00C47DA6 /* Virus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D3C74A245A8F3C00C47DA6 /* Virus.swift */; };
+		D0D3C751245AAC2100C47DA6 /* virus.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D0D3C750245AAC2100C47DA6 /* virus.atlas */; };
 		D0D94A6323D10A40007CCC5E /* GameItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D94A6223D10A40007CCC5E /* GameItem.swift */; };
 		D0D94A6523D123C8007CCC5E /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D94A6423D123C8007CCC5E /* Grid.swift */; };
 		D0D94A6723D21624007CCC5E /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D94A6623D21624007CCC5E /* Coin.swift */; };
@@ -55,6 +57,8 @@
 		D0CA810521CF1AF400BE7E96 /* ruby.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = ruby.atlas; sourceTree = "<group>"; };
 		D0CA810721CF1B0D00BE7E96 /* emerald.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = emerald.atlas; sourceTree = "<group>"; };
 		D0CA810821CF2CE800BE7E96 /* Gem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gem.swift; sourceTree = "<group>"; };
+		D0D3C74A245A8F3C00C47DA6 /* Virus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Virus.swift; sourceTree = "<group>"; };
+		D0D3C750245AAC2100C47DA6 /* virus.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = virus.atlas; sourceTree = "<group>"; };
 		D0D94A6223D10A40007CCC5E /* GameItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameItem.swift; sourceTree = "<group>"; };
 		D0D94A6423D123C8007CCC5E /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		D0D94A6623D21624007CCC5E /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
@@ -77,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				D0391B4423A436F600752CEC /* Bat.swift */,
+				D0D3C74A245A8F3C00C47DA6 /* Virus.swift */,
 				D0CA810821CF2CE800BE7E96 /* Gem.swift */,
 				D0D94A6623D21624007CCC5E /* Coin.swift */,
 				D0B75C8023D240F000623DCE /* Skull.swift */,
@@ -112,6 +117,7 @@
 		D0C2502723D7B1BC009D65DD /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				D0D3C750245AAC2100C47DA6 /* virus.atlas */,
 				D0CA80F621CF13A600BE7E96 /* Assets.xcassets */,
 				D08C540823EA432C005D8441 /* skull.atlas */,
 				D0391B4223A436B300752CEC /* bat.atlas */,
@@ -261,6 +267,7 @@
 				D0CA80F521CF13A400BE7E96 /* Main.storyboard in Resources */,
 				D0CA810621CF1AF400BE7E96 /* ruby.atlas in Resources */,
 				D08C540923EA432D005D8441 /* skull.atlas in Resources */,
+				D0D3C751245AAC2100C47DA6 /* virus.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +293,7 @@
 				D0CA810921CF2CE800BE7E96 /* Gem.swift in Sources */,
 				D0C2502F23DB5E54009D65DD /* GameScene_Physics.swift in Sources */,
 				D0B75C8123D240F000623DCE /* Skull.swift in Sources */,
+				D0D3C74B245A8F3C00C47DA6 /* Virus.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
