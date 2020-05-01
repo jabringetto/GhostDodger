@@ -10,6 +10,7 @@
 		D0391B4323A436B300752CEC /* bat.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D0391B4223A436B300752CEC /* bat.atlas */; };
 		D0391B4523A436F600752CEC /* Bat.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0391B4423A436F600752CEC /* Bat.swift */; };
 		D03982BF23B70EA600308022 /* emerald.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D0CA810721CF1B0D00BE7E96 /* emerald.atlas */; };
+		D07AFA9B245C9008004DC615 /* viruswithface.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D07AFA9A245C9008004DC615 /* viruswithface.atlas */; };
 		D08C540923EA432D005D8441 /* skull.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D08C540823EA432C005D8441 /* skull.atlas */; };
 		D0B75C8123D240F000623DCE /* Skull.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B75C8023D240F000623DCE /* Skull.swift */; };
 		D0C2502F23DB5E54009D65DD /* GameScene_Physics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C2502E23DB5E54009D65DD /* GameScene_Physics.swift */; };
@@ -38,6 +39,7 @@
 /* Begin PBXFileReference section */
 		D0391B4223A436B300752CEC /* bat.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = bat.atlas; sourceTree = "<group>"; };
 		D0391B4423A436F600752CEC /* Bat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bat.swift; sourceTree = "<group>"; };
+		D07AFA9A245C9008004DC615 /* viruswithface.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = viruswithface.atlas; sourceTree = "<group>"; };
 		D08C540823EA432C005D8441 /* skull.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = skull.atlas; path = ../../../../MISC/MISC_2020_02_03/skull.atlas; sourceTree = "<group>"; };
 		D0B75C8023D240F000623DCE /* Skull.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skull.swift; sourceTree = "<group>"; };
 		D0C2502E23DB5E54009D65DD /* GameScene_Physics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene_Physics.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 		D0C2502723D7B1BC009D65DD /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				D07AFA9A245C9008004DC615 /* viruswithface.atlas */,
 				D0D3C750245AAC2100C47DA6 /* virus.atlas */,
 				D0CA80F621CF13A600BE7E96 /* Assets.xcassets */,
 				D08C540823EA432C005D8441 /* skull.atlas */,
@@ -267,6 +270,7 @@
 				D0CA80F521CF13A400BE7E96 /* Main.storyboard in Resources */,
 				D0CA810621CF1AF400BE7E96 /* ruby.atlas in Resources */,
 				D08C540923EA432D005D8441 /* skull.atlas in Resources */,
+				D07AFA9B245C9008004DC615 /* viruswithface.atlas in Resources */,
 				D0D3C751245AAC2100C47DA6 /* virus.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
