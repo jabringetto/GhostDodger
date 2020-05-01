@@ -96,23 +96,23 @@ final class Grid
            }
            if(diceRoll > 93 && diceRoll <= 98 )
            {
-              type = GameItemType.ruby
-              //type = GameItemType.virus
+             // type = GameItemType.ruby
+              type = GameItemType.virus
            }
            if(diceRoll > 88 && diceRoll <= 93)
            {
-               type = GameItemType.silverCoin
-               //type = GameItemType.virus
+               //type = GameItemType.silverCoin
+               type = GameItemType.virus
            }
            if(diceRoll > 85 && diceRoll <= 88)
            {
-               type = GameItemType.goldCoin
-              // type = GameItemType.virus
+               //type = GameItemType.goldCoin
+                type = GameItemType.virus
            }
            if(diceRoll == 85)
            {
-                type = GameItemType.skull
-               // type = GameItemType.virus
+                //type = GameItemType.skull
+               type = GameItemType.virus
            }
            return type
     }
