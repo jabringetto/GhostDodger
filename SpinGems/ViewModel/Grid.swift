@@ -45,7 +45,7 @@ final class Grid
         for point:CGPoint in itemPositions
         {
             let percentileDiceRoll = Int.random(in: 1...100)
-            let type = itemTypeForRoll(percentileDiceRoll)
+            let type = secondaryTypeForRoll(percentileDiceRoll)
             let gameItem = GameItem.init(type:type, sprite: spriteForType(type))
             if let sprite = gameItem.itemSprite
             {
@@ -87,7 +87,8 @@ final class Grid
             return nil
         }
     }
-    private func itemTypeForRoll(_ diceRoll:Int)->GameItemType
+    
+    private func secondaryTypeForRoll(_ diceRoll:Int)->GameItemType
     {
            var type = GameItemType.none
            if(diceRoll > 98)
@@ -96,8 +97,8 @@ final class Grid
            }
            if(diceRoll > 93 && diceRoll <= 98 )
            {
-             // type = GameItemType.ruby
-              type = GameItemType.virus
+             type = GameItemType.ruby
+              //type = GameItemType.virus
            }
            if(diceRoll > 88 && diceRoll <= 93)
            {
@@ -111,8 +112,8 @@ final class Grid
            }
            if(diceRoll == 85)
            {
-                //type = GameItemType.skull
-               type = GameItemType.virus
+            type = GameItemType.skull
+               //type = GameItemType.virus
            }
            return type
     }

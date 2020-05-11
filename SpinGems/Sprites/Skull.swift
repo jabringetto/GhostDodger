@@ -41,25 +41,10 @@ final class Skull: SKSpriteNode {
     }
     func setupSkull()->Void
     {
-        let atlas = SKTextureAtlas(named:"skull")
-     
-        for index in 1...atlas.textureNames.count
-        {
-            var name:String = ""
-            if(index < 10)
-            {
-                name = "Skull000" + String(index) + ".png"
-            }
-            else
-            {
-                name = "Skull00" + String(index) + ".png"
-            }
-            let texture = atlas.textureNamed(name)
-            skullTextures.append(texture)
-            skullAnimation = SKAction.animate(with: skullTextures, timePerFrame:0.02)
-            let forever = SKAction.repeat(skullAnimation,count: -1)
-             self.run(forever)
-        }
+        skullTextures = setupTextures("Skull")
+        skullAnimation = SKAction.animate(with: skullTextures, timePerFrame:0.02)
+        let forever = SKAction.repeat(skullAnimation,count: -1)
+        self.run(forever)
         
     }
 

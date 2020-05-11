@@ -23,21 +23,7 @@ final class Bat: SKSpriteNode {
     func setupTexturesAndAnimation()->Void
     {
     
-        let atlas = SKTextureAtlas(named:"bat")
-        for index in 1...60
-        {
-            var name:String = ""
-            if(index < 10)
-            {
-                name = "Bat000" + String(index) + ".png"
-            }
-            else
-            {
-                name = "Bat00" + String(index) + ".png"
-            }
-            let texture = atlas.textureNamed(name)
-            batTextures.append(texture)
-        }
+        batTextures = setupTextures("Bat")
         batAnimation = SKAction.animate(with: batTextures, timePerFrame: GameSceneConstants.batAnimationTimePerFrame)
         let forever = SKAction.repeat(batAnimation,count: -1)
         self.run(forever)

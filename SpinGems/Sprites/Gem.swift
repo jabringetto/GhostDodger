@@ -45,21 +45,7 @@ final class Gem: SKSpriteNode {
     func rubySetup()->Void
     {
         
-        let atlas = SKTextureAtlas(named:"ruby")
-        for index in 1...atlas.textureNames.count
-        {
-            var name:String = ""
-            if(index < 10)
-            {
-                name = "RubyFrame000" + String(index) + ".png"
-            }
-            else
-            {
-                name = "RubyFrame00" + String(index) + ".png"
-            }
-            let texture = atlas.textureNamed(name)
-            spinTextures.append(texture)
-        }
+        spinTextures = setupTextures("RubyFrame")
         spinSpeed = Int.random(in: 1 ..< 4)
         
         if(spinSpeed > 0)
@@ -73,21 +59,7 @@ final class Gem: SKSpriteNode {
     func emeraldSetup()->Void
     {
         
-        let atlas = SKTextureAtlas(named:"emerald")
-        for index in 1...atlas.textureNames.count
-        {
-            var name:String = ""
-            if(index < 10)
-            {
-                name = "Emerald000" + String(index) + ".png"
-            }
-            else
-            {
-                name = "Emerald00" + String(index) + ".png"
-            }
-            let texture = atlas.textureNamed(name)
-            spinTextures.append(texture)
-        }
+        spinTextures = setupTextures("Emerald")
         spinSpeed = Int.random(in: 1 ..< 4)
         
         if(spinSpeed > 0)

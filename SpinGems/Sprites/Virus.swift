@@ -31,22 +31,7 @@ final class Virus: SKSpriteNode
     }
     func setupTexturesAndAnimation()->Void
     {
-    
-        let atlas = SKTextureAtlas(named:"virus")
-        for index in 1...40
-        {
-            var name:String = ""
-            if(index < 10)
-            {
-                name = "Virus000" + String(index) + ".png"
-            }
-            else
-            {
-                name = "Virus00" + String(index) + ".png"
-            }
-            let texture = atlas.textureNamed(name)
-            virusTextures.append(texture)
-        }
+        virusTextures = setupTextures("Virus")
         virusAnimation = SKAction.animate(with: virusTextures, timePerFrame: GameSceneConstants.virusAnimationTimePerFrame)
         let forever = SKAction.repeat(virusAnimation,count: -1)
         self.run(forever)
@@ -56,7 +41,7 @@ final class Virus: SKSpriteNode
     }
     func setupPhysics()->Void
     {
-        self.physicsBody = SKPhysicsBody.init(circleOfRadius:self.size.width*GameSceneConstants.virusPhysicsBodySizeRatio)
+          self.physicsBody = SKPhysicsBody.init(circleOfRadius:self.size.width*GameSceneConstants.virusPhysicsBodySizeRatio)
           self.physicsBody!.affectedByGravity = false
           self.physicsBody?.categoryBitMask = PhysicsCategory.Virus
           self.physicsBody?.contactTestBitMask = PhysicsCategory.Bat
