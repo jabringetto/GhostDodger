@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LPR-14-A9r">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Enter View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="EnterViewController" customModule="Kill_Virus" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <skView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zf2-fC-rzj">
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                            </skView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VMJ-Jf-KGn">
+                                <rect key="frame" x="125.5" y="339" width="124" height="33"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="K I L L  V I R U S">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="4lK-X5-0QJ" kind="show" id="cYR-9m-ThN"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="VMJ-Jf-KGn" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="6Q6-xk-pEU"/>
+                            <constraint firstItem="Zf2-fC-rzj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="84y-fi-f5K"/>
+                            <constraint firstItem="Zf2-fC-rzj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="9hV-U3-eiQ"/>
+                            <constraint firstItem="VMJ-Jf-KGn" firstAttribute="top" secondItem="Zf2-fC-rzj" secondAttribute="bottom" constant="-222" id="Cad-Jp-YYs"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Zf2-fC-rzj" secondAttribute="trailing" id="PJP-tm-o5V"/>
+                            <constraint firstItem="VMJ-Jf-KGn" firstAttribute="centerX" secondItem="Zf2-fC-rzj" secondAttribute="centerX" id="UzG-pT-Kq7"/>
+                            <constraint firstItem="VMJ-Jf-KGn" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="r3P-2d-58R"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Zf2-fC-rzj" secondAttribute="bottom" id="vCM-kb-RQe"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Cad-Jp-YYs"/>
+                                <exclude reference="UzG-pT-Kq7"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="Dbx-bE-aY6"/>
+                    <connections>
+                        <outlet property="enterView" destination="Zf2-fC-rzj" id="Nvi-0X-reh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="670" y="115"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="BsS-89-0BF">
+            <objects>
+                <navigationController id="LPR-14-A9r" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eCT-XA-GxP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="xUd-bN-4Z3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aAL-g1-P6p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-84" y="115"/>
+        </scene>
+        <!--Game View Controller-->
+        <scene sceneID="Can-UG-caP">
+            <objects>
+                <viewController id="4lK-X5-0QJ" customClass="GameViewController" customModule="Kill_Virus" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="epm-Le-FAy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <skView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j5l-Qq-LqB">
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                            </skView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="M5G-3y-Oyw" firstAttribute="bottom" secondItem="j5l-Qq-LqB" secondAttribute="bottom" id="dVh-VG-kps"/>
+                            <constraint firstItem="M5G-3y-Oyw" firstAttribute="trailing" secondItem="j5l-Qq-LqB" secondAttribute="trailing" id="lid-Fb-4El"/>
+                            <constraint firstItem="j5l-Qq-LqB" firstAttribute="top" secondItem="M5G-3y-Oyw" secondAttribute="top" id="wbI-eQ-bz5"/>
+                            <constraint firstItem="j5l-Qq-LqB" firstAttribute="leading" secondItem="M5G-3y-Oyw" secondAttribute="leading" id="xDN-XE-PYP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="M5G-3y-Oyw"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="afU-ZJ-FIq"/>
+                    <connections>
+                        <outlet property="gameView" destination="j5l-Qq-LqB" id="ATA-j7-X0F"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KA7-Mt-EAM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1438" y="120"/>
+        </scene>
+    </scenes>
+</document>
