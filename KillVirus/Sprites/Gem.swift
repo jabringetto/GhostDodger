@@ -12,10 +12,11 @@ import SpriteKit
 
 final class Gem: SKSpriteNode {
     
-    private (set) var spinSpeed:Int = 1
+    var pointValue:Int = 0
+    private var spinAnimation = SKAction()
+    private var spinSpeed:Int = 1
     private var spinTextures = [SKTexture]()
-    var perFrame:TimeInterval = GameSceneConstants.getRotationConstant
-    var spinAnimation = SKAction()
+    private var perFrame:TimeInterval = GameSceneConstants.gemRotationConstant
 
     convenience init(_ gemType: GameItemType)
     {
@@ -23,45 +24,41 @@ final class Gem: SKSpriteNode {
         if(gemType == GameItemType.ruby)
         {
             self.init(imageNamed:"RubyFrame0001")
-            rubySetup()
-            setupPhysics()
-            self.xScale = GameSceneConstants.gemScale
-            self.yScale = GameSceneConstants.gemScale
+            addRubyTextures()
+            commonSetup(gemType)
+            
         }
         else if (gemType ==  GameItemType.emerald)
         {
              self.init(imageNamed:"Emerald0001")
-             emeraldSetup()
-             setupPhysics()
-             self.xScale = GameSceneConstants.gemScale
-             self.yScale = GameSceneConstants.gemScale
+             addEmeraldTextures()
+             commonSetup(gemType)
         }
         else
         {
             self.init()
         }
-        
     }
-    func rubySetup()->Void
+    private func commonSetup(_ gemType: GameItemType)->Void
     {
-        
+        spinForever()
+        setupPhysics()
+        assignPointValue(gemType)
+        self.xScale = GameSceneConstants.gemScale
+        self.yScale = GameSceneConstants.gemScale
+    }
+    private func addRubyTextures()->Void
+    {
         spinTextures = setupTextures("RubyFrame")
-        spinSpeed = Int.random(in: 1 ..< 4)
-        
-        if(spinSpeed > 0)
-        {
-            perFrame = perFrame/Double(spinSpeed)
-            spinAnimation = SKAction.animate(with: spinTextures, timePerFrame: perFrame)
-            let spinForever = SKAction.repeat(spinAnimation,count: -1)
-            self.run(spinForever)
-        }
     }
-    func emeraldSetup()->Void
+    private func addEmeraldTextures()->Void
     {
-        
         spinTextures = setupTextures("Emerald")
+    }
+    private func spinForever()->Void
+    {
         spinSpeed = Int.random(in: 1 ..< 4)
-        
+              
         if(spinSpeed > 0)
         {
             perFrame = perFrame/Double(spinSpeed)
@@ -70,7 +67,18 @@ final class Gem: SKSpriteNode {
             self.run(spinForever)
         }
     }
-    func setupPhysics()->Void
+    private func assignPointValue(_ gemType: GameItemType)->Void
+    {
+        var baseValue = GameSceneConstants.basePointValueEmerald
+        if(gemType == .ruby)
+        {
+            baseValue = GameSceneConstants.basePointValueRuby
+        }
+        pointValue = baseValue * spinSpeed
+      
+    }
+
+    private func setupPhysics()->Void
     {
         self.physicsBody = SKPhysicsBody.init(circleOfRadius:self.size.width*GameSceneConstants.gameItemPhysicsRadius)
         self.physicsBody!.affectedByGravity = false

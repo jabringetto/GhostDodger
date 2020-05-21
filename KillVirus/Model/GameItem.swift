@@ -30,6 +30,7 @@ final class GameItem: SKNode {
     
     var itemType:GameItemType?
     var itemSprite:SKSpriteNode?
+    var pointValue:Int = 0
 
     
     convenience init(type:GameItemType, sprite:SKSpriteNode?)
@@ -39,6 +40,17 @@ final class GameItem: SKNode {
            self.itemType = type
            self.itemSprite = sprite
     }
+//    private func assignPointValue(type:GameItemType)->Void
+//    {
+//        switch type {
+//        case .ruby:
+//            //
+//        case .emerald:
+//            //
+//        default:
+//            pointValue = 0
+//        }
+//    }
 
 }
 

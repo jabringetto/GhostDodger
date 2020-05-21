@@ -16,20 +16,32 @@ extension GameScene
          gameVars.screenTouched = true
          let touch = touches.first!
          let location = touch.location(in:self)
-         gameVars.currentTouchLocation = location
+         let nodes = self.nodes(at:location)
+         for node in nodes
+         {
+            if (node.name == "pauseButton")
+            {
+                pauseButtonPressed()
+            }
+            
+         }
+        screenTouched(location)
+       
      }
      override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?)
      {
          
          let touch = touches.first!
          let location = touch.location(in:self)
-         gameVars.currentTouchLocation = location
+        screenTouched(location)
+         //gameVars.currentTouchLocation = location
          
      }
      override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
          let touch = touches.first!
          let location = touch.location(in:self)
-         gameVars.currentTouchLocation = location
+        // gameVars.currentTouchLocation = location
+         screenTouched(location)
      }
 
     

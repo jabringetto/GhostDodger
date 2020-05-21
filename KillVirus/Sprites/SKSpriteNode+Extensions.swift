@@ -44,9 +44,9 @@ extension SKSpriteNode
     func convergeOnPointAndShrink(_ layerPosition:CGPoint, _ targetPosition:CGPoint, _ followSpeed:CGFloat)->Void
     {
         followPoint(layerPosition, targetPosition, followSpeed)
-        self.xScale *= 0.96
-        self.yScale *= 0.96
-        if(self.xScale < 0.1)
+        self.xScale *= GameSceneConstants.spriteSizeShrinkMultiplier
+        self.yScale *=  GameSceneConstants.spriteSizeShrinkMultiplier
+        if(self.xScale < GameSceneConstants.spriteSizeShrinkThreshold)
         {
             self.removeFromParent()
         }

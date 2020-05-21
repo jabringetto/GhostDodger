@@ -13,11 +13,16 @@ extension GameScene
 {
        override func update(_ currentTime: TimeInterval)
        {
-           moveBackgroundLayers()
-           playerFollowFinger()
-           spritesCovergeOnPlayer()
-           skullsFollowPlayer()
-           incrementBatCounters()
+          if(gameVars.gamePausedState == 0)
+          {
+             moveBackgroundLayers()
+             playerFollowFinger()
+             spritesCovergeOnPlayer()
+             skullsFollowPlayer()
+             incrementBatCounters()
+             fadePointLabels()
+          }
+      
         
        }
        private func moveBackgroundLayers()->Void
@@ -29,6 +34,7 @@ extension GameScene
        }
        private func playerFollowFinger()->Void
        {
+           
            if(gameVars.screenTouched &&  !gameVars.bat.isHitByVirus)
            {
                if let touchLocation = gameVars.currentTouchLocation
@@ -73,6 +79,22 @@ extension GameScene
         gameVars.bat.incrementHealthPointsHealingCounter()
         gameVars.healthMeter.updateGreenBar(gameVars.bat.healthPoints, GameSceneConstants.batMaxHealthPoints)
         
+       }
+       private func fadePointLabels()->Void
+       {
+        
+            for key:String in gameVars.pointsLabels.keys
+            {
+                guard let label:SKLabelNode = gameVars.pointsLabels[key] else {return}
+                label.alpha *= GameSceneConstants.pointLabelFadeMultiplier
+                if(label.alpha < 0.05)
+                {
+                    label.removeFromParent()
+                    gameVars.pointsLabels.removeValue(forKey: key)
+                    
+                }
+            }
+
        }
 
     

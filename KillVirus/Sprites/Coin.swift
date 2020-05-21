@@ -12,25 +12,26 @@ import SpriteKit
 
 final class Coin: SKSpriteNode {
     
-    let coinXScale:CGFloat = 0.3
-    let coinYScale:CGFloat = 0.2
-    
+    var pointValue:Int = 0
+ 
     convenience init(_ coinType: GameItemType)
     {
         if(coinType == GameItemType.silverCoin)
         {
-             self.init(imageNamed:"SilverCoinUpright")
+            self.init(imageNamed:"SilverCoinUpright")
+            self.pointValue = GameSceneConstants.pointValueSilverPiece
         }
         else if(coinType == GameItemType.goldCoin)
         {
-             self.init(imageNamed:"GoldCoinUpright")
+            self.init(imageNamed:"GoldCoinUpright")
+            self.pointValue = GameSceneConstants.pointValueGoldPiece
         }
         else
         {
             self.init()
         }
-        self.xScale = coinXScale
-        self.yScale = coinYScale
+        self.xScale = GameSceneConstants.coinXScale
+        self.yScale = GameSceneConstants.coinYScale
         setupPhysics()
         
     }

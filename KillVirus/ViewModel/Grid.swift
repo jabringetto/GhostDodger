@@ -13,12 +13,11 @@ import SpriteKit
 
 final class Grid
 {
-    var columnHalfWidth:CGFloat = 0.0
-    var itemPositions = [CGPoint]()
-    var gameItems = [GameItem]()
-    var skulls = [Skull]()
-    var virus = [Virus]()
-    
+    private var columnHalfWidth:CGFloat = 0.0
+    private var itemPositions = [CGPoint]()
+    private var gameItems = [GameItem]()
+    private var skulls = [Skull]()
+    private var virus = [Virus]()
     private var convergingSprites = [String:SKSpriteNode]()
     
     convenience init(_ width:CGFloat, _ height:CGFloat)
@@ -117,13 +116,13 @@ final class Grid
            var type = GameItemType.none
            if(diceRoll > 98)
            {
-               type = .emerald
+               type = .ruby
            }
-           if(diceRoll > 93 && diceRoll <= 98 )
+           if(diceRoll > 96 && diceRoll <= 98 )
            {
-             type = .ruby
+             type = .emerald
            }
-           if(diceRoll > 88 && diceRoll <= 93)
+           if(diceRoll > 88 && diceRoll <= 96)
            {
                type = .silverCoin
            }

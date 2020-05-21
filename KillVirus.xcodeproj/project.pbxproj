@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D004C9CF2472241A0066AF56 /* Meters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D004C9CE2472241A0066AF56 /* Meters.swift */; };
+		D004C9CF2472241A0066AF56 /* Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D004C9CE2472241A0066AF56 /* Dashboard.swift */; };
 		D0391B4323A436B300752CEC /* Bat.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D0391B4223A436B300752CEC /* Bat.atlas */; };
 		D0391B4523A436F600752CEC /* Bat.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0391B4423A436F600752CEC /* Bat.swift */; };
 		D03982BF23B70EA600308022 /* Emerald.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D0CA810721CF1B0D00BE7E96 /* Emerald.atlas */; };
@@ -39,10 +39,11 @@
 		D0DE71B323BBEF5B00B87144 /* Treasure.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D0DE71B223BBEF5B00B87144 /* Treasure.mp3 */; };
 		D0DEDFC6245F5CF50074CB7B /* EnterScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DEDFC5245F5CF50074CB7B /* EnterScene.swift */; };
 		D0DEDFC9245F5D620074CB7B /* VirusWithFace.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DEDFC8245F5D620074CB7B /* VirusWithFace.swift */; };
+		D0E3AA312475EC0100A7A18B /* GameScene_Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E3AA302475EC0100A7A18B /* GameScene_Events.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D004C9CE2472241A0066AF56 /* Meters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meters.swift; sourceTree = "<group>"; };
+		D004C9CE2472241A0066AF56 /* Dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dashboard.swift; sourceTree = "<group>"; };
 		D0391B4223A436B300752CEC /* Bat.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Bat.atlas; sourceTree = "<group>"; };
 		D0391B4423A436F600752CEC /* Bat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bat.swift; sourceTree = "<group>"; };
 		D07AFA9C245C9542004DC615 /* SKSpriteNode+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKSpriteNode+Extensions.swift"; sourceTree = "<group>"; };
@@ -76,6 +77,7 @@
 		D0DE71B223BBEF5B00B87144 /* Treasure.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Treasure.mp3; sourceTree = "<group>"; };
 		D0DEDFC5245F5CF50074CB7B /* EnterScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterScene.swift; sourceTree = "<group>"; };
 		D0DEDFC8245F5D620074CB7B /* VirusWithFace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirusWithFace.swift; sourceTree = "<group>"; };
+		D0E3AA302475EC0100A7A18B /* GameScene_Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene_Events.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,9 +95,9 @@
 			isa = PBXGroup;
 			children = (
 				D0D80935247255BD0028892A /* Player */,
-				D0D80936247255E20028892A /* Treasure */,
 				D0D80937247255FA0028892A /* Enemies */,
-				D0D80938247256060028892A /* Meters */,
+				D0D80936247255E20028892A /* Treasure */,
+				D0D80938247256060028892A /* Dashboard */,
 				D0D809392472560F0028892A /* Extensions */,
 			);
 			path = Sprites;
@@ -117,13 +119,13 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		D0C2502623D7B156009D65DD /* ViewControllers */ = {
+		D0C2502623D7B156009D65DD /* Screens */ = {
 			isa = PBXGroup;
 			children = (
 				D0CA80F121CF13A400BE7E96 /* EnterController.swift */,
 				D0CA810121CF153600BE7E96 /* GameViewController.swift */,
 			);
-			path = ViewControllers;
+			path = Screens;
 			sourceTree = "<group>";
 		};
 		D0C2502723D7B1BC009D65DD /* Assets */ = {
@@ -166,6 +168,7 @@
 				D0C2502E23DB5E54009D65DD /* GameScene_Physics.swift */,
 				D0C2503023DB5F87009D65DD /* GameScene_Touches.swift */,
 				D0C2503823DB8176009D65DD /* GameScene_Sounds.swift */,
+				D0E3AA302475EC0100A7A18B /* GameScene_Events.swift */,
 			);
 			path = GameSceneExtensions;
 			sourceTree = "<group>";
@@ -193,7 +196,7 @@
 				D0CA80F321CF13A400BE7E96 /* Main.storyboard */,
 				D0CA80F821CF13A600BE7E96 /* LaunchScreen.storyboard */,
 				D0CA80FB21CF13A600BE7E96 /* Info.plist */,
-				D0C2502623D7B156009D65DD /* ViewControllers */,
+				D0C2502623D7B156009D65DD /* Screens */,
 				D0C2502B23DB5C4D009D65DD /* Scenes */,
 				D0C2502323D7B0F4009D65DD /* Sprites */,
 				D0C2502423D7B103009D65DD /* Model */,
@@ -231,12 +234,12 @@
 			name = Enemies;
 			sourceTree = "<group>";
 		};
-		D0D80938247256060028892A /* Meters */ = {
+		D0D80938247256060028892A /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
-				D004C9CE2472241A0066AF56 /* Meters.swift */,
+				D004C9CE2472241A0066AF56 /* Dashboard.swift */,
 			);
-			name = Meters;
+			name = Dashboard;
 			sourceTree = "<group>";
 		};
 		D0D809392472560F0028892A /* Extensions */ = {
@@ -353,7 +356,7 @@
 				D0391B4523A436F600752CEC /* Bat.swift in Sources */,
 				D0C2503923DB8176009D65DD /* GameScene_Sounds.swift in Sources */,
 				D0CA810221CF153600BE7E96 /* GameViewController.swift in Sources */,
-				D004C9CF2472241A0066AF56 /* Meters.swift in Sources */,
+				D004C9CF2472241A0066AF56 /* Dashboard.swift in Sources */,
 				D0C2503123DB5F87009D65DD /* GameScene_Touches.swift in Sources */,
 				D0D94A6523D123C8007CCC5E /* Grid.swift in Sources */,
 				D0CA810421CF162400BE7E96 /* GameScene.swift in Sources */,
@@ -362,6 +365,7 @@
 				D0CA80F021CF13A400BE7E96 /* AppDelegate.swift in Sources */,
 				D0C2503723DB7D4F009D65DD /* GameScene_EveryFrame.swift in Sources */,
 				D0CA810921CF2CE800BE7E96 /* Gem.swift in Sources */,
+				D0E3AA312475EC0100A7A18B /* GameScene_Events.swift in Sources */,
 				D0C2502F23DB5E54009D65DD /* GameScene_Physics.swift in Sources */,
 				D07AFA9D245C9542004DC615 /* SKSpriteNode+Extensions.swift in Sources */,
 				D0B75C8123D240F000623DCE /* Skull.swift in Sources */,

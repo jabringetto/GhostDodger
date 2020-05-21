@@ -64,9 +64,14 @@ extension GameScene: SKPhysicsContactDelegate
                     gameVars.healthMeter.updateGreenBar(gameVars.bat.healthPoints, GameSceneConstants.batMaxHealthPoints)
                     
                 }
-                else
+                else if (secondBodyAGem || secondBodyACoin)
                 {
+                    
                     playSound(gameVars.treasureSoundEffect)
+                    playerGetsTreasure(itemSprite)
+                    gameVars.scoreLabel.text = GameSceneConstants.scoreLabelPrefix + String(gameVars.score)
+                    
+                    
                 }
              
             }
