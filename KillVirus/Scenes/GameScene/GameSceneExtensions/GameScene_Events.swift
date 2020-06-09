@@ -10,8 +10,35 @@ import Foundation
 import SpriteKit
 
 
-extension GameScene
+extension GameScene:BatDelegate
 {
+    func addBatDelegate()->Void {
+        
+        gameVars.bat.delegate = self
+    }
+    func batDied()
+    {
+        pauseButtonPressed()
+        gameVars.pauseButton.isHidden = true
+        recordDisplacement()
+        showGameOver()
+        
+    }
+    private func recordDisplacement()->Void
+    {
+        gameVars.gameOverBackLayerDisplacement = gameVars.backLayer.position.y
+    }
+    private func showGameOver()->Void
+    {
+        gameVars.gameOver.position.y = 0.0
+        gameVars.gameOver.isHidden = false
+    }
+    private func hideGameOver()->Void
+    {
+        gameVars.gameOver.position.y = GameSceneConstants.gameOverInitialPosition
+        gameVars.gameOver.isHidden = true
+    }
+    
     func playerGetsTreasure(_ treasure:SKSpriteNode)->Void
     {
         if let gem = treasure as? Gem
@@ -24,6 +51,15 @@ extension GameScene
             pointsLabelAdded(coin.pointValue, coin.position)
                  
         }
+    }
+    func resetGame()->Void
+    {
+        gameVars.backLayer.removeAllChildren()
+        self.removeAllChildren()
+        gameVars = varsInitialValues
+        varsInitialValues = GameSceneVars()
+        gameSetup()
+        loadSounds()
     }
     func pauseButtonPressed()->Void
     {
@@ -57,5 +93,6 @@ extension GameScene
         let itemKey:String =  String(Float(pointsLabel.position.x)) + String(Float(pointsLabel.position.y))
         gameVars.pointsLabels[itemKey] = pointsLabel
     }
+    
     
 }

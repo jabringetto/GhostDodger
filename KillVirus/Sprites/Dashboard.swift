@@ -20,6 +20,7 @@ final class  HealthMeter:SKSpriteNode
     
     func setup()->Void
     {
+        self.removeAllChildren()
         self.addChild(grayBar)
         self.addChild(greenBar)
         healthLabel.fontSize = 16.0

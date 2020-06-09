@@ -16,11 +16,15 @@ extension GameScene
           if(gameVars.gamePausedState == 0)
           {
              moveBackgroundLayers()
-             playerFollowFinger()
+             batFollowFinger()
              spritesCovergeOnPlayer()
              skullsFollowPlayer()
              incrementBatCounters()
-             fadePointLabels()
+             moveAndFadePointLabels()
+          }
+          else if (gameVars.bat.isDead)
+          {
+            batAfterDeath()
           }
       
         
@@ -28,11 +32,11 @@ extension GameScene
        private func moveBackgroundLayers()->Void
        {
           var newPosition = gameVars.backLayer.position
-          newPosition.y += gameVars.backgroundSpeed
+          newPosition.y += GameSceneConstants.nominalBackgroundSpeed
           gameVars.backLayer.position.y = newPosition.y
           
        }
-       private func playerFollowFinger()->Void
+       private func batFollowFinger()->Void
        {
            
            if(gameVars.screenTouched &&  !gameVars.bat.isHitByVirus)
@@ -80,14 +84,92 @@ extension GameScene
         gameVars.healthMeter.updateGreenBar(gameVars.bat.healthPoints, GameSceneConstants.batMaxHealthPoints)
         
        }
-       private func fadePointLabels()->Void
+       private func batAfterDeath()->Void
+       {
+        
+        let convergeSpeed:CGFloat = 0.75
+        let scaleSpeed:CGFloat = 0.03
+        
+        if(gameVars.bat.position.x > 1.0)
+        {
+            gameVars.bat.position.x -= convergeSpeed
+        }
+        else if (gameVars.bat.position.x < -1.0)
+        {
+            gameVars.bat.position.x += convergeSpeed
+        }
+        if(gameVars.bat.position.y > 1.0)
+        {
+            gameVars.bat.position.y -= convergeSpeed
+        }
+        else if (gameVars.bat.position.y < -1.0)
+        {
+            gameVars.bat.position.y += convergeSpeed
+        }
+        if( gameVars.bat.xScale < 0.8)
+        {
+            gameVars.bat.xScale += scaleSpeed
+            gameVars.bat.yScale += scaleSpeed
+        }
+     
+        if(gameVars.bat.zRotation < CGFloat.pi)
+        {
+            gameVars.bat.zRotation += scaleSpeed * 2.0
+        }
+        else if (gameVars.bat.alpha >= 0.01)
+        {
+            gameVars.bat.alpha -= scaleSpeed * 0.4
+
+        }
+        if(gameVars.bat.alpha <= 0.01)
+        {
+        
+            if(gameVars.backLayer.position.y > gameVars.gameOverBackLayerDisplacement * 0.5)
+            {
+                var newPosition = gameVars.backLayer.position
+                newPosition.y -= gameVars.batDeathBackgroundVelocity
+                gameVars.batDeathBackgroundVelocity += GameSceneConstants.batDeathBackgroundAcceration
+                gameVars.backLayer.position.y = newPosition.y
+            }
+            if(gameVars.backLayer.position.y < gameVars.gameOverBackLayerDisplacement * 0.5 && gameVars.backLayer.position.y > 0)
+            {
+                 var newPosition = gameVars.backLayer.position
+                newPosition.y -= gameVars.batDeathBackgroundVelocity
+                gameVars.batDeathBackgroundVelocity -= GameSceneConstants.batDeathBackgroundAcceration
+                gameVars.backLayer.position.y = newPosition.y
+                if(gameVars.backLayer.position.y < 300)// && gameVars.batDeathBackgroundVelocity > 0.0)
+                {
+                    gameVars.batDeathBackgroundVelocity *= 0.99
+                    
+                }
+                if( gameVars.batDeathBackgroundVelocity < 0.0)
+                {
+                    gameVars.batDeathBackgroundVelocity = 0.0
+                }
+
+
+            }
+         
+        }
+        
+       }
+       
+       private func moveAndFadePointLabels()->Void
        {
         
             for key:String in gameVars.pointsLabels.keys
             {
                 guard let label:SKLabelNode = gameVars.pointsLabels[key] else {return}
                 label.alpha *= GameSceneConstants.pointLabelFadeMultiplier
-                if(label.alpha < 0.05)
+                if(label.position.x > 0)
+                {
+                    label.position.x -= GameSceneConstants.pointLabelVelocity
+                }
+                else
+                {
+                    label.position.x += GameSceneConstants.pointLabelVelocity
+                }
+                if(label.alpha < GameSceneConstants.pointLabelAlphaThreshold)
                 {
                     label.removeFromParent()
                     gameVars.pointsLabels.removeValue(forKey: key)

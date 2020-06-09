@@ -47,16 +47,28 @@ extension GameScene: SKPhysicsContactDelegate
         let secondBodyAGem:Bool = secondBody.categoryBitMask == PhysicsCategory.Gem
         let secondBodyACoin:Bool = secondBody.categoryBitMask == PhysicsCategory.Coin
         let secondBodyAVirus:Bool = secondBody.categoryBitMask == PhysicsCategory.Virus
+        let secondBodyASkull:Bool = secondBody.categoryBitMask == PhysicsCategory.Skull
         
-        if(firstBodyTheBat && (secondBodyAGem || secondBodyACoin || secondBodyAVirus))
+        if(firstBodyTheBat && (secondBodyAGem || secondBodyACoin || secondBodyAVirus || secondBodyASkull))
         {
 
             if let itemSprite = secondBody.node as? SKSpriteNode
             {
-                itemSprite.physicsBody = nil
-                gameVars.currentlyCapturedItem = itemSprite
-                let itemKey:String =  String(Float(itemSprite.position.x)) + String(Float(itemSprite.position.y))
-                gameVars.grid.addConvergingSpriteForKey(sprite:itemSprite, key: itemKey)
+                if(!secondBodyASkull)
+                {
+                    itemSprite.physicsBody = nil
+                    gameVars.currentlyCapturedItem = itemSprite
+                    let itemKey:String =  String(Float(itemSprite.position.x)) + String(Float(itemSprite.position.y))
+                    gameVars.grid.addConvergingSpriteForKey(sprite:itemSprite, key: itemKey)
+                }
+                else
+                {
+                    playSound(gameVars.buzzerSoundEffect)
+                    gameVars.bat.die()
+                    gameVars.healthMeter.updateGreenBar(gameVars.bat.healthPoints, GameSceneConstants.batMaxHealthPoints)
+                   
+                }
+              
                 if(secondBodyAVirus)
                 {
                     playSound(gameVars.buzzerSoundEffect)

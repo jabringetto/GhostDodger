@@ -41,13 +41,25 @@ extension GameScene
             let url = URL(fileURLWithPath: path)
             do {
                      gameVars.buzzerSoundEffect = try AVAudioPlayer(contentsOf: url)
-                     gameVars.buzzerSoundEffect?.volume = 0.03
+                     gameVars.buzzerSoundEffect?.volume = GameSceneConstants.buzzerSoundEffectVolume
                      gameVars.buzzerSoundEffect?.prepareToPlay()
+                
             }
             catch
             {
                     // couldn't load file :(
             }
+            do {
+                  varsInitialValues.buzzerSoundEffect = try AVAudioPlayer(contentsOf: url)
+                  varsInitialValues.buzzerSoundEffect?.volume = GameSceneConstants.buzzerSoundEffectVolume
+                  varsInitialValues.buzzerSoundEffect?.prepareToPlay()
+            }
+            catch
+            {
+                
+                // couldn't load file :(
+            }
+           
     }
     private func loadTreasureSound()->Void
     {
@@ -60,6 +72,13 @@ extension GameScene
         catch
         {
                  // couldn't load file :(
+        }
+        do {
+             varsInitialValues.treasureSoundEffect = try AVAudioPlayer(contentsOf: url)
+        }
+        catch
+        {
+            // couldn't load file :(
         }
     }
     

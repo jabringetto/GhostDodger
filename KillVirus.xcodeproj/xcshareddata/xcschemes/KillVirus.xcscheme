@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D0CA80EB21CF13A400BE7E96"
-               BuildableName = "Kill Virus.app"
+               BuildableName = "Virus Dodger.app"
                BlueprintName = "KillVirus"
                ReferencedContainer = "container:KillVirus.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D0CA80EB21CF13A400BE7E96"
-            BuildableName = "Kill Virus.app"
+            BuildableName = "Virus Dodger.app"
             BlueprintName = "KillVirus"
             ReferencedContainer = "container:KillVirus.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D0CA80EB21CF13A400BE7E96"
-            BuildableName = "Kill Virus.app"
+            BuildableName = "Virus Dodger.app"
             BlueprintName = "KillVirus"
             ReferencedContainer = "container:KillVirus.xcodeproj">
          </BuildableReference>

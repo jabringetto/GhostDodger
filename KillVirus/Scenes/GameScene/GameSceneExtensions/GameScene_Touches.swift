@@ -23,6 +23,10 @@ extension GameScene
             {
                 pauseButtonPressed()
             }
+            if (node.name == "gameOver")
+            {
+                resetGame()
+            }
             
          }
         screenTouched(location)
@@ -33,7 +37,7 @@ extension GameScene
          
          let touch = touches.first!
          let location = touch.location(in:self)
-        screenTouched(location)
+         screenTouched(location)
          //gameVars.currentTouchLocation = location
          
      }

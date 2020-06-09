@@ -56,7 +56,7 @@
 		D0C2503423DB6318009D65DD /* GameScene_Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene_Layout.swift; sourceTree = "<group>"; };
 		D0C2503623DB7D4F009D65DD /* GameScene_EveryFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene_EveryFrame.swift; sourceTree = "<group>"; };
 		D0C2503823DB8176009D65DD /* GameScene_Sounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene_Sounds.swift; sourceTree = "<group>"; };
-		D0CA80EC21CF13A400BE7E96 /* Kill Virus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kill Virus.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0CA80EC21CF13A400BE7E96 /* Virus Dodger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Virus Dodger.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0CA80EF21CF13A400BE7E96 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0CA80F121CF13A400BE7E96 /* EnterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterController.swift; sourceTree = "<group>"; };
 		D0CA80F421CF13A400BE7E96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -184,7 +184,7 @@
 		D0CA80ED21CF13A400BE7E96 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D0CA80EC21CF13A400BE7E96 /* Kill Virus.app */,
+				D0CA80EC21CF13A400BE7E96 /* Virus Dodger.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -285,7 +285,7 @@
 			);
 			name = KillVirus;
 			productName = SpinGems;
-			productReference = D0CA80EC21CF13A400BE7E96 /* Kill Virus.app */;
+			productReference = D0CA80EC21CF13A400BE7E96 /* Virus Dodger.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -523,7 +523,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = JAB.KillVirus;
-				PRODUCT_NAME = "Kill Virus";
+				PRODUCT_NAME = "Virus Dodger";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -541,7 +541,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = JAB.KillVirus;
-				PRODUCT_NAME = "Kill Virus";
+				PRODUCT_NAME = "Virus Dodger";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

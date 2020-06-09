@@ -9,10 +9,17 @@
 //import UIKit
 import SpriteKit
 
+protocol BatDelegate:class {
+    
+    func batDied()->Void
+}
+
 final class Bat: SKSpriteNode {
     
-    let greenEyeRight = SKSpriteNode(imageNamed: "VirusBody")
-    let greenEyeLeft = SKSpriteNode(imageNamed: "VirusBody")
+    let greenEyeRight = SKSpriteNode(imageNamed:"VirusBody")
+    let greenEyeLeft = SKSpriteNode(imageNamed:"VirusBody")
+    let deadEyeRight = SKSpriteNode(imageNamed:"DeadEyeRight")
+    let deadEyeLeft = SKSpriteNode(imageNamed:"DeadEyeLeft")
     let flapKey =  "flapWingsForever"
     let virusHitCounterDuration:Int = 30
     var batTextures = [SKTexture]()
@@ -24,6 +31,8 @@ final class Bat: SKSpriteNode {
     var healthPoints:Int = 20
     var healthPointsHealingCounter = 0
     var healTimeInSeconds:Int = 4
+    var isDead = false
+    weak var delegate:BatDelegate?
     
     convenience init()
     {
@@ -32,6 +41,7 @@ final class Bat: SKSpriteNode {
     setupAnimation(timePerFrame: GameSceneConstants.batAnimationTimePerFrame)
     setupPhysics()
     addGreenEyes()
+    addDeadEyes()
     }
     func addTexturesAndScale()->Void
     {
@@ -68,22 +78,47 @@ final class Bat: SKSpriteNode {
         self.addChild(greenEyeRight)
         self.addChild(greenEyeLeft)
     }
+    private func addDeadEyes()->Void
+    {
+        deadEyeRight.xScale = GameSceneConstants.batScale * 1.9
+        deadEyeRight.yScale = GameSceneConstants.batScale * 1.9
+        deadEyeRight.position = CGPoint(x: 12.0, y: 21.0)
+        deadEyeLeft.xScale = GameSceneConstants.batScale * 1.9
+        deadEyeLeft.yScale = GameSceneConstants.batScale * 1.9
+        deadEyeLeft.position = CGPoint(x: -22.0, y: 21.0)
+        deadEyeRight.isHidden = true
+        deadEyeLeft.isHidden = true
+        self.addChild(deadEyeRight)
+        self.addChild(deadEyeLeft)
+    }
+    
+    func  hitBySkull()->Void
+    {
+        if(healthPoints > 0)
+        {
+                self.healthPoints -= 1
+        }
+        else
+        {
+                die()
+        }
+    }
     func hitByVirus()->Void
     {
         if(healthPoints > 0)
         {
-             self.healthPoints -= 1
+            self.healthPoints -= 1
+            greenEyeRight.isHidden = false
+            greenEyeLeft.isHidden = false
+            self.removeAction(forKey:flapKey)
+            setupAnimation(timePerFrame: GameSceneConstants.batAnimationTimePerFrame*4.0)
+            self.isHitByVirus = true
         }
         else
         {
-            //die
+            die()
         }
-     
-        greenEyeRight.isHidden = false
-        greenEyeLeft.isHidden = false
-        self.removeAction(forKey:flapKey)
-        setupAnimation(timePerFrame: GameSceneConstants.batAnimationTimePerFrame*4.0)
-        self.isHitByVirus = true
+       
     }
     func incrementVirusHitCounter()->Void
     {
@@ -113,6 +148,20 @@ final class Bat: SKSpriteNode {
             }
         }
     }
+    func die()->Void
+    {
+        isDead = true
+        healthPoints = 0
+        self.physicsBody = nil
+        greenEyeRight.isHidden = true
+        greenEyeLeft.isHidden = true
+        deadEyeRight.isHidden = false
+        deadEyeLeft.isHidden = false
+        self.removeAction(forKey:flapKey)
+        self.delegate?.batDied()
+    }
+
+    
     
     
 

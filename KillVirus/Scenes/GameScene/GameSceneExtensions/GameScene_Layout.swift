@@ -12,7 +12,8 @@ import SpriteKit
 
 extension GameScene
 {
-     func setupAndGrid()
+
+     func gameSetup()
      {
         addBackground()
         addBackLayer()
@@ -21,18 +22,26 @@ extension GameScene
         addScoreLabel()
         addPauseButton()
         setupGrid(gameVars.screenWidth,gameVars.screenHeight)
+        addBat()
+        addGameOver()
+     }
+
+     private func addBackground()->Void
+     {
+       varsInitialValues.screenWidth = gameVars.screenWidth
+       varsInitialValues.screenHeight = gameVars.screenHeight
+       gameVars.background.size.width = gameVars.screenWidth
+       gameVars.background.size.height = gameVars.screenHeight
+       self.addChild(gameVars.background)
      }
      func addBat()->Void
      {
+        gameVars.bat.alpha = 1.0
         gameVars.bat.position = CGPoint(x: 0.0, y: gameVars.screenHeight * GameSceneConstants.batVerticalPositionMultiplier)
             self.addChild(gameVars.bat)
+        addBatDelegate()
      }
-     private func addBackground()->Void
-     {
-        gameVars.background.size.width = gameVars.screenWidth
-        gameVars.background.size.height = gameVars.screenHeight
-        self.addChild(gameVars.background)
-     }
+
      private func addBackLayer()->Void
      {
          self.addChild(gameVars.backLayer)
@@ -42,6 +51,17 @@ extension GameScene
          gameVars.grid = Grid.init(width,height)
          gameVars.grid.populateGridItems(gameVars.backLayer)
      }
+    private func addGameOver()->Void
+    {
+        let width = gameVars.screenWidth * GameSceneConstants.gameOverScreenWidthRatio
+        let height = width * GameSceneConstants.gameOverAspectRatio
+        gameVars.gameOver.size = CGSize(width: width, height: height)
+        gameVars.gameOver.position.y = GameSceneConstants.gameOverInitialPosition
+        gameVars.gameOver.isHidden = true
+        gameVars.gameOver.name = "gameOver"
+        gameVars.backLayer.addChild(gameVars.gameOver)
+    }
+
      private func addBlackBar()->Void
      {
         gameVars.blackBar.size = CGSize(width: gameVars.screenWidth, height: GameSceneConstants.blackBarHeight)
@@ -70,6 +90,7 @@ extension GameScene
         gameVars.pauseButton.name = "pauseButton"
          self.addChild(gameVars.pauseButton)
      }
+    
     
 }
 

@@ -18,6 +18,7 @@ final class Grid
     private var gameItems = [GameItem]()
     private var skulls = [Skull]()
     private var virus = [Virus]()
+
     private var convergingSprites = [String:SKSpriteNode]()
     
     convenience init(_ width:CGFloat, _ height:CGFloat)
@@ -56,9 +57,9 @@ final class Grid
                 layerNode.addChild(sprite)
                 if(type == GameItemType.skull)
                 {
-                    if let skull = sprite as? Skull
+                    if let aSkull = sprite as? Skull
                     {
-                        skulls.append(skull)
+                        skulls.append(aSkull)
                     }
                 }
                 if(type == GameItemType.virus)
@@ -71,6 +72,7 @@ final class Grid
             }
         }
     }
+
     private func spriteForType(_ type:GameItemType)->SKSpriteNode?
     {
         switch type

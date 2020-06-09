@@ -13,12 +13,18 @@ import AVFoundation
 
 struct GameSceneConstants
 {
+    static let nominalBackgroundSpeed:CGFloat = 2.0
     static let batAnimationTimePerFrame:TimeInterval = 0.01
     static let batFollowFingerRatio:CGFloat = 0.04
     static let batFollowFingerThreshold:CGFloat = 1.0
+    static let batDeathBackgroundAcceration:CGFloat  = 0.2
+    static let gameOverScreenWidthRatio:CGFloat = 0.90
+    static let gameOverAspectRatio:CGFloat = 0.574
+    static let gameOverInitialPosition:CGFloat = 1000.0
     static let batScale:CGFloat = 0.4
-    static let batVerticalPositionMultiplier:CGFloat = 0.1
+    static let batVerticalPositionMultiplier:CGFloat = 0.25
     static let batPhysicsBodySizeRatio:CGFloat = 0.2
+    static let buzzerSoundEffectVolume:Float = 0.03
     static let batMaxHealthPoints:Int = 20
     static let blackBarHeight:CGFloat = 90.0
     static let coinXScale:CGFloat = 0.3
@@ -45,21 +51,26 @@ struct GameSceneConstants
     static let basePointValueEmerald:Int = 50
     static let basePointValueRuby:Int = 100
     static let pointLabelFadeMultiplier:CGFloat = 0.99
+    static let pointLabelVelocity:CGFloat = 0.8
+    static let pointLabelAlphaThreshold:CGFloat = 0.3
     static let scoreLabelPrefix = "SCORE: "
 }
 struct GameSceneVars
 {
     var gamePausedState:Int = 0
+    var gameOverbouncingBack:Bool = false
+    var gameOverBackLayerDisplacement:CGFloat = 400.0
     var score:Int = 0
     var background = SKSpriteNode(imageNamed:"Background_Cropped")
     var pauseButton =  SKSpriteNode(imageNamed:"PauseButton")
+    var gameOver = SKSpriteNode(imageNamed:"GameOver")
     var backLayer = SKNode()
     var bat = Bat()
     var grid = Grid()
     var blackBar = SKSpriteNode(color: UIColor.black, size: CGSize.zero)
     var screenWidth:CGFloat = 0.0
     var screenHeight:CGFloat = 0.0
-    var backgroundSpeed:CGFloat = 2.0
+    var batDeathBackgroundVelocity:CGFloat = 0.0
     var skullFollowSpeed:CGFloat = 2.4
     var screenTouched = false
     var currentlyCapturedItem:SKSpriteNode?
@@ -85,12 +96,12 @@ final class GameScene: SKScene
 {
    
     var gameVars = GameSceneVars()
+    var varsInitialValues = GameSceneVars()
    
     override func didMove(to view: SKView)
     {
         self.anchorPoint = CGPoint(x:0.5,y:0.5)
-        setupAndGrid()
-        addBat()
+        gameSetup()
         configurePhysicsWorld()
         loadSounds()
         
