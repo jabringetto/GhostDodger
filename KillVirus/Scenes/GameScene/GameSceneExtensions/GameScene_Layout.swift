@@ -15,15 +15,22 @@ extension GameScene
 
      func gameSetup()
      {
+        
         addBackground()
         addBackLayer()
         addBlackBar()
-        addHealthMeter()
         addScoreLabel()
+        addRoundLabel()
         addPauseButton()
         setupGrid(gameVars.screenWidth,gameVars.screenHeight)
         addBat()
         addGameOver()
+        uptakePersistentValues()
+        addHealthMeter()
+        addCountdownannouncer()
+        addRoundCompletedAnnouncer()
+       
+      
      }
 
      private func addBackground()->Void
@@ -49,19 +56,41 @@ extension GameScene
      private func setupGrid(_ width:CGFloat, _ height: CGFloat)->Void
      {
          gameVars.grid = Grid.init(width,height)
+        gameVars.grid.delegate = self
          gameVars.grid.populateGridItems(gameVars.backLayer)
      }
     private func addGameOver()->Void
     {
-        let width = gameVars.screenWidth * GameSceneConstants.gameOverScreenWidthRatio
-        let height = width * GameSceneConstants.gameOverAspectRatio
-        gameVars.gameOver.size = CGSize(width: width, height: height)
+        gameVars.gameOver.size = announcerSize()
         gameVars.gameOver.position.y = GameSceneConstants.gameOverInitialPosition
         gameVars.gameOver.isHidden = true
         gameVars.gameOver.name = "gameOver"
         gameVars.backLayer.addChild(gameVars.gameOver)
     }
-
+     private func addCountdownannouncer()->Void
+     {
+        gameVars.countdownAnnouncer.size = announcerSize()
+        gameVars.countdownAnnouncer.configureLabels(roundNum: gameVars.round, gameInProgress: gameVars.gameInProgress)
+        gameVars.countdownAnnouncer.position.y = -gameVars.backLayer.position.y
+        gameVars.backLayer.addChild(gameVars.countdownAnnouncer)
+        
+     }
+     private func addRoundCompletedAnnouncer()->Void
+     {
+        gameVars.roundCompleteAnnouncer.size = announcerSize()
+        let lastRowYPos:CGFloat = -CGFloat(GameSceneConstants.gridNumRows) * GameSceneConstants.gridColumnHeight
+        gameVars.roundEndPosition =  lastRowYPos - announcerSize().height * 2.0
+        gameVars.roundCompleteAnnouncer.position.y = gameVars.roundEndPosition
+        gameVars.roundCompleteAnnouncer.delegate = self
+        gameVars.roundCompleteAnnouncer.setCompletedLabelText()
+        gameVars.backLayer.addChild(gameVars.roundCompleteAnnouncer)
+     }
+     private func announcerSize()->CGSize
+     {
+        let width = gameVars.screenWidth * GameSceneConstants.announcerScreenWidthRatio
+        let height = width * GameSceneConstants.announcerAspectRatio
+        return CGSize(width: width, height:height)
+     }
      private func addBlackBar()->Void
      {
         gameVars.blackBar.size = CGSize(width: gameVars.screenWidth, height: GameSceneConstants.blackBarHeight)
@@ -74,6 +103,7 @@ extension GameScene
      {
         gameVars.healthMeter.setup()
         gameVars.healthMeter.position = CGPoint(x: -gameVars.screenWidth / 2.0 + GameSceneConstants.healthMeterPadding, y:  -(gameVars.screenHeight / 2.0 - GameSceneConstants.healthMeterPadding))
+        gameVars.healthMeter.updateGreenBar(gameVars.bat.healthPoints, GameSceneConstants.batMaxHealthPoints)
         self.addChild(gameVars.healthMeter)
      }
      private func addScoreLabel()->Void
@@ -81,13 +111,24 @@ extension GameScene
         gameVars.scoreLabel = SKLabelNode(fontNamed: "Arial-Bold")
         gameVars.scoreLabel.fontSize = 18.0
         gameVars.scoreLabel.text = GameSceneConstants.scoreLabelPrefix + String(gameVars.score)
-        gameVars.scoreLabel.position = CGPoint(x: 0.0 , y:  -(gameVars.screenHeight / 2.0 - GameSceneConstants.scoreLabelPadding))
+        gameVars.scoreLabel.position = CGPoint(x:0.0 , y:  -(gameVars.screenHeight / 2.0 - GameSceneConstants.scoreLabelPadding))
         self.addChild( gameVars.scoreLabel)
      }
+    private func addRoundLabel()->Void
+      {
+         gameVars.roundLabel = SKLabelNode(fontNamed: "Arial-Bold")
+         gameVars.roundLabel.fontSize = 18.0
+         gameVars.roundLabel.text = GameSceneConstants.roundLabelPrefix + String(gameVars.round)
+        gameVars.roundLabel.position = CGPoint(x: 0.0 , y:  -(gameVars.screenHeight / 2.0 - GameSceneConstants.roundLabelPadding))
+         self.addChild( gameVars.roundLabel)
+        
+        
+      }
      private func addPauseButton()->Void
      {
         gameVars.pauseButton.position = CGPoint(x: gameVars.screenWidth / 2.0 - GameSceneConstants.healthMeterPadding*0.5, y: -(gameVars.screenHeight / 2.0 - GameSceneConstants.scoreLabelPadding))
         gameVars.pauseButton.name = "pauseButton"
+        gameVars.pauseButton.isHidden = true
          self.addChild(gameVars.pauseButton)
      }
     

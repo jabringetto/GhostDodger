@@ -65,6 +65,7 @@ extension GameScene: SKPhysicsContactDelegate
                 {
                     playSound(gameVars.buzzerSoundEffect)
                     gameVars.bat.die()
+                    removeAllPersistence()
                     gameVars.healthMeter.updateGreenBar(gameVars.bat.healthPoints, GameSceneConstants.batMaxHealthPoints)
                    
                 }
@@ -73,15 +74,24 @@ extension GameScene: SKPhysicsContactDelegate
                 {
                     playSound(gameVars.buzzerSoundEffect)
                     gameVars.bat.hitByVirus()
+                 
                     gameVars.healthMeter.updateGreenBar(gameVars.bat.healthPoints, GameSceneConstants.batMaxHealthPoints)
+                    savePersistentValues()
                     
                 }
                 else if (secondBodyAGem || secondBodyACoin)
                 {
                     
-                    playSound(gameVars.treasureSoundEffect)
+                    if(secondBodyAGem)
+                    {
+                        playSound(gameVars.treasureSoundEffect)
+                    }
+                    if(secondBodyACoin)
+                    {
+                        playSound(gameVars.coinSoundEffect)
+                    }
+                    
                     playerGetsTreasure(itemSprite)
-                    gameVars.scoreLabel.text = GameSceneConstants.scoreLabelPrefix + String(gameVars.score)
                     
                     
                 }

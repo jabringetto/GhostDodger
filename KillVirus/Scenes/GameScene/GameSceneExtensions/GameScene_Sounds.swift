@@ -15,7 +15,14 @@ extension GameScene
 {
     func playSound(_ player:AVAudioPlayer?)->Void
     {
-        guard let soundPlayer = player else {return}
+       
+        guard let soundPlayer = player else {
+           print("failed to play sound")
+            
+            return
+            
+            
+        }
         if(soundPlayer.isPlaying)
         {
             soundPlayer.pause()
@@ -30,56 +37,45 @@ extension GameScene
      
         
     }
-    func loadSounds()->Void
+    func loadAllSounds()->Void
     {
        loadBuzzerSound()
        loadTreasureSound()
+       loadCoinSound()
+    }
+    private func loadSound(_ filename:String, player:inout AVAudioPlayer?, volume:Float)->Void
+    {
+        let path = Bundle.main.path(forResource:filename, ofType:nil) ?? ""
+        let url = URL(fileURLWithPath: path)
+        do {
+                player = try AVAudioPlayer(contentsOf: url)
+                player?.volume = volume
+                player?.prepareToPlay()        }
+        catch
+        {
+                   print("loading sound failed")
+        }
+        do {
+                    varsInitialValues.coinSoundEffect = try AVAudioPlayer(contentsOf: url)
+        }
+        catch
+        {
+                   print("loading sound failed")
+        }
+    }
+    private func loadCoinSound()->Void
+    {
+        loadSound("Coin01.mp3", player: &gameVars.coinSoundEffect, volume: GameSceneConstants.coinSoundEffectVolume)
     }
     private func loadBuzzerSound()->Void
     {
-        let path = Bundle.main.path(forResource:"Buzzer.mp3", ofType:nil)!
-            let url = URL(fileURLWithPath: path)
-            do {
-                     gameVars.buzzerSoundEffect = try AVAudioPlayer(contentsOf: url)
-                     gameVars.buzzerSoundEffect?.volume = GameSceneConstants.buzzerSoundEffectVolume
-                     gameVars.buzzerSoundEffect?.prepareToPlay()
-                
-            }
-            catch
-            {
-                    // couldn't load file :(
-            }
-            do {
-                  varsInitialValues.buzzerSoundEffect = try AVAudioPlayer(contentsOf: url)
-                  varsInitialValues.buzzerSoundEffect?.volume = GameSceneConstants.buzzerSoundEffectVolume
-                  varsInitialValues.buzzerSoundEffect?.prepareToPlay()
-            }
-            catch
-            {
-                
-                // couldn't load file :(
-            }
+        loadSound("Buzzer.mp3", player: &gameVars.buzzerSoundEffect , volume: GameSceneConstants.buzzerSoundEffectVolume)
            
     }
     private func loadTreasureSound()->Void
     {
-        let path = Bundle.main.path(forResource:"Treasure.mp3", ofType:nil)!
-        let url = URL(fileURLWithPath: path)
-        do {
-                 gameVars.treasureSoundEffect = try AVAudioPlayer(contentsOf: url)
-                 gameVars.treasureSoundEffect?.prepareToPlay()
-        }
-        catch
-        {
-                 // couldn't load file :(
-        }
-        do {
-             varsInitialValues.treasureSoundEffect = try AVAudioPlayer(contentsOf: url)
-        }
-        catch
-        {
-            // couldn't load file :(
-        }
+        loadSound("Treasure.mp3", player: &gameVars.treasureSoundEffect , volume:1.0)
+        
     }
     
 

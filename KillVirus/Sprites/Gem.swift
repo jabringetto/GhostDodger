@@ -12,9 +12,9 @@ import SpriteKit
 
 final class Gem: SKSpriteNode {
     
-    var pointValue:Int = 0
+    var pointValue:UInt = 0
     private var spinAnimation = SKAction()
-    private var spinSpeed:Int = 1
+    private var spinSpeed:UInt = 1
     private var spinTextures = [SKTexture]()
     private var perFrame:TimeInterval = GameSceneConstants.gemRotationConstant
 
@@ -57,7 +57,7 @@ final class Gem: SKSpriteNode {
     }
     private func spinForever()->Void
     {
-        spinSpeed = Int.random(in: 1 ..< 4)
+        spinSpeed = UInt.random(in: 1 ..< 4)
               
         if(spinSpeed > 0)
         {

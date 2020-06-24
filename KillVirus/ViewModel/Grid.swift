@@ -10,16 +10,26 @@ import Foundation
 import UIKit
 import SpriteKit
 
+protocol GridDelegate:class
+{
+    func savePersisentValue(value:Any, key:String)->Void
+    func removePersisentValue(key:String)->Void
+    func fetchPersistentValue(key:String)->Any?
+    func saveGridPeristently(_ positionsAndTypes:[PositionAndType])->Void
+    func fetchPersistentGrid()->[PositionAndType]?
+}
+
 
 final class Grid
 {
+    weak var delegate:GridDelegate?
     private var columnHalfWidth:CGFloat = 0.0
     private var itemPositions = [CGPoint]()
-    private var gameItems = [GameItem]()
+    private var positionsAndTypes = [PositionAndType]()
     private var skulls = [Skull]()
     private var virus = [Virus]()
-
     private var convergingSprites = [String:SKSpriteNode]()
+    
     
     convenience init(_ width:CGFloat, _ height:CGFloat)
     {
@@ -44,15 +54,18 @@ final class Grid
     }
     func populateGridItems(_ layerNode:SKNode)->Void
     {
-        for point:CGPoint in itemPositions
+        
+        populateGameItems()
+        self.delegate?.saveGridPeristently(positionsAndTypes)
+
+        for element in positionsAndTypes
         {
-            let primaryDiceRoll = Int.random(in: 1...100)
-            let secondaryDiceRoll = Int.random(in: 1...100)
-            
-            let type = typeForRoll(primaryDiceRoll,secondaryDiceRoll)
+            let point:CGPoint = element.position
+            let type:GameItemType =  GameItemType(rawValue:element.type) ?? .none
             let gameItem = GameItem.init(type:type, sprite: spriteForType(type))
             if let sprite = gameItem.itemSprite
             {
+                
                 sprite.position = point
                 layerNode.addChild(sprite)
                 if(type == GameItemType.skull)
@@ -64,14 +77,41 @@ final class Grid
                 }
                 if(type == GameItemType.virus)
                 {
-                      if let aVirus = sprite as? Virus
-                      {
+                    if let aVirus = sprite as? Virus
+                    {
                         virus.append(aVirus)
-                      }
+                    }
                 }
             }
+            
         }
+
     }
+    func populateGameItems()->Void
+    {
+        if let persistentPostionsAndTypes = self.delegate?.fetchPersistentGrid() {
+            
+            if(persistentPostionsAndTypes.count > 0)
+            {
+                positionsAndTypes = persistentPostionsAndTypes
+                
+            }
+        }
+        else
+        {
+            for point:CGPoint in itemPositions
+            {
+                let primaryDiceRoll = Int.random(in: 1...100)
+                let secondaryDiceRoll = Int.random(in: 1...100)
+                let itemType = typeForRoll(primaryDiceRoll,secondaryDiceRoll)
+                positionsAndTypes.append(PositionAndType(position:point, type:itemType.rawValue))
+            }
+        }
+     
+        
+
+    }
+
 
     private func spriteForType(_ type:GameItemType)->SKSpriteNode?
     {
@@ -104,11 +144,12 @@ final class Grid
         var type = GameItemType.none
         if(primaryRoll > 90 && primaryRoll <= 100)
         {
-            type = .virus
+              type = secondaryTypeForRoll(secondaryRoll)
         }
         else if (primaryRoll > 80 && primaryRoll <= 90)
         {
-            type = secondaryTypeForRoll(secondaryRoll)
+          
+            type = .virus
         }
         return type
         

@@ -28,10 +28,11 @@ final class Bat: SKSpriteNode {
     var noAnimation = SKAction()
     var virusHitCounter = 0
     var isHitByVirus = false
-    var healthPoints:Int = 20
+    var healthPoints:UInt = 20
     var healthPointsHealingCounter = 0
     var healTimeInSeconds:Int = 4
     var isDead = false
+    var immobilized = false
     weak var delegate:BatDelegate?
     
     convenience init()

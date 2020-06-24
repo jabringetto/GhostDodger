@@ -20,26 +20,71 @@ extension GameScene
              spritesCovergeOnPlayer()
              skullsFollowPlayer()
              incrementBatCounters()
+             incrementPersistenceCounter()
              moveAndFadePointLabels()
           }
           else if (gameVars.bat.isDead)
           {
-            batAfterDeath()
+              batAfterDeath()
+          }
+          else if (gameVars.isCountingDown)
+          {
+               countdownToPlay()
           }
       
         
        }
+       private func countdownToPlay()->Void
+       {
+          gameVars.countdownCounter -= 1
+          gameVars.countdownAnnouncer.updateCounterLabel(gameVars.countdownCounter)
+          if(gameVars.countdownCounter == 100)
+          {
+            gameVars.countdownAnnouncer.getReadyLabel.isHidden = true
+         }
+          if (gameVars.countdownCounter < 100 )
+          {
+            let scaleFactor = CGFloat(gameVars.countdownCounter) / 100
+            gameVars.countdownAnnouncer.size.width *= scaleFactor
+            gameVars.countdownAnnouncer.size.height *= scaleFactor
+          }
+          if gameVars.countdownCounter == 0
+          {
+             gameVars.countdownAnnouncer.removeAllChildren()
+             gameVars.countdownAnnouncer.removeFromParent()
+             gameVars.gamePausedState = 0
+             gameVars.pauseButton.isHidden = false
+             gameVars.countdownCounter = 240
+             gameVars.isCountingDown = false
+          }
+       }
        private func moveBackgroundLayers()->Void
        {
-          var newPosition = gameVars.backLayer.position
-          newPosition.y += GameSceneConstants.nominalBackgroundSpeed
-          gameVars.backLayer.position.y = newPosition.y
+          
+        if(gameVars.backLayer.position.y < abs(gameVars.roundEndPosition))
+        {
+            var newPosition = gameVars.backLayer.position
+            newPosition.y += GameSceneConstants.nominalBackgroundSpeed
+            gameVars.backLayer.position.y = newPosition.y
+        }
+        else
+        {
+            if(gameVars.bat.parent != nil && gameVars.pauseButton.parent != nil)
+            {
+                gameVars.bat.immobilized = true
+                gameVars.bat.removeFromParent()
+                gameVars.pauseButton.removeFromParent()
+                
+            }
+           
+           
+        }
           
        }
        private func batFollowFinger()->Void
        {
-           
-           if(gameVars.screenTouched &&  !gameVars.bat.isHitByVirus)
+            let batIsMobile = gameVars.screenTouched && !gameVars.bat.isHitByVirus && !gameVars.bat.immobilized
+           if(batIsMobile)
            {
                if let touchLocation = gameVars.currentTouchLocation
                {
@@ -79,67 +124,79 @@ extension GameScene
        }
        private func incrementBatCounters()->Void
        {
-        gameVars.bat.incrementVirusHitCounter()
-        gameVars.bat.incrementHealthPointsHealingCounter()
-        gameVars.healthMeter.updateGreenBar(gameVars.bat.healthPoints, GameSceneConstants.batMaxHealthPoints)
-        
+        if(!gameVars.bat.immobilized)
+        {
+            gameVars.bat.incrementVirusHitCounter()
+            gameVars.bat.incrementHealthPointsHealingCounter()
+            gameVars.healthMeter.updateGreenBar(gameVars.bat.healthPoints, GameSceneConstants.batMaxHealthPoints)
+        }
+      
+       }
+       private func incrementPersistenceCounter()->Void
+       {
+         gameVars.persistenceCounter += 1
+          if(gameVars.persistenceCounter == 60)
+          {
+              gameVars.persistenceCounter = 0
+              gameVars.gameInProgress = true
+              savePersistentValues()
+          }
        }
        private func batAfterDeath()->Void
        {
         
-        let convergeSpeed:CGFloat = 0.75
-        let scaleSpeed:CGFloat = 0.03
-        
-        if(gameVars.bat.position.x > 1.0)
+        if(gameVars.bat.position.x > GameSceneConstants.batDeathConvergenceThreshold)
         {
-            gameVars.bat.position.x -= convergeSpeed
+            gameVars.bat.position.x -= GameSceneConstants.batDeathConvergeSpeed
         }
-        else if (gameVars.bat.position.x < -1.0)
+        else if (gameVars.bat.position.x < -GameSceneConstants.batDeathConvergenceThreshold)
         {
-            gameVars.bat.position.x += convergeSpeed
+            gameVars.bat.position.x += GameSceneConstants.batDeathConvergeSpeed
         }
-        if(gameVars.bat.position.y > 1.0)
+        if(gameVars.bat.position.y > GameSceneConstants.batDeathConvergenceThreshold)
         {
-            gameVars.bat.position.y -= convergeSpeed
+            gameVars.bat.position.y -= GameSceneConstants.batDeathConvergeSpeed
         }
-        else if (gameVars.bat.position.y < -1.0)
+        else if (gameVars.bat.position.y < -GameSceneConstants.batDeathConvergenceThreshold)
         {
-            gameVars.bat.position.y += convergeSpeed
+            gameVars.bat.position.y += GameSceneConstants.batDeathConvergeSpeed
         }
-        if( gameVars.bat.xScale < 0.8)
+        if( gameVars.bat.xScale < GameSceneConstants.batDeathScaleThreshold)
         {
-            gameVars.bat.xScale += scaleSpeed
-            gameVars.bat.yScale += scaleSpeed
+            gameVars.bat.xScale += GameSceneConstants.batDeathScaleSpeed
+            gameVars.bat.yScale += GameSceneConstants.batDeathScaleSpeed
         }
      
         if(gameVars.bat.zRotation < CGFloat.pi)
         {
-            gameVars.bat.zRotation += scaleSpeed * 2.0
+            gameVars.bat.zRotation += GameSceneConstants.batDeathRotationSpeed
         }
-        else if (gameVars.bat.alpha >= 0.01)
+        else if (gameVars.bat.alpha >= GameSceneConstants.batDeathAlphaThreshold)
         {
-            gameVars.bat.alpha -= scaleSpeed * 0.4
+            gameVars.bat.alpha -= GameSceneConstants.batDeathAlphaSpeed
 
         }
-        if(gameVars.bat.alpha <= 0.01)
+        if(gameVars.bat.alpha <= GameSceneConstants.batDeathAlphaThreshold)
         {
-        
-            if(gameVars.backLayer.position.y > gameVars.gameOverBackLayerDisplacement * 0.5)
+            let midPoint = gameVars.gameOverBackLayerDisplacement * 0.5
+            let greaterThanZero = gameVars.backLayer.position.y > 0.0
+            
+            if(gameVars.backLayer.position.y > midPoint)
             {
                 var newPosition = gameVars.backLayer.position
                 newPosition.y -= gameVars.batDeathBackgroundVelocity
                 gameVars.batDeathBackgroundVelocity += GameSceneConstants.batDeathBackgroundAcceration
                 gameVars.backLayer.position.y = newPosition.y
             }
-            if(gameVars.backLayer.position.y < gameVars.gameOverBackLayerDisplacement * 0.5 && gameVars.backLayer.position.y > 0)
+            if(gameVars.backLayer.position.y < midPoint && greaterThanZero)
             {
                  var newPosition = gameVars.backLayer.position
                 newPosition.y -= gameVars.batDeathBackgroundVelocity
                 gameVars.batDeathBackgroundVelocity -= GameSceneConstants.batDeathBackgroundAcceration
                 gameVars.backLayer.position.y = newPosition.y
-                if(gameVars.backLayer.position.y < 300)// && gameVars.batDeathBackgroundVelocity > 0.0)
+                if(gameVars.backLayer.position.y < GameSceneConstants.gameOverConvergenceYPos)
                 {
-                    gameVars.batDeathBackgroundVelocity *= 0.99
+                    gameVars.batDeathBackgroundVelocity *= GameSceneConstants.gameOverConvergenceCoefficent
                     
                 }
                 if( gameVars.batDeathBackgroundVelocity < 0.0)

@@ -25,6 +25,15 @@ extension GameScene
             }
             if (node.name == "gameOver")
             {
+                removeAllPersistence()
+                resetGame()
+            }
+            if (node.name == "roundCompletedPlayButton")
+            {
+                gameVars.round += 1
+                //updateRoundLabel()
+                savePersistentValues()
+                clearRoundPersistence()
                 resetGame()
             }
             

@@ -12,7 +12,7 @@ import SpriteKit
 
 final class Coin: SKSpriteNode {
     
-    var pointValue:Int = 0
+    var pointValue:UInt = 0
  
     convenience init(_ coinType: GameItemType)
     {

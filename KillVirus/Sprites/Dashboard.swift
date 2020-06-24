@@ -29,7 +29,7 @@ final class  HealthMeter:SKSpriteNode
         healthLabel.position = CGPoint(x: -1.0, y: 12.0)
         self.addChild(healthLabel)
     }
-    func updateGreenBar(_ healthPoints:Int, _ maxPoints:Int)->Void
+    func updateGreenBar(_ healthPoints:UInt, _ maxPoints:UInt)->Void
     {
         let fraction = CGFloat(healthPoints)/CGFloat(maxPoints)
         let newWidth = maximumWidth*fraction

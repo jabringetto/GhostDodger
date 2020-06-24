@@ -10,20 +10,14 @@ import Foundation
 import SpriteKit
 
 
-extension GameScene:BatDelegate
+extension GameScene: BatDelegate, GridDelegate, AnnouncerRoundCompletedDelegate
 {
+
     func addBatDelegate()->Void {
         
         gameVars.bat.delegate = self
     }
-    func batDied()
-    {
-        pauseButtonPressed()
-        gameVars.pauseButton.isHidden = true
-        recordDisplacement()
-        showGameOver()
-        
-    }
+
     private func recordDisplacement()->Void
     {
         gameVars.gameOverBackLayerDisplacement = gameVars.backLayer.position.y
@@ -38,7 +32,10 @@ extension GameScene:BatDelegate
         gameVars.gameOver.position.y = GameSceneConstants.gameOverInitialPosition
         gameVars.gameOver.isHidden = true
     }
-    
+    func updateRoundLabel()->Void
+    {
+        gameVars.roundLabel.text = GameSceneConstants.roundLabelPrefix + String(gameVars.round)
+    }
     func playerGetsTreasure(_ treasure:SKSpriteNode)->Void
     {
         if let gem = treasure as? Gem
@@ -51,6 +48,36 @@ extension GameScene:BatDelegate
             pointsLabelAdded(coin.pointValue, coin.position)
                  
         }
+        gameVars.scoreLabel.text = GameSceneConstants.scoreLabelPrefix + String(gameVars.score)
+        savePersistentValues()
+    }
+    func savePersistentValues()->Void
+    {
+        savePersisentValue(value: gameVars.gameInProgress, key:"inProgress")
+        savePersisentValue(value: gameVars.score, key: "score")
+        savePersisentValue(value: gameVars.round, key: "round")
+        savePersisentValue(value: gameVars.bat.healthPoints, key: "health")
+        savePersisentValue(value: gameVars.backLayer.position.y, key: "backLayerPositionY")
+        savePersisentValue(value: gameVars.bat.position.x, key: "batPositionX")
+        savePersisentValue(value: gameVars.bat.position.y, key: "batPositionY")
+        
+        
+    }
+    func removeAllPersistence()->Void
+    {
+        removePersisentValue(key:"score")
+        removePersisentValue(key:"round")
+        clearRoundPersistence()
+    }
+    func clearRoundPersistence()->Void
+    {
+        removePersisentValue(key:"inProgress")
+        removePersisentValue(key: "positionsAndTypes")
+        removePersisentValue(key: "backLayerPositionY")
+        removePersisentValue(key: "batPositionX")
+        removePersisentValue(key: "batPositionY")
+        removePersisentValue(key:"health")
+        
     }
     func resetGame()->Void
     {
@@ -58,9 +85,48 @@ extension GameScene:BatDelegate
         self.removeAllChildren()
         gameVars = varsInitialValues
         varsInitialValues = GameSceneVars()
+        uptakePersistentValues()
         gameSetup()
-        loadSounds()
+        loadAllSounds()
     }
+    func uptakePersistentValues()->Void
+    {
+       
+        if let inProgress = fetchPersistentValue(key:"inProgress") as? Bool
+        {
+            gameVars.gameInProgress = inProgress
+        }
+        if let score = fetchPersistentValue(key:"score") as? UInt
+        {
+            gameVars.score = score
+            gameVars.scoreLabel.text = GameSceneConstants.scoreLabelPrefix + String(gameVars.score)
+        }
+        if let round = fetchPersistentValue(key:"round") as? UInt
+        {
+            gameVars.round = round
+        }
+        if let layerPosY = fetchPersistentValue(key: "backLayerPositionY") as? CGFloat
+        {
+            gameVars.backLayer.position.y = layerPosY
+        }
+        if let batPosX = fetchPersistentValue(key: "batPositionX") as? CGFloat
+        {
+            gameVars.bat.position.x = batPosX
+        }
+        if let batPosY = fetchPersistentValue(key: "batPositionY") as? CGFloat
+        {
+            gameVars.bat.position.y = batPosY
+        }
+        if let healthPoints =  fetchPersistentValue(key: "health") as? UInt
+        {
+            gameVars.bat.healthPoints = healthPoints
+        
+        }
+        
+        
+    }
+    
+    
     func pauseButtonPressed()->Void
     {
         gameVars.gamePausedState += 1
@@ -81,7 +147,7 @@ extension GameScene:BatDelegate
                 gameVars.currentTouchLocation = location
         }
     }
-    private func pointsLabelAdded(_ pointValue:Int, _ position:CGPoint)
+    private func pointsLabelAdded(_ pointValue:UInt, _ position:CGPoint)
     {
         gameVars.score += pointValue
         let pointsLabel = SKLabelNode(fontNamed: "Arial-Bold")
@@ -94,5 +160,48 @@ extension GameScene:BatDelegate
         gameVars.pointsLabels[itemKey] = pointsLabel
     }
     
+    // MARK: BatDelegate
+    func batDied()
+    {
+        pauseButtonPressed()
+        gameVars.pauseButton.isHidden = true
+        recordDisplacement()
+        showGameOver()
+        removeAllPersistence()
+        
+    }
+    
+    // MARK: Grid Delegate, Persistence
+    func saveGridPeristently(_ positionsAndTypes:[PositionAndType])->Void
+    {
+        defaults.set(try? PropertyListEncoder().encode(positionsAndTypes), forKey: "positionsAndTypes")
+    }
+    func fetchPersistentGrid()->[PositionAndType]?
+    {
+        guard let positionsAndTypesData = defaults.object(forKey: "positionsAndTypes") as? Data else { return nil }
+        
+        guard let positionsAndTypes = try? PropertyListDecoder().decode([PositionAndType].self, from: positionsAndTypesData)  else { return nil }
+        
+        return positionsAndTypes
+        
+    }
+    
+    func savePersisentValue(value:Any, key:String)->Void
+    {
+        defaults.set(value, forKey: key)
+    }
+    func removePersisentValue(key:String)->Void
+    {
+         defaults.removeObject(forKey:key)
+    }
+    func fetchPersistentValue(key:String)->Any?
+    {
+        return defaults.object(forKey: key)
+    }
+     // MARK: AnnouncerRoundCompletedDelegate
+    func currentRoundNumber() -> UInt
+    {
+        return gameVars.round
+    }
     
 }
