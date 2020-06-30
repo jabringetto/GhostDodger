@@ -21,7 +21,6 @@ class VirusWithFace: SKSpriteNode
          {
              self.init(imageNamed:"VirusWithFace0001")
              setupTexturesAndAnimation()
-             //setupPhysics()
          }
          else
          {
@@ -37,13 +36,6 @@ class VirusWithFace: SKSpriteNode
          self.run(forever)
      
      }
-//     func setupPhysics()->Void
-//     {
-//           self.physicsBody = SKPhysicsBody.init(circleOfRadius:self.size.width*GameSceneConstants.virusPhysicsBodySizeRatio)
-//           self.physicsBody!.affectedByGravity = false
-//           self.physicsBody?.categoryBitMask = PhysicsCategory.Virus
-//           self.physicsBody?.contactTestBitMask = PhysicsCategory.Bat
-//      }
 
 
 }

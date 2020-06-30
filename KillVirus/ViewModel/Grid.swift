@@ -12,11 +12,12 @@ import SpriteKit
 
 protocol GridDelegate:class
 {
+    func savePersistentValues()->Void
     func savePersisentValue(value:Any, key:String)->Void
     func removePersisentValue(key:String)->Void
     func fetchPersistentValue(key:String)->Any?
-    func saveGridPeristently(_ positionsAndTypes:[PositionAndType])->Void
-    func fetchPersistentGrid()->[PositionAndType]?
+    func saveGridDataPeristently(positionData:[String:PositionAndType])->Void
+    func fetchPersistentGridData()->[PositionAndType]?
 }
 
 
@@ -26,16 +27,29 @@ final class Grid
     private var columnHalfWidth:CGFloat = 0.0
     private var itemPositions = [CGPoint]()
     private var positionsAndTypes = [PositionAndType]()
+    private var positionDataDict = [String:PositionAndType]()
     private var skulls = [Skull]()
     private var virus = [Virus]()
     private var convergingSprites = [String:SKSpriteNode]()
+    private var virusOccurenceLowerLimit:UInt = 80
+    private var skullOccurenceLowerLimit:UInt = 84
     
     
     convenience init(_ width:CGFloat, _ height:CGFloat)
     {
         self.init()
         columnHalfWidth = width / 12.0
+        updateVirusAndSkullOccurence()
         populatePositions()
+    }
+    func updateVirusAndSkullOccurence()->Void
+    {
+        
+        guard let round = self.delegate?.fetchPersistentValue(key:"round") as? UInt else {return}
+        
+        virusOccurenceLowerLimit -= (round - 1)
+        skullOccurenceLowerLimit -= (round - 1)
+        
     }
     func populatePositions()->Void
     {
@@ -56,8 +70,6 @@ final class Grid
     {
         
         populateGameItems()
-        self.delegate?.saveGridPeristently(positionsAndTypes)
-
         for element in positionsAndTypes
         {
             let point:CGPoint = element.position
@@ -67,6 +79,9 @@ final class Grid
             {
                 
                 sprite.position = point
+                let spriteName =  String(Float(point.x)) + "_" + String(Float(point.y))
+                sprite.name = spriteName
+                positionDataDict[spriteName] = element
                 layerNode.addChild(sprite)
                 if(type == GameItemType.skull)
                 {
@@ -85,11 +100,14 @@ final class Grid
             }
             
         }
+        self.delegate?.saveGridDataPeristently(positionData: positionDataDict)
+        print(positionDataDict)
 
     }
     func populateGameItems()->Void
     {
-        if let persistentPostionsAndTypes = self.delegate?.fetchPersistentGrid() {
+        //if let persistentPostionsAndTypes = self.delegate?.fetchPersistentGrid() {
+        if let persistentPostionsAndTypes = self.delegate?.fetchPersistentGridData(){
             
             if(persistentPostionsAndTypes.count > 0)
             {
@@ -105,13 +123,19 @@ final class Grid
                 let secondaryDiceRoll = Int.random(in: 1...100)
                 let itemType = typeForRoll(primaryDiceRoll,secondaryDiceRoll)
                 positionsAndTypes.append(PositionAndType(position:point, type:itemType.rawValue))
+            
             }
         }
      
         
 
     }
-
+    func removeSpriteFromPersistence(sprite:SKSpriteNode)->Void
+    {
+        guard let spriteName = sprite.name else {return}
+        positionDataDict.removeValue(forKey: spriteName)
+        self.delegate?.saveGridDataPeristently(positionData: positionDataDict)
+    }
 
     private func spriteForType(_ type:GameItemType)->SKSpriteNode?
     {
@@ -146,7 +170,7 @@ final class Grid
         {
               type = secondaryTypeForRoll(secondaryRoll)
         }
-        else if (primaryRoll > 80 && primaryRoll <= 90)
+        else if (primaryRoll > virusOccurenceLowerLimit && primaryRoll <= 90)
         {
           
             type = .virus
@@ -173,7 +197,7 @@ final class Grid
            {
             type = .goldCoin
            }
-           if(diceRoll == 85)
+           if(diceRoll > skullOccurenceLowerLimit &&  diceRoll <= 85)
            {
             type = .skull
            }

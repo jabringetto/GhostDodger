@@ -54,6 +54,10 @@ extension GameScene: SKPhysicsContactDelegate
 
             if let itemSprite = secondBody.node as? SKSpriteNode
             {
+                gameVars.grid.removeSpriteFromPersistence(sprite:itemSprite)
+                
+               
+                
                 if(!secondBodyASkull)
                 {
                     itemSprite.physicsBody = nil
@@ -65,7 +69,6 @@ extension GameScene: SKPhysicsContactDelegate
                 {
                     playSound(gameVars.buzzerSoundEffect)
                     gameVars.bat.die()
-                    removeAllPersistence()
                     gameVars.healthMeter.updateGreenBar(gameVars.bat.healthPoints, GameSceneConstants.batMaxHealthPoints)
                    
                 }
@@ -74,9 +77,7 @@ extension GameScene: SKPhysicsContactDelegate
                 {
                     playSound(gameVars.buzzerSoundEffect)
                     gameVars.bat.hitByVirus()
-                 
                     gameVars.healthMeter.updateGreenBar(gameVars.bat.healthPoints, GameSceneConstants.batMaxHealthPoints)
-                    savePersistentValues()
                     
                 }
                 else if (secondBodyAGem || secondBodyACoin)
@@ -95,6 +96,7 @@ extension GameScene: SKPhysicsContactDelegate
                     
                     
                 }
+                
              
             }
             

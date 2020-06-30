@@ -49,20 +49,10 @@ extension GameScene: BatDelegate, GridDelegate, AnnouncerRoundCompletedDelegate
                  
         }
         gameVars.scoreLabel.text = GameSceneConstants.scoreLabelPrefix + String(gameVars.score)
+       
         savePersistentValues()
     }
-    func savePersistentValues()->Void
-    {
-        savePersisentValue(value: gameVars.gameInProgress, key:"inProgress")
-        savePersisentValue(value: gameVars.score, key: "score")
-        savePersisentValue(value: gameVars.round, key: "round")
-        savePersisentValue(value: gameVars.bat.healthPoints, key: "health")
-        savePersisentValue(value: gameVars.backLayer.position.y, key: "backLayerPositionY")
-        savePersisentValue(value: gameVars.bat.position.x, key: "batPositionX")
-        savePersisentValue(value: gameVars.bat.position.y, key: "batPositionY")
-        
-        
-    }
+ 
     func removeAllPersistence()->Void
     {
         removePersisentValue(key:"score")
@@ -72,7 +62,7 @@ extension GameScene: BatDelegate, GridDelegate, AnnouncerRoundCompletedDelegate
     func clearRoundPersistence()->Void
     {
         removePersisentValue(key:"inProgress")
-        removePersisentValue(key: "positionsAndTypes")
+        removePersisentValue(key: "positionData")
         removePersisentValue(key: "backLayerPositionY")
         removePersisentValue(key: "batPositionX")
         removePersisentValue(key: "batPositionY")
@@ -109,14 +99,7 @@ extension GameScene: BatDelegate, GridDelegate, AnnouncerRoundCompletedDelegate
         {
             gameVars.backLayer.position.y = layerPosY
         }
-        if let batPosX = fetchPersistentValue(key: "batPositionX") as? CGFloat
-        {
-            gameVars.bat.position.x = batPosX
-        }
-        if let batPosY = fetchPersistentValue(key: "batPositionY") as? CGFloat
-        {
-            gameVars.bat.position.y = batPosY
-        }
+
         if let healthPoints =  fetchPersistentValue(key: "health") as? UInt
         {
             gameVars.bat.healthPoints = healthPoints
@@ -163,24 +146,38 @@ extension GameScene: BatDelegate, GridDelegate, AnnouncerRoundCompletedDelegate
     // MARK: BatDelegate
     func batDied()
     {
+        removeAllPersistence()
         pauseButtonPressed()
         gameVars.pauseButton.isHidden = true
         recordDisplacement()
         showGameOver()
-        removeAllPersistence()
+      
         
     }
     
     // MARK: Grid Delegate, Persistence
-    func saveGridPeristently(_ positionsAndTypes:[PositionAndType])->Void
-    {
-        defaults.set(try? PropertyListEncoder().encode(positionsAndTypes), forKey: "positionsAndTypes")
+    func savePersistentValues()->Void
+     {
+         savePersisentValue(value: gameVars.gameInProgress, key:"inProgress")
+         savePersisentValue(value: gameVars.score, key: "score")
+         savePersisentValue(value: gameVars.round, key: "round")
+         savePersisentValue(value: gameVars.bat.healthPoints, key: "health")
+         savePersisentValue(value: gameVars.backLayer.position.y, key: "backLayerPositionY")
+         savePersisentValue(value: gameVars.bat.position.x, key: "batPositionX")
+         savePersisentValue(value: gameVars.bat.position.y, key: "batPositionY")
     }
-    func fetchPersistentGrid()->[PositionAndType]?
-    {
-        guard let positionsAndTypesData = defaults.object(forKey: "positionsAndTypes") as? Data else { return nil }
+    func saveGridDataPeristently(positionData: [String : PositionAndType]) {
         
-        guard let positionsAndTypes = try? PropertyListDecoder().decode([PositionAndType].self, from: positionsAndTypesData)  else { return nil }
+         defaults.set(try? PropertyListEncoder().encode(positionData), forKey: "positionData")
+         defaults.synchronize()
+    }
+    func fetchPersistentGridData()->[PositionAndType]?
+    {
+        guard let positionDictData = defaults.object(forKey: "positionData") as? Data else { return nil }
+        
+        guard let positionData = try? PropertyListDecoder().decode([String:PositionAndType].self, from: positionDictData)  else { return nil }
+        
+        let positionsAndTypes:[PositionAndType] = Array(positionData.values)
         
         return positionsAndTypes
         
@@ -188,15 +185,19 @@ extension GameScene: BatDelegate, GridDelegate, AnnouncerRoundCompletedDelegate
     
     func savePersisentValue(value:Any, key:String)->Void
     {
-        defaults.set(value, forKey: key)
+         defaults.set(value, forKey: key)
+         defaults.synchronize()
     }
     func removePersisentValue(key:String)->Void
     {
          defaults.removeObject(forKey:key)
+         defaults.synchronize()
     }
+    
     func fetchPersistentValue(key:String)->Any?
     {
         return defaults.object(forKey: key)
+        
     }
      // MARK: AnnouncerRoundCompletedDelegate
     func currentRoundNumber() -> UInt

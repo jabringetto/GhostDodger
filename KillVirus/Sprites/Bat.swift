@@ -12,6 +12,7 @@ import SpriteKit
 protocol BatDelegate:class {
     
     func batDied()->Void
+    func savePersistentValues()->Void
 }
 
 final class Bat: SKSpriteNode {
@@ -114,6 +115,7 @@ final class Bat: SKSpriteNode {
             self.removeAction(forKey:flapKey)
             setupAnimation(timePerFrame: GameSceneConstants.batAnimationTimePerFrame*4.0)
             self.isHitByVirus = true
+            self.delegate?.savePersistentValues()
         }
         else
         {

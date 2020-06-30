@@ -16,6 +16,7 @@ extension GameScene
      func gameSetup()
      {
         
+        uptakePersistentValues()
         addBackground()
         addBackLayer()
         addBlackBar()
@@ -25,7 +26,6 @@ extension GameScene
         setupGrid(gameVars.screenWidth,gameVars.screenHeight)
         addBat()
         addGameOver()
-        uptakePersistentValues()
         addHealthMeter()
         addCountdownannouncer()
         addRoundCompletedAnnouncer()
@@ -44,7 +44,17 @@ extension GameScene
      func addBat()->Void
      {
         gameVars.bat.alpha = 1.0
-        gameVars.bat.position = CGPoint(x: 0.0, y: gameVars.screenHeight * GameSceneConstants.batVerticalPositionMultiplier)
+        
+        if let batPosX = fetchPersistentValue(key: "batPositionX") as? CGFloat, let batPosY = fetchPersistentValue(key: "batPositionY") as? CGFloat
+        {
+               gameVars.bat.position.x = batPosX
+               gameVars.bat.position.y = batPosY
+        }
+        else
+        {
+              gameVars.bat.position = CGPoint(x: 0.0, y: gameVars.screenHeight * GameSceneConstants.batVerticalPositionMultiplier)
+        }
+        
             self.addChild(gameVars.bat)
         addBatDelegate()
      }
@@ -55,8 +65,10 @@ extension GameScene
      }
      private func setupGrid(_ width:CGFloat, _ height: CGFloat)->Void
      {
+        
          gameVars.grid = Grid.init(width,height)
-        gameVars.grid.delegate = self
+         gameVars.grid.delegate = self
+         gameVars.grid.updateVirusAndSkullOccurence()
          gameVars.grid.populateGridItems(gameVars.backLayer)
      }
     private func addGameOver()->Void
@@ -126,7 +138,7 @@ extension GameScene
       }
      private func addPauseButton()->Void
      {
-        gameVars.pauseButton.position = CGPoint(x: gameVars.screenWidth / 2.0 - GameSceneConstants.healthMeterPadding*0.5, y: -(gameVars.screenHeight / 2.0 - GameSceneConstants.scoreLabelPadding))
+        gameVars.pauseButton.position = CGPoint(x: gameVars.screenWidth / 2.0 - GameSceneConstants.healthMeterPadding*0.5, y: -(gameVars.screenHeight / 2.0 - GameSceneConstants.roundLabelPadding))
         gameVars.pauseButton.name = "pauseButton"
         gameVars.pauseButton.isHidden = true
          self.addChild(gameVars.pauseButton)

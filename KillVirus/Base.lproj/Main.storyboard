@@ -11,7 +11,7 @@
         <!--Enter View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="EnterViewController" customModule="Kill_Virus" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="EnterViewController" customModule="Virus_Dodger" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -19,11 +19,11 @@
                             <skView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zf2-fC-rzj">
                                 <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                             </skView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VMJ-Jf-KGn">
-                                <rect key="frame" x="125.5" y="339" width="124" height="33"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <state key="normal" title="K I L L  V I R U S">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VMJ-Jf-KGn">
+                                <rect key="frame" x="116" y="480" width="152" height="33"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <state key="normal" title="E  N  T  E  R">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
                                     <segue destination="4lK-X5-0QJ" kind="show" id="cYR-9m-ThN"/>
@@ -36,6 +36,7 @@
                             <constraint firstItem="Zf2-fC-rzj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="84y-fi-f5K"/>
                             <constraint firstItem="Zf2-fC-rzj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="9hV-U3-eiQ"/>
                             <constraint firstItem="VMJ-Jf-KGn" firstAttribute="top" secondItem="Zf2-fC-rzj" secondAttribute="bottom" constant="-222" id="Cad-Jp-YYs"/>
+                            <constraint firstItem="VMJ-Jf-KGn" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="200" id="PDq-rU-EDG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Zf2-fC-rzj" secondAttribute="trailing" id="PJP-tm-o5V"/>
                             <constraint firstItem="VMJ-Jf-KGn" firstAttribute="centerX" secondItem="Zf2-fC-rzj" secondAttribute="centerX" id="UzG-pT-Kq7"/>
                             <constraint firstItem="VMJ-Jf-KGn" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="r3P-2d-58R"/>
@@ -44,6 +45,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="6Q6-xk-pEU"/>
                                 <exclude reference="Cad-Jp-YYs"/>
                                 <exclude reference="UzG-pT-Kq7"/>
                             </mask>
@@ -56,7 +58,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="670" y="115"/>
+            <point key="canvasLocation" x="669.60000000000002" y="114.69265367316342"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BsS-89-0BF">
@@ -77,7 +79,7 @@
         <!--Game View Controller-->
         <scene sceneID="Can-UG-caP">
             <objects>
-                <viewController id="4lK-X5-0QJ" customClass="GameViewController" customModule="Kill_Virus" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="4lK-X5-0QJ" customClass="GameViewController" customModule="Virus_Dodger" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="epm-Le-FAy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

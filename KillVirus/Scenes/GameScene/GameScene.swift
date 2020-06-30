@@ -52,7 +52,7 @@ struct GameSceneConstants
     static let virusScaleFactor:CGFloat = 0.15
     static let gridColumnHeight:CGFloat = 60.0
     static let gridNumColumns:Int = 6
-    static let gridNumRows:Int = 200
+    static let gridNumRows:Int = 500
     static let gameItemPhysicsRadius:CGFloat = 0.4
     static let healthMeterPadding:CGFloat = 60.0
     static let scoreLabelPadding:CGFloat = 40.0
@@ -105,6 +105,8 @@ struct GameSceneVars
     var scoreLabel = SKLabelNode()
     var roundLabel = SKLabelNode()
     var pointsLabels = [String:SKLabelNode]()
+    var virusOccurenceLowerLimit:UInt = 80
+    var skullOccurenceLowerLimit:UInt = 85
    
     
     

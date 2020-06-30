@@ -13,8 +13,8 @@ import SpriteKit
 final class Gem: SKSpriteNode {
     
     var pointValue:UInt = 0
+    var spinSpeed:UInt = 1
     private var spinAnimation = SKAction()
-    private var spinSpeed:UInt = 1
     private var spinTextures = [SKTexture]()
     private var perFrame:TimeInterval = GameSceneConstants.gemRotationConstant
 
