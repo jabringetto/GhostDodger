@@ -17,6 +17,7 @@ extension GameScene
           {
              moveBackgroundLayers()
              batFollowFinger()
+             forceFieldActions()
              spritesCovergeOnPlayer()
              skullsFollowPlayer()
              incrementBatCounters()
@@ -76,10 +77,17 @@ extension GameScene
                 gameVars.pauseButton.removeFromParent()
                 
             }
-           
-           
         }
           
+       }
+       private func forceFieldActions()->Void
+       {
+        if(gameVars.forceFieldDeployed)
+        {
+            gameVars.forceField.position = gameVars.bat.position
+            gameVars.forceField.timerCountDown()
+        }
+        
        }
        private func batFollowFinger()->Void
        {

@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "29FBAD4D-BF89-45AE-B00E-F89427CB4E5D"
-            shouldBeEnabled = "Yes"
+            uuid = "798C8749-4BCF-4B5E-B350-E50DE710B9FF"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "KillVirus/Sprites/Bat.swift"
+            filePath = "KillVirus/Sprites/Virus.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
-            landmarkName = "hitByVirus()"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "followLikeAVirus(_:_:_:forceFieldDeployed:radius:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

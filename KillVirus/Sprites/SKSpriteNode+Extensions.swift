@@ -92,5 +92,30 @@ extension SKSpriteNode
         }
 
     }
+    func isWithinRadiusOfTarget(_ layerPosition:CGPoint, _ targetPosition:CGPoint, _ followSpeed:CGFloat, radius:CGFloat)->Bool
+    {
+        let effectiveY = self.position.y + layerPosition.y
+        let yDistance = targetPosition.y - effectiveY
+        let xDistance = targetPosition.x - self.position.x
+        let distanceSquared = (xDistance * xDistance) + (yDistance * yDistance)
+        let distance = sqrt(distanceSquared)
+        return distance < radius
+    }
+    func followPointWithinRadius(_ layerPosition:CGPoint, _ targetPosition:CGPoint, _ followSpeed:CGFloat, radius:CGFloat)->Void
+    {
+        let effectiveY = self.position.y + layerPosition.y
+        let yDistance = targetPosition.y - effectiveY
+        let xDistance = targetPosition.x - self.position.x
+        let distanceSquared = (xDistance * xDistance) + (yDistance * yDistance)
+        let distance = sqrt(distanceSquared)
+        if(distance < radius)
+        {
+            self.followPoint(layerPosition, targetPosition, followSpeed)
+          
+        }
+        
+    }
+    
+    
    
 }

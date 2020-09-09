@@ -14,6 +14,8 @@
 		D07AFA9D245C9542004DC615 /* SKSpriteNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07AFA9C245C9542004DC615 /* SKSpriteNode+Extensions.swift */; };
 		D084CBB32471B75F00378317 /* Buzzer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D084CBB22471B75F00378317 /* Buzzer.mp3 */; };
 		D08C540923EA432D005D8441 /* Skull.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D08C540823EA432C005D8441 /* Skull.atlas */; };
+		D09E156124C4E41D009A3EF4 /* EnterScene_Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09E156024C4E41D009A3EF4 /* EnterScene_Layout.swift */; };
+		D09E156424C4E72C009A3EF4 /* EnterScene_EveryFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09E156324C4E72C009A3EF4 /* EnterScene_EveryFrame.swift */; };
 		D09E2DA7245FCDCE005AB915 /* VirusWithFace.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D09E2DA6245FCDCE005AB915 /* VirusWithFace.atlas */; };
 		D0B2D1E3249DC3D800A4B2E6 /* Coin01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D0B2D1E2249DC3D800A4B2E6 /* Coin01.mp3 */; };
 		D0B2D1E6249DD3A800A4B2E6 /* AnnouncerCountdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B2D1E5249DD3A800A4B2E6 /* AnnouncerCountdown.swift */; };
@@ -43,6 +45,8 @@
 		D0DEDFC6245F5CF50074CB7B /* EnterScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DEDFC5245F5CF50074CB7B /* EnterScene.swift */; };
 		D0DEDFC9245F5D620074CB7B /* VirusWithFace.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DEDFC8245F5D620074CB7B /* VirusWithFace.swift */; };
 		D0E3AA312475EC0100A7A18B /* GameScene_Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E3AA302475EC0100A7A18B /* GameScene_Events.swift */; };
+		D0F4116C24F2DE6500897B54 /* ForceField.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D0F4116B24F2DE6500897B54 /* ForceField.atlas */; };
+		D0F4116E24F2E09000897B54 /* ForceField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F4116D24F2E09000897B54 /* ForceField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +56,8 @@
 		D07AFA9C245C9542004DC615 /* SKSpriteNode+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKSpriteNode+Extensions.swift"; sourceTree = "<group>"; };
 		D084CBB22471B75F00378317 /* Buzzer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Buzzer.mp3; sourceTree = "<group>"; };
 		D08C540823EA432C005D8441 /* Skull.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Skull.atlas; path = ../../../../MISC/MISC_2020_02_03/Skull.atlas; sourceTree = "<group>"; };
+		D09E156024C4E41D009A3EF4 /* EnterScene_Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterScene_Layout.swift; sourceTree = "<group>"; };
+		D09E156324C4E72C009A3EF4 /* EnterScene_EveryFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterScene_EveryFrame.swift; sourceTree = "<group>"; };
 		D09E2DA6245FCDCE005AB915 /* VirusWithFace.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = VirusWithFace.atlas; sourceTree = "<group>"; };
 		D0B2D1E2249DC3D800A4B2E6 /* Coin01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Coin01.mp3; sourceTree = "<group>"; };
 		D0B2D1E5249DD3A800A4B2E6 /* AnnouncerCountdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncerCountdown.swift; sourceTree = "<group>"; };
@@ -84,6 +90,8 @@
 		D0DEDFC5245F5CF50074CB7B /* EnterScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterScene.swift; sourceTree = "<group>"; };
 		D0DEDFC8245F5D620074CB7B /* VirusWithFace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirusWithFace.swift; sourceTree = "<group>"; };
 		D0E3AA302475EC0100A7A18B /* GameScene_Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene_Events.swift; sourceTree = "<group>"; };
+		D0F4116B24F2DE6500897B54 /* ForceField.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = ForceField.atlas; sourceTree = "<group>"; };
+		D0F4116D24F2E09000897B54 /* ForceField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForceField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +105,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D09E156224C4E427009A3EF4 /* EnterSceneExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				D09E156024C4E41D009A3EF4 /* EnterScene_Layout.swift */,
+				D09E156324C4E72C009A3EF4 /* EnterScene_EveryFrame.swift */,
+			);
+			path = EnterSceneExtensions;
+			sourceTree = "<group>";
+		};
 		D0B2D1E4249DD36C00A4B2E6 /* Announcers */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +167,7 @@
 				D0CA80F621CF13A600BE7E96 /* Assets.xcassets */,
 				D0391B4223A436B300752CEC /* Bat.atlas */,
 				D0CA810721CF1B0D00BE7E96 /* Emerald.atlas */,
+				D0F4116B24F2DE6500897B54 /* ForceField.atlas */,
 				D0CA810521CF1AF400BE7E96 /* RubyFrame.atlas */,
 				D08C540823EA432C005D8441 /* Skull.atlas */,
 				D0D3C750245AAC2100C47DA6 /* Virus.atlas */,
@@ -227,6 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				D0391B4423A436F600752CEC /* Bat.swift */,
+				D0F4116D24F2E09000897B54 /* ForceField.swift */,
 			);
 			name = Player;
 			sourceTree = "<group>";
@@ -281,6 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				D0DEDFC5245F5CF50074CB7B /* EnterScene.swift */,
+				D09E156224C4E427009A3EF4 /* EnterSceneExtensions */,
 			);
 			path = EnterScene;
 			sourceTree = "<group>";
@@ -344,6 +364,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0F4116C24F2DE6500897B54 /* ForceField.atlas in Resources */,
 				D0DE71B323BBEF5B00B87144 /* Treasure.mp3 in Resources */,
 				D03982BF23B70EA600308022 /* Emerald.atlas in Resources */,
 				D084CBB32471B75F00378317 /* Buzzer.mp3 in Resources */,
@@ -379,6 +400,7 @@
 				D0D94A6523D123C8007CCC5E /* Grid.swift in Sources */,
 				D0CA810421CF162400BE7E96 /* GameScene.swift in Sources */,
 				D0DEDFC6245F5CF50074CB7B /* EnterScene.swift in Sources */,
+				D0F4116E24F2E09000897B54 /* ForceField.swift in Sources */,
 				D0D94A6323D10A40007CCC5E /* GameItem.swift in Sources */,
 				D0CA80F021CF13A400BE7E96 /* AppDelegate.swift in Sources */,
 				D0C2503723DB7D4F009D65DD /* GameScene_EveryFrame.swift in Sources */,
@@ -386,7 +408,9 @@
 				D0B2D1E824A05B6100A4B2E6 /* AnnouncerRoundCompleted.swift in Sources */,
 				D0CA810921CF2CE800BE7E96 /* Gem.swift in Sources */,
 				D0E3AA312475EC0100A7A18B /* GameScene_Events.swift in Sources */,
+				D09E156124C4E41D009A3EF4 /* EnterScene_Layout.swift in Sources */,
 				D0C2502F23DB5E54009D65DD /* GameScene_Physics.swift in Sources */,
+				D09E156424C4E72C009A3EF4 /* EnterScene_EveryFrame.swift in Sources */,
 				D07AFA9D245C9542004DC615 /* SKSpriteNode+Extensions.swift in Sources */,
 				D0B75C8123D240F000623DCE /* Skull.swift in Sources */,
 				D0D3C74B245A8F3C00C47DA6 /* Virus.swift in Sources */,

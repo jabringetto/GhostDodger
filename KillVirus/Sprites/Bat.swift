@@ -62,7 +62,7 @@ final class Bat: SKSpriteNode {
     func setupPhysics()->Void
     {
         self.physicsBody = SKPhysicsBody.init(circleOfRadius:self.size.width * GameSceneConstants.batPhysicsBodySizeRatio)
-        self.physicsBody!.affectedByGravity = false
+        self.physicsBody?.affectedByGravity = false
         self.physicsBody?.isDynamic = false
         self.physicsBody?.categoryBitMask = PhysicsCategory.Bat
         self.physicsBody?.contactTestBitMask = PhysicsCategory.Gem

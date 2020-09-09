@@ -10,7 +10,7 @@ import Foundation
 import SpriteKit
 
 
-extension GameScene: BatDelegate, GridDelegate, AnnouncerRoundCompletedDelegate
+extension GameScene: BatDelegate, GridDelegate, AnnouncerRoundCompletedDelegate, ForceFieldDelegate
 {
 
     func addBatDelegate()->Void {
@@ -49,7 +49,11 @@ extension GameScene: BatDelegate, GridDelegate, AnnouncerRoundCompletedDelegate
                  
         }
         gameVars.scoreLabel.text = GameSceneConstants.scoreLabelPrefix + String(gameVars.score)
-       
+        
+        if(gameVars.score > 100 &&  !gameVars.forceFieldDeployed)
+        {
+            addForceField()
+        }
         savePersistentValues()
     }
  
@@ -57,6 +61,7 @@ extension GameScene: BatDelegate, GridDelegate, AnnouncerRoundCompletedDelegate
     {
         removePersisentValue(key:"score")
         removePersisentValue(key:"round")
+        removePersisentValue(key: "forceFieldDeployed")
         clearRoundPersistence()
     }
     func clearRoundPersistence()->Void
@@ -108,8 +113,25 @@ extension GameScene: BatDelegate, GridDelegate, AnnouncerRoundCompletedDelegate
         
         
     }
-    
-    
+    fileprivate func addForceField()->Void
+    {
+         gameVars.forceFieldDeployed = true
+         guard gameVars.forceField.parent == nil  else {return}
+         gameVars.forceField.delegate = self
+         self.addChild(gameVars.forceField)
+        
+    }
+    private func removeForceField()->Void
+    {
+       
+        guard gameVars.forceField.parent != nil  else {
+            return
+            
+        }
+        gameVars.forceField.removeFromParent()
+        gameVars.forceFieldDeployed = false
+       
+    }
     func pauseButtonPressed()->Void
     {
         gameVars.gamePausedState += 1
@@ -147,12 +169,17 @@ extension GameScene: BatDelegate, GridDelegate, AnnouncerRoundCompletedDelegate
     func batDied()
     {
         removeAllPersistence()
+        removeForceField()
         pauseButtonPressed()
         gameVars.pauseButton.isHidden = true
         recordDisplacement()
         showGameOver()
-      
         
+    }
+    
+    // MARK: ForceFieldDelegate
+    func forceFieldCountdownComplete() {
+        removeForceField()
     }
     
     // MARK: Grid Delegate, Persistence
@@ -165,6 +192,7 @@ extension GameScene: BatDelegate, GridDelegate, AnnouncerRoundCompletedDelegate
          savePersisentValue(value: gameVars.backLayer.position.y, key: "backLayerPositionY")
          savePersisentValue(value: gameVars.bat.position.x, key: "batPositionX")
          savePersisentValue(value: gameVars.bat.position.y, key: "batPositionY")
+         savePersisentValue(value: gameVars.forceFieldDeployed, key: "forceFieldDeployed")
     }
     func saveGridDataPeristently(positionData: [String : PositionAndType]) {
         

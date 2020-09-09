@@ -38,7 +38,7 @@ final class Coin: SKSpriteNode {
     func setupPhysics()->Void
     {
         self.physicsBody = SKPhysicsBody.init(circleOfRadius:self.size.width*GameSceneConstants.gameItemPhysicsRadius)
-        self.physicsBody!.affectedByGravity = false
+        self.physicsBody?.affectedByGravity = false
         self.physicsBody?.categoryBitMask = PhysicsCategory.Coin
         self.physicsBody?.contactTestBitMask = PhysicsCategory.Bat
     }

@@ -14,9 +14,10 @@ final class Gem: SKSpriteNode {
     
     var pointValue:UInt = 0
     var spinSpeed:UInt = 1
+    private var perFrame:TimeInterval = GameSceneConstants.gemRotationConstant
     private var spinAnimation = SKAction()
     private var spinTextures = [SKTexture]()
-    private var perFrame:TimeInterval = GameSceneConstants.gemRotationConstant
+  
 
     convenience init(_ gemType: GameItemType)
     {
@@ -64,8 +65,16 @@ final class Gem: SKSpriteNode {
             perFrame = perFrame/Double(spinSpeed)
             spinAnimation = SKAction.animate(with: spinTextures, timePerFrame: perFrame)
             let spinForever = SKAction.repeat(spinAnimation,count: -1)
-            self.run(spinForever)
+            self.run(spinForever, withKey: "spinAction")
         }
+    }
+    func spinSlowly()->Void
+    {
+        self.removeAction(forKey: "spinAction")
+        perFrame = GameSceneConstants.gemRotationConstant
+        spinAnimation = SKAction.animate(with: spinTextures, timePerFrame: perFrame)
+        let spinForever = SKAction.repeat(spinAnimation,count: -1)
+        self.run(spinForever, withKey: "spinAction")
     }
     private func assignPointValue(_ gemType: GameItemType)->Void
     {
@@ -81,7 +90,7 @@ final class Gem: SKSpriteNode {
     private func setupPhysics()->Void
     {
         self.physicsBody = SKPhysicsBody.init(circleOfRadius:self.size.width*GameSceneConstants.gameItemPhysicsRadius)
-        self.physicsBody!.affectedByGravity = false
+        self.physicsBody?.affectedByGravity = false
         self.physicsBody?.categoryBitMask = PhysicsCategory.Gem
         self.physicsBody?.contactTestBitMask = PhysicsCategory.Bat
     }

@@ -55,7 +55,7 @@ struct GameSceneConstants
     static let gridNumRows:Int = 500
     static let gameItemPhysicsRadius:CGFloat = 0.4
     static let healthMeterPadding:CGFloat = 60.0
-    static let scoreLabelPadding:CGFloat = 40.0
+    static let scoreLabelPadding:CGFloat = 50.0
     static let roundLabelPadding:CGFloat = 70.0
     static let pointValueSilverPiece:UInt = 5
     static let pointValueGoldPiece:UInt = 25
@@ -64,6 +64,7 @@ struct GameSceneConstants
     static let pointLabelFadeMultiplier:CGFloat = 0.99
     static let pointLabelVelocity:CGFloat = 0.8
     static let pointLabelAlphaThreshold:CGFloat = 0.3
+    static let forceFieldScaleConstant:CGFloat = 0.6
     static let scoreLabelPrefix = "SCORE: "
     static let roundLabelPrefix = "ROUND: "
     
@@ -71,9 +72,11 @@ struct GameSceneConstants
 struct GameSceneVars
 {
     var gameInProgress:Bool = false
+    var forceFieldDeployed:Bool = false
     var backLayer = SKNode()
     var bat = Bat()
     var grid = Grid()
+    var forceField = ForceField()
     var healthMeter = HealthMeter()
     var countdownAnnouncer = AnnouncerCountdown()
     var roundCompleteAnnouncer = AnnouncerRoundCompleted()

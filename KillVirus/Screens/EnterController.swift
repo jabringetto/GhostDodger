@@ -15,6 +15,7 @@ class EnterViewController: UIViewController {
     @IBOutlet weak var enterView: SKView!
 
     var scene = EnterScene()
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +31,58 @@ class EnterViewController: UIViewController {
     
           
     }
-
-
+    func showGameInProgressAlert()->Void
+    {
+        let alert = UIAlertController.init(title: "Game In Progress", message: "Our records indicate a saved game currently in progress. You may continue your saved game or discard and begin a new game.", preferredStyle: .actionSheet)
+        let discardAction = UIAlertAction(title: "Discard", style: .cancel, handler: { action in
+            self.removeAllPersistence()
+            self.performSegue(withIdentifier: "enterSegue", sender: self)
+        })
+        let continueAction = UIAlertAction(title: "Continue", style: .default, handler: { action in
+             self.performSegue(withIdentifier: "enterSegue", sender: self)
+        })
+        alert.addAction(discardAction)
+        alert.addAction(continueAction)
+        self.present(alert, animated: false, completion: nil)
+        
+    }
+    @IBAction func enterButtonPressed(_ sender: Any) {
+        
+        if let inProgress = defaults.object(forKey: "inProgress") as? Bool
+        {
+                if(inProgress)
+                {
+                    showGameInProgressAlert()
+                }
+                else
+                {
+                    self.performSegue(withIdentifier: "enterSegue", sender: self)
+                }
+        }
+        self.performSegue(withIdentifier: "enterSegue", sender: self)
+        
+        
+    }
+    func removeAllPersistence()->Void
+    {
+        removePersisentValue(key:"score")
+        removePersisentValue(key:"round")
+        clearRoundPersistence()
+    }
+    func clearRoundPersistence()->Void
+    {
+        removePersisentValue(key:"inProgress")
+        removePersisentValue(key: "positionData")
+        removePersisentValue(key: "backLayerPositionY")
+        removePersisentValue(key: "batPositionX")
+        removePersisentValue(key: "batPositionY")
+        removePersisentValue(key:"health")
+    }
+    func removePersisentValue(key:String)->Void
+    {
+           defaults.removeObject(forKey:key)
+           defaults.synchronize()
+    }
+    
 }
 

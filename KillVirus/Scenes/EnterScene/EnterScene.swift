@@ -15,6 +15,7 @@ struct EnterSceneConstants
     static let conveyorSpacing:CGFloat = 400.0
     static let enterBatScale:CGFloat = 1.2
     static let enterRubyScale:CGFloat = 2.0
+
 }
 struct EnterSceneVars
 {
@@ -23,10 +24,32 @@ struct EnterSceneVars
      var screenHeight:CGFloat = 0.0
      var background = SKSpriteNode(imageNamed:"Background_NoBranches")
      var conveyorLayer = SKNode()
+     var letterLayer = SKNode()
      var virusWithFace = VirusWithFace()
      var enterBat = Bat()
      var enterRuby = Gem.init(.ruby)
+     var enterGoldCoin = Coin.init(.goldCoin)
+     var enterSilverCoin = Coin.init(.silverCoin)
+     var enterSkull = Skull.init(.skull)
+    
      var enterEmerald = Gem.init(.emerald)
+     var virusLetters = [SKSpriteNode]()
+     var virusLettersSineArgument:CGFloat = 0.0
+    var skullRotationCounter:Int = 0
+     var letterV =  SKSpriteNode(imageNamed:"Letter_V")
+     var letterI =  SKSpriteNode(imageNamed:"Letter_I")
+     var letterR =  SKSpriteNode(imageNamed:"Letter_R")
+     var letterU =  SKSpriteNode(imageNamed:"Letter_U")
+     var letterS =  SKSpriteNode(imageNamed:"Letter_S")
+     
+     var letterD = SKSpriteNode(imageNamed:"Letter_D")
+     var letterO = SKSpriteNode(imageNamed:"Letter_O")
+     var letterD_lowercase = SKSpriteNode(imageNamed:"Letter_D_lowercase")
+     var letterG = SKSpriteNode(imageNamed:"Letter_G")
+     var letterE = SKSpriteNode(imageNamed:"Letter_E")
+     var letterR_lowercase =  SKSpriteNode(imageNamed:"Letter_R_lowercase")
+    
+     var letterVPosition:CGPoint = CGPoint.zero
     
      mutating func setScreenDimensions(_ width:CGFloat, _ height:CGFloat)->Void
      {
@@ -38,54 +61,24 @@ class EnterScene: SKScene
 {
 
     var sceneVars = EnterSceneVars()
-    // MARK: Layout
+
     override func didMove(to view: SKView)
     {
         self.anchorPoint = CGPoint(x:0.5,y:0.5)
         addBackground()
         self.addChild(sceneVars.conveyorLayer)
+        self.addChild(sceneVars.letterLayer)
         addEnterBat()
         addVirusWithFace()
         addEnterRuby()
+        addEnterCoins()
+        addEnterSkull()
+        setLetterPositions(width: sceneVars.screenWidth, height: sceneVars.screenHeight)
+        addLetters()
        
     }
-    private func addBackground()->Void
-    {
-    
-       sceneVars.background.size.width = sceneVars.screenWidth
-        sceneVars.background.size.height = sceneVars.screenHeight
-        self.addChild(sceneVars.background)
-    }
-    private func addEnterBat()->Void
-    {
-       sceneVars.enterBat.xScale = EnterSceneConstants.enterBatScale
-       sceneVars.enterBat.yScale = EnterSceneConstants.enterBatScale
-       sceneVars.conveyorLayer.addChild(sceneVars.enterBat)
-    }
-    private func addVirusWithFace()->Void
-    {
-        sceneVars.virusWithFace = VirusWithFace.init(GameItemType.virus)
-        sceneVars.virusWithFace.position.x = EnterSceneConstants.conveyorSpacing
-        sceneVars.conveyorLayer.addChild(sceneVars.virusWithFace)
-    }
-    private func addEnterRuby()->Void
-    {
-        sceneVars.enterRuby.xScale = EnterSceneConstants.enterRubyScale
-        sceneVars.enterRuby.yScale = EnterSceneConstants.enterRubyScale
-        sceneVars.enterRuby.position.x = EnterSceneConstants.conveyorSpacing * 2.0
-        sceneVars.enterRuby.spinSpeed = 1
-        sceneVars.conveyorLayer.addChild(sceneVars.enterRuby)
-    }
-    
 
-     // MARK: Every Frame
-     override func update(_ currentTime: TimeInterval)
-     {
-        moveConveyorNode()
-        
-     }
-     private func moveConveyorNode()->Void
-     {
-        sceneVars.conveyorLayer.position.x -= EnterSceneConstants.conveyorSpeed
-     }
+  
+
+
 }

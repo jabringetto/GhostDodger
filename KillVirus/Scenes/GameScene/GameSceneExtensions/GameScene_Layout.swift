@@ -25,6 +25,7 @@ extension GameScene
         addPauseButton()
         setupGrid(gameVars.screenWidth,gameVars.screenHeight)
         addBat()
+        addForceField()
         addGameOver()
         addHealthMeter()
         addCountdownannouncer()
@@ -55,10 +56,18 @@ extension GameScene
               gameVars.bat.position = CGPoint(x: 0.0, y: gameVars.screenHeight * GameSceneConstants.batVerticalPositionMultiplier)
         }
         
-            self.addChild(gameVars.bat)
+        self.addChild(gameVars.bat)
         addBatDelegate()
      }
-
+     private func addForceField()->Void
+     {
+        if(gameVars.forceFieldDeployed)
+        {
+            gameVars.forceField.position = gameVars.bat.position
+            gameVars.forceField.delegate = self
+            self.addChild(gameVars.forceField)
+        }
+     }
      private func addBackLayer()->Void
      {
          self.addChild(gameVars.backLayer)

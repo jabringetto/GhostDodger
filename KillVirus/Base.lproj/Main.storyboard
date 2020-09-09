@@ -26,7 +26,7 @@
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
-                                    <segue destination="4lK-X5-0QJ" kind="show" id="cYR-9m-ThN"/>
+                                    <action selector="enterButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9EZ-NG-HZ2"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -54,6 +54,7 @@
                     <navigationItem key="navigationItem" id="Dbx-bE-aY6"/>
                     <connections>
                         <outlet property="enterView" destination="Zf2-fC-rzj" id="Nvi-0X-reh"/>
+                        <segue destination="4lK-X5-0QJ" kind="show" identifier="enterSegue" id="dOG-cF-h8I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

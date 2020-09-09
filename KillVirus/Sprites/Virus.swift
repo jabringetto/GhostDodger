@@ -15,6 +15,8 @@ final class Virus: SKSpriteNode
     var virusTextures = [SKTexture]()
     var virusAnimation = SKAction()
     var randomFollowFactor:CGFloat = 1.0 + CGFloat.random(in:0...4)/10 - 0.2
+    let gameVars = GameSceneVars()
+          
     
     convenience init(_ itemType: GameItemType)
     {
@@ -44,10 +46,23 @@ final class Virus: SKSpriteNode
     func setupPhysics()->Void
     {
           self.physicsBody = SKPhysicsBody.init(circleOfRadius:self.size.width*GameSceneConstants.virusPhysicsBodySizeRatio)
-          self.physicsBody!.affectedByGravity = false
+          self.physicsBody?.affectedByGravity = false
           self.physicsBody?.categoryBitMask = PhysicsCategory.Virus
           self.physicsBody?.contactTestBitMask = PhysicsCategory.Bat
      }
+    func followLikeAVirus(_ layerPosition: CGPoint, _ targetPosition: CGPoint, _ followSpeed: CGFloat, forceFieldDeployed:Bool, radius: CGFloat)->Void
+    {
+        let isWithinRadius:Bool = isWithinRadiusOfTarget(layerPosition, targetPosition, followSpeed, radius: radius)
+        var speed = followSpeed * 0.5
+        
+        if(forceFieldDeployed && isWithinRadius)
+        {
+            speed = followSpeed * -3.0
+        }
+        followPointWithinYRange(layerPosition, targetPosition, speed * randomFollowFactor, yRange: GameSceneConstants.skullFollowRange * 0.5 * randomFollowFactor)
+        
+    }
+
 
     
 }

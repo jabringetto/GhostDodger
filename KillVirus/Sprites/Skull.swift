@@ -35,7 +35,7 @@ final class Skull: SKSpriteNode {
     func setupPhysics()->Void
     {
         self.physicsBody = SKPhysicsBody.init(circleOfRadius:self.size.width*GameSceneConstants.gameItemPhysicsRadius)
-        self.physicsBody!.affectedByGravity = false
+        self.physicsBody?.affectedByGravity = false
         self.physicsBody?.categoryBitMask = PhysicsCategory.Skull
         self.physicsBody?.contactTestBitMask = PhysicsCategory.Bat
     }

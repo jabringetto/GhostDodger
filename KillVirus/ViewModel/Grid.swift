@@ -239,7 +239,12 @@ final class Grid
         }
         for aVirus in virus
         {
-            aVirus.followPointWithinYRange(layerPosition, targetPosition, followSpeed * 0.5 * aVirus.randomFollowFactor, yRange: GameSceneConstants.skullFollowRange * 0.5 * aVirus.randomFollowFactor)
+            
+            if let gameScene = self.delegate as? GameScene {
+                aVirus.followLikeAVirus(layerPosition, targetPosition, followSpeed, forceFieldDeployed: gameScene.gameVars.forceFieldDeployed, radius: 90.0)
+            }
+            
+            
         }
        
         
