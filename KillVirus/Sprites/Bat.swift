@@ -9,13 +9,15 @@
 //import UIKit
 import SpriteKit
 
-protocol BatDelegate:class {
+protocol BatDelegate:AnyObject
+{
     
     func batDied()->Void
     func savePersistentValues()->Void
 }
 
-final class Bat: SKSpriteNode {
+final class Bat: SKSpriteNode
+{
     
     let greenEyeRight = SKSpriteNode(imageNamed:"VirusBody")
     let greenEyeLeft = SKSpriteNode(imageNamed:"VirusBody")

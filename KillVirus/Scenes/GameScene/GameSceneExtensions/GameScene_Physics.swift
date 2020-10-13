@@ -63,7 +63,7 @@ extension GameScene: SKPhysicsContactDelegate
                     itemSprite.physicsBody = nil
                     gameVars.currentlyCapturedItem = itemSprite
                     let itemKey:String =  String(Float(itemSprite.position.x)) + String(Float(itemSprite.position.y))
-                    gameVars.grid.addConvergingSpriteForKey(sprite:itemSprite, key: itemKey)
+                    gameVars.grid.addConvergingPlayerSpriteForKey(sprite:itemSprite, key: itemKey)
                 }
                 else
                 {

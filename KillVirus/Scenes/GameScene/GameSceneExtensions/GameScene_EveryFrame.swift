@@ -18,8 +18,9 @@ extension GameScene
              moveBackgroundLayers()
              batFollowFinger()
              forceFieldActions()
+             cycloneActions()
              spritesCovergeOnPlayer()
-             skullsFollowPlayer()
+             enemiesFollowPlayer()
              incrementBatCounters()
              incrementPersistenceCounter()
              moveAndFadePointLabels()
@@ -87,7 +88,19 @@ extension GameScene
             gameVars.forceField.position = gameVars.bat.position
             gameVars.forceField.timerCountDown()
         }
+          
         
+       }
+       private func cycloneActions()->Void
+       {
+        if(gameVars.cycloneDeployed)
+        {
+            gameVars.cyclone.position.x = gameVars.bat.position.x
+            gameVars.cyclone.position.y = gameVars.bat.position.y - 150.0
+            gameVars.cyclone.timerCountDown()
+        }
+        
+       
        }
        private func batFollowFinger()->Void
        {
@@ -124,9 +137,9 @@ extension GameScene
 
        private func spritesCovergeOnPlayer()->Void
        {
-        gameVars.grid.spritesConvergeEveryFrame(gameVars.backLayer.position, gameVars.bat.position, GameSceneConstants.gemConvergeSpeed)
+        gameVars.grid.spritesConvergeOnPlayer(gameVars.backLayer.position, gameVars.bat.position, GameSceneConstants.gemConvergeSpeed)
        }
-       private func skullsFollowPlayer()->Void
+       private func enemiesFollowPlayer()->Void
        {
         gameVars.grid.spritesFollowPlayerEveryFrame(gameVars.backLayer.position, gameVars.bat.position, gameVars.skullFollowSpeed)
        }

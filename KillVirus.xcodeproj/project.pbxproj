@@ -21,6 +21,9 @@
 		D0B2D1E6249DD3A800A4B2E6 /* AnnouncerCountdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B2D1E5249DD3A800A4B2E6 /* AnnouncerCountdown.swift */; };
 		D0B2D1E824A05B6100A4B2E6 /* AnnouncerRoundCompleted.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B2D1E724A05B6100A4B2E6 /* AnnouncerRoundCompleted.swift */; };
 		D0B75C8123D240F000623DCE /* Skull.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B75C8023D240F000623DCE /* Skull.swift */; };
+		D0C15414250B4B2B00D2B661 /* Whirlpool.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D0C15413250B4B2B00D2B661 /* Whirlpool.atlas */; };
+		D0C15416250B4D4400D2B661 /* Whirlpool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C15415250B4D4400D2B661 /* Whirlpool.swift */; };
+		D0C15418250D616200D2B661 /* Cyclone.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C15417250D616200D2B661 /* Cyclone.swift */; };
 		D0C2502F23DB5E54009D65DD /* GameScene_Physics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C2502E23DB5E54009D65DD /* GameScene_Physics.swift */; };
 		D0C2503123DB5F87009D65DD /* GameScene_Touches.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C2503023DB5F87009D65DD /* GameScene_Touches.swift */; };
 		D0C2503523DB6318009D65DD /* GameScene_Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C2503423DB6318009D65DD /* GameScene_Layout.swift */; };
@@ -63,6 +66,9 @@
 		D0B2D1E5249DD3A800A4B2E6 /* AnnouncerCountdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncerCountdown.swift; sourceTree = "<group>"; };
 		D0B2D1E724A05B6100A4B2E6 /* AnnouncerRoundCompleted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncerRoundCompleted.swift; sourceTree = "<group>"; };
 		D0B75C8023D240F000623DCE /* Skull.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skull.swift; sourceTree = "<group>"; };
+		D0C15413250B4B2B00D2B661 /* Whirlpool.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Whirlpool.atlas; sourceTree = "<group>"; };
+		D0C15415250B4D4400D2B661 /* Whirlpool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Whirlpool.swift; sourceTree = "<group>"; };
+		D0C15417250D616200D2B661 /* Cyclone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cyclone.swift; sourceTree = "<group>"; };
 		D0C2502E23DB5E54009D65DD /* GameScene_Physics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene_Physics.swift; sourceTree = "<group>"; };
 		D0C2503023DB5F87009D65DD /* GameScene_Touches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene_Touches.swift; sourceTree = "<group>"; };
 		D0C2503423DB6318009D65DD /* GameScene_Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene_Layout.swift; sourceTree = "<group>"; };
@@ -172,6 +178,7 @@
 				D08C540823EA432C005D8441 /* Skull.atlas */,
 				D0D3C750245AAC2100C47DA6 /* Virus.atlas */,
 				D09E2DA6245FCDCE005AB915 /* VirusWithFace.atlas */,
+				D0C15413250B4B2B00D2B661 /* Whirlpool.atlas */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -246,6 +253,8 @@
 			children = (
 				D0391B4423A436F600752CEC /* Bat.swift */,
 				D0F4116D24F2E09000897B54 /* ForceField.swift */,
+				D0C15415250B4D4400D2B661 /* Whirlpool.swift */,
+				D0C15417250D616200D2B661 /* Cyclone.swift */,
 			);
 			name = Player;
 			sourceTree = "<group>";
@@ -377,6 +386,7 @@
 				D0B2D1E3249DC3D800A4B2E6 /* Coin01.mp3 in Resources */,
 				D08C540923EA432D005D8441 /* Skull.atlas in Resources */,
 				D09E2DA7245FCDCE005AB915 /* VirusWithFace.atlas in Resources */,
+				D0C15414250B4B2B00D2B661 /* Whirlpool.atlas in Resources */,
 				D0D3C751245AAC2100C47DA6 /* Virus.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -401,6 +411,7 @@
 				D0CA810421CF162400BE7E96 /* GameScene.swift in Sources */,
 				D0DEDFC6245F5CF50074CB7B /* EnterScene.swift in Sources */,
 				D0F4116E24F2E09000897B54 /* ForceField.swift in Sources */,
+				D0C15418250D616200D2B661 /* Cyclone.swift in Sources */,
 				D0D94A6323D10A40007CCC5E /* GameItem.swift in Sources */,
 				D0CA80F021CF13A400BE7E96 /* AppDelegate.swift in Sources */,
 				D0C2503723DB7D4F009D65DD /* GameScene_EveryFrame.swift in Sources */,
@@ -410,6 +421,7 @@
 				D0E3AA312475EC0100A7A18B /* GameScene_Events.swift in Sources */,
 				D09E156124C4E41D009A3EF4 /* EnterScene_Layout.swift in Sources */,
 				D0C2502F23DB5E54009D65DD /* GameScene_Physics.swift in Sources */,
+				D0C15416250B4D4400D2B661 /* Whirlpool.swift in Sources */,
 				D09E156424C4E72C009A3EF4 /* EnterScene_EveryFrame.swift in Sources */,
 				D07AFA9D245C9542004DC615 /* SKSpriteNode+Extensions.swift in Sources */,
 				D0B75C8123D240F000623DCE /* Skull.swift in Sources */,

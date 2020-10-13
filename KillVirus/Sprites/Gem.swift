@@ -14,6 +14,7 @@ final class Gem: SKSpriteNode {
     
     var pointValue:UInt = 0
     var spinSpeed:UInt = 1
+    var convergingOnCyclone = false
     private var perFrame:TimeInterval = GameSceneConstants.gemRotationConstant
     private var spinAnimation = SKAction()
     private var spinTextures = [SKTexture]()
@@ -94,6 +95,29 @@ final class Gem: SKSpriteNode {
         self.physicsBody?.categoryBitMask = PhysicsCategory.Gem
         self.physicsBody?.contactTestBitMask = PhysicsCategory.Bat
     }
+    func followCyclone(_ layerPosition: CGPoint, _ targetPosition: CGPoint, _ followSpeed: CGFloat, cycloneDeployed:Bool, radius: CGFloat)->Void
+       {
+           var cyclonePosition = targetPosition
+           cyclonePosition.y -= 150.0
+           let withinCycloneOuterRadius = isWithinRadiusOfTarget(layerPosition, cyclonePosition, radius: radius * 1.2)
+           let withinCycloneInnerRadius = isWithinRadiusOfTarget(layerPosition, cyclonePosition, radius: radius * 0.3)
+           
+           if (cycloneDeployed && withinCycloneOuterRadius)
+           {
+            followPoint(layerPosition, cyclonePosition, followSpeed * 1.5)
+               if(withinCycloneInnerRadius)
+               {
+                   convergingOnCyclone = true
+                   convergeOnPointAndShrink(layerPosition, cyclonePosition, speed * 0.25)
+               }
+              
+           }
+           if(convergingOnCyclone)
+           {
+                convergeOnPointAndShrink(layerPosition, cyclonePosition, speed * 0.25)
+           }
+    
+       }
 
 
    

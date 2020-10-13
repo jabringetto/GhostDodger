@@ -77,6 +77,12 @@ class EnterViewController: UIViewController {
         removePersisentValue(key: "batPositionX")
         removePersisentValue(key: "batPositionY")
         removePersisentValue(key:"health")
+        removePersisentValue(key: "forceFieldDeployed")
+        removePersisentValue(key: "forceFieldTimer")
+        removePersisentValue(key: "cycloneDeployed")
+        removePersisentValue(key: "cycloneTimer")
+
+        
     }
     func removePersisentValue(key:String)->Void
     {

@@ -25,7 +25,8 @@ extension GameScene
         addPauseButton()
         setupGrid(gameVars.screenWidth,gameVars.screenHeight)
         addBat()
-        addForceField()
+        restoreForceField()
+        restoreCyclone()
         addGameOver()
         addHealthMeter()
         addCountdownannouncer()
@@ -59,13 +60,24 @@ extension GameScene
         self.addChild(gameVars.bat)
         addBatDelegate()
      }
-     private func addForceField()->Void
+     private func restoreForceField()->Void
      {
         if(gameVars.forceFieldDeployed)
         {
             gameVars.forceField.position = gameVars.bat.position
             gameVars.forceField.delegate = self
-            self.addChild(gameVars.forceField)
+            addChild(gameVars.forceField)
+        }
+     }
+     private func restoreCyclone()->Void
+      {
+        if(gameVars.cycloneDeployed)
+        {
+            gameVars.cyclone.position = gameVars.bat.position
+            gameVars.cyclone.position.y -= 150.0
+            gameVars.cyclone.delegate = self
+            addChild(gameVars.cyclone)
+            
         }
      }
      private func addBackLayer()->Void

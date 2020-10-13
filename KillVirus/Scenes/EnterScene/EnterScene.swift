@@ -35,7 +35,7 @@ struct EnterSceneVars
      var enterEmerald = Gem.init(.emerald)
      var virusLetters = [SKSpriteNode]()
      var virusLettersSineArgument:CGFloat = 0.0
-    var skullRotationCounter:Int = 0
+     var skullRotationCounter:Int = 0
      var letterV =  SKSpriteNode(imageNamed:"Letter_V")
      var letterI =  SKSpriteNode(imageNamed:"Letter_I")
      var letterR =  SKSpriteNode(imageNamed:"Letter_R")

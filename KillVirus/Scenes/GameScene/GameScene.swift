@@ -73,10 +73,12 @@ struct GameSceneVars
 {
     var gameInProgress:Bool = false
     var forceFieldDeployed:Bool = false
+    var cycloneDeployed:Bool = false
     var backLayer = SKNode()
     var bat = Bat()
     var grid = Grid()
     var forceField = ForceField()
+    var cyclone = Cyclone()
     var healthMeter = HealthMeter()
     var countdownAnnouncer = AnnouncerCountdown()
     var roundCompleteAnnouncer = AnnouncerRoundCompleted()

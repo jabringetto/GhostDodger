@@ -13,6 +13,7 @@ import SpriteKit
 final class Coin: SKSpriteNode {
     
     var pointValue:UInt = 0
+    var convergingOnCyclone = false
  
     convenience init(_ coinType: GameItemType)
     {
@@ -41,6 +42,32 @@ final class Coin: SKSpriteNode {
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.categoryBitMask = PhysicsCategory.Coin
         self.physicsBody?.contactTestBitMask = PhysicsCategory.Bat
+    }
+    func followCyclone(_ layerPosition: CGPoint, _ targetPosition: CGPoint, _ followSpeed: CGFloat, cycloneDeployed:Bool, radius: CGFloat)->Void
+    {
+        var cyclonePosition = targetPosition
+        cyclonePosition.y -= 150.0
+        let withinCycloneOuterRadius = isWithinRadiusOfTarget(layerPosition, cyclonePosition, radius: radius * 1.2)
+        let withinCycloneInnerRadius = isWithinRadiusOfTarget(layerPosition, cyclonePosition, radius: radius * 0.3)
+        
+        if (cycloneDeployed)
+        {
+            if(withinCycloneOuterRadius)
+            {
+                followPoint(layerPosition, cyclonePosition, followSpeed * 1.5)
+                if(withinCycloneInnerRadius)
+                {
+                              convergingOnCyclone = true
+                            
+                }
+             
+            }
+        }
+        if(convergingOnCyclone)
+        {
+            convergeOnPointAndShrink(layerPosition, cyclonePosition, speed * 0.25)
+        }
+ 
     }
 
 

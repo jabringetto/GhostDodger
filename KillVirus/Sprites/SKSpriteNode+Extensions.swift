@@ -9,9 +9,16 @@
 import Foundation
 import SpriteKit
 
+
+protocol ConvergeAndShrinkDelegate:AnyObject {
+    
+    func shrinkCompleted()->Void
+}
+
 extension SKSpriteNode
 {
    
+    
     func setupTextures(_ spriteName:String)->[SKTexture]
     {
         
@@ -92,7 +99,7 @@ extension SKSpriteNode
         }
 
     }
-    func isWithinRadiusOfTarget(_ layerPosition:CGPoint, _ targetPosition:CGPoint, _ followSpeed:CGFloat, radius:CGFloat)->Bool
+    func isWithinRadiusOfTarget(_ layerPosition:CGPoint, _ targetPosition:CGPoint, radius:CGFloat)->Bool
     {
         let effectiveY = self.position.y + layerPosition.y
         let yDistance = targetPosition.y - effectiveY

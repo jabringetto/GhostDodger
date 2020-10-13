@@ -21,8 +21,10 @@ protocol GridDelegate:class
 }
 
 
-final class Grid
+final class Grid:VirusDelegate
 {
+   
+    
     weak var delegate:GridDelegate?
     private var columnHalfWidth:CGFloat = 0.0
     private var itemPositions = [CGPoint]()
@@ -30,7 +32,9 @@ final class Grid
     private var positionDataDict = [String:PositionAndType]()
     private var skulls = [Skull]()
     private var virus = [Virus]()
-    private var convergingSprites = [String:SKSpriteNode]()
+    private var coins = [Coin]()
+    private var gems = [Gem]()
+    private var convergingSpritesPlayer = [String:SKSpriteNode]()
     private var virusOccurenceLowerLimit:UInt = 80
     private var skullOccurenceLowerLimit:UInt = 84
     
@@ -94,7 +98,22 @@ final class Grid
                 {
                     if let aVirus = sprite as? Virus
                     {
+                        aVirus.delegate = self
                         virus.append(aVirus)
+                    }
+                }
+                if(type == GameItemType.goldCoin || type == GameItemType.silverCoin )
+                {
+                    if let aCoin = sprite as? Coin
+                    {
+                        coins.append(aCoin)
+                    }
+                }
+                if(type == GameItemType.ruby || type == GameItemType.emerald )
+                {
+                    if let aGem = sprite as? Gem
+                    {
+                        gems.append(aGem)
                     }
                 }
             }
@@ -203,23 +222,23 @@ final class Grid
            }
            return type
     }
-    func addConvergingSpriteForKey(sprite:SKSpriteNode, key:String )->Void
+    func addConvergingPlayerSpriteForKey(sprite:SKSpriteNode, key:String )->Void
     {
-        convergingSprites[key] = sprite
+        convergingSpritesPlayer[key] = sprite
         
     }
 
-    func spritesConvergeEveryFrame(_ layerPosition:CGPoint, _ targetPosition:CGPoint, _ followSpeed:CGFloat)->Void
+    func spritesConvergeOnPlayer(_ layerPosition:CGPoint, _ targetPosition:CGPoint, _ followSpeed:CGFloat)->Void
     {
-        let keys:[String] =  convergingSprites.map{$0.key}
+        let keys:[String] =  convergingSpritesPlayer.map{$0.key}
         
         for key in keys
         {
-            if let sprite = convergingSprites[key]
+            if let sprite = convergingSpritesPlayer[key]
             {
                 if(sprite.parent == nil)
                 {
-                    convergingSprites.removeValue(forKey:key)
+                    convergingSpritesPlayer.removeValue(forKey:key)
                 }
                 else
                 {
@@ -233,20 +252,37 @@ final class Grid
     {
         for skull in skulls
         {
-
             skull.followPointWithinYRange(layerPosition, targetPosition, followSpeed, yRange: GameSceneConstants.skullFollowRange)
-            
         }
         for aVirus in virus
         {
             
             if let gameScene = self.delegate as? GameScene {
-                aVirus.followLikeAVirus(layerPosition, targetPosition, followSpeed, forceFieldDeployed: gameScene.gameVars.forceFieldDeployed, radius: 90.0)
+                aVirus.followLikeAVirus(layerPosition, targetPosition, followSpeed, forceFieldDeployed: gameScene.gameVars.forceFieldDeployed,cycloneDeployed: gameScene.gameVars.cycloneDeployed, radius: 90.0)
+              
             }
             
             
         }
+        for aCoin in coins
+        {
+            if let gameScene = self.delegate as? GameScene {
+                aCoin.followCyclone(layerPosition, targetPosition,followSpeed, cycloneDeployed: gameScene.gameVars.cycloneDeployed, radius: 90.0)
+                      
+            }
+        }
+        for aGem in gems
+        {
+            if let gameScene = self.delegate as? GameScene {
+                    aGem.followCyclone(layerPosition, targetPosition,followSpeed, cycloneDeployed: gameScene.gameVars.cycloneDeployed, radius: 90.0)
+                          
+            }
+        }
        
+        
+    }
+    func virusWentDownCyclone(virus:SKSpriteNode) {
+        removeSpriteFromPersistence(sprite: virus)
         
     }
     
