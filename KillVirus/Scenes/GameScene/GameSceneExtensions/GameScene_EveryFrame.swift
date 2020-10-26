@@ -1,6 +1,6 @@
 //
 //  GameScene_EveryFrame.swift
-//  SpinGems
+//  VirusDodger
 //
 //  Created by Jeremy Bringetto on 1/24/20.
 //  Copyright © 2020 Jeremy Bringetto. All rights reserved.
@@ -40,13 +40,13 @@ extension GameScene
        {
           gameVars.countdownCounter -= 1
           gameVars.countdownAnnouncer.updateCounterLabel(gameVars.countdownCounter)
-          if(gameVars.countdownCounter == 100)
+        if(gameVars.countdownCounter == GameSceneConstants.finalCountdownDuration)
           {
             gameVars.countdownAnnouncer.getReadyLabel.isHidden = true
          }
-          if (gameVars.countdownCounter < 100 )
+          if (gameVars.countdownCounter < GameSceneConstants.finalCountdownDuration)
           {
-            let scaleFactor = CGFloat(gameVars.countdownCounter) / 100
+            let scaleFactor = CGFloat(gameVars.countdownCounter) / CGFloat(GameSceneConstants.finalCountdownDuration)
             gameVars.countdownAnnouncer.size.width *= scaleFactor
             gameVars.countdownAnnouncer.size.height *= scaleFactor
           }
@@ -56,7 +56,7 @@ extension GameScene
              gameVars.countdownAnnouncer.removeFromParent()
              gameVars.gamePausedState = 0
              gameVars.pauseButton.isHidden = false
-             gameVars.countdownCounter = 240
+             gameVars.countdownCounter =  GameSceneConstants.totalCountdownDuration
              gameVars.isCountingDown = false
           }
        }
@@ -96,7 +96,7 @@ extension GameScene
         if(gameVars.cycloneDeployed)
         {
             gameVars.cyclone.position.x = gameVars.bat.position.x
-            gameVars.cyclone.position.y = gameVars.bat.position.y - 150.0
+            gameVars.cyclone.position.y = gameVars.bat.position.y - GameSceneConstants.cyclonePositionDelta
             gameVars.cyclone.timerCountDown()
         }
         

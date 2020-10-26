@@ -1,6 +1,6 @@
 //
 //  SKSpriteNode+Extensions.swift
-//  SpinGems
+//  VirusDodger
 //
 //  Created by Jeremy Bringetto on 5/1/20.
 //  Copyright © 2020 Jeremy Bringetto. All rights reserved.
@@ -10,15 +10,9 @@ import Foundation
 import SpriteKit
 
 
-protocol ConvergeAndShrinkDelegate:AnyObject {
-    
-    func shrinkCompleted()->Void
-}
-
 extension SKSpriteNode
 {
    
-    
     func setupTextures(_ spriteName:String)->[SKTexture]
     {
         
@@ -43,21 +37,32 @@ extension SKSpriteNode
         return textures
         
     }
+    func convergeOnPointAndShrink(_ layerPosition:CGPoint, _ targetPosition:CGPoint, _ followSpeed:CGFloat)->Void
+      {
+        if(self.parent != nil)
+        {
+            followPoint(layerPosition, targetPosition, followSpeed)
+            self.xScale *= GameSceneConstants.spriteSizeShrinkMultiplier
+            self.yScale *=  GameSceneConstants.spriteSizeShrinkMultiplier
+            if(self.xScale < GameSceneConstants.spriteSizeShrinkThreshold) {
+                if let item = self as?  GameSprite {
+                    if(item.convergingOnCyclone)
+                    {
+                        item.delegate?.shrinkCompleted(sprite: item)
+                        item.convergingOnCyclone = false
+                    }
+                }
+                self.removeFromParent()
+            }
+        }
+   
+      }
     
     func convergeOnPoint(_ layerPosition:CGPoint, _ targetPosition:CGPoint, _ followSpeed:CGFloat)->Void
       {
           followPoint(layerPosition, targetPosition, followSpeed)
       }
-    func convergeOnPointAndShrink(_ layerPosition:CGPoint, _ targetPosition:CGPoint, _ followSpeed:CGFloat)->Void
-    {
-        followPoint(layerPosition, targetPosition, followSpeed)
-        self.xScale *= GameSceneConstants.spriteSizeShrinkMultiplier
-        self.yScale *=  GameSceneConstants.spriteSizeShrinkMultiplier
-        if(self.xScale < GameSceneConstants.spriteSizeShrinkThreshold)
-        {
-            self.removeFromParent()
-        }
-    }
+
     func followPoint(_ layerPosition:CGPoint, _ targetPosition:CGPoint, _ followSpeed:CGFloat)->Void
     {
                 followPointX(layerPosition, targetPosition, followSpeed)

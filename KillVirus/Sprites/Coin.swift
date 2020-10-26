@@ -1,6 +1,6 @@
 //
 //  Coin.swift
-//  SpinGems
+//  VirusDodger
 //
 //  Created by Jeremy Bringetto on 1/17/20.
 //  Copyright © 2020 Jeremy Bringetto. All rights reserved.
@@ -10,10 +10,9 @@ import UIKit
 import SpriteKit
 
 
-final class Coin: SKSpriteNode {
+final class Coin:GameSprite {
     
     var pointValue:UInt = 0
-    var convergingOnCyclone = false
  
     convenience init(_ coinType: GameItemType)
     {

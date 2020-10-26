@@ -1,6 +1,6 @@
 //
 //  Skull.swift
-//  SpinGems
+//  VirusDodger
 //
 //  Created by Jeremy Bringetto on 1/17/20.
 //  Copyright © 2020 Jeremy Bringetto. All rights reserved.
@@ -9,7 +9,7 @@
 import UIKit
 import SpriteKit
 
-final class Skull: SKSpriteNode {
+final class Skull: GameSprite {
     
    
     private var skullTextures = [SKTexture]()

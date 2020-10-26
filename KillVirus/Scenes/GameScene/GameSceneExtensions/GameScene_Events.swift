@@ -1,6 +1,6 @@
 //
 //  GameScene_Events.swift
-//  KillVirus
+//  VirusDodger
 //
 //  Created by Jeremy Bringetto on 5/20/20.
 //  Copyright © 2020 Jeremy Bringetto. All rights reserved.
@@ -41,18 +41,20 @@ extension GameScene: BatDelegate, GridDelegate, AnnouncerRoundCompletedDelegate,
         if let gem = treasure as? Gem
         {
             pointsLabelAdded(gem.pointValue, gem.position)
+            gem.pointValue = 0
            
         }
         else if let coin = treasure as? Coin
         {
             pointsLabelAdded(coin.pointValue, coin.position)
+            coin.pointValue = 0
                  
         }
         gameVars.scoreLabel.text = GameSceneConstants.scoreLabelPrefix + String(gameVars.score)
         
-        if(gameVars.score > 100 &&  !gameVars.cycloneDeployed)
+        if(gameVars.score > 100 &&  !gameVars.forceFieldDeployed)
         {
-            addCyclone()
+            addForceField()
         }
         savePersistentValues()
     }
@@ -199,15 +201,18 @@ extension GameScene: BatDelegate, GridDelegate, AnnouncerRoundCompletedDelegate,
     }
     private func pointsLabelAdded(_ pointValue:UInt, _ position:CGPoint)
     {
-        gameVars.score += pointValue
-        let pointsLabel = SKLabelNode(fontNamed: "Arial-Bold")
-        pointsLabel.fontSize = 24.0
-        pointsLabel.fontColor = .white
-        pointsLabel.text = "+ " + String(pointValue) + " points"
-        pointsLabel.position = position
-        gameVars.backLayer.addChild(pointsLabel)
-        let itemKey:String =  String(Float(pointsLabel.position.x)) + String(Float(pointsLabel.position.y))
-        gameVars.pointsLabels[itemKey] = pointsLabel
+        if pointValue > 0
+        {
+            gameVars.score += pointValue
+            let pointsLabel = SKLabelNode(fontNamed: "Arial-Bold")
+            pointsLabel.fontSize = 24.0
+            pointsLabel.fontColor = .white
+            pointsLabel.text = "+ " + String(pointValue) + " points"
+            pointsLabel.position = position
+            gameVars.backLayer.addChild(pointsLabel)
+            let itemKey:String =  String(Float(pointsLabel.position.x)) + String(Float(pointsLabel.position.y))
+            gameVars.pointsLabels[itemKey] = pointsLabel
+        }
     }
     
     // MARK: BatDelegate
@@ -284,10 +289,23 @@ extension GameScene: BatDelegate, GridDelegate, AnnouncerRoundCompletedDelegate,
         return defaults.object(forKey: key)
         
     }
+    func convergedRemovedSpriteEvent(sprite: SKSpriteNode) {
+       
+        if let coin = sprite as? Coin {
+            playerGetsTreasure(coin)
+            playSound(gameVars.coinSoundEffect)
+        }
+        if let gem = sprite as? Gem {
+            playerGetsTreasure(gem)
+            playSound(gameVars.treasureSoundEffect)
+        }
+    }
      // MARK: AnnouncerRoundCompletedDelegate
     func currentRoundNumber() -> UInt
     {
         return gameVars.round
     }
+
+     
     
 }

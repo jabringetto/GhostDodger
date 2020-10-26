@@ -1,6 +1,6 @@
 //
 //  GameScene.swift
-//  SpinGems
+//  
 //
 //  Created by Jeremy Bringetto on 12/22/18.
 //  Copyright © 2018 Jeremy Bringetto. All rights reserved.
@@ -14,11 +14,12 @@ import AVFoundation
 struct GameSceneConstants
 {
     static let nominalBackgroundSpeed:CGFloat = 2.0
+    static let announcerAspectRatio:CGFloat = 0.574
+    static let announcerScreenWidthRatio:CGFloat = 0.90
     static let batAnimationTimePerFrame:TimeInterval = 0.01
     static let batFollowFingerRatio:CGFloat = 0.04
     static let batFollowFingerThreshold:CGFloat = 1.0
     static let batDeathBackgroundAcceration:CGFloat  = 0.2
-    static let announcerScreenWidthRatio:CGFloat = 0.90
     static let batDeathConvergeSpeed:CGFloat = 0.75
     static let batDeathScaleSpeed:CGFloat = 0.03
     static let batDeathScaleThreshold:CGFloat = 0.8
@@ -26,9 +27,12 @@ struct GameSceneConstants
     static let batDeathAlphaThreshold:CGFloat = 0.01
     static let batDeathConvergenceThreshold:CGFloat = 1.0
     static let batDeathAlphaSpeed:CGFloat = 0.12
+    static let blackBarAlpha:CGFloat = 0.7
+    static let cyclonePositionDelta:CGFloat = 150.0
+    static let totalCountdownDuration:Int = 240
+    static let finalCountdownDuration:Int = 100
     static let gameOverConvergenceYPos:CGFloat = 300.0
     static let gameOverConvergenceCoefficent:CGFloat = 0.99
-    static let announcerAspectRatio:CGFloat = 0.574
     static let gameOverInitialPosition:CGFloat = 1000.0
     static let batScale:CGFloat = 0.4
     static let batVerticalPositionMultiplier:CGFloat = 0.25
@@ -65,16 +69,13 @@ struct GameSceneConstants
     static let pointLabelVelocity:CGFloat = 0.8
     static let pointLabelAlphaThreshold:CGFloat = 0.3
     static let forceFieldScaleConstant:CGFloat = 0.6
+    static let menuLabelFontSize:CGFloat = 18.0
     static let scoreLabelPrefix = "SCORE: "
     static let roundLabelPrefix = "ROUND: "
     
 }
 struct GameSceneVars
 {
-    var gameInProgress:Bool = false
-    var forceFieldDeployed:Bool = false
-    var cycloneDeployed:Bool = false
-    var backLayer = SKNode()
     var bat = Bat()
     var grid = Grid()
     var forceField = ForceField()
@@ -82,6 +83,10 @@ struct GameSceneVars
     var healthMeter = HealthMeter()
     var countdownAnnouncer = AnnouncerCountdown()
     var roundCompleteAnnouncer = AnnouncerRoundCompleted()
+    var gameInProgress:Bool = false
+    var forceFieldDeployed:Bool = false
+    var cycloneDeployed:Bool = false
+    var backLayer = SKNode()
     var score:UInt = 0
     var round:UInt = 1
     var persistenceCounter:UInt = 0

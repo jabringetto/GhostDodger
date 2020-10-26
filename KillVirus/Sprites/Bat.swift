@@ -1,6 +1,6 @@
 //
 //  Bat.swift
-//  SpinGems
+//  VirusDodger
 //
 //  Created by Jeremy Bringetto on 12/13/19.
 //  Copyright © 2019 Jeremy Bringetto. All rights reserved.

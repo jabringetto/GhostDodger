@@ -1,6 +1,6 @@
 //
 //  EnterScene_Layout.swift
-//  KillVirus
+//  VirusDodger
 //
 //  Created by Jeremy Bringetto on 7/19/20.
 //  Copyright © 2020 Jeremy Bringetto. All rights reserved.

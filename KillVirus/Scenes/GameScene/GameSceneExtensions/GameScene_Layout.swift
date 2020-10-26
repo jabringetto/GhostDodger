@@ -1,6 +1,6 @@
 //
 //  GameScene_Layout.swift
-//  SpinGems
+//  VirusDodger
 //
 //  Created by Jeremy Bringetto on 1/24/20.
 //  Copyright © 2020 Jeremy Bringetto. All rights reserved.
@@ -74,7 +74,7 @@ extension GameScene
         if(gameVars.cycloneDeployed)
         {
             gameVars.cyclone.position = gameVars.bat.position
-            gameVars.cyclone.position.y -= 150.0
+            gameVars.cyclone.position.y -= GameSceneConstants.cyclonePositionDelta
             gameVars.cyclone.delegate = self
             addChild(gameVars.cyclone)
             
@@ -128,7 +128,7 @@ extension GameScene
      {
         gameVars.blackBar.size = CGSize(width: gameVars.screenWidth, height: GameSceneConstants.blackBarHeight)
         gameVars.blackBar.position = CGPoint(x: 0.0, y: -(gameVars.screenHeight / 2.0 - GameSceneConstants.blackBarHeight * 0.5))
-        gameVars.blackBar.alpha = 0.7
+        gameVars.blackBar.alpha = GameSceneConstants.blackBarAlpha
         gameVars.blackBar.name = "blackBar"
         self.addChild(gameVars.blackBar)
      }
@@ -142,7 +142,7 @@ extension GameScene
      private func addScoreLabel()->Void
      {
         gameVars.scoreLabel = SKLabelNode(fontNamed: "Arial-Bold")
-        gameVars.scoreLabel.fontSize = 18.0
+        gameVars.scoreLabel.fontSize = GameSceneConstants.menuLabelFontSize
         gameVars.scoreLabel.text = GameSceneConstants.scoreLabelPrefix + String(gameVars.score)
         gameVars.scoreLabel.position = CGPoint(x:0.0 , y:  -(gameVars.screenHeight / 2.0 - GameSceneConstants.scoreLabelPadding))
         self.addChild( gameVars.scoreLabel)
@@ -150,7 +150,7 @@ extension GameScene
     private func addRoundLabel()->Void
       {
          gameVars.roundLabel = SKLabelNode(fontNamed: "Arial-Bold")
-         gameVars.roundLabel.fontSize = 18.0
+        gameVars.roundLabel.fontSize = GameSceneConstants.menuLabelFontSize
          gameVars.roundLabel.text = GameSceneConstants.roundLabelPrefix + String(gameVars.round)
         gameVars.roundLabel.position = CGPoint(x: 0.0 , y:  -(gameVars.screenHeight / 2.0 - GameSceneConstants.roundLabelPadding))
          self.addChild( gameVars.roundLabel)

@@ -11,6 +11,7 @@
 		D0391B4323A436B300752CEC /* Bat.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D0391B4223A436B300752CEC /* Bat.atlas */; };
 		D0391B4523A436F600752CEC /* Bat.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0391B4423A436F600752CEC /* Bat.swift */; };
 		D03982BF23B70EA600308022 /* Emerald.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D0CA810721CF1B0D00BE7E96 /* Emerald.atlas */; };
+		D06771202546353200DB0552 /* GameSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = D067711F2546353200DB0552 /* GameSprite.swift */; };
 		D07AFA9D245C9542004DC615 /* SKSpriteNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07AFA9C245C9542004DC615 /* SKSpriteNode+Extensions.swift */; };
 		D084CBB32471B75F00378317 /* Buzzer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D084CBB22471B75F00378317 /* Buzzer.mp3 */; };
 		D08C540923EA432D005D8441 /* Skull.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D08C540823EA432C005D8441 /* Skull.atlas */; };
@@ -56,6 +57,7 @@
 		D004C9CE2472241A0066AF56 /* Dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dashboard.swift; sourceTree = "<group>"; };
 		D0391B4223A436B300752CEC /* Bat.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Bat.atlas; sourceTree = "<group>"; };
 		D0391B4423A436F600752CEC /* Bat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bat.swift; sourceTree = "<group>"; };
+		D067711F2546353200DB0552 /* GameSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSprite.swift; sourceTree = "<group>"; };
 		D07AFA9C245C9542004DC615 /* SKSpriteNode+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKSpriteNode+Extensions.swift"; sourceTree = "<group>"; };
 		D084CBB22471B75F00378317 /* Buzzer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Buzzer.mp3; sourceTree = "<group>"; };
 		D08C540823EA432C005D8441 /* Skull.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Skull.atlas; path = ../../../../MISC/MISC_2020_02_03/Skull.atlas; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 			isa = PBXGroup;
 			children = (
 				D07AFA9C245C9542004DC615 /* SKSpriteNode+Extensions.swift */,
+				D067711F2546353200DB0552 /* GameSprite.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 				D0391B4523A436F600752CEC /* Bat.swift in Sources */,
 				D0C2503923DB8176009D65DD /* GameScene_Sounds.swift in Sources */,
 				D0CA810221CF153600BE7E96 /* GameViewController.swift in Sources */,
+				D06771202546353200DB0552 /* GameSprite.swift in Sources */,
 				D004C9CF2472241A0066AF56 /* Dashboard.swift in Sources */,
 				D0C2503123DB5F87009D65DD /* GameScene_Touches.swift in Sources */,
 				D0D94A6523D123C8007CCC5E /* Grid.swift in Sources */,

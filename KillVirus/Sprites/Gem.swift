@@ -1,6 +1,6 @@
 //
 //  Gem.swift
-//  SpinGems
+//  VirusDodger
 //
 //  Created by Jeremy Bringetto on 12/22/18.
 //  Copyright © 2018 Jeremy Bringetto. All rights reserved.
@@ -10,11 +10,10 @@ import UIKit
 import SpriteKit
 
 
-final class Gem: SKSpriteNode {
+final class Gem:GameSprite {
     
     var pointValue:UInt = 0
     var spinSpeed:UInt = 1
-    var convergingOnCyclone = false
     private var perFrame:TimeInterval = GameSceneConstants.gemRotationConstant
     private var spinAnimation = SKAction()
     private var spinTextures = [SKTexture]()

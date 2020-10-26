@@ -1,6 +1,6 @@
 //
 //  Virus.swift
-//  SpinGems
+//  VirusDodger
 //
 //  Created by Jeremy Bringetto on 4/29/20.
 //  Copyright © 2020 Jeremy Bringetto. All rights reserved.
@@ -10,20 +10,15 @@ import Foundation
 import UIKit
 import SpriteKit
 
-protocol VirusDelegate:AnyObject
-{
-    
-    func virusWentDownCyclone(virus:SKSpriteNode)->Void
-}
 
-final class Virus: SKSpriteNode
+final class Virus:GameSprite
 {
-    var delegate:VirusDelegate?
+
     var virusTextures = [SKTexture]()
     var virusAnimation = SKAction()
     var randomFollowFactor:CGFloat = 1.0 + CGFloat.random(in:0...4)/10 - 0.2
     let gameVars = GameSceneVars()
-    var convergingOnCyclone = false
+  
           
     
     convenience init(_ itemType: GameItemType)
@@ -80,7 +75,6 @@ final class Virus: SKSpriteNode
             if(withinCycloneInnerRadius)
             {
                convergingOnCyclone = true
-               self.delegate?.virusWentDownCyclone(virus: self)
             }
         }
         else

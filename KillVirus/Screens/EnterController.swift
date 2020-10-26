@@ -1,6 +1,6 @@
 //
 //  EnterViewController.swift
-//  SpinGems
+//  VirusDodger
 //
 //  Created by Jeremy Bringetto on 12/22/18.
 //  Copyright © 2018 Jeremy Bringetto. All rights reserved.

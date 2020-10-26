@@ -1,6 +1,6 @@
 //
 //  EnterScene.swift
-//  SpinGems
+//  VirusDodger
 //
 //  Created by Jeremy Bringetto on 5/3/20.
 //  Copyright © 2020 Jeremy Bringetto. All rights reserved.

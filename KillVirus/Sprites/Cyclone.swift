@@ -1,6 +1,6 @@
 //
 //  Cyclone.swift
-//  KillVirus
+//  VirusDodger
 //
 //  Created by Jeremy Bringetto on 9/12/20.
 //  Copyright © 2020 Jeremy Bringetto. All rights reserved.

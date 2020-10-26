@@ -1,6 +1,6 @@
 //
 //  GameScene_Physics.swift
-//  SpinGems
+//  VirusDodger
 //
 //  Created by Jeremy Bringetto on 1/24/20.
 //  Copyright © 2020 Jeremy Bringetto. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  Grid.swift
-//  SpinGems
+//  VirusDodger
 //
 //  Created by Jeremy Bringetto on 1/16/20.
 //  Copyright © 2020 Jeremy Bringetto. All rights reserved.
@@ -18,10 +18,11 @@ protocol GridDelegate:class
     func fetchPersistentValue(key:String)->Any?
     func saveGridDataPeristently(positionData:[String:PositionAndType])->Void
     func fetchPersistentGridData()->[PositionAndType]?
+    func convergedRemovedSpriteEvent(sprite:SKSpriteNode)->Void
 }
 
 
-final class Grid:VirusDelegate
+final class Grid:ConvergeAndShrinkDelegate
 {
    
     
@@ -98,7 +99,6 @@ final class Grid:VirusDelegate
                 {
                     if let aVirus = sprite as? Virus
                     {
-                        aVirus.delegate = self
                         virus.append(aVirus)
                     }
                 }
@@ -106,6 +106,7 @@ final class Grid:VirusDelegate
                 {
                     if let aCoin = sprite as? Coin
                     {
+                        aCoin.delegate = self
                         coins.append(aCoin)
                     }
                 }
@@ -113,6 +114,7 @@ final class Grid:VirusDelegate
                 {
                     if let aGem = sprite as? Gem
                     {
+                        aGem.delegate = self
                         gems.append(aGem)
                     }
                 }
@@ -281,10 +283,11 @@ final class Grid:VirusDelegate
        
         
     }
-    func virusWentDownCyclone(virus:SKSpriteNode) {
-        removeSpriteFromPersistence(sprite: virus)
-        
+    // MARK: ConvergeAndShrinkDelegate
+    func shrinkCompleted(sprite: SKSpriteNode) {
+        self.delegate?.convergedRemovedSpriteEvent(sprite:sprite)
     }
+
     
     
 }
