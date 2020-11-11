@@ -23,6 +23,7 @@ class UpgradesController: UIViewController {
         //scene.backgroundColor = .init(red:0.65, green:0.32, blue:0.00, alpha:1.0)
         scene.backgroundColor = UIColor.black
         upgradeView.showsFPS = true
+        upgradeView.ignoresSiblingOrder = false
         upgradeView.presentScene(scene)
 
         // Do any additional setup after loading the view.

@@ -175,6 +175,7 @@ extension GameScene
         gameVars.upgradeButton.isHidden = true
         self.addChild(gameVars.upgradeButton)
         
+        
     }
     
     
