@@ -15,6 +15,7 @@
 		D07AFA9D245C9542004DC615 /* SKSpriteNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07AFA9C245C9542004DC615 /* SKSpriteNode+Extensions.swift */; };
 		D084CBB32471B75F00378317 /* Buzzer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D084CBB22471B75F00378317 /* Buzzer.mp3 */; };
 		D08C540923EA432D005D8441 /* Skull.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D08C540823EA432C005D8441 /* Skull.atlas */; };
+		D09163A2255211A30098E82C /* UpgradesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09163A1255211A30098E82C /* UpgradesController.swift */; };
 		D09E156124C4E41D009A3EF4 /* EnterScene_Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09E156024C4E41D009A3EF4 /* EnterScene_Layout.swift */; };
 		D09E156424C4E72C009A3EF4 /* EnterScene_EveryFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09E156324C4E72C009A3EF4 /* EnterScene_EveryFrame.swift */; };
 		D09E2DA7245FCDCE005AB915 /* VirusWithFace.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D09E2DA6245FCDCE005AB915 /* VirusWithFace.atlas */; };
@@ -39,6 +40,7 @@
 		D0CA810421CF162400BE7E96 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CA810321CF162400BE7E96 /* GameScene.swift */; };
 		D0CA810621CF1AF400BE7E96 /* RubyFrame.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D0CA810521CF1AF400BE7E96 /* RubyFrame.atlas */; };
 		D0CA810921CF2CE800BE7E96 /* Gem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CA810821CF2CE800BE7E96 /* Gem.swift */; };
+		D0D04E12254DF2D400BF0F07 /* UpgradeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D04E11254DF2D400BF0F07 /* UpgradeScene.swift */; };
 		D0D3C74B245A8F3C00C47DA6 /* Virus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D3C74A245A8F3C00C47DA6 /* Virus.swift */; };
 		D0D3C751245AAC2100C47DA6 /* Virus.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D0D3C750245AAC2100C47DA6 /* Virus.atlas */; };
 		D0D94A6323D10A40007CCC5E /* GameItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D94A6223D10A40007CCC5E /* GameItem.swift */; };
@@ -61,6 +63,7 @@
 		D07AFA9C245C9542004DC615 /* SKSpriteNode+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKSpriteNode+Extensions.swift"; sourceTree = "<group>"; };
 		D084CBB22471B75F00378317 /* Buzzer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Buzzer.mp3; sourceTree = "<group>"; };
 		D08C540823EA432C005D8441 /* Skull.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Skull.atlas; path = ../../../../MISC/MISC_2020_02_03/Skull.atlas; sourceTree = "<group>"; };
+		D09163A1255211A30098E82C /* UpgradesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradesController.swift; sourceTree = "<group>"; };
 		D09E156024C4E41D009A3EF4 /* EnterScene_Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterScene_Layout.swift; sourceTree = "<group>"; };
 		D09E156324C4E72C009A3EF4 /* EnterScene_EveryFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterScene_EveryFrame.swift; sourceTree = "<group>"; };
 		D09E2DA6245FCDCE005AB915 /* VirusWithFace.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = VirusWithFace.atlas; sourceTree = "<group>"; };
@@ -88,6 +91,7 @@
 		D0CA810521CF1AF400BE7E96 /* RubyFrame.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = RubyFrame.atlas; sourceTree = "<group>"; };
 		D0CA810721CF1B0D00BE7E96 /* Emerald.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Emerald.atlas; sourceTree = "<group>"; };
 		D0CA810821CF2CE800BE7E96 /* Gem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gem.swift; sourceTree = "<group>"; };
+		D0D04E11254DF2D400BF0F07 /* UpgradeScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeScene.swift; sourceTree = "<group>"; };
 		D0D3C74A245A8F3C00C47DA6 /* Virus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Virus.swift; sourceTree = "<group>"; };
 		D0D3C750245AAC2100C47DA6 /* Virus.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Virus.atlas; sourceTree = "<group>"; };
 		D0D94A6223D10A40007CCC5E /* GameItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameItem.swift; sourceTree = "<group>"; };
@@ -165,6 +169,7 @@
 			children = (
 				D0CA80F121CF13A400BE7E96 /* EnterController.swift */,
 				D0CA810121CF153600BE7E96 /* GameViewController.swift */,
+				D09163A1255211A30098E82C /* UpgradesController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -190,6 +195,7 @@
 			children = (
 				D0DEDFC7245F5CFC0074CB7B /* EnterScene */,
 				D0C2503223DB6019009D65DD /* GameScene */,
+				D0D04E13254DF2DC00BF0F07 /* UpgradeScene */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -248,6 +254,14 @@
 				D0DE71B123BBEF4600B87144 /* Sounds */,
 			);
 			path = KillVirus;
+			sourceTree = "<group>";
+		};
+		D0D04E13254DF2DC00BF0F07 /* UpgradeScene */ = {
+			isa = PBXGroup;
+			children = (
+				D0D04E11254DF2D400BF0F07 /* UpgradeScene.swift */,
+			);
+			path = UpgradeScene;
 			sourceTree = "<group>";
 		};
 		D0D80935247255BD0028892A /* Player */ = {
@@ -409,11 +423,13 @@
 				D0C2503923DB8176009D65DD /* GameScene_Sounds.swift in Sources */,
 				D0CA810221CF153600BE7E96 /* GameViewController.swift in Sources */,
 				D06771202546353200DB0552 /* GameSprite.swift in Sources */,
+				D0D04E12254DF2D400BF0F07 /* UpgradeScene.swift in Sources */,
 				D004C9CF2472241A0066AF56 /* Dashboard.swift in Sources */,
 				D0C2503123DB5F87009D65DD /* GameScene_Touches.swift in Sources */,
 				D0D94A6523D123C8007CCC5E /* Grid.swift in Sources */,
 				D0CA810421CF162400BE7E96 /* GameScene.swift in Sources */,
 				D0DEDFC6245F5CF50074CB7B /* EnterScene.swift in Sources */,
+				D09163A2255211A30098E82C /* UpgradesController.swift in Sources */,
 				D0F4116E24F2E09000897B54 /* ForceField.swift in Sources */,
 				D0C15418250D616200D2B661 /* Cyclone.swift in Sources */,
 				D0D94A6323D10A40007CCC5E /* GameItem.swift in Sources */,

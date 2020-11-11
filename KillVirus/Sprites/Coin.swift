@@ -45,7 +45,7 @@ final class Coin:GameSprite {
     func followCyclone(_ layerPosition: CGPoint, _ targetPosition: CGPoint, _ followSpeed: CGFloat, cycloneDeployed:Bool, radius: CGFloat)->Void
     {
         var cyclonePosition = targetPosition
-        cyclonePosition.y -= 150.0
+        cyclonePosition.y -= GameSceneConstants.cyclonePositionDelta
         let withinCycloneOuterRadius = isWithinRadiusOfTarget(layerPosition, cyclonePosition, radius: radius * 1.2)
         let withinCycloneInnerRadius = isWithinRadiusOfTarget(layerPosition, cyclonePosition, radius: radius * 0.3)
         

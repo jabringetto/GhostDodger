@@ -31,7 +31,7 @@ class VirusWithFace: SKSpriteNode
     func setupTexturesAndAnimation()->Void
      {
          virusTextures = setupTextures("VirusWithFace")
-        virusAnimation = SKAction.animate(with: virusTextures, timePerFrame: GameSceneConstants.virusAnimationTimePerFrame *  0.5)
+        virusAnimation = SKAction.animate(with: virusTextures, timePerFrame: GameSceneConstants.virusWithFaceAnimationTimePerFrame)
          let forever = SKAction.repeat(virusAnimation,count: -1)
          self.run(forever)
      

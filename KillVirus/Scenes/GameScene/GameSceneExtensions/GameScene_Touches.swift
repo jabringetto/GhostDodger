@@ -35,6 +35,10 @@ extension GameScene
                 clearRoundPersistence()
                 resetGame()
             }
+            if(node.name == "upgradesButton")
+            {
+                self.gameSceneDelegate?.displayUpgradeScene()
+            }
             
          }
         screenTouched(location)

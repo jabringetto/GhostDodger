@@ -57,21 +57,22 @@ final class Virus:GameSprite
     {
         let inForceFieldRadius:Bool = isWithinRadiusOfTarget(layerPosition, targetPosition, radius: radius)
         var cyclonePosition = targetPosition
-        cyclonePosition.y -= 150.0
-        let withinCycloneOuterRadius = isWithinRadiusOfTarget(layerPosition, cyclonePosition, radius: radius * 1.2)
-        let withinCycloneInnerRadius = isWithinRadiusOfTarget(layerPosition, cyclonePosition, radius: radius * 0.3)
+        cyclonePosition.y -= GameSceneConstants.cyclonePositionDelta
+
+        let withinCycloneOuterRadius = isWithinRadiusOfTarget(layerPosition, cyclonePosition, radius: radius * GameSceneConstants.cycloneOuterRadiusMultiplier)
+        let withinCycloneInnerRadius = isWithinRadiusOfTarget(layerPosition, cyclonePosition, radius: radius * GameSceneConstants.cycloneInnerRadiusMultiplier)
         
         
-        var speed = followSpeed * 0.5
+        var speed = followSpeed * GameSceneConstants.virusNominalFollowSpeedMultiplier
         
         if(forceFieldDeployed && inForceFieldRadius)
         {
-            speed = followSpeed * -3.0
+            speed = followSpeed * GameSceneConstants.virusForceFieldSpeedMultiplier
             followPoint(layerPosition, targetPosition, speed)
         }
         else if (cycloneDeployed && withinCycloneOuterRadius)
         {
-            followPoint(layerPosition, cyclonePosition, speed * 2.4)
+            followPoint(layerPosition, cyclonePosition, speed * GameSceneConstants.virusCycloneSpeedMultiplier)
             if(withinCycloneInnerRadius)
             {
                convergingOnCyclone = true
@@ -79,11 +80,11 @@ final class Virus:GameSprite
         }
         else
         {
-            followPointWithinYRange(layerPosition, targetPosition, speed * randomFollowFactor, yRange: GameSceneConstants.skullFollowRange * 0.5 * randomFollowFactor)
+            followPointWithinYRange(layerPosition, targetPosition, speed * randomFollowFactor, yRange: GameSceneConstants.virusFollowRange * randomFollowFactor)
         }
         if(convergingOnCyclone)
         {
-            convergeOnPointAndShrink(layerPosition, cyclonePosition, speed * 0.25)
+            convergeOnPointAndShrink(layerPosition, cyclonePosition, speed * GameSceneConstants.virusConvergenceSpeedMultiplier)
         }
         
     }

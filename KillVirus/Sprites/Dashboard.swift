@@ -9,6 +9,7 @@ import Foundation
 import SpriteKit
 
 
+
 final class  HealthMeter:SKSpriteNode
 {
     let maximumWidth:CGFloat = 80.0
@@ -23,7 +24,7 @@ final class  HealthMeter:SKSpriteNode
         self.removeAllChildren()
         self.addChild(grayBar)
         self.addChild(greenBar)
-        healthLabel.fontSize = 16.0
+        healthLabel.fontSize = 14.0
         healthLabel.fontColor = UIColor.white
         healthLabel.text = "H E A L T H"
         healthLabel.position = CGPoint(x: -1.0, y: 12.0)
@@ -40,5 +41,20 @@ final class  HealthMeter:SKSpriteNode
     }
     
 }
+final class UpgradeButton:SKSpriteNode
+{
+
+    let upgradesLabel = SKLabelNode(fontNamed: "Arial-Bold")
+    func setup()->Void
+    {
+        upgradesLabel.fontSize = 12.0
+        upgradesLabel.fontColor = UIColor(hex:"#add8ffff")
+        upgradesLabel.text = "U P G R A D E S"
+        
+        addChild(upgradesLabel)
+        name = "upgradesButton"
+    }
+}
+
 
 

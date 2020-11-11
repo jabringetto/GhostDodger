@@ -56,6 +56,7 @@ extension GameScene
              gameVars.countdownAnnouncer.removeFromParent()
              gameVars.gamePausedState = 0
              gameVars.pauseButton.isHidden = false
+             gameVars.upgradeButton.isHidden = false
              gameVars.countdownCounter =  GameSceneConstants.totalCountdownDuration
              gameVars.isCountingDown = false
           }

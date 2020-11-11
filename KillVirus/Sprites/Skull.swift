@@ -42,7 +42,7 @@ final class Skull: GameSprite {
     func setupSkull()->Void
     {
         skullTextures = setupTextures("Skull")
-        skullAnimation = SKAction.animate(with: skullTextures, timePerFrame:0.02)
+        skullAnimation = SKAction.animate(with: skullTextures, timePerFrame:GameSceneConstants.skullAnimationTimePerFrame)
         let forever = SKAction.repeat(skullAnimation,count: -1)
         self.run(forever)
         

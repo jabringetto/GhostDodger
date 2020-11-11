@@ -52,9 +52,9 @@ extension GameScene: BatDelegate, GridDelegate, AnnouncerRoundCompletedDelegate,
         }
         gameVars.scoreLabel.text = GameSceneConstants.scoreLabelPrefix + String(gameVars.score)
         
-        if(gameVars.score > 100 &&  !gameVars.forceFieldDeployed)
+        if(gameVars.score > 100 &&  !gameVars.cycloneDeployed)
         {
-            addForceField()
+            addCyclone()
         }
         savePersistentValues()
     }
@@ -192,6 +192,12 @@ extension GameScene: BatDelegate, GridDelegate, AnnouncerRoundCompletedDelegate,
             gameVars.pauseButton.texture = SKTexture(imageNamed: "PauseButton")
         }
     }
+    func pauseGame()->Void
+    {
+        gameVars.gamePausedState = 1
+        gameVars.pauseButton.texture = SKTexture(imageNamed: "PlayButton")
+    }
+    
     func screenTouched(_ location:CGPoint)->Void
     {
         if(location.y > -(gameVars.screenHeight*0.5 - gameVars.blackBar.frame.size.height - 17.0))
@@ -223,6 +229,7 @@ extension GameScene: BatDelegate, GridDelegate, AnnouncerRoundCompletedDelegate,
         removeCyclone()
         pauseButtonPressed()
         gameVars.pauseButton.isHidden = true
+        gameVars.upgradeButton.isHidden = true
         recordDisplacement()
         showGameOver()
         

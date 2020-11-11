@@ -101,11 +101,42 @@
                     <navigationItem key="navigationItem" id="afU-ZJ-FIq"/>
                     <connections>
                         <outlet property="gameView" destination="j5l-Qq-LqB" id="ATA-j7-X0F"/>
+                        <segue destination="rM1-1O-yfb" kind="show" identifier="upgradeSegue" id="gXg-VJ-n0C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KA7-Mt-EAM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1438" y="120"/>
+        </scene>
+        <!--Upgrades Controller-->
+        <scene sceneID="RXA-Ff-TIC">
+            <objects>
+                <viewController id="rM1-1O-yfb" customClass="UpgradesController" customModule="Virus_Dodger" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HRP-fg-fxD" customClass="Up">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <skView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wdY-Vy-sAG">
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                            </skView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="w6a-aG-NGf" firstAttribute="trailing" secondItem="wdY-Vy-sAG" secondAttribute="trailing" id="7RN-Oc-jQv"/>
+                            <constraint firstItem="w6a-aG-NGf" firstAttribute="bottom" secondItem="wdY-Vy-sAG" secondAttribute="bottom" id="T8t-yv-BLp"/>
+                            <constraint firstItem="wdY-Vy-sAG" firstAttribute="leading" secondItem="w6a-aG-NGf" secondAttribute="leading" id="TVv-ca-EKQ"/>
+                            <constraint firstItem="wdY-Vy-sAG" firstAttribute="top" secondItem="w6a-aG-NGf" secondAttribute="top" id="hjU-6u-Aiv"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="w6a-aG-NGf"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="gHM-nK-eKQ"/>
+                    <connections>
+                        <outlet property="upgradeView" destination="wdY-Vy-sAG" id="H4a-6U-Ris"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Im9-oC-umT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2277.5999999999999" y="116.49175412293854"/>
         </scene>
     </scenes>
 </document>

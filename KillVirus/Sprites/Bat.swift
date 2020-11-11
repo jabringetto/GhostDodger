@@ -40,12 +40,12 @@ final class Bat: SKSpriteNode
     
     convenience init()
     {
-    self.init(imageNamed:"Bat0001")
-    addTexturesAndScale()
-    setupAnimation(timePerFrame: GameSceneConstants.batAnimationTimePerFrame)
-    setupPhysics()
-    addGreenEyes()
-    addDeadEyes()
+        self.init(imageNamed:"Bat0001")
+        addTexturesAndScale()
+        setupAnimation(timePerFrame: GameSceneConstants.batAnimationTimePerFrame)
+        setupPhysics()
+        addGreenEyes()
+        addDeadEyes()
     }
     func addTexturesAndScale()->Void
     {
@@ -55,11 +55,51 @@ final class Bat: SKSpriteNode
     }
     func setupAnimation(timePerFrame:TimeInterval)->Void
     {
-       
+        
         batAnimation = SKAction.animate(with: batTextures, timePerFrame:timePerFrame)
         flapWingsForever  = SKAction.repeat(batAnimation,count: -1)
         self.run(flapWingsForever, withKey: flapKey)
-
+        
+    }
+    func flipAnimation()->Void
+    {
+        let numTextures:UInt = UInt(batTextures.count)
+        guard numTextures > 1 else{ return }
+        let midPoint = numTextures/2
+        var firstHalfTextures = [SKTexture]()
+        var secondHalfTextures = [SKTexture]()
+        for (index, texture) in batTextures.enumerated() {
+            if(index < midPoint)
+            {
+                firstHalfTextures.append(texture)
+            }
+            else
+            {
+                 secondHalfTextures.append(texture)
+            }
+        }
+        batTextures =  secondHalfTextures + firstHalfTextures
+        setupAnimation(timePerFrame: GameSceneConstants.batAnimationTimePerFrame)
+    }
+    func randomizeAnimation()->Void
+    {
+        let numTextures:UInt = UInt(batTextures.count)
+        guard numTextures > 1 else{ return }
+        let randomIndex = UInt.random(in: 0 ..< numTextures)
+        var firstHalfTextures = [SKTexture]()
+        var secondHalfTextures = [SKTexture]()
+        for (index, texture) in batTextures.enumerated() {
+            if(index < randomIndex)
+            {
+                firstHalfTextures.append(texture)
+            }
+            else
+            {
+                 secondHalfTextures.append(texture)
+            }
+        }
+        batTextures =  secondHalfTextures + firstHalfTextures
+        setupAnimation(timePerFrame: GameSceneConstants.batAnimationTimePerFrame)
     }
     func setupPhysics()->Void
     {
@@ -96,15 +136,15 @@ final class Bat: SKSpriteNode
         self.addChild(deadEyeLeft)
     }
     
-    func  hitBySkull()->Void
+    func hitBySkull()->Void
     {
         if(healthPoints > 0)
         {
-                self.healthPoints -= 1
+            self.healthPoints -= 1
         }
         else
         {
-                die()
+            die()
         }
     }
     func hitByVirus()->Void
@@ -123,13 +163,13 @@ final class Bat: SKSpriteNode
         {
             die()
         }
-       
+        
     }
     func incrementVirusHitCounter()->Void
     {
         if(self.isHitByVirus)
         {
-             virusHitCounter += 1
+            virusHitCounter += 1
         }
         if(virusHitCounter == virusHitCounterDuration)
         {
@@ -138,7 +178,7 @@ final class Bat: SKSpriteNode
             greenEyeLeft.isHidden = true
             virusHitCounter = 0
             setupAnimation(timePerFrame: GameSceneConstants.batAnimationTimePerFrame)
-           
+            
         }
     }
     func incrementHealthPointsHealingCounter()->Void
@@ -165,9 +205,9 @@ final class Bat: SKSpriteNode
         self.removeAction(forKey:flapKey)
         self.delegate?.batDied()
     }
-
     
     
     
-
+    
+    
 }
