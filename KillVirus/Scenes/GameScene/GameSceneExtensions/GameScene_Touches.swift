@@ -25,7 +25,6 @@ extension GameScene
             }
             if (node.name == "gameOver")
             {
-
                 resetGame()
             }
             if (node.name == "roundCompletedPlayButton")
@@ -39,7 +38,6 @@ extension GameScene
             {
                 self.gameSceneDelegate?.displayUpgradeScene()
             }
-            
          }
         screenTouched(location)
        

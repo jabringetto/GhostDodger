@@ -139,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				D0B2D1E4249DD36C00A4B2E6 /* Announcers */,
+				D0C2503823DB8176009D65DD /* GameScene_Sounds.swift */,
 				D0D80935247255BD0028892A /* Player */,
 				D0D80937247255FA0028892A /* Enemies */,
 				D0D80936247255E20028892A /* Treasure */,
@@ -216,8 +217,6 @@
 				D0C2503623DB7D4F009D65DD /* GameScene_EveryFrame.swift */,
 				D0C2502E23DB5E54009D65DD /* GameScene_Physics.swift */,
 				D0C2503023DB5F87009D65DD /* GameScene_Touches.swift */,
-				D0C2503823DB8176009D65DD /* GameScene_Sounds.swift */,
-				D0E3AA302475EC0100A7A18B /* GameScene_Events.swift */,
 			);
 			path = GameSceneExtensions;
 			sourceTree = "<group>";
@@ -287,6 +286,7 @@
 		D0D80937247255FA0028892A /* Enemies */ = {
 			isa = PBXGroup;
 			children = (
+				D0E3AA302475EC0100A7A18B /* GameScene_Events.swift */,
 				D0B75C8023D240F000623DCE /* Skull.swift */,
 				D0D3C74A245A8F3C00C47DA6 /* Virus.swift */,
 				D0DEDFC8245F5D620074CB7B /* VirusWithFace.swift */,

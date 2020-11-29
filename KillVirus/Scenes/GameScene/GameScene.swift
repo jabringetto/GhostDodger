@@ -36,6 +36,8 @@ struct GameSceneConstants
     static let cyclonePositionDelta:CGFloat = 150.0
     static let cycloneInnerRadiusMultiplier:CGFloat = 0.3
     static let cycloneOuterRadiusMultiplier:CGFloat = 1.2
+    static let cycloneDashboardScaleFactor:CGFloat = 0.15
+    static let forceFieldDashboardScaleFactor:CGFloat = 0.12
     static let totalCountdownDuration:Int = 240
     static let finalCountdownDuration:Int = 100
     static let gameOverConvergenceYPos:CGFloat = 300.0
@@ -90,11 +92,13 @@ struct GameSceneVars
     var bat = Bat()
     var grid = Grid()
     var forceField = ForceField()
+    var forceFieldDashboard = ForceFieldDashboardIndicator()
     var cyclone = Cyclone()
+    var cycloneDashboard = CycloneDashboardIndicator()
     var healthMeter = HealthMeter()
     var countdownAnnouncer = AnnouncerCountdown()
     var roundCompleteAnnouncer = AnnouncerRoundCompleted()
-    var upgradeButton = UpgradeButton()
+    var upgradeButton = SKSpriteNode(imageNamed:"StoreButton")
     var gameInProgress:Bool = false
     var forceFieldDeployed:Bool = false
     var cycloneDeployed:Bool = false

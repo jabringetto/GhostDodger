@@ -10,7 +10,7 @@ import SpriteKit
 
 
 
-final class  HealthMeter:SKSpriteNode
+final class HealthMeter:SKSpriteNode
 {
     let maximumWidth:CGFloat = 80.0
     let grayBar = SKSpriteNode(color: UIColor.gray, size: CGSize(width: 80.0, height: 15.0))
@@ -41,20 +41,43 @@ final class  HealthMeter:SKSpriteNode
     }
     
 }
-final class UpgradeButton:SKSpriteNode
+final class CycloneDashboardIndicator:SKSpriteNode
 {
-
-    let upgradesLabel = SKLabelNode(fontNamed: "Arial-Bold")
+    let miniCylone = Cyclone()
+    let cycloneReserveLabel = SKLabelNode(fontNamed: "Arial-Bold")
     func setup()->Void
     {
-        upgradesLabel.fontSize = 12.0
-        upgradesLabel.fontColor = UIColor(hex:"#add8ffff")
-        upgradesLabel.text = "U P G R A D E S"
-        
-        addChild(upgradesLabel)
-        name = "upgradesButton"
+        self.removeAllChildren()
+        miniCylone.xScale *= GameSceneConstants.cycloneDashboardScaleFactor
+        miniCylone.yScale *= GameSceneConstants.cycloneDashboardScaleFactor
+        miniCylone.position = CGPoint(x: -12.0, y: 0.0)
+        cycloneReserveLabel.fontSize = 18.0
+        cycloneReserveLabel.fontColor = UIColor.white
+        cycloneReserveLabel.position =  CGPoint(x: 12.0, y: -5.0)
+        cycloneReserveLabel.text = ": 0"
+        addChild(miniCylone)
+        addChild(cycloneReserveLabel)
     }
 }
+final class ForceFieldDashboardIndicator:SKSpriteNode
+{
+    let miniForceField = ForceField()
+    let forceFieldReserveLabel = SKLabelNode(fontNamed: "Arial-Bold")
+    func setup()->Void
+    {
+        self.removeAllChildren()
+        miniForceField.xScale *= GameSceneConstants.forceFieldDashboardScaleFactor
+        miniForceField.yScale *= GameSceneConstants.forceFieldDashboardScaleFactor
+        miniForceField.position = CGPoint(x: -12.0, y: 0.0)
+        forceFieldReserveLabel.fontSize = 18.0
+        forceFieldReserveLabel.fontColor = UIColor.white
+        forceFieldReserveLabel.position =  CGPoint(x: 12.0, y: -5.0)
+        forceFieldReserveLabel.text = ": 0"
+        addChild(miniForceField)
+        addChild(forceFieldReserveLabel)
+    }
+}
+
 
 
 

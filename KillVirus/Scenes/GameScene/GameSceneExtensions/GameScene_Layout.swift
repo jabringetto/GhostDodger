@@ -23,19 +23,18 @@ extension GameScene
         addScoreLabel()
         addRoundLabel()
         addPauseButton()
+        addHealthMeter()
         addUpgradesButton()
+        addCycloneDashboardIndicator()
+        addForceFieldDashboardIndicator()
         setupGrid(gameVars.screenWidth,gameVars.screenHeight)
         addBat()
         restoreForceField()
         restoreCyclone()
         addGameOver()
-        addHealthMeter()
         addCountdownannouncer()
         addRoundCompletedAnnouncer()
-        
-        
     }
-    
     private func addBackground()->Void
     {
         varsInitialValues.screenWidth = gameVars.screenWidth
@@ -155,10 +154,7 @@ extension GameScene
         gameVars.roundLabel.text = GameSceneConstants.roundLabelPrefix + String(gameVars.round)
         gameVars.roundLabel.position = CGPoint(x: -20.0 , y:  -(gameVars.screenHeight / 2.0 - GameSceneConstants.roundLabelPadding))
         self.addChild( gameVars.roundLabel)
-        
-        
     }
-
     private func addPauseButton()->Void
     {
         gameVars.pauseButton.position = CGPoint(x: gameVars.screenWidth / 2.0 - GameSceneConstants.healthMeterPadding*0.5, y: -(gameVars.screenHeight / 2.0 - GameSceneConstants.roundLabelPadding))
@@ -168,16 +164,28 @@ extension GameScene
     }
     private func addUpgradesButton()->Void
     {
-       
-        let upgradebuttonX:CGFloat = (gameVars.pauseButton.position.x -  gameVars.roundLabel.position.x)/2.0
-        gameVars.upgradeButton.position = CGPoint(x: upgradebuttonX, y: gameVars.pauseButton.position.y)
-        gameVars.upgradeButton.setup()
+        let upgradebuttonX:CGFloat = gameVars.scoreLabel.position.x
+        gameVars.upgradeButton.position = CGPoint(x: upgradebuttonX, y: gameVars.healthMeter.position.y - 27.5)
         gameVars.upgradeButton.isHidden = true
+        gameVars.upgradeButton.name = "upgradesButton"
         self.addChild(gameVars.upgradeButton)
-        
-        
     }
-    
+    private func addCycloneDashboardIndicator()->Void
+    {
+        let cycloneDashboardX:CGFloat = gameVars.screenWidth * 0.20
+        let cycloneDashboardY:CGFloat = gameVars.roundLabel.position.y + 0.0
+        gameVars.cycloneDashboard.setup()
+        gameVars.cycloneDashboard.position = CGPoint(x: cycloneDashboardX, y: cycloneDashboardY)
+        addChild(gameVars.cycloneDashboard)
+    }
+    private func addForceFieldDashboardIndicator()->Void
+    {
+        let forceFieldDashboardX:CGFloat = gameVars.screenWidth * 0.20
+        let forceFieldDashboardY:CGFloat = gameVars.roundLabel.position.y - 30.0
+        gameVars.forceFieldDashboard.setup()
+        gameVars.forceFieldDashboard.position =  CGPoint(x: forceFieldDashboardX, y: forceFieldDashboardY)
+        addChild(gameVars.forceFieldDashboard)
+    }
     
 }
 

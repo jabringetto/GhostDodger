@@ -151,6 +151,7 @@ extension GameScene
             gameVars.bat.incrementVirusHitCounter()
             gameVars.bat.incrementHealthPointsHealingCounter()
             gameVars.healthMeter.updateGreenBar(gameVars.bat.healthPoints, GameSceneConstants.batMaxHealthPoints)
+
         }
       
        }
