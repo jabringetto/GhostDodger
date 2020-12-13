@@ -57,6 +57,8 @@ extension GameScene
              gameVars.gamePausedState = 0
              gameVars.pauseButton.isHidden = false
              gameVars.upgradeButton.isHidden = false
+             gameVars.forceFieldDashboard.isHidden = false
+             gameVars.cycloneDashboard.isHidden = false
              gameVars.countdownCounter =  GameSceneConstants.totalCountdownDuration
              gameVars.isCountingDown = false
           }
@@ -77,7 +79,11 @@ extension GameScene
                 gameVars.bat.immobilized = true
                 gameVars.bat.removeFromParent()
                 gameVars.pauseButton.removeFromParent()
-                
+                removeCyclone()
+                removeForceField()
+                gameVars.cycloneDashboard.activated = false
+                gameVars.forceFieldDashboard.activated = false
+            
             }
         }
           

@@ -43,9 +43,10 @@ final class HealthMeter:SKSpriteNode
 }
 final class CycloneDashboardIndicator:SKSpriteNode
 {
+    var activated = true
     let miniCylone = Cyclone()
     let cycloneReserveLabel = SKLabelNode(fontNamed: "Arial-Bold")
-    func setup()->Void
+    func setup(cycloneReserve:UInt)->Void
     {
         self.removeAllChildren()
         miniCylone.xScale *= GameSceneConstants.cycloneDashboardScaleFactor
@@ -54,16 +55,22 @@ final class CycloneDashboardIndicator:SKSpriteNode
         cycloneReserveLabel.fontSize = 18.0
         cycloneReserveLabel.fontColor = UIColor.white
         cycloneReserveLabel.position =  CGPoint(x: 12.0, y: -5.0)
-        cycloneReserveLabel.text = ": 0"
+        cycloneReserveLabel.text = ": " + String(cycloneReserve)
         addChild(miniCylone)
         addChild(cycloneReserveLabel)
     }
+    func update(cycloneReserve:UInt)->Void
+    {
+        cycloneReserveLabel.text = ": " + String(cycloneReserve)
+    }
+    
 }
 final class ForceFieldDashboardIndicator:SKSpriteNode
 {
+    var activated = true
     let miniForceField = ForceField()
     let forceFieldReserveLabel = SKLabelNode(fontNamed: "Arial-Bold")
-    func setup()->Void
+    func setup(forceFieldReserve:UInt)->Void
     {
         self.removeAllChildren()
         miniForceField.xScale *= GameSceneConstants.forceFieldDashboardScaleFactor
@@ -72,9 +79,13 @@ final class ForceFieldDashboardIndicator:SKSpriteNode
         forceFieldReserveLabel.fontSize = 18.0
         forceFieldReserveLabel.fontColor = UIColor.white
         forceFieldReserveLabel.position =  CGPoint(x: 12.0, y: -5.0)
-        forceFieldReserveLabel.text = ": 0"
+        forceFieldReserveLabel.text = ": " + String(forceFieldReserve)
         addChild(miniForceField)
         addChild(forceFieldReserveLabel)
+    }
+    func update(forceFieldReserve:UInt)->Void
+    {
+        forceFieldReserveLabel.text = ": " + String(forceFieldReserve)
     }
 }
 

@@ -9,14 +9,13 @@
 import UIKit
 import SpriteKit
 
-class GameViewController: UIViewController, GameSceneDelegate {
+class GameViewController: UIViewController, GameSceneDelegate, UpgradesControllerDelegate {
 
     
 
     @IBOutlet weak var gameView: SKView!
     
     var gameScene = GameScene()
-    var upgradeScene = UpgradeScene()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,9 +29,9 @@ class GameViewController: UIViewController, GameSceneDelegate {
         gameView.showsFPS = true
         gameView.showsNodeCount = true
         
-        upgradeScene = UpgradeScene.init(size: gameView.frame.size)
-        upgradeScene.scaleMode = .resizeFill
-        upgradeScene.backgroundColor = .init(red:0.35, green:0.32, blue:0.10, alpha:1.0)
+      //  upgradeScene = UpgradeScene.init(size: gameView.frame.size)
+       // upgradeScene.scaleMode = .resizeFill
+       // upgradeScene.backgroundColor = .init(red:0.35, green:0.32, blue:0.10, alpha:1.0)
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -45,6 +44,26 @@ class GameViewController: UIViewController, GameSceneDelegate {
         performSegue(withIdentifier: "upgradeSegue", sender: self)
 
     }
+
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "upgradeSegue") {
+            if let upgradeScreen = segue.destination as? UpgradesController {
+                
+                upgradeScreen.gameVars = gameScene.gameVars
+                upgradeScreen.delegate = self
+            }
+        }
+       
+        
+    }
+    
+    // MARK: UpgradesControllerDelegate
+    func receiveVarsUpdate(newVars:GameSceneVars)->Void{
+        gameScene.updateScoreAndReserveValues(newVars)
+        
+    }
+    
 
 
 }

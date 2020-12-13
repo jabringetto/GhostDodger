@@ -26,18 +26,30 @@ extension GameScene
             if (node.name == "gameOver")
             {
                 resetGame()
+                resetUpgradeMinimums()
             }
             if (node.name == "roundCompletedPlayButton")
             {
                 gameVars.round += 1
                 savePersistentValues()
                 clearRoundPersistence()
+                removeForceField()
+                removeCyclone()
                 resetGame()
             }
             if(node.name == "upgradesButton")
             {
                 self.gameSceneDelegate?.displayUpgradeScene()
             }
+            if(node.name == "cycloneDashboardIndicator")
+            {
+                addCyclone()
+            }
+            if(node.name == "forceFieldDashboardIndicator")
+            {
+                addForceField()
+            }
+            
          }
         screenTouched(location)
        

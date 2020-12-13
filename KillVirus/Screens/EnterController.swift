@@ -81,6 +81,8 @@ class EnterViewController: UIViewController {
         removePersisentValue(key: "forceFieldTimer")
         removePersisentValue(key: "cycloneDeployed")
         removePersisentValue(key: "cycloneTimer")
+        removePersisentValue(key: "cycloneReserve")
+        removePersisentValue(key: "forceFieldReserve")
 
         
     }

@@ -50,11 +50,6 @@ extension GameScene: BatDelegate, GridDelegate, AnnouncerRoundCompletedDelegate,
                  
         }
         gameVars.scoreLabel.text = GameSceneConstants.scoreLabelPrefix + String(gameVars.score)
-        
-        if(gameVars.score > 50)
-        {
-            addRandomUpgrade()
-        }
         savePersistentValues()
     }
 
@@ -102,6 +97,18 @@ extension GameScene: BatDelegate, GridDelegate, AnnouncerRoundCompletedDelegate,
         gameSetup()
         loadAllSounds()
     }
+    func resetUpgradeMinimums()->Void
+    {
+        gameVars.forceFieldReserve = max(GameSceneConstants.forceFieldMinReserve, gameVars.forceFieldReserve)
+        gameVars.cycloneReserve = max(GameSceneConstants.cycloneMinReserve, gameVars.cycloneReserve)
+        updateUpgradeLabels()
+    }
+    private func updateUpgradeLabels()->Void
+    {
+        gameVars.forceFieldDashboard.update(forceFieldReserve: gameVars.forceFieldReserve)
+        gameVars.cycloneDashboard.update(cycloneReserve: gameVars.cycloneReserve )
+        
+    }
     func uptakePersistentValues()->Void
     {
        
@@ -140,7 +147,7 @@ extension GameScene: BatDelegate, GridDelegate, AnnouncerRoundCompletedDelegate,
             }
         }
         if let isCycloneDeployed =  fetchPersistentValue(key: "cycloneDeployed") as? Bool
-              {
+        {
                   gameVars.cycloneDeployed = isCycloneDeployed
                   if(gameVars.cycloneDeployed)
                   {
@@ -149,28 +156,45 @@ extension GameScene: BatDelegate, GridDelegate, AnnouncerRoundCompletedDelegate,
                             gameVars.cyclone.timer = cycloneTimer
                       }
                   }
-              }
-       
-        
-        
+        }
+        if let forceFieldReserve = fetchPersistentValue(key: "forceFieldReserve") as? UInt {
+            gameVars.forceFieldReserve = forceFieldReserve
+        }
+        if let cycloneReserve = fetchPersistentValue(key: "cycloneReserve" ) as? UInt {
+            gameVars.cycloneReserve = cycloneReserve
+        }
+ 
     }
-    fileprivate func addForceField()->Void
+    func addForceField()->Void
     {
-         gameVars.forceFieldDeployed = true
-         guard gameVars.forceField.parent == nil  else {return}
-         gameVars.forceField.delegate = self
-         self.addChild(gameVars.forceField)
+        let shouldAddForceField =  gameVars.forceFieldDashboard.activated && gameVars.gamePausedState == 0  && gameVars.forceFieldReserve > 0 && !gameVars.forceFieldDeployed
         
+        if(shouldAddForceField)
+        {
+            guard gameVars.forceField.parent == nil  else {return}
+            gameVars.forceFieldReserve -= 1
+            gameVars.forceFieldDashboard.update(forceFieldReserve:gameVars.forceFieldReserve)
+            gameVars.forceFieldDeployed = true
+            gameVars.forceField.delegate = self
+            gameVars.forceField.position = gameVars.bat.position
+            self.addChild(gameVars.forceField)
+        }
     }
-    fileprivate func addCyclone()->Void
+    func addCyclone()->Void
       {
-           gameVars.cycloneDeployed = true
-           guard gameVars.cyclone.parent == nil  else {return}
-           gameVars.cyclone.delegate = self
-           self.addChild(gameVars.cyclone)
-          
+           let shouldAddCyclone = gameVars.cycloneDashboard.activated && gameVars.gamePausedState == 0  && gameVars.cycloneReserve > 0 && !gameVars.cycloneDeployed
+        
+          if(shouldAddCyclone)
+           {
+                guard gameVars.cyclone.parent == nil  else {return}
+                gameVars.cycloneDeployed = true
+                gameVars.cycloneReserve -= 1
+                gameVars.cycloneDashboard.update(cycloneReserve:gameVars.cycloneReserve)
+                gameVars.cyclone.delegate = self
+                self.addChild(gameVars.cyclone)
+           }
       }
-    private func removeForceField()->Void
+    func removeForceField()->Void
     {
        
         guard gameVars.forceField.parent != nil  else {
@@ -181,7 +205,7 @@ extension GameScene: BatDelegate, GridDelegate, AnnouncerRoundCompletedDelegate,
         gameVars.forceFieldDeployed = false
        
     }
-    private func removeCyclone()->Void
+    func removeCyclone()->Void
      {
         
          guard gameVars.cyclone.parent != nil  else {
@@ -218,6 +242,14 @@ extension GameScene: BatDelegate, GridDelegate, AnnouncerRoundCompletedDelegate,
                 gameVars.currentTouchLocation = location
         }
     }
+    func updateScoreAndReserveValues(_ newVars:GameSceneVars)->Void
+    {
+        gameVars = newVars
+        savePersistentValues()
+        gameVars.scoreLabel.text = GameSceneConstants.scoreLabelPrefix + String(gameVars.score)
+        gameVars.cycloneDashboard.update(cycloneReserve: gameVars.cycloneReserve)
+        gameVars.forceFieldDashboard.update(forceFieldReserve: gameVars.forceFieldReserve)
+    }
     private func pointsLabelAdded(_ pointValue:UInt, _ position:CGPoint)
     {
         if pointValue > 0
@@ -243,6 +275,8 @@ extension GameScene: BatDelegate, GridDelegate, AnnouncerRoundCompletedDelegate,
         pauseButtonPressed()
         gameVars.pauseButton.isHidden = true
         gameVars.upgradeButton.isHidden = true
+        gameVars.forceFieldDashboard.isHidden = true
+        gameVars.cycloneDashboard.isHidden = true
         recordDisplacement()
         showGameOver()
         
@@ -272,8 +306,10 @@ extension GameScene: BatDelegate, GridDelegate, AnnouncerRoundCompletedDelegate,
          savePersisentValue(value: gameVars.bat.position.y, key: "batPositionY")
          savePersisentValue(value: gameVars.forceFieldDeployed, key: "forceFieldDeployed")
          savePersisentValue(value: gameVars.forceField.timer, key: "forceFieldTimer")
+         savePersisentValue(value: gameVars.forceFieldReserve, key: "forceFieldReserve")
          savePersisentValue(value: gameVars.cycloneDeployed, key: "cycloneDeployed")
          savePersisentValue(value: gameVars.cyclone.timer, key: "cycloneTimer")
+         savePersisentValue(value: gameVars.cycloneReserve, key: "cycloneReserve")
         
     }
     func saveGridDataPeristently(positionData: [String : PositionAndType]) {

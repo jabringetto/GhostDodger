@@ -8,7 +8,15 @@
 
 import UIKit
 import SpriteKit
+protocol UpgradesSceneDelegate:AnyObject {
+    func updateVars(newVars:GameSceneVars)->Void
+    func showUpgradeAlert(upgradeType:UpgradeType)->Void
+}
 
+enum UpgradeType {
+    case cyclone
+    case forceField
+}
 struct UpgradeSceneConstants
 {
     static let upgradeSceneScaleMultiplier:CGFloat = 0.7
@@ -25,6 +33,7 @@ struct UpgradeSceneVars
     var forceFieldUpgradeDescLabel =  SKLabelNode(fontNamed: "Arial")
     var cycloneReserveLabel = SKLabelNode(fontNamed: "Arial-Bold")
     var forceFieldReserveLabel =  SKLabelNode(fontNamed: "Arial-Bold")
+    var pointsAvailableLabel =  SKLabelNode(fontNamed: "Arial-Bold")
     var cycloneDeployButton = MenuButton()
     var forceFieldDeployButton = MenuButton()
     var cycloneBuyButton = MenuButton()
@@ -50,7 +59,9 @@ struct UpgradeSceneVars
 
 final class UpgradeScene: SKScene
 {
+    weak var varsDelegate:UpgradesSceneDelegate?
     var upgradeVars = UpgradeSceneVars()
+    var gameVars:GameSceneVars?
     
     override func didMove(to view: SKView)
     {
@@ -61,10 +72,10 @@ final class UpgradeScene: SKScene
         addUpgradeTitleLabels()
         addUpgradeDescriptionLabels()
         addUpgradeReserveLabels()
-        addUpgradeDeployButtons()
+        addPointsAvailableLabel()
         addUpgradeBuyButtons()
-        addForceField()
-        addCyclone()
+        addUpgradeForceField()
+        addUpgradeCyclone()
         
     }
     private func addBackground()->Void
@@ -106,14 +117,14 @@ final class UpgradeScene: SKScene
         let yPosTitle =  0.25 * upgradeVars.cycloneBlackBar.size.height
         upgradeVars.cycloneUpgradeTitleLabel.fontSize = 20.0
         upgradeVars.cycloneUpgradeTitleLabel.fontColor = .white
-        upgradeVars.cycloneUpgradeTitleLabel.text = "C Y C L O N E  U P G R A D E"
+        upgradeVars.cycloneUpgradeTitleLabel.text = "C Y C L O N E "
         
         upgradeVars.cycloneUpgradeTitleLabel.position.y = yPosTitle
         upgradeVars.cycloneBlackBar.addChild(upgradeVars.cycloneUpgradeTitleLabel)
         
         upgradeVars.forceFieldUpgradeTitleLabel.fontSize = 20.0
         upgradeVars.forceFieldUpgradeTitleLabel.fontColor = .white
-        upgradeVars.forceFieldUpgradeTitleLabel.text = "F O R C E  F I E L D  U P G R A D E"
+        upgradeVars.forceFieldUpgradeTitleLabel.text = "F O R C E  F I E L D"
         upgradeVars.forceFieldUpgradeTitleLabel.position.y = yPosTitle
         upgradeVars.forceFieldBlackBar.addChild(upgradeVars.forceFieldUpgradeTitleLabel)
         
@@ -121,15 +132,15 @@ final class UpgradeScene: SKScene
     private func addUpgradeDescriptionLabels()->Void
     {
         let yPosDesc:CGFloat =  0.0
-        upgradeVars.cycloneUpgradeDescLabel.fontSize = 11.0
+        upgradeVars.cycloneUpgradeDescLabel.fontSize = 14.0
         upgradeVars.cycloneUpgradeDescLabel.fontColor = .white
-        upgradeVars.cycloneUpgradeDescLabel.text = "Cyclone to suck down virus and treasure: 30 seconds | 800 pts/$0.99."
+        upgradeVars.cycloneUpgradeDescLabel.text = "Suck down virus and treasure: 30 seconds | 800 pts/$0.99."
         upgradeVars.cycloneUpgradeDescLabel.position.y = yPosDesc
         upgradeVars.cycloneBlackBar.addChild(upgradeVars.cycloneUpgradeDescLabel)
         
-        upgradeVars.forceFieldUpgradeDescLabel.fontSize = 11.0
+        upgradeVars.forceFieldUpgradeDescLabel.fontSize = 14.0
         upgradeVars.forceFieldUpgradeDescLabel.fontColor = .white
-        upgradeVars.forceFieldUpgradeDescLabel.text = "Force Field to repel all incoming virus: 30 seconds | 500 pts/$0.49."
+        upgradeVars.forceFieldUpgradeDescLabel.text = "Repel all incoming virus: 30 seconds | 500 pts/$0.49."
         upgradeVars.forceFieldUpgradeDescLabel.position.y = yPosDesc
         upgradeVars.forceFieldBlackBar.addChild(upgradeVars.forceFieldUpgradeDescLabel)
         
@@ -139,29 +150,29 @@ final class UpgradeScene: SKScene
         let yPosMenu =  -0.35 * upgradeVars.cycloneBlackBar.size.height
         upgradeVars.cycloneReserveLabel.fontSize = 14.0
         upgradeVars.cycloneReserveLabel.fontColor = .white
-        upgradeVars.cycloneReserveLabel.text = "RESERVE: 0"
+        upgradeVars.cycloneReserveLabel.text = "RESERVE: " + String(gameVars?.cycloneReserve ?? 0)
         upgradeVars.cycloneReserveLabel.position.y = yPosMenu
         upgradeVars.cycloneReserveLabel.position.x = 0.5 * (upgradeVars.cycloneReserveLabel.frame.size.width - upgradeVars.screenWidth) + 10.0
         upgradeVars.cycloneBlackBar.addChild(upgradeVars.cycloneReserveLabel)
         
         upgradeVars.forceFieldReserveLabel.fontSize = 14.0
         upgradeVars.forceFieldReserveLabel.fontColor = .white
-        upgradeVars.forceFieldReserveLabel.text = "RESERVE: 0"
+        upgradeVars.forceFieldReserveLabel.text = "RESERVE: " + String(gameVars?.forceFieldReserve ?? 0)
         upgradeVars.forceFieldReserveLabel.position.y = yPosMenu
         upgradeVars.forceFieldReserveLabel.position.x = 0.5 * (upgradeVars.forceFieldReserveLabel.frame.size.width - upgradeVars.screenWidth) + 10.0
         upgradeVars.forceFieldBlackBar.addChild(upgradeVars.forceFieldReserveLabel)
         
     }
-    private func addUpgradeDeployButtons()->Void
+    private func addPointsAvailableLabel()->Void
     {
         let yPosMenu =  -0.35 * upgradeVars.cycloneBlackBar.size.height
-        upgradeVars.cycloneDeployButton.setup(text: "DEPLOY", nodeName: "deployButtonCyclone")
-        upgradeVars.cycloneDeployButton.position.y = yPosMenu
-        upgradeVars.forceFieldDeployButton.setup(text: "DEPLOY", nodeName: "deployButtonForceField")
-        upgradeVars.forceFieldDeployButton.position.y = yPosMenu
-        upgradeVars.cycloneBlackBar.addChild(upgradeVars.cycloneDeployButton)
-        upgradeVars.forceFieldBlackBar.addChild(upgradeVars.forceFieldDeployButton)
-        
+        upgradeVars.pointsAvailableLabel.fontSize = 14.0
+        upgradeVars.pointsAvailableLabel.fontColor = .white
+        upgradeVars.pointsAvailableLabel.text = "POINTS: " + String(gameVars?.score ?? 0)
+        upgradeVars.pointsAvailableLabel.position.y = yPosMenu
+        upgradeVars.pointsAvailableLabel.position.x = 0.5 * (upgradeVars.screenWidth - upgradeVars.pointsAvailableLabel.frame.size.width) - 20.0
+        upgradeVars.pointsAvailableLabel.position.x = 0.5 * (upgradeVars.screenWidth - upgradeVars.pointsAvailableLabel.frame.size.width) - 20.0
+        upgradeVars.cycloneBlackBar.addChild(upgradeVars.pointsAvailableLabel)
     }
     private func addUpgradeBuyButtons()->Void
     {
@@ -170,12 +181,8 @@ final class UpgradeScene: SKScene
         upgradeVars.forceFieldBuyButton.setup(text: "BUY", nodeName: "buyButtonForceField")
         upgradeVars.cycloneBuyButton.position.y = yPosMenu
         upgradeVars.forceFieldBuyButton.position.y = yPosMenu
-        upgradeVars.cycloneBuyButton.position.x = 0.5 * (upgradeVars.screenWidth - upgradeVars.cycloneBuyButton.frame.size.width) - 20.0
-        upgradeVars.forceFieldBuyButton.position.x = 0.5 * (upgradeVars.screenWidth - upgradeVars.cycloneBuyButton.frame.size.width) - 20.0
         upgradeVars.cycloneBlackBar.addChild(upgradeVars.cycloneBuyButton)
         upgradeVars.forceFieldBlackBar.addChild(upgradeVars.forceFieldBuyButton)
-        
-        
     }
     func moveBatsSinusoidally()->Void
     {
@@ -189,17 +196,90 @@ final class UpgradeScene: SKScene
         }
         
     }
-    fileprivate func addForceField()->Void
+    fileprivate func addUpgradeForceField()->Void
     {
         upgradeVars.forceField.xScale *= UpgradeSceneConstants.upgradeSceneScaleMultiplier
         upgradeVars.forceField.yScale *= UpgradeSceneConstants.upgradeSceneScaleMultiplier
         self.addChild(upgradeVars.forceField)
         
     }
-    fileprivate func addCyclone()->Void
+    fileprivate func addUpgradeCyclone()->Void
     {         upgradeVars.cyclone.xScale *= UpgradeSceneConstants.upgradeSceneScaleMultiplier
         upgradeVars.cyclone.yScale *= UpgradeSceneConstants.upgradeSceneScaleMultiplier
         self.addChild(upgradeVars.cyclone)
+        
+    }
+    
+    
+    func buyCycloneAlert()->Void
+    {
+        guard let gameVars = gameVars else { return }
+        let pointsAvailable = gameVars.score
+        if(pointsAvailable >= GameSceneConstants.cycloneUpgradePrice) {
+            varsDelegate?.showUpgradeAlert(upgradeType: .cyclone)
+        } else {
+            // StoreKit
+        }
+    }
+    func buyForceFieldAlert()->Void
+    {
+        guard let gameVars = gameVars else { return }
+        let pointsAvailable = gameVars.score
+        if(pointsAvailable >= GameSceneConstants.forceFieldUpgradePrice) {
+            varsDelegate?.showUpgradeAlert(upgradeType: .forceField)
+        } else {
+            // StoreKit
+        }
+    }
+    func buyCyclone()->Void
+    {
+        guard var gameVars = gameVars else { return }
+        let pointsAvailable = gameVars.score
+        
+        if(pointsAvailable >= GameSceneConstants.cycloneUpgradePrice) {
+            gameVars.cycloneReserve += 1
+            gameVars.score -=  GameSceneConstants.cycloneUpgradePrice
+            self.gameVars = gameVars
+            self.varsDelegate?.updateVars(newVars: gameVars)
+            upgradeVars.cycloneReserveLabel.text = "RESERVE: " + String(gameVars.cycloneReserve)
+            upgradeVars.pointsAvailableLabel.text = "POINTS: " + String(gameVars.score)
+            
+        } else {
+            // StoreKit
+        }
+    }
+    func buyForceField()->Void
+    {
+        guard var gameVars = gameVars else { return }
+        let pointsAvailable = gameVars.score
+        if(pointsAvailable >= GameSceneConstants.forceFieldUpgradePrice) {
+            gameVars.forceFieldReserve += 1
+            gameVars.score -=  GameSceneConstants.forceFieldUpgradePrice
+            self.gameVars = gameVars
+            self.varsDelegate?.updateVars(newVars: gameVars)
+            upgradeVars.forceFieldReserveLabel.text = "RESERVE: " + String(gameVars.forceFieldReserve)
+            upgradeVars.pointsAvailableLabel.text = "POINTS: " + String(gameVars.score)
+            
+        } else {
+            // StoreKit
+        }
+        
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
+    {
+        let touch = touches.first!
+        let location = touch.location(in:self)
+        let nodes = self.nodes(at:location)
+        for node in nodes {
+            if(node.name == "buyButtonCyclone")
+            {
+                buyCycloneAlert()
+            }
+            if(node.name == "buyButtonForceField")
+            {
+                buyForceFieldAlert()
+            }
+        }
         
     }
     
@@ -220,7 +300,7 @@ final class MenuButton:SKSpriteNode
     let menuLabel = SKLabelNode(fontNamed: "Arial-Bold")
     func setup(text:String, nodeName:String)->Void
     {
-        menuLabel.fontSize = 14.0
+        menuLabel.fontSize = 18.0
         menuLabel.fontColor = UIColor(hex:"#add8ffff")
         menuLabel.text = text
         addChild(menuLabel)
