@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D0CA80EB21CF13A400BE7E96"
                BuildableName = "Virus Dodger.app"
-               BlueprintName = "KillVirus"
-               ReferencedContainer = "container:KillVirus.xcodeproj">
+               BlueprintName = "VirusDodger"
+               ReferencedContainer = "container:VirusDodger.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,10 +46,13 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D0CA80EB21CF13A400BE7E96"
             BuildableName = "Virus Dodger.app"
-            BlueprintName = "KillVirus"
-            ReferencedContainer = "container:KillVirus.xcodeproj">
+            BlueprintName = "VirusDodger"
+            ReferencedContainer = "container:VirusDodger.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <StoreKitConfigurationFileReference
+         identifier = "../../KillVirus/In-AppPurchases/StoreKitConfig.storekit">
+      </StoreKitConfigurationFileReference>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -63,8 +66,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D0CA80EB21CF13A400BE7E96"
             BuildableName = "Virus Dodger.app"
-            BlueprintName = "KillVirus"
-            ReferencedContainer = "container:KillVirus.xcodeproj">
+            BlueprintName = "VirusDodger"
+            ReferencedContainer = "container:VirusDodger.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

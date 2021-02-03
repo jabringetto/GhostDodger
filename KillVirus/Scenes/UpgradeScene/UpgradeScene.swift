@@ -8,9 +8,12 @@
 
 import UIKit
 import SpriteKit
+import StoreKit
+
+
 protocol UpgradesSceneDelegate:AnyObject {
     func updateVars(newVars:GameSceneVars)->Void
-    func showUpgradeAlert(upgradeType:UpgradeType)->Void
+    func showUpgradeAlert(upgradeType:UpgradeType, paid:Bool)->Void
 }
 
 enum UpgradeType {
@@ -46,6 +49,7 @@ struct UpgradeSceneVars
     var cycloneBat = Bat()
     var batMoveSineArgument:CGFloat = 0.0
     var cycloneDeltaY:CGFloat = 0.0
+    
     
     mutating func setScreenDimensions(_ width:CGFloat, _ height:CGFloat)->Void
     {
@@ -140,7 +144,7 @@ final class UpgradeScene: SKScene
         
         upgradeVars.forceFieldUpgradeDescLabel.fontSize = 14.0
         upgradeVars.forceFieldUpgradeDescLabel.fontColor = .white
-        upgradeVars.forceFieldUpgradeDescLabel.text = "Repel all incoming virus: 30 seconds | 500 pts/$0.49."
+        upgradeVars.forceFieldUpgradeDescLabel.text = "Repel all incoming virus: 30 seconds | 800 pts/$0.99."
         upgradeVars.forceFieldUpgradeDescLabel.position.y = yPosDesc
         upgradeVars.forceFieldBlackBar.addChild(upgradeVars.forceFieldUpgradeDescLabel)
         
@@ -216,20 +220,40 @@ final class UpgradeScene: SKScene
         guard let gameVars = gameVars else { return }
         let pointsAvailable = gameVars.score
         if(pointsAvailable >= GameSceneConstants.cycloneUpgradePrice) {
-            varsDelegate?.showUpgradeAlert(upgradeType: .cyclone)
+            varsDelegate?.showUpgradeAlert(upgradeType: .cyclone, paid:false)
         } else {
             // StoreKit
+            varsDelegate?.showUpgradeAlert(upgradeType: .cyclone, paid:true)
         }
+        
     }
     func buyForceFieldAlert()->Void
     {
         guard let gameVars = gameVars else { return }
         let pointsAvailable = gameVars.score
         if(pointsAvailable >= GameSceneConstants.forceFieldUpgradePrice) {
-            varsDelegate?.showUpgradeAlert(upgradeType: .forceField)
+            varsDelegate?.showUpgradeAlert(upgradeType: .forceField, paid: false)
         } else {
             // StoreKit
+            varsDelegate?.showUpgradeAlert(upgradeType: .forceField, paid: true)
         }
+    }
+    func addBoughtCyclone()->Void
+    {
+        
+        guard var gameVars = gameVars else { return }
+        gameVars.cycloneReserve += 1
+        self.gameVars = gameVars
+        self.varsDelegate?.updateVars(newVars: gameVars)
+        upgradeVars.cycloneReserveLabel.text = "RESERVE: " + String(gameVars.cycloneReserve)
+    }
+    func addBoughtForceField()->Void
+    {
+        guard var gameVars = gameVars else { return }
+        gameVars.forceFieldReserve += 1
+        self.gameVars = gameVars
+        self.varsDelegate?.updateVars(newVars: gameVars)
+        upgradeVars.forceFieldReserveLabel.text = "RESERVE: " + String(gameVars.forceFieldReserve)
     }
     func buyCyclone()->Void
     {
@@ -246,6 +270,7 @@ final class UpgradeScene: SKScene
             
         } else {
             // StoreKit
+        
         }
     }
     func buyForceField()->Void
@@ -265,6 +290,7 @@ final class UpgradeScene: SKScene
         }
         
     }
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
     {
         let touch = touches.first!

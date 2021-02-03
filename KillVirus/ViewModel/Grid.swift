@@ -122,7 +122,6 @@ final class Grid:ConvergeAndShrinkDelegate
             
         }
         self.delegate?.saveGridDataPeristently(positionData: positionDataDict)
-        print(positionDataDict)
 
     }
     func populateGameItems()->Void

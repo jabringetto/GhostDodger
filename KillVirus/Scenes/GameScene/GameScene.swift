@@ -85,7 +85,7 @@ struct GameSceneConstants
     static let pointLabelVelocity:CGFloat = 0.8
     static let pointLabelAlphaThreshold:CGFloat = 0.3
     static let forceFieldScaleConstant:CGFloat = 0.6
-    static let forceFieldUpgradePrice:UInt = 500
+    static let forceFieldUpgradePrice:UInt = 800
     static let cycloneUpgradePrice:UInt = 800
     static let menuLabelFontSize:CGFloat = 14.0
     static let scoreLabelPrefix = "SCORE: "

@@ -53,6 +53,8 @@
 		D0E3AA312475EC0100A7A18B /* GameScene_Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E3AA302475EC0100A7A18B /* GameScene_Events.swift */; };
 		D0F4116C24F2DE6500897B54 /* ForceField.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D0F4116B24F2DE6500897B54 /* ForceField.atlas */; };
 		D0F4116E24F2E09000897B54 /* ForceField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F4116D24F2E09000897B54 /* ForceField.swift */; };
+		D0FA7FA82586F32500EA7163 /* IAP_ProductIDs.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0FA7FA72586F32500EA7163 /* IAP_ProductIDs.plist */; };
+		D0FA7FAB2586F44900EA7163 /* IAPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FA7FAA2586F44900EA7163 /* IAPManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,6 +106,9 @@
 		D0E3AA302475EC0100A7A18B /* GameScene_Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene_Events.swift; sourceTree = "<group>"; };
 		D0F4116B24F2DE6500897B54 /* ForceField.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = ForceField.atlas; sourceTree = "<group>"; };
 		D0F4116D24F2E09000897B54 /* ForceField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForceField.swift; sourceTree = "<group>"; };
+		D0FA7FA72586F32500EA7163 /* IAP_ProductIDs.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = IAP_ProductIDs.plist; sourceTree = "<group>"; };
+		D0FA7FAA2586F44900EA7163 /* IAPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPManager.swift; sourceTree = "<group>"; };
+		D0FA7FAE258700A200EA7163 /* StoreKitConfig.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = StoreKitConfig.storekit; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,9 +247,8 @@
 			isa = PBXGroup;
 			children = (
 				D0CA80EF21CF13A400BE7E96 /* AppDelegate.swift */,
-				D0CA80F321CF13A400BE7E96 /* Main.storyboard */,
-				D0CA80F821CF13A600BE7E96 /* LaunchScreen.storyboard */,
 				D0CA80FB21CF13A600BE7E96 /* Info.plist */,
+				D0FA7FA52586F1CB00EA7163 /* Storyboards */,
 				D0C2502623D7B156009D65DD /* Screens */,
 				D0C2502B23DB5C4D009D65DD /* Scenes */,
 				D0C2502323D7B0F4009D65DD /* Sprites */,
@@ -252,6 +256,7 @@
 				D0C2502523D7B11D009D65DD /* ViewModel */,
 				D0C2502723D7B1BC009D65DD /* Assets */,
 				D0DE71B123BBEF4600B87144 /* Sounds */,
+				D0FA7FA42586F18D00EA7163 /* In-AppPurchases */,
 			);
 			path = KillVirus;
 			sourceTree = "<group>";
@@ -331,12 +336,31 @@
 			path = EnterScene;
 			sourceTree = "<group>";
 		};
+		D0FA7FA42586F18D00EA7163 /* In-AppPurchases */ = {
+			isa = PBXGroup;
+			children = (
+				D0FA7FAA2586F44900EA7163 /* IAPManager.swift */,
+				D0FA7FA72586F32500EA7163 /* IAP_ProductIDs.plist */,
+				D0FA7FAE258700A200EA7163 /* StoreKitConfig.storekit */,
+			);
+			path = "In-AppPurchases";
+			sourceTree = "<group>";
+		};
+		D0FA7FA52586F1CB00EA7163 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				D0CA80F321CF13A400BE7E96 /* Main.storyboard */,
+				D0CA80F821CF13A600BE7E96 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D0CA80EB21CF13A400BE7E96 /* KillVirus */ = {
+		D0CA80EB21CF13A400BE7E96 /* VirusDodger */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D0CA80FE21CF13A600BE7E96 /* Build configuration list for PBXNativeTarget "KillVirus" */;
+			buildConfigurationList = D0CA80FE21CF13A600BE7E96 /* Build configuration list for PBXNativeTarget "VirusDodger" */;
 			buildPhases = (
 				D0CA80E821CF13A400BE7E96 /* Sources */,
 				D0CA80E921CF13A400BE7E96 /* Frameworks */,
@@ -346,7 +370,7 @@
 			);
 			dependencies = (
 			);
-			name = KillVirus;
+			name = VirusDodger;
 			productName = SpinGems;
 			productReference = D0CA80EC21CF13A400BE7E96 /* Virus Dodger.app */;
 			productType = "com.apple.product-type.application";
@@ -367,7 +391,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D0CA80E721CF13A400BE7E96 /* Build configuration list for PBXProject "KillVirus" */;
+			buildConfigurationList = D0CA80E721CF13A400BE7E96 /* Build configuration list for PBXProject "VirusDodger" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -380,7 +404,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D0CA80EB21CF13A400BE7E96 /* KillVirus */,
+				D0CA80EB21CF13A400BE7E96 /* VirusDodger */,
 			);
 		};
 /* End PBXProject section */
@@ -398,6 +422,7 @@
 				D0391B4323A436B300752CEC /* Bat.atlas in Resources */,
 				D0CA80FA21CF13A600BE7E96 /* LaunchScreen.storyboard in Resources */,
 				D0CA80F721CF13A600BE7E96 /* Assets.xcassets in Resources */,
+				D0FA7FA82586F32500EA7163 /* IAP_ProductIDs.plist in Resources */,
 				D0CA80F521CF13A400BE7E96 /* Main.storyboard in Resources */,
 				D0CA810621CF1AF400BE7E96 /* RubyFrame.atlas in Resources */,
 				D0B2D1E3249DC3D800A4B2E6 /* Coin01.mp3 in Resources */,
@@ -415,6 +440,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0FA7FAB2586F44900EA7163 /* IAPManager.swift in Sources */,
 				D0D94A6723D21624007CCC5E /* Coin.swift in Sources */,
 				D0DEDFC9245F5D620074CB7B /* VirusWithFace.swift in Sources */,
 				D0C2503523DB6318009D65DD /* GameScene_Layout.swift in Sources */,
@@ -600,7 +626,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = JAB.KillVirus;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jabringetto.VirusDodger;
 				PRODUCT_NAME = "Virus Dodger";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -618,7 +644,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = JAB.KillVirus;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jabringetto.VirusDodger;
 				PRODUCT_NAME = "Virus Dodger";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -628,7 +654,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D0CA80E721CF13A400BE7E96 /* Build configuration list for PBXProject "KillVirus" */ = {
+		D0CA80E721CF13A400BE7E96 /* Build configuration list for PBXProject "VirusDodger" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D0CA80FC21CF13A600BE7E96 /* Debug */,
@@ -637,7 +663,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D0CA80FE21CF13A600BE7E96 /* Build configuration list for PBXNativeTarget "KillVirus" */ = {
+		D0CA80FE21CF13A600BE7E96 /* Build configuration list for PBXNativeTarget "VirusDodger" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D0CA80FF21CF13A600BE7E96 /* Debug */,
