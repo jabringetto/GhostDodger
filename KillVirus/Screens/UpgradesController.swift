@@ -182,8 +182,8 @@ class UpgradesController: UIViewController, UpgradesSceneDelegate {
             DispatchQueue.main.async {
         
                 switch result {
-                case .success(let products): self?.upgradeProducts = products;
-                print("JASPER")
+                case .success(let products):
+                    self?.upgradeProducts = products;
                     for product in products {
                         print("productIdentifier: \(product.productIdentifier) ")
                         print("price: \(product.price) ")

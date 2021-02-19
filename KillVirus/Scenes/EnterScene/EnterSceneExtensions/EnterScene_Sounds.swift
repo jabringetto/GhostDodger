@@ -1,18 +1,28 @@
 //
-//  GameScene_Sounds.swift
+//  EnterScene_Sounds.swift
 //  VirusDodger
 //
-//  Created by Jeremy Bringetto on 1/24/20.
-//  Copyright © 2020 Jeremy Bringetto. All rights reserved.
+//  Created by Jeremy Bringetto on 2/14/21.
+//  Copyright © 2021 Jeremy Bringetto. All rights reserved.
 //
 
 import Foundation
 import SpriteKit
 import AVFoundation
 
-
-extension GameScene
+extension EnterScene
 {
+
+    
+    func loadEnterSceneBackgroundMusic()->Void
+    {
+        loadSound("VirusDodger_EnterScene.mp3", player: &sceneVars.enterMusicPlayer, volume: 0.50)
+    }
+    func playEnterSceneBackgroundMusic()->Void
+    {
+        sceneVars.enterMusicPlayer?.numberOfLoops = -1
+        sceneVars.enterMusicPlayer?.play()
+    }
     func playSound(_ player:AVAudioPlayer?)->Void
     {
        
@@ -37,12 +47,6 @@ extension GameScene
      
         
     }
-    func loadAllSounds()->Void
-    {
-       loadBuzzerSound()
-       loadTreasureSound()
-       loadCoinSound()
-    }
     private func loadSound(_ filename:String, player:inout AVAudioPlayer?, volume:Float)->Void
     {
         let path = Bundle.main.path(forResource:filename, ofType:nil) ?? ""
@@ -55,22 +59,9 @@ extension GameScene
         {
                    print("loading sound failed")
         }
-    }
-    private func loadCoinSound()->Void
-    {
-        loadSound("Coin01.mp3", player: &gameVars.coinSoundEffect, volume: GameSceneConstants.coinSoundEffectVolume)
-    }
-    private func loadBuzzerSound()->Void
-    {
-        loadSound("Buzzer.mp3", player: &gameVars.buzzerSoundEffect , volume: GameSceneConstants.buzzerSoundEffectVolume)
-           
-    }
-    private func loadTreasureSound()->Void
-    {
-        loadSound("Treasure.mp3", player: &gameVars.treasureSoundEffect , volume:1.0)
-        
+
     }
     
-
-
+    
+    
 }

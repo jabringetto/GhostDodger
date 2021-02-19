@@ -46,6 +46,7 @@ struct GameSceneConstants
     static let gameOverConvergenceCoefficent:CGFloat = 0.99
     static let gameOverInitialPosition:CGFloat = 1000.0
     static let gemScale:CGFloat = 0.3
+    static let gameSceneHorizontalPadding:CGFloat = -20.0
     static let gameSceneBottomPadding:CGFloat = 25.0
     static let gemConvergeSpeed:CGFloat = 1.3
     static let gemRotationConstant:TimeInterval = 0.02
@@ -88,6 +89,7 @@ struct GameSceneConstants
     static let forceFieldUpgradePrice:UInt = 800
     static let cycloneUpgradePrice:UInt = 800
     static let menuLabelFontSize:CGFloat = 14.0
+    static let upgradePrice:Decimal = 0.99
     static let scoreLabelPrefix = "SCORE: "
     static let roundLabelPrefix = "ROUND: "
     

@@ -143,7 +143,7 @@ extension GameScene
         gameVars.scoreLabel = SKLabelNode(fontNamed: "Arial-Bold")
         gameVars.scoreLabel.fontSize = GameSceneConstants.menuLabelFontSize
         gameVars.scoreLabel.text = GameSceneConstants.scoreLabelPrefix + String(gameVars.score)
-        gameVars.scoreLabel.position = CGPoint(x:-20.0 , y: GameSceneConstants.gameSceneBottomPadding  - (gameVars.screenHeight / 2.0 - GameSceneConstants.scoreLabelPadding))
+        gameVars.scoreLabel.position = CGPoint(x: GameSceneConstants.gameSceneHorizontalPadding , y: GameSceneConstants.gameSceneBottomPadding  - (gameVars.screenHeight / 2.0 - GameSceneConstants.scoreLabelPadding))
         self.addChild( gameVars.scoreLabel)
     }
     private func addRoundLabel()->Void

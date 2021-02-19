@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import SpriteKit
+import AVFoundation
 
 extension EnterScene
     
@@ -51,13 +52,13 @@ extension EnterScene
     }
     func addEnterCoins()->Void
     {
-        sceneVars.enterGoldCoin.xScale = 0.6
-        sceneVars.enterGoldCoin.yScale = 0.6
+        sceneVars.enterGoldCoin.xScale = EnterSceneConstants.enterCoinScale
+        sceneVars.enterGoldCoin.yScale = EnterSceneConstants.enterCoinScale
         sceneVars.enterGoldCoin.position.x = EnterSceneConstants.conveyorSpacing * 2.6
         sceneVars.conveyorLayer.addChild(sceneVars.enterGoldCoin)
         
-        sceneVars.enterSilverCoin.xScale = 0.6
-        sceneVars.enterSilverCoin.yScale = 0.6
+        sceneVars.enterSilverCoin.xScale = EnterSceneConstants.enterCoinScale
+        sceneVars.enterSilverCoin.yScale = EnterSceneConstants.enterCoinScale
         sceneVars.enterSilverCoin.position.x = EnterSceneConstants.conveyorSpacing * 3.0
         sceneVars.conveyorLayer.addChild(sceneVars.enterSilverCoin)
     }
@@ -101,8 +102,8 @@ extension EnterScene
         for letter in sceneVars.virusLetters
         {
             centerLetterVertically(letterNode: letter)
-            letter.xScale = 0.8
-            letter.yScale = 0.8
+            letter.xScale = EnterSceneConstants.enterLettersScale
+            letter.yScale = EnterSceneConstants.enterLettersScale
         }
         sceneVars.letterG.position.y -= sceneVars.letterG.size.height * 0.5
               

@@ -8,6 +8,7 @@
 
 import UIKit
 import SpriteKit
+import AVFoundation
 
 struct EnterSceneConstants
 {
@@ -15,6 +16,8 @@ struct EnterSceneConstants
     static let conveyorSpacing:CGFloat = 400.0
     static let enterBatScale:CGFloat = 1.2
     static let enterRubyScale:CGFloat = 2.0
+    static let enterCoinScale:CGFloat = 0.6
+    static let enterLettersScale:CGFloat = 0.8
 
 }
 struct EnterSceneVars
@@ -31,7 +34,6 @@ struct EnterSceneVars
      var enterGoldCoin = Coin.init(.goldCoin)
      var enterSilverCoin = Coin.init(.silverCoin)
      var enterSkull = Skull.init(.skull)
-    
      var enterEmerald = Gem.init(.emerald)
      var virusLetters = [SKSpriteNode]()
      var virusLettersSineArgument:CGFloat = 0.0
@@ -41,15 +43,14 @@ struct EnterSceneVars
      var letterR =  SKSpriteNode(imageNamed:"Letter_R")
      var letterU =  SKSpriteNode(imageNamed:"Letter_U")
      var letterS =  SKSpriteNode(imageNamed:"Letter_S")
-     
      var letterD = SKSpriteNode(imageNamed:"Letter_D")
      var letterO = SKSpriteNode(imageNamed:"Letter_O")
      var letterD_lowercase = SKSpriteNode(imageNamed:"Letter_D_lowercase")
      var letterG = SKSpriteNode(imageNamed:"Letter_G")
      var letterE = SKSpriteNode(imageNamed:"Letter_E")
      var letterR_lowercase =  SKSpriteNode(imageNamed:"Letter_R_lowercase")
-    
      var letterVPosition:CGPoint = CGPoint.zero
+     var enterMusicPlayer:AVAudioPlayer?
     
      mutating func setScreenDimensions(_ width:CGFloat, _ height:CGFloat)->Void
      {
@@ -75,6 +76,8 @@ class EnterScene: SKScene
         addEnterSkull()
         setLetterPositions(width: sceneVars.screenWidth, height: sceneVars.screenHeight)
         addLetters()
+        loadEnterSceneBackgroundMusic()
+        playEnterSceneBackgroundMusic()
        
     }
 

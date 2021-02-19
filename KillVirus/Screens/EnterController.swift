@@ -25,7 +25,6 @@ class EnterViewController: UIViewController {
         scene = EnterScene.init(size: enterView.frame.size)
         scene.sceneVars.setScreenDimensions(UIScreen.main.bounds.width,UIScreen.main.bounds.height)
         scene.scaleMode = .resizeFill
-        //scene.backgroundColor = .init(red:0.65, green:0.32, blue:0.00, alpha:1.0)
         scene.backgroundColor = UIColor.black
         enterView.presentScene(scene)
     
@@ -34,9 +33,10 @@ class EnterViewController: UIViewController {
     func showGameInProgressAlert()->Void
     {
         let alert = UIAlertController.init(title: "Game In Progress", message: "Our records indicate a saved game currently in progress. You may continue your saved game or discard and begin a new game.", preferredStyle: .actionSheet)
-        let discardAction = UIAlertAction(title: "Discard", style: .cancel, handler: { action in
-            self.removeAllPersistence()
-            self.performSegue(withIdentifier: "enterSegue", sender: self)
+        let discardAction = UIAlertAction(title: "Discard", style: .cancel, handler: { [weak self] action in
+            self?.removeAllPersistence()
+            self?.scene.sceneVars.enterMusicPlayer?.pause()
+            self?.performSegue(withIdentifier: "enterSegue", sender: self)
         })
         let continueAction = UIAlertAction(title: "Continue", style: .default, handler: { action in
              self.performSegue(withIdentifier: "enterSegue", sender: self)
@@ -56,6 +56,7 @@ class EnterViewController: UIViewController {
                 }
                 else
                 {
+                    scene.sceneVars.enterMusicPlayer?.pause()
                     self.performSegue(withIdentifier: "enterSegue", sender: self)
                 }
         }
