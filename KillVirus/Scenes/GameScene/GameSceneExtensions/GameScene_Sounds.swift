@@ -42,6 +42,8 @@ extension GameScene
        loadBuzzerSound()
        loadTreasureSound()
        loadCoinSound()
+       loadGameSceneBackgroundMusic()
+       playGameSceneBackgroundMusic()
     }
     private func loadSound(_ filename:String, player:inout AVAudioPlayer?, volume:Float)->Void
     {
@@ -70,7 +72,15 @@ extension GameScene
         loadSound("Treasure.mp3", player: &gameVars.treasureSoundEffect , volume:1.0)
         
     }
-    
+    func loadGameSceneBackgroundMusic()->Void
+    {
+        loadSound("VirusDodger_GameScene.mp3", player: &gameVars.backgroundMusicPlayer, volume: 0.4)
+    }
+    func playGameSceneBackgroundMusic()->Void
+    {
+        gameVars.backgroundMusicPlayer?.numberOfLoops = -1
+        gameVars.backgroundMusicPlayer?.play()
+    }
 
 
 }

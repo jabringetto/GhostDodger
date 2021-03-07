@@ -35,7 +35,6 @@ class EnterViewController: UIViewController {
         let alert = UIAlertController.init(title: "Game In Progress", message: "Our records indicate a saved game currently in progress. You may continue your saved game or discard and begin a new game.", preferredStyle: .actionSheet)
         let discardAction = UIAlertAction(title: "Discard", style: .cancel, handler: { [weak self] action in
             self?.removeAllPersistence()
-            self?.scene.sceneVars.enterMusicPlayer?.pause()
             self?.performSegue(withIdentifier: "enterSegue", sender: self)
         })
         let continueAction = UIAlertAction(title: "Continue", style: .default, handler: { action in
@@ -56,7 +55,6 @@ class EnterViewController: UIViewController {
                 }
                 else
                 {
-                    scene.sceneVars.enterMusicPlayer?.pause()
                     self.performSegue(withIdentifier: "enterSegue", sender: self)
                 }
         }
@@ -91,6 +89,9 @@ class EnterViewController: UIViewController {
     {
            defaults.removeObject(forKey:key)
            defaults.synchronize()
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        scene.sceneVars.enterMusicPlayer?.stop()
     }
     
 }

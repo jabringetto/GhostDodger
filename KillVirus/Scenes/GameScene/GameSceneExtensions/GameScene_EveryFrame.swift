@@ -61,6 +61,7 @@ extension GameScene
              gameVars.cycloneDashboard.isHidden = false
              gameVars.countdownCounter =  GameSceneConstants.totalCountdownDuration
              gameVars.isCountingDown = false
+
           }
        }
        private func moveBackgroundLayers()->Void

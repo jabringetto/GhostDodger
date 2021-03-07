@@ -16,7 +16,7 @@ extension EnterScene
     
     func loadEnterSceneBackgroundMusic()->Void
     {
-        loadSound("VirusDodger_EnterScene.mp3", player: &sceneVars.enterMusicPlayer, volume: 0.50)
+        loadSound("VirusDodger_EnterScene.mp3", player: &sceneVars.enterMusicPlayer, volume: 0.5)
     }
     func playEnterSceneBackgroundMusic()->Void
     {

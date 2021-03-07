@@ -50,8 +50,8 @@ struct GameSceneConstants
     static let gameSceneBottomPadding:CGFloat = 25.0
     static let gemConvergeSpeed:CGFloat = 1.3
     static let gemRotationConstant:TimeInterval = 0.02
-    static let buzzerSoundEffectVolume:Float = 0.03
-    static let coinSoundEffectVolume:Float = 0.09
+    static let buzzerSoundEffectVolume:Float = 0.1
+    static let coinSoundEffectVolume:Float = 0.2
     static let batMaxHealthPoints:UInt = 20
     static let blackBarHeight:CGFloat = 90.0
     static let coinXScale:CGFloat = 0.3
@@ -134,6 +134,7 @@ struct GameSceneVars
     var buzzerSoundEffect:AVAudioPlayer?
     var treasureSoundEffect:AVAudioPlayer?
     var coinSoundEffect:AVAudioPlayer?
+    var backgroundMusicPlayer:AVAudioPlayer?
     var columnHalfWidth:CGFloat = 0.0
     var columnHeight:CGFloat = 60.0
     var roundEndPosition:CGFloat = 10000.0

@@ -33,6 +33,7 @@
 		D0C2503523DB6318009D65DD /* GameScene_Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C2503423DB6318009D65DD /* GameScene_Layout.swift */; };
 		D0C2503723DB7D4F009D65DD /* GameScene_EveryFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C2503623DB7D4F009D65DD /* GameScene_EveryFrame.swift */; };
 		D0C2503923DB8176009D65DD /* GameScene_Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C2503823DB8176009D65DD /* GameScene_Sounds.swift */; };
+		D0C7D59B25E220B600A384AC /* VirusDodger_GameScene.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D0C7D59A25E220B600A384AC /* VirusDodger_GameScene.mp3 */; };
 		D0CA80F021CF13A400BE7E96 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CA80EF21CF13A400BE7E96 /* AppDelegate.swift */; };
 		D0CA80F221CF13A400BE7E96 /* EnterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CA80F121CF13A400BE7E96 /* EnterController.swift */; };
 		D0CA80F521CF13A400BE7E96 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0CA80F321CF13A400BE7E96 /* Main.storyboard */; };
@@ -85,6 +86,7 @@
 		D0C2503423DB6318009D65DD /* GameScene_Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene_Layout.swift; sourceTree = "<group>"; };
 		D0C2503623DB7D4F009D65DD /* GameScene_EveryFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene_EveryFrame.swift; sourceTree = "<group>"; };
 		D0C2503823DB8176009D65DD /* GameScene_Sounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene_Sounds.swift; sourceTree = "<group>"; };
+		D0C7D59A25E220B600A384AC /* VirusDodger_GameScene.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = VirusDodger_GameScene.mp3; sourceTree = "<group>"; };
 		D0CA80EC21CF13A400BE7E96 /* Virus Dodger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Virus Dodger.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0CA80EF21CF13A400BE7E96 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0CA80F121CF13A400BE7E96 /* EnterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterController.swift; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 		D0DE71B123BBEF4600B87144 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				D0C7D59A25E220B600A384AC /* VirusDodger_GameScene.mp3 */,
 				D03E468825E02B9300C32FEE /* VirusDodger_EnterScene.mp3 */,
 				D0B2D1E2249DC3D800A4B2E6 /* Coin01.mp3 */,
 				D084CBB22471B75F00378317 /* Buzzer.mp3 */,
@@ -420,6 +423,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0C7D59B25E220B600A384AC /* VirusDodger_GameScene.mp3 in Resources */,
 				D0F4116C24F2DE6500897B54 /* ForceField.atlas in Resources */,
 				D0DE71B323BBEF5B00B87144 /* Treasure.mp3 in Resources */,
 				D03982BF23B70EA600308022 /* Emerald.atlas in Resources */,
