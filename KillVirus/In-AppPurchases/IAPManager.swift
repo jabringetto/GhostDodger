@@ -66,29 +66,6 @@ class IAPManager: NSObject {
         onBuyProductHandler = handler
     }
 
-    func purchase(product: SKProduct) -> Bool {
-
-        if !IAPManager.shared.canMakePayments() {
-            return false
-        } else {
-
-            IAPManager.shared.buy(product: product) { (result) in
-
-                DispatchQueue.main.async {
-                   // self.delegate?.didFinishLongProcess()
-                    switch result {
-                    case .success(_):
-
-                    break // self.updateGameDataWithPurchasedProduct(product)
-
-                    case .failure(let error): break // self.delegate?.showIAPRelatedError(error)
-                    }
-                }
-            }
-            return true
-        }
-    }
-
     enum IAPManagerError: Error {
         case noProductIDsFound
         case noProductsFound
@@ -135,42 +112,42 @@ extension IAPManager: SKProductsRequestDelegate {
 // MARK: SKPaymentTransactionObserver
 extension IAPManager: SKPaymentTransactionObserver {
 
-        func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-            transactions.forEach { (transaction) in
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        transactions.forEach { (transaction) in
 
-                switch transaction.transactionState {
-                case .purchased:
-                    onBuyProductHandler?(.success(true))
-                    SKPaymentQueue.default().finishTransaction(transaction)
+            switch transaction.transactionState {
+            case .purchased:
+                onBuyProductHandler?(.success(true))
+                SKPaymentQueue.default().finishTransaction(transaction)
 
-                case .restored: break
+            case .restored: break
 
-                case .failed:
+            case .failed:
                 if let error = transaction.error as? SKError {
                     if error.code != .paymentCancelled {
-                            onBuyProductHandler?(.failure(error))
-                        } else {
-                            onBuyProductHandler?(.failure(IAPManagerError.paymentWasCancelled))
-                        }
-                        print("IAP Error:", error.localizedDescription)
+                        onBuyProductHandler?(.failure(error))
+                    } else {
+                        onBuyProductHandler?(.failure(IAPManagerError.paymentWasCancelled))
+                    }
+                    print("IAP Error:", error.localizedDescription)
                 }
                 SKPaymentQueue.default().finishTransaction(transaction)
 
-                case .deferred, .purchasing: break
+            case .deferred, .purchasing: break
 
-                @unknown default: break
+            @unknown default: break
 
-                }
             }
         }
-        func startObserving() {
-            SKPaymentQueue.default().add(self)
-        }
+    }
+    func startObserving() {
+        SKPaymentQueue.default().add(self)
+    }
 
-        func stopObserving() {
-            SKPaymentQueue.default().remove(self)
-        }
-        func canMakePayments() -> Bool {
-            return SKPaymentQueue.canMakePayments()
-        }
+    func stopObserving() {
+        SKPaymentQueue.default().remove(self)
+    }
+    func canMakePayments() -> Bool {
+        return SKPaymentQueue.canMakePayments()
+    }
 }

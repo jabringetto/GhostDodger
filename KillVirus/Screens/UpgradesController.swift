@@ -39,9 +39,9 @@ class UpgradesController: UIViewController, UpgradesSceneDelegate {
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
-         super.viewWillAppear(animated)
-          self.navigationController?.setNavigationBarHidden(false, animated: false)
-     }
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+    }
     func thankYouForPurchaseAlert(_ upgradeType: UpgradeType, _ paid: Bool) -> UIAlertController {
         var alert = UIAlertController()
         let type = typeStringForType(upgradeType)
@@ -76,11 +76,17 @@ class UpgradesController: UIViewController, UpgradesSceneDelegate {
             if paid {
                 let paidCycloneAction =  UIAlertAction(title: "Buy", style: .default, handler: { [weak self]  _ in
                     if let product = self?.productFor(upgradeType) {
-                        IAPManager.shared.buy(product: product, withHandler: { _ in
+                        IAPManager.shared.buy(product: product, withHandler: { result in
 
-                            self?.scene.addBoughtCyclone()
-                            let alert = self?.thankYouForPurchaseAlert(upgradeType, paid) ?? UIAlertController()
-                            self?.present(alert, animated: false, completion: nil)
+                            switch result {
+                            case .success(_):
+                                self?.scene.addBoughtCyclone()
+                                let alert = self?.thankYouForPurchaseAlert(upgradeType, paid) ?? UIAlertController()
+                                self?.present(alert, animated: false, completion: nil)
+                            case .failure(let error):
+                                print(error.localizedDescription)
+                            }
+
                         })
                     }
                 })
@@ -101,10 +107,16 @@ class UpgradesController: UIViewController, UpgradesSceneDelegate {
             if paid {
                 let paidForceFieldAction =  UIAlertAction(title: "Buy", style: .default, handler: { [weak self]  _ in
                     if let product = self?.productFor(upgradeType) {
-                        IAPManager.shared.buy(product: product, withHandler: { _ in
-                            self?.scene.addBoughtForceField()
-                            let alert = self?.thankYouForPurchaseAlert(upgradeType, paid) ?? UIAlertController()
-                            self?.present(alert, animated: false, completion: nil)
+                        IAPManager.shared.buy(product: product, withHandler: { result  in
+                            switch result {
+                            case .success(_):
+                                self?.scene.addBoughtForceField()
+                                let alert = self?.thankYouForPurchaseAlert(upgradeType, paid) ?? UIAlertController()
+                                self?.present(alert, animated: false, completion: nil)
+                            case .failure(let error):
+                                print(error.localizedDescription)
+                            }
+
                         })
                     }
                 })
@@ -121,7 +133,7 @@ class UpgradesController: UIViewController, UpgradesSceneDelegate {
 
         }
 
-       self.present(alert, animated: false, completion: nil)
+        self.present(alert, animated: false, completion: nil)
     }
     func productFor(_ upgradeType: UpgradeType) -> SKProduct {
         let upgradeTypeString = String(describing: upgradeType)
@@ -158,7 +170,7 @@ class UpgradesController: UIViewController, UpgradesSceneDelegate {
         if isPaid {
             message += "for " + priceMoney + "?"
         } else {
-           message += "for \(price) points?"
+            message += "for \(price) points?"
         }
         return message
     }
@@ -187,20 +199,6 @@ class UpgradesController: UIViewController, UpgradesSceneDelegate {
                 }
             }
         }
-    }
-
-    func showAlert(for product: SKProduct) {
-        guard let price = IAPManager.shared.getPriceFormatted(for: product) else { return }
-        let alertController = UIAlertController(title: product.localizedTitle,
-                                                message: product.localizedDescription,
-                                                preferredStyle: .alert)
-
-        alertController.addAction(UIAlertAction(title: "Buy now for \(price)", style: .default, handler: { (_) in
-            // TODO: Initiate Purchase!
-        }))
-
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        self.present(alertController, animated: true, completion: nil)
     }
 
 }

@@ -152,6 +152,7 @@
 		D085C655266B4C210090C8D6 /* SwiftLint */ = {
 			isa = PBXGroup;
 			children = (
+				D0CA80ED21CF13A400BE7E96 /* Products */,
 				D085C656266B4C210090C8D6 /* AppDelegate.swift */,
 				D085C658266B4C210090C8D6 /* SceneDelegate.swift */,
 				D085C65A266B4C210090C8D6 /* ViewController.swift */,
@@ -274,7 +275,6 @@
 			children = (
 				D0CA80EE21CF13A400BE7E96 /* KillVirus */,
 				D085C655266B4C210090C8D6 /* SwiftLint */,
-				D0CA80ED21CF13A400BE7E96 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -285,6 +285,7 @@
 				D085C654266B4C210090C8D6 /* SwiftLint.app */,
 			);
 			name = Products;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		D0CA80EE21CF13A400BE7E96 /* KillVirus */ = {
@@ -805,12 +806,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = ARU8D4B27U;
 				INFOPLIST_FILE = KillVirus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jabringetto.VirusDodger;
 				PRODUCT_NAME = "Virus Dodger";
 				SWIFT_VERSION = 5.0;
@@ -823,12 +826,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = ARU8D4B27U;
 				INFOPLIST_FILE = KillVirus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jabringetto.VirusDodger;
 				PRODUCT_NAME = "Virus Dodger";
 				SWIFT_VERSION = 5.0;
