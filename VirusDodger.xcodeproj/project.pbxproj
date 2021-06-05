@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D004C9CF2472241A0066AF56 /* Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D004C9CE2472241A0066AF56 /* Dashboard.swift */; };
-		D00B6337266B3A040070BBF4 /* skull.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D00B6336266B3A040070BBF4 /* skull.atlas */; };
+		D00B6337266B3A040070BBF4 /* Skull.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D00B6336266B3A040070BBF4 /* Skull.atlas */; };
 		D0391B4323A436B300752CEC /* Bat.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D0391B4223A436B300752CEC /* Bat.atlas */; };
 		D0391B4523A436F600752CEC /* Bat.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0391B4423A436F600752CEC /* Bat.swift */; };
 		D03982BF23B70EA600308022 /* Emerald.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D0CA810721CF1B0D00BE7E96 /* Emerald.atlas */; };
@@ -62,7 +62,7 @@
 
 /* Begin PBXFileReference section */
 		D004C9CE2472241A0066AF56 /* Dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dashboard.swift; sourceTree = "<group>"; };
-		D00B6336266B3A040070BBF4 /* skull.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = skull.atlas; sourceTree = "<group>"; };
+		D00B6336266B3A040070BBF4 /* Skull.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Skull.atlas; sourceTree = "<group>"; };
 		D0391B4223A436B300752CEC /* Bat.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Bat.atlas; sourceTree = "<group>"; };
 		D0391B4423A436F600752CEC /* Bat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bat.swift; sourceTree = "<group>"; };
 		D03E468825E02B9300C32FEE /* VirusDodger_EnterScene.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = VirusDodger_EnterScene.mp3; sourceTree = "<group>"; };
@@ -196,7 +196,7 @@
 				D0CA810521CF1AF400BE7E96 /* RubyFrame.atlas */,
 				D0D3C750245AAC2100C47DA6 /* Virus.atlas */,
 				D09E2DA6245FCDCE005AB915 /* VirusWithFace.atlas */,
-				D00B6336266B3A040070BBF4 /* skull.atlas */,
+				D00B6336266B3A040070BBF4 /* Skull.atlas */,
 				D0C15413250B4B2B00D2B661 /* Whirlpool.atlas */,
 			);
 			path = Assets;
@@ -426,7 +426,7 @@
 				D0C7D59B25E220B600A384AC /* VirusDodger_GameScene.mp3 in Resources */,
 				D0F4116C24F2DE6500897B54 /* ForceField.atlas in Resources */,
 				D0DE71B323BBEF5B00B87144 /* Treasure.mp3 in Resources */,
-				D00B6337266B3A040070BBF4 /* skull.atlas in Resources */,
+				D00B6337266B3A040070BBF4 /* Skull.atlas in Resources */,
 				D03982BF23B70EA600308022 /* Emerald.atlas in Resources */,
 				D084CBB32471B75F00378317 /* Buzzer.mp3 in Resources */,
 				D0DE71B023B94A1000B87144 /* Kaching.mp3 in Resources */,
