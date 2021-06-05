@@ -49,7 +49,7 @@ final class Gem: GameSprite {
         spinSpeed = UInt.random(in: 1 ..< 4)
 
         if spinSpeed > 0 {
-            perFrame = perFrame/Double(spinSpeed)
+            perFrame /= Double(spinSpeed)
             spinAnimation = SKAction.animate(with: spinTextures, timePerFrame: perFrame)
             let spinForever = SKAction.repeat(spinAnimation, count: -1)
             self.run(spinForever, withKey: "spinAction")

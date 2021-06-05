@@ -186,12 +186,15 @@ final class Grid: ConvergeAndShrinkDelegate {
     }
     func spritesFollowPlayerEveryFrame(_ layerPosition: CGPoint, _ targetPosition: CGPoint, _ followSpeed: CGFloat) {
         for skull in skulls {
-            skull.followPointWithinYRange(layerPosition, targetPosition, followSpeed, yRange: GameSceneConstants.skullFollowRange)
+            let range = GameSceneConstants.skullFollowRange
+            skull.followPointWithinYRange(layerPosition, targetPosition, followSpeed, yRange: range)
         }
         for aVirus in virus {
 
             if let gameScene = self.delegate as? GameScene {
-                aVirus.followLikeAVirus(layerPosition, targetPosition, followSpeed, forceFieldDeployed: gameScene.gameVars.forceFieldDeployed, cycloneDeployed: gameScene.gameVars.cycloneDeployed, radius: 90.0)
+                let forceDeployed = gameScene.gameVars.forceFieldDeployed
+                let cycloneDeployed = gameScene.gameVars.cycloneDeployed
+                aVirus.followLikeAVirus(layerPosition, targetPosition, followSpeed, forceFieldDeployed: forceDeployed, cycloneDeployed: cycloneDeployed, radius: 90.0)
 
             }
 
