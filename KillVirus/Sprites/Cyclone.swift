@@ -9,14 +9,12 @@
 import Foundation
 import SpriteKit
 
-protocol CycloneDelegate:class {
+protocol CycloneDelegate:AnyObject {
     
     func cycloneCountdownComplete()->Void
 }
 
-
-class Cyclone:SKSpriteNode
-{
+class Cyclone:SKSpriteNode {
       weak var delegate:CycloneDelegate?
       private var bigWhirlpool01 = Whirlpool(timePerFrame: 1/60.0)
       private var bigWhirlpool02 = Whirlpool(timePerFrame: 1/60.0)
@@ -33,7 +31,7 @@ class Cyclone:SKSpriteNode
         
        
     }
-    private func addWhirlpools()->Void
+    private func addWhirlpools()
     {
         smallWhirlpool.xScale *= 0.6
         smallWhirlpool.yScale *= 0.6

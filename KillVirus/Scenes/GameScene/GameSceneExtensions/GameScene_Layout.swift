@@ -131,14 +131,13 @@ extension GameScene
         gameVars.blackBar.name = "blackBar"
         self.addChild(gameVars.blackBar)
     }
-    private func addHealthMeter()->Void
-    {
+    private func addHealthMeter() {
         gameVars.healthMeter.setup()
         gameVars.healthMeter.position = CGPoint(x: -gameVars.screenWidth / 2.0 + GameSceneConstants.healthMeterPadding, y: GameSceneConstants.gameSceneBottomPadding  - (gameVars.screenHeight / 2.0 - GameSceneConstants.healthMeterPadding))
         gameVars.healthMeter.updateGreenBar(gameVars.bat.healthPoints, GameSceneConstants.batMaxHealthPoints)
         self.addChild(gameVars.healthMeter)
     }
-    private func addScoreLabel()->Void
+    private func addScoreLabel()
     {
         gameVars.scoreLabel = SKLabelNode(fontNamed: "Arial-Bold")
         gameVars.scoreLabel.fontSize = GameSceneConstants.menuLabelFontSize

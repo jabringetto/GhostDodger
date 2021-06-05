@@ -80,10 +80,10 @@ extension EnterScene
         
             sceneVars.letterD.position.x = width * 0.6
             sceneVars.letterO.position.x = width * 0.82
-            sceneVars.letterD_lowercase.position.x = width * 1.0
+            sceneVars.lowercaseLetterD.position.x = width * 1.0
             sceneVars.letterG.position.x = width * 1.12
             sceneVars.letterE.position.x = width * 1.28
-            sceneVars.letterR_lowercase.position.x = width * 1.4
+            sceneVars.lowercaseLetterR.position.x = width * 1.4
         
       
         
@@ -95,10 +95,10 @@ extension EnterScene
         
         sceneVars.virusLetters.append( sceneVars.letterD)
         sceneVars.virusLetters.append( sceneVars.letterO)
-        sceneVars.virusLetters.append( sceneVars.letterD_lowercase)
+        sceneVars.virusLetters.append( sceneVars.lowercaseLetterD)
         sceneVars.virusLetters.append( sceneVars.letterG)
         sceneVars.virusLetters.append( sceneVars.letterE)
-        sceneVars.virusLetters.append( sceneVars.letterR_lowercase)
+        sceneVars.virusLetters.append( sceneVars.lowercaseLetterR)
         for letter in sceneVars.virusLetters
         {
             centerLetterVertically(letterNode: letter)

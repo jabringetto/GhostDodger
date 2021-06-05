@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,12 @@
 		D06771202546353200DB0552 /* GameSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = D067711F2546353200DB0552 /* GameSprite.swift */; };
 		D07AFA9D245C9542004DC615 /* SKSpriteNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07AFA9C245C9542004DC615 /* SKSpriteNode+Extensions.swift */; };
 		D084CBB32471B75F00378317 /* Buzzer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D084CBB22471B75F00378317 /* Buzzer.mp3 */; };
+		D085C657266B4C210090C8D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D085C656266B4C210090C8D6 /* AppDelegate.swift */; };
+		D085C659266B4C210090C8D6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D085C658266B4C210090C8D6 /* SceneDelegate.swift */; };
+		D085C65B266B4C210090C8D6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D085C65A266B4C210090C8D6 /* ViewController.swift */; };
+		D085C65E266B4C210090C8D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D085C65C266B4C210090C8D6 /* Main.storyboard */; };
+		D085C660266B4C220090C8D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D085C65F266B4C220090C8D6 /* Assets.xcassets */; };
+		D085C663266B4C220090C8D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D085C661266B4C220090C8D6 /* LaunchScreen.storyboard */; };
 		D09163A2255211A30098E82C /* UpgradesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09163A1255211A30098E82C /* UpgradesController.swift */; };
 		D09E156124C4E41D009A3EF4 /* EnterScene_Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09E156024C4E41D009A3EF4 /* EnterScene_Layout.swift */; };
 		D09E156424C4E72C009A3EF4 /* EnterScene_EveryFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09E156324C4E72C009A3EF4 /* EnterScene_EveryFrame.swift */; };
@@ -69,6 +75,14 @@
 		D067711F2546353200DB0552 /* GameSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSprite.swift; sourceTree = "<group>"; };
 		D07AFA9C245C9542004DC615 /* SKSpriteNode+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKSpriteNode+Extensions.swift"; sourceTree = "<group>"; };
 		D084CBB22471B75F00378317 /* Buzzer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Buzzer.mp3; sourceTree = "<group>"; };
+		D085C654266B4C210090C8D6 /* SwiftLint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftLint.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D085C656266B4C210090C8D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D085C658266B4C210090C8D6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		D085C65A266B4C210090C8D6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D085C65D266B4C210090C8D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D085C65F266B4C220090C8D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D085C662266B4C220090C8D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D085C664266B4C220090C8D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D09163A1255211A30098E82C /* UpgradesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradesController.swift; sourceTree = "<group>"; };
 		D09E156024C4E41D009A3EF4 /* EnterScene_Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterScene_Layout.swift; sourceTree = "<group>"; };
 		D09E156324C4E72C009A3EF4 /* EnterScene_EveryFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterScene_EveryFrame.swift; sourceTree = "<group>"; };
@@ -118,6 +132,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D085C651266B4C210090C8D6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D0CA80E921CF13A400BE7E96 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -128,6 +149,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D085C655266B4C210090C8D6 /* SwiftLint */ = {
+			isa = PBXGroup;
+			children = (
+				D085C656266B4C210090C8D6 /* AppDelegate.swift */,
+				D085C658266B4C210090C8D6 /* SceneDelegate.swift */,
+				D085C65A266B4C210090C8D6 /* ViewController.swift */,
+				D085C65C266B4C210090C8D6 /* Main.storyboard */,
+				D085C65F266B4C220090C8D6 /* Assets.xcassets */,
+				D085C661266B4C220090C8D6 /* LaunchScreen.storyboard */,
+				D085C664266B4C220090C8D6 /* Info.plist */,
+			);
+			path = SwiftLint;
+			sourceTree = "<group>";
+		};
 		D09E156224C4E427009A3EF4 /* EnterSceneExtensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -238,6 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				D0CA80EE21CF13A400BE7E96 /* KillVirus */,
+				D085C655266B4C210090C8D6 /* SwiftLint */,
 				D0CA80ED21CF13A400BE7E96 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -246,6 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				D0CA80EC21CF13A400BE7E96 /* Virus Dodger.app */,
+				D085C654266B4C210090C8D6 /* SwiftLint.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -367,6 +404,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		D085C653266B4C210090C8D6 /* SwiftLint */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D085C665266B4C220090C8D6 /* Build configuration list for PBXNativeTarget "SwiftLint" */;
+			buildPhases = (
+				D085C650266B4C210090C8D6 /* Sources */,
+				D085C651266B4C210090C8D6 /* Frameworks */,
+				D085C652266B4C210090C8D6 /* Resources */,
+				D085C668266B4C330090C8D6 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftLint;
+			productName = SwiftLint;
+			productReference = D085C654266B4C210090C8D6 /* SwiftLint.app */;
+			productType = "com.apple.product-type.application";
+		};
 		D0CA80EB21CF13A400BE7E96 /* VirusDodger */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D0CA80FE21CF13A600BE7E96 /* Build configuration list for PBXNativeTarget "VirusDodger" */;
@@ -374,6 +429,7 @@
 				D0CA80E821CF13A400BE7E96 /* Sources */,
 				D0CA80E921CF13A400BE7E96 /* Frameworks */,
 				D0CA80EA21CF13A400BE7E96 /* Resources */,
+				D085C64F266B44290090C8D6 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -390,10 +446,13 @@
 		D0CA80E421CF13A400BE7E96 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1010;
+				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = "Jeremy Bringetto";
 				TargetAttributes = {
+					D085C653266B4C210090C8D6 = {
+						CreatedOnToolsVersion = 12.5;
+					};
 					D0CA80EB21CF13A400BE7E96 = {
 						CreatedOnToolsVersion = 10.1;
 						LastSwiftMigration = 1100;
@@ -414,11 +473,22 @@
 			projectRoot = "";
 			targets = (
 				D0CA80EB21CF13A400BE7E96 /* VirusDodger */,
+				D085C653266B4C210090C8D6 /* SwiftLint */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D085C652266B4C210090C8D6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D085C663266B4C220090C8D6 /* LaunchScreen.storyboard in Resources */,
+				D085C660266B4C220090C8D6 /* Assets.xcassets in Resources */,
+				D085C65E266B4C210090C8D6 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D0CA80EA21CF13A400BE7E96 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -446,7 +516,56 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		D085C64F266B44290090C8D6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "
+";
+		};
+		D085C668266B4C330090C8D6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n# Type a script or drag a script file from your workspace to insert its path.\nif test -d \"/opt/homebrew/bin/\"; then\n  PATH=\"/opt/homebrew/bin/:${PATH}\"\nfi\n\nexport PATH\n\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		D085C650266B4C210090C8D6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D085C65B266B4C210090C8D6 /* ViewController.swift in Sources */,
+				D085C657266B4C210090C8D6 /* AppDelegate.swift in Sources */,
+				D085C659266B4C210090C8D6 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D0CA80E821CF13A400BE7E96 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -490,6 +609,22 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		D085C65C266B4C210090C8D6 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D085C65D266B4C210090C8D6 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D085C661266B4C220090C8D6 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D085C662266B4C220090C8D6 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		D0CA80F321CF13A400BE7E96 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -509,6 +644,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		D085C666266B4C220090C8D6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SwiftLint/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.SwiftLint.SwiftLint;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D085C667266B4C220090C8D6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SwiftLint/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.SwiftLint.SwiftLint;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		D0CA80FC21CF13A600BE7E96 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -666,6 +839,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D085C665266B4C220090C8D6 /* Build configuration list for PBXNativeTarget "SwiftLint" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D085C666266B4C220090C8D6 /* Debug */,
+				D085C667266B4C220090C8D6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D0CA80E721CF13A400BE7E96 /* Build configuration list for PBXProject "VirusDodger" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -68,9 +68,9 @@ extension EnterScene
      {
         sceneVars.conveyorLayer.position.x -= EnterSceneConstants.conveyorSpeed
         sceneVars.letterLayer.position.x -= 4.0 * EnterSceneConstants.conveyorSpeed
-        if(sceneVars.letterLayer.position.x < -2.0 * sceneVars.letterR_lowercase.position.x )
+        if(sceneVars.letterLayer.position.x < -2.0 * sceneVars.lowercaseLetterR.position.x )
         {
-            sceneVars.letterLayer.position.x  +=  sceneVars.letterR_lowercase.position.x * 3.0
+            sceneVars.letterLayer.position.x  +=  sceneVars.lowercaseLetterR.position.x * 3.0
         }
         if(sceneVars.conveyorLayer.position.x < -5.0 * EnterSceneConstants.conveyorSpacing)
         {

@@ -10,38 +10,30 @@ import Foundation
 import UIKit
 import SpriteKit
 
-protocol GridDelegate:class
-{
-    func savePersistentValues()->Void
-    func savePersisentValue(value:Any, key:String)->Void
-    func removePersisentValue(key:String)->Void
-    func fetchPersistentValue(key:String)->Any?
-    func saveGridDataPeristently(positionData:[String:PositionAndType])->Void
-    func fetchPersistentGridData()->[PositionAndType]?
-    func convergedRemovedSpriteEvent(sprite:SKSpriteNode)->Void
+protocol GridDelegate: AnyObject {
+    func savePersistentValues()
+    func savePersisentValue(value: Any, key: String)
+    func removePersisentValue(key: String)
+    func fetchPersistentValue(key: String)->Any?
+    func saveGridDataPeristently(positionData: [String: PositionAndType])
+    func fetchPersistentGridData() -> [PositionAndType]?
+    func convergedRemovedSpriteEvent(sprite: SKSpriteNode)
 }
 
-
-final class Grid:ConvergeAndShrinkDelegate
-{
-   
-    
-    weak var delegate:GridDelegate?
-    private var columnHalfWidth:CGFloat = 0.0
+final class Grid: ConvergeAndShrinkDelegate {
+    weak var delegate: GridDelegate?
+    private var columnHalfWidth: CGFloat = 0.0
     private var itemPositions = [CGPoint]()
     private var positionsAndTypes = [PositionAndType]()
-    private var positionDataDict = [String:PositionAndType]()
+    private var positionDataDict = [String: PositionAndType]()
     private var skulls = [Skull]()
     private var virus = [Virus]()
     private var coins = [Coin]()
     private var gems = [Gem]()
-    private var convergingSpritesPlayer = [String:SKSpriteNode]()
-    private var virusOccurenceLowerLimit:UInt = 80
-    private var skullOccurenceLowerLimit:UInt = 84
-    
-    
-    convenience init(_ width:CGFloat, _ height:CGFloat)
-    {
+    private var convergingSpritesPlayer = [String: SKSpriteNode]()
+    private var virusOccurenceLowerLimit: UInt = 80
+    private var skullOccurenceLowerLimit: UInt = 84
+    convenience init(_ width:CGFloat, _ height:CGFloat) {
         self.init()
         columnHalfWidth = width / 12.0
         updateVirusAndSkullOccurence()
@@ -54,26 +46,21 @@ final class Grid:ConvergeAndShrinkDelegate
         
         virusOccurenceLowerLimit -= (round - 1)
         skullOccurenceLowerLimit -= (round - 1)
-        
     }
-    func populatePositions()->Void
-    {
-        for i:Int in 0..<GameSceneConstants.gridNumColumns
+    func populatePositions() {
+        for columnIndex: Int in 0..<GameSceneConstants.gridNumColumns
         {
-            let columnFactor =  2 * CGFloat(i - GameSceneConstants.gridNumColumns/2)
+            let columnFactor =  2 * CGFloat(columnIndex - GameSceneConstants.gridNumColumns/2)
             let xPos:CGFloat = (1 + columnFactor)  * columnHalfWidth
             
-            for j:Int in 0..<GameSceneConstants.gridNumRows
-            {
-                let yPos:CGFloat = -1.0 * CGFloat(j) * GameSceneConstants.gridColumnHeight
+            for rowIndex:Int in 0..<GameSceneConstants.gridNumRows {
+                let yPos:CGFloat = -1.0 * CGFloat(rowIndex) * GameSceneConstants.gridColumnHeight
                 let itemPosition = CGPoint(x:xPos, y:yPos)
                 itemPositions.append(itemPosition)
             }
         }
     }
-    func populateGridItems(_ layerNode:SKNode)->Void
-    {
-        
+    func populateGridItems(_ layerNode: SKNode) {
         populateGameItems()
         for element in positionsAndTypes
         {
@@ -82,100 +69,74 @@ final class Grid:ConvergeAndShrinkDelegate
             let gameItem = GameItem.init(type:type, sprite: spriteForType(type))
             if let sprite = gameItem.itemSprite
             {
-                
                 sprite.position = point
                 let spriteName =  String(Float(point.x)) + "_" + String(Float(point.y))
                 sprite.name = spriteName
                 positionDataDict[spriteName] = element
                 layerNode.addChild(sprite)
-                if(type == GameItemType.skull)
-                {
-                    if let aSkull = sprite as? Skull
-                    {
+                if type == GameItemType.skull {
+                    if let aSkull = sprite as? Skull {
                         skulls.append(aSkull)
                     }
                 }
-                if(type == GameItemType.virus)
-                {
-                    if let aVirus = sprite as? Virus
-                    {
+                if type == GameItemType.virus {
+                    if let aVirus = sprite as? Virus {
                         virus.append(aVirus)
                     }
                 }
-                if(type == GameItemType.goldCoin || type == GameItemType.silverCoin )
-                {
-                    if let aCoin = sprite as? Coin
-                    {
+                if type == GameItemType.goldCoin || type == GameItemType.silverCoin {
+                    if let aCoin = sprite as? Coin {
                         aCoin.delegate = self
                         coins.append(aCoin)
                     }
                 }
-                if(type == GameItemType.ruby || type == GameItemType.emerald )
-                {
-                    if let aGem = sprite as? Gem
-                    {
+                if type == GameItemType.ruby || type == GameItemType.emerald {
+                    if let aGem = sprite as? Gem {
                         aGem.delegate = self
                         gems.append(aGem)
                     }
                 }
             }
-            
         }
         self.delegate?.saveGridDataPeristently(positionData: positionDataDict)
 
     }
-    func populateGameItems()->Void
-    {
-        //if let persistentPostionsAndTypes = self.delegate?.fetchPersistentGrid() {
-        if let persistentPostionsAndTypes = self.delegate?.fetchPersistentGridData(){
+    func populateGameItems() {
+        if let persistentPostionsAndTypes = self.delegate?.fetchPersistentGridData() {
             
-            if(persistentPostionsAndTypes.count > 0)
-            {
+            if persistentPostionsAndTypes.count > 0 {
                 positionsAndTypes = persistentPostionsAndTypes
-                
             }
-        }
-        else
-        {
-            for point:CGPoint in itemPositions
-            {
+        } else {
+            for point: CGPoint in itemPositions {
                 let primaryDiceRoll = Int.random(in: 1...100)
                 let secondaryDiceRoll = Int.random(in: 1...100)
-                let itemType = typeForRoll(primaryDiceRoll,secondaryDiceRoll)
+                let itemType = typeForRoll(primaryDiceRoll, secondaryDiceRoll)
                 positionsAndTypes.append(PositionAndType(position:point, type:itemType.rawValue))
             
             }
         }
      
-        
-
     }
-    func removeSpriteFromPersistence(sprite:SKSpriteNode)->Void
-    {
+    func removeSpriteFromPersistence(sprite: SKSpriteNode) {
         guard let spriteName = sprite.name else {return}
         positionDataDict.removeValue(forKey: spriteName)
         self.delegate?.saveGridDataPeristently(positionData: positionDataDict)
     }
 
-    private func spriteForType(_ type:GameItemType)->SKSpriteNode?
-    {
-        switch type
-        {
+    private func spriteForType(_ type:GameItemType)-> SKSpriteNode? {
+        switch type {
         case GameItemType.ruby:
             return Gem.init(type)
-            
         case GameItemType.emerald:
              return Gem.init(type)
-            
         case GameItemType.silverCoin:
             return Coin.init(type)
             
         case GameItemType.goldCoin:
              return Coin.init(type)
-            
         case GameItemType.skull:
              return Skull.init(type)
-            
         case GameItemType.virus:
             return Virus.init(type)
             
@@ -183,38 +144,30 @@ final class Grid:ConvergeAndShrinkDelegate
             return nil
         }
     }
-    private func typeForRoll(_ primaryRoll:Int, _ secondaryRoll:Int)->GameItemType
+    private func typeForRoll(_ primaryRoll: Int, _ secondaryRoll: Int)->GameItemType
     {
         var type = GameItemType.none
-        if(primaryRoll > 90 && primaryRoll <= 100)
-        {
+        if primaryRoll > 90 && primaryRoll <= 100 {
               type = secondaryTypeForRoll(secondaryRoll)
         }
-        else if (primaryRoll > virusOccurenceLowerLimit && primaryRoll <= 90)
-        {
-          
+        else if primaryRoll > virusOccurenceLowerLimit && primaryRoll <= 90 {
             type = .virus
         }
         return type
-        
     }
-    private func secondaryTypeForRoll(_ diceRoll:Int)->GameItemType
+    private func secondaryTypeForRoll(_ diceRoll: Int)->GameItemType
     {
            var type = GameItemType.none
-           if(diceRoll > 98)
-           {
+           if diceRoll > 98 {
                type = .ruby
            }
-           if(diceRoll > 96 && diceRoll <= 98 )
-           {
+           if diceRoll > 96 && diceRoll <= 98 {
              type = .emerald
            }
-           if(diceRoll > 88 && diceRoll <= 96)
-           {
+           if diceRoll > 88 && diceRoll <= 96 {
                type = .silverCoin
            }
-           if(diceRoll > 85 && diceRoll <= 88)
-           {
+           if diceRoll > 85 && diceRoll <= 88 {
             type = .goldCoin
            }
            if(diceRoll > skullOccurenceLowerLimit &&  diceRoll <= 85)
@@ -223,30 +176,21 @@ final class Grid:ConvergeAndShrinkDelegate
            }
            return type
     }
-    func addConvergingPlayerSpriteForKey(sprite:SKSpriteNode, key:String )->Void
-    {
+    func addConvergingPlayerSpriteForKey(sprite:SKSpriteNode, key:String ) {
         convergingSpritesPlayer[key] = sprite
-        
     }
 
-    func spritesConvergeOnPlayer(_ layerPosition:CGPoint, _ targetPosition:CGPoint, _ followSpeed:CGFloat)->Void
-    {
+    func spritesConvergeOnPlayer(_ layerPosition:CGPoint, _ targetPosition:CGPoint, _ followSpeed:CGFloat) {
         let keys:[String] =  convergingSpritesPlayer.map{$0.key}
-        
-        for key in keys
-        {
+        for key in keys {
             if let sprite = convergingSpritesPlayer[key]
             {
-                if(sprite.parent == nil)
-                {
-                    convergingSpritesPlayer.removeValue(forKey:key)
-                }
-                else
-                {
+                if sprite.parent == nil {
+                    convergingSpritesPlayer.removeValue(forKey: key)
+                } else {
                     sprite.convergeOnPointAndShrink(layerPosition, targetPosition, followSpeed)
                 }
             }
-         
         }
     }
     func spritesFollowPlayerEveryFrame(_ layerPosition:CGPoint, _ targetPosition:CGPoint, _ followSpeed:CGFloat)->Void

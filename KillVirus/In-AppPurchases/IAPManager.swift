@@ -73,7 +73,7 @@ class IAPManager: NSObject {
         if !IAPManager.shared.canMakePayments() {
             return false
         } else {
-            //delegate?.willStartLongProcess()
+
             IAPManager.shared.buy(product: product) { (result) in
                 
                 
