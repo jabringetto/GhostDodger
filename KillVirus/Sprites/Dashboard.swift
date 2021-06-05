@@ -8,19 +8,14 @@
 import Foundation
 import SpriteKit
 
-
-
-final class HealthMeter:SKSpriteNode
-{
-    let maximumWidth:CGFloat = 80.0
+final class HealthMeter: SKSpriteNode {
+    let maximumWidth: CGFloat = 80.0
     let grayBar = SKSpriteNode(color: UIColor.gray, size: CGSize(width: 80.0, height: 15.0))
     let greenBar = SKSpriteNode(color: UIColor.green, size: CGSize(width: 80.0, height: 15.0))
     let healthLabel = SKLabelNode(fontNamed: "Arial-Bold")
-    let padding:CGFloat = 10.0
+    let padding: CGFloat = 10.0
 
-    
-    func setup()->Void
-    {
+    func setup() {
         self.removeAllChildren()
         self.addChild(grayBar)
         self.addChild(greenBar)
@@ -30,24 +25,21 @@ final class HealthMeter:SKSpriteNode
         healthLabel.position = CGPoint(x: -1.0, y: 12.0)
         self.addChild(healthLabel)
     }
-    func updateGreenBar(_ healthPoints:UInt, _ maxPoints:UInt)->Void
-    {
+    func updateGreenBar(_ healthPoints: UInt, _ maxPoints: UInt) {
         let fraction = CGFloat(healthPoints)/CGFloat(maxPoints)
         let newWidth = maximumWidth*fraction
         greenBar.size = CGSize(width: newWidth, height: greenBar.size.height)
         let delta = (newWidth - maximumWidth)*0.5
         greenBar.position = CGPoint(x: delta, y: greenBar.position.y)
-        
+
     }
-    
+
 }
-final class CycloneDashboardIndicator:SKSpriteNode
-{
+final class CycloneDashboardIndicator: SKSpriteNode {
     var activated = true
     let miniCylone = Cyclone()
     let cycloneReserveLabel = SKLabelNode(fontNamed: "Arial-Bold")
-    func setup(cycloneReserve:UInt)->Void
-    {
+    func setup(cycloneReserve: UInt) {
         self.removeAllChildren()
         miniCylone.xScale *= GameSceneConstants.cycloneDashboardScaleFactor
         miniCylone.yScale *= GameSceneConstants.cycloneDashboardScaleFactor
@@ -59,19 +51,16 @@ final class CycloneDashboardIndicator:SKSpriteNode
         addChild(miniCylone)
         addChild(cycloneReserveLabel)
     }
-    func update(cycloneReserve:UInt)->Void
-    {
+    func update(cycloneReserve: UInt) {
         cycloneReserveLabel.text = ": " + String(cycloneReserve)
     }
-    
+
 }
-final class ForceFieldDashboardIndicator:SKSpriteNode
-{
+final class ForceFieldDashboardIndicator: SKSpriteNode {
     var activated = true
     let miniForceField = ForceField()
     let forceFieldReserveLabel = SKLabelNode(fontNamed: "Arial-Bold")
-    func setup(forceFieldReserve:UInt)->Void
-    {
+    func setup(forceFieldReserve: UInt) {
         self.removeAllChildren()
         miniForceField.xScale *= GameSceneConstants.forceFieldDashboardScaleFactor
         miniForceField.yScale *= GameSceneConstants.forceFieldDashboardScaleFactor
@@ -83,12 +72,7 @@ final class ForceFieldDashboardIndicator:SKSpriteNode
         addChild(miniForceField)
         addChild(forceFieldReserveLabel)
     }
-    func update(forceFieldReserve:UInt)->Void
-    {
+    func update(forceFieldReserve: UInt) {
         forceFieldReserveLabel.text = ": " + String(forceFieldReserve)
     }
 }
-
-
-
-

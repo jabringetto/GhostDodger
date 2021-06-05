@@ -9,67 +9,51 @@
 import UIKit
 import SpriteKit
 
+final class Coin: GameSprite {
 
-final class Coin:GameSprite {
-    
-    var pointValue:UInt = 0
- 
-    convenience init(_ coinType: GameItemType)
-    {
-        if(coinType == GameItemType.silverCoin)
-        {
-            self.init(imageNamed:"SilverCoinUpright")
+    var pointValue: UInt = 0
+
+    convenience init(_ coinType: GameItemType) {
+        if coinType == GameItemType.silverCoin {
+            self.init(imageNamed: "SilverCoinUpright")
             self.pointValue = GameSceneConstants.pointValueSilverPiece
-        }
-        else if(coinType == GameItemType.goldCoin)
-        {
-            self.init(imageNamed:"GoldCoinUpright")
+        } else if coinType == GameItemType.goldCoin {
+            self.init(imageNamed: "GoldCoinUpright")
             self.pointValue = GameSceneConstants.pointValueGoldPiece
-        }
-        else
-        {
+        } else {
             self.init()
         }
         self.xScale = GameSceneConstants.coinXScale
         self.yScale = GameSceneConstants.coinYScale
         setupPhysics()
-        
+
     }
-    func setupPhysics()->Void
-    {
-        self.physicsBody = SKPhysicsBody.init(circleOfRadius:self.size.width*GameSceneConstants.gameItemPhysicsRadius)
+    func setupPhysics() {
+        self.physicsBody = SKPhysicsBody.init(circleOfRadius: self.size.width*GameSceneConstants.gameItemPhysicsRadius)
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.categoryBitMask = PhysicsCategory.Coin
         self.physicsBody?.contactTestBitMask = PhysicsCategory.Bat
     }
-    func followCyclone(_ layerPosition: CGPoint, _ targetPosition: CGPoint, _ followSpeed: CGFloat, cycloneDeployed:Bool, radius: CGFloat)->Void
-    {
+    func followCyclone(_ layerPosition: CGPoint, _ targetPosition: CGPoint, _ followSpeed: CGFloat, cycloneDeployed: Bool, radius: CGFloat) {
         var cyclonePosition = targetPosition
         cyclonePosition.y -= GameSceneConstants.cyclonePositionDelta
         let withinCycloneOuterRadius = isWithinRadiusOfTarget(layerPosition, cyclonePosition, radius: radius * 1.2)
         let withinCycloneInnerRadius = isWithinRadiusOfTarget(layerPosition, cyclonePosition, radius: radius * 0.3)
-        
-        if (cycloneDeployed)
-        {
-            if(withinCycloneOuterRadius)
-            {
+
+        if cycloneDeployed {
+            if withinCycloneOuterRadius {
                 followPoint(layerPosition, cyclonePosition, followSpeed * 1.5)
-                if(withinCycloneInnerRadius)
-                {
+                if withinCycloneInnerRadius {
                               convergingOnCyclone = true
-                            
+
                 }
-             
+
             }
         }
-        if(convergingOnCyclone)
-        {
+        if convergingOnCyclone {
             convergeOnPointAndShrink(layerPosition, cyclonePosition, speed * 0.25)
         }
- 
+
     }
-
-
-
 
 }

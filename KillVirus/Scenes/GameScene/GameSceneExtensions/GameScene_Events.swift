@@ -9,86 +9,70 @@
 import Foundation
 import SpriteKit
 
+extension GameScene: BatDelegate, GridDelegate, AnnouncerRoundCompletedDelegate, ForceFieldDelegate, CycloneDelegate {
 
-extension GameScene: BatDelegate, GridDelegate, AnnouncerRoundCompletedDelegate, ForceFieldDelegate, CycloneDelegate
-{
-
-    func addBatDelegate()->Void
-    {
+    func addBatDelegate() {
         gameVars.bat.delegate = self
     }
-    private func recordDisplacement()->Void
-    {
+    private func recordDisplacement() {
         gameVars.gameOverBackLayerDisplacement = gameVars.backLayer.position.y
     }
-    private func showGameOver()->Void
-    {
+    private func showGameOver() {
         gameVars.gameOver.position.y = 0.0
         gameVars.gameOver.isHidden = false
     }
-    private func hideGameOver()->Void
-    {
+    private func hideGameOver() {
         gameVars.gameOver.position.y = GameSceneConstants.gameOverInitialPosition
         gameVars.gameOver.isHidden = true
     }
-    func updateRoundLabel()->Void
-    {
+    func updateRoundLabel() {
         gameVars.roundLabel.text = GameSceneConstants.roundLabelPrefix + String(gameVars.round)
     }
-    func playerGetsTreasure(_ treasure:SKSpriteNode)->Void
-    {
-        if let gem = treasure as? Gem
-        {
+    func playerGetsTreasure(_ treasure: SKSpriteNode) {
+        if let gem = treasure as? Gem {
             pointsLabelAdded(gem.pointValue, gem.position)
             gem.pointValue = 0
-           
-        }
-        else if let coin = treasure as? Coin
-        {
+
+        } else if let coin = treasure as? Coin {
             pointsLabelAdded(coin.pointValue, coin.position)
             coin.pointValue = 0
-                 
+
         }
         gameVars.scoreLabel.text = GameSceneConstants.scoreLabelPrefix + String(gameVars.score)
         savePersistentValues()
     }
 
-    func addRandomUpgrade()->Void
-    {
+    func addRandomUpgrade() {
         let diceRoll = Int.random(in: 1...6)
         let noUpgrades = !gameVars.cycloneDeployed && !gameVars.forceFieldDeployed
-        
-        if(noUpgrades)
-        {
-            if(diceRoll < 4) {
+
+        if noUpgrades {
+            if diceRoll < 4 {
                    addCyclone()
             } else {
                 addForceField()
             }
         }
     }
-    func removeAllPersistence()->Void
-    {
-        removePersisentValue(key:"score")
-        removePersisentValue(key:"round")
+    func removeAllPersistence() {
+        removePersisentValue(key: "score")
+        removePersisentValue(key: "round")
         removePersisentValue(key: "forceFieldDeployed")
         clearRoundPersistence()
     }
-    func clearRoundPersistence()->Void
-    {
-        removePersisentValue(key:"inProgress")
+    func clearRoundPersistence() {
+        removePersisentValue(key: "inProgress")
         removePersisentValue(key: "positionData")
         removePersisentValue(key: "backLayerPositionY")
         removePersisentValue(key: "batPositionX")
         removePersisentValue(key: "batPositionY")
-        removePersisentValue(key:"health")
+        removePersisentValue(key: "health")
         removePersisentValue(key: "forceFieldDeployed")
         removePersisentValue(key: "forceFieldTimer")
         removePersisentValue(key: "cycloneDeployed")
         removePersisentValue(key: "cycloneTimer")
     }
-    func resetGame()->Void
-    {
+    func resetGame() {
         gameVars.backLayer.removeAllChildren()
         self.removeAllChildren()
         gameVars = varsInitialValues
@@ -97,62 +81,48 @@ extension GameScene: BatDelegate, GridDelegate, AnnouncerRoundCompletedDelegate,
         gameSetup()
         loadAllSounds()
     }
-    func resetUpgradeMinimums()->Void
-    {
+    func resetUpgradeMinimums() {
         gameVars.forceFieldReserve = max(GameSceneConstants.forceFieldMinReserve, gameVars.forceFieldReserve)
         gameVars.cycloneReserve = max(GameSceneConstants.cycloneMinReserve, gameVars.cycloneReserve)
         updateUpgradeLabels()
     }
-    private func updateUpgradeLabels()->Void
-    {
+    private func updateUpgradeLabels() {
         gameVars.forceFieldDashboard.update(forceFieldReserve: gameVars.forceFieldReserve)
         gameVars.cycloneDashboard.update(cycloneReserve: gameVars.cycloneReserve )
-        
+
     }
-    func uptakePersistentValues()->Void
-    {
-       
-        if let inProgress = fetchPersistentValue(key:"inProgress") as? Bool
-        {
+    func uptakePersistentValues() {
+
+        if let inProgress = fetchPersistentValue(key: "inProgress") as? Bool {
             gameVars.gameInProgress = inProgress
         }
-        if let score = fetchPersistentValue(key:"score") as? UInt
-        {
+        if let score = fetchPersistentValue(key: "score") as? UInt {
             gameVars.score = score
             gameVars.scoreLabel.text = GameSceneConstants.scoreLabelPrefix + String(gameVars.score)
         }
-        if let round = fetchPersistentValue(key:"round") as? UInt
-        {
+        if let round = fetchPersistentValue(key: "round") as? UInt {
             gameVars.round = round
         }
-        if let layerPosY = fetchPersistentValue(key: "backLayerPositionY") as? CGFloat
-        {
+        if let layerPosY = fetchPersistentValue(key: "backLayerPositionY") as? CGFloat {
             gameVars.backLayer.position.y = layerPosY
         }
 
-        if let healthPoints =  fetchPersistentValue(key: "health") as? UInt
-        {
+        if let healthPoints =  fetchPersistentValue(key: "health") as? UInt {
             gameVars.bat.healthPoints = healthPoints
-        
+
         }
-        if let isForceFieldDeployed =  fetchPersistentValue(key: "forceFieldDeployed") as? Bool
-        {
+        if let isForceFieldDeployed =  fetchPersistentValue(key: "forceFieldDeployed") as? Bool {
             gameVars.forceFieldDeployed = isForceFieldDeployed
-            if(gameVars.forceFieldDeployed)
-            {
-                if let forceFieldTimer = fetchPersistentValue(key: "forceFieldTimer") as? Int
-                {
+            if gameVars.forceFieldDeployed {
+                if let forceFieldTimer = fetchPersistentValue(key: "forceFieldTimer") as? Int {
                            gameVars.forceField.timer = forceFieldTimer
                 }
             }
         }
-        if let isCycloneDeployed =  fetchPersistentValue(key: "cycloneDeployed") as? Bool
-        {
+        if let isCycloneDeployed =  fetchPersistentValue(key: "cycloneDeployed") as? Bool {
                   gameVars.cycloneDeployed = isCycloneDeployed
-                  if(gameVars.cycloneDeployed)
-                  {
-                      if let cycloneTimer = fetchPersistentValue(key: "cycloneTimer") as? Int
-                      {
+                  if gameVars.cycloneDeployed {
+                      if let cycloneTimer = fetchPersistentValue(key: "cycloneTimer") as? Int {
                             gameVars.cyclone.timer = cycloneTimer
                       }
                   }
@@ -163,97 +133,82 @@ extension GameScene: BatDelegate, GridDelegate, AnnouncerRoundCompletedDelegate,
         if let cycloneReserve = fetchPersistentValue(key: "cycloneReserve" ) as? UInt {
             gameVars.cycloneReserve = cycloneReserve
         }
- 
+
     }
-    func addForceField()->Void
-    {
+    func addForceField() {
         let shouldAddForceField =  gameVars.forceFieldDashboard.activated && gameVars.gamePausedState == 0  && gameVars.forceFieldReserve > 0 && !gameVars.forceFieldDeployed
-        
-        if(shouldAddForceField)
-        {
+
+        if shouldAddForceField {
             guard gameVars.forceField.parent == nil  else {return}
             gameVars.forceFieldReserve -= 1
-            gameVars.forceFieldDashboard.update(forceFieldReserve:gameVars.forceFieldReserve)
+            gameVars.forceFieldDashboard.update(forceFieldReserve: gameVars.forceFieldReserve)
             gameVars.forceFieldDeployed = true
             gameVars.forceField.delegate = self
             gameVars.forceField.position = gameVars.bat.position
             self.addChild(gameVars.forceField)
         }
     }
-    func addCyclone()->Void
-      {
+    func addCyclone() {
            let shouldAddCyclone = gameVars.cycloneDashboard.activated && gameVars.gamePausedState == 0  && gameVars.cycloneReserve > 0 && !gameVars.cycloneDeployed
-        
-          if(shouldAddCyclone)
-           {
+
+          if shouldAddCyclone {
                 guard gameVars.cyclone.parent == nil  else {return}
                 gameVars.cycloneDeployed = true
                 gameVars.cycloneReserve -= 1
-                gameVars.cycloneDashboard.update(cycloneReserve:gameVars.cycloneReserve)
+                gameVars.cycloneDashboard.update(cycloneReserve: gameVars.cycloneReserve)
                 gameVars.cyclone.delegate = self
                 self.addChild(gameVars.cyclone)
            }
       }
-    func removeForceField()->Void
-    {
-       
+    func removeForceField() {
+
         guard gameVars.forceField.parent != nil  else {
             return
-            
+
         }
         gameVars.forceField.removeFromParent()
         gameVars.forceFieldDeployed = false
-       
+
     }
-    func removeCyclone()->Void
-     {
-        
+    func removeCyclone() {
+
          guard gameVars.cyclone.parent != nil  else {
              return
-             
+
          }
          gameVars.cyclone.removeFromParent()
          gameVars.cycloneDeployed = false
-        
+
      }
-    func pauseButtonPressed()->Void
-    {
+    func pauseButtonPressed() {
         gameVars.gamePausedState += 1
-        if(gameVars.gamePausedState == 1)
-        {
+        if gameVars.gamePausedState == 1 {
             gameVars.pauseButton.texture = SKTexture(imageNamed: "PlayButton")
         }
-        if(gameVars.gamePausedState == 2)
-        {
+        if gameVars.gamePausedState == 2 {
             gameVars.gamePausedState = 0
             gameVars.pauseButton.texture = SKTexture(imageNamed: "PauseButton")
         }
     }
-    func pauseGame()->Void
-    {
+    func pauseGame() {
         gameVars.gamePausedState = 1
         gameVars.pauseButton.texture = SKTexture(imageNamed: "PlayButton")
     }
-    
-    func screenTouched(_ location:CGPoint)->Void
-    {
-        if(location.y > -(gameVars.screenHeight*0.5 - gameVars.blackBar.frame.size.height - 17.0))
-        {
+
+    func screenTouched(_ location: CGPoint) {
+        if location.y > -(gameVars.screenHeight*0.5 - gameVars.blackBar.frame.size.height - 17.0) {
                 gameVars.currentTouchLocation = location
         }
     }
-    func updateScoreAndReserveValues(_ newVars:GameSceneVars)->Void
-    {
+    func updateScoreAndReserveValues(_ newVars: GameSceneVars) {
         gameVars = newVars
         savePersistentValues()
         gameVars.scoreLabel.text = GameSceneConstants.scoreLabelPrefix + String(gameVars.score)
         gameVars.cycloneDashboard.update(cycloneReserve: gameVars.cycloneReserve)
         gameVars.forceFieldDashboard.update(forceFieldReserve: gameVars.forceFieldReserve)
     }
-    private func pointsLabelAdded(_ pointValue:UInt, _ position:CGPoint)
-    {
-        if pointValue > 0
-        {
+    private func pointsLabelAdded(_ pointValue: UInt, _ position: CGPoint) {
+        if pointValue > 0 {
             gameVars.score += pointValue
             let pointsLabel = SKLabelNode(fontNamed: "Arial-Bold")
             pointsLabel.fontSize = 24.0
@@ -261,14 +216,13 @@ extension GameScene: BatDelegate, GridDelegate, AnnouncerRoundCompletedDelegate,
             pointsLabel.text = "+ " + String(pointValue) + " points"
             pointsLabel.position = position
             gameVars.backLayer.addChild(pointsLabel)
-            let itemKey:String =  String(Float(pointsLabel.position.x)) + String(Float(pointsLabel.position.y))
+            let itemKey: String =  String(Float(pointsLabel.position.x)) + String(Float(pointsLabel.position.y))
             gameVars.pointsLabels[itemKey] = pointsLabel
         }
     }
-    
+
     // MARK: BatDelegate
-    func batDied()
-    {
+    func batDied() {
         removeAllPersistence()
         removeForceField()
         removeCyclone()
@@ -279,25 +233,22 @@ extension GameScene: BatDelegate, GridDelegate, AnnouncerRoundCompletedDelegate,
         gameVars.cycloneDashboard.isHidden = true
         recordDisplacement()
         showGameOver()
-        
+
     }
-    
+
     // MARK: ForceFieldDelegate
     func forceFieldCountdownComplete() {
         removeForceField()
     }
-    
+
     // MARK: Cyclone Delegate
     func cycloneCountdownComplete() {
         removeCyclone()
     }
-        
 
-    
     // MARK: Grid Delegate, Persistence
-    func savePersistentValues()->Void
-     {
-         savePersisentValue(value: gameVars.gameInProgress, key:"inProgress")
+    func savePersistentValues() {
+         savePersisentValue(value: gameVars.gameInProgress, key: "inProgress")
          savePersisentValue(value: gameVars.score, key: "score")
          savePersisentValue(value: gameVars.round, key: "round")
          savePersisentValue(value: gameVars.bat.healthPoints, key: "health")
@@ -310,43 +261,39 @@ extension GameScene: BatDelegate, GridDelegate, AnnouncerRoundCompletedDelegate,
          savePersisentValue(value: gameVars.cycloneDeployed, key: "cycloneDeployed")
          savePersisentValue(value: gameVars.cyclone.timer, key: "cycloneTimer")
          savePersisentValue(value: gameVars.cycloneReserve, key: "cycloneReserve")
-        
+
     }
-    func saveGridDataPeristently(positionData: [String : PositionAndType]) {
-        
+    func saveGridDataPeristently(positionData: [String: PositionAndType]) {
+
          defaults.set(try? PropertyListEncoder().encode(positionData), forKey: "positionData")
          defaults.synchronize()
     }
-    func fetchPersistentGridData()->[PositionAndType]?
-    {
+    func fetchPersistentGridData() -> [PositionAndType]? {
         guard let positionDictData = defaults.object(forKey: "positionData") as? Data else { return nil }
-        
-        guard let positionData = try? PropertyListDecoder().decode([String:PositionAndType].self, from: positionDictData)  else { return nil }
-        
-        let positionsAndTypes:[PositionAndType] = Array(positionData.values)
-        
+
+        guard let positionData = try? PropertyListDecoder().decode([String: PositionAndType].self, from: positionDictData)  else { return nil }
+
+        let positionsAndTypes: [PositionAndType] = Array(positionData.values)
+
         return positionsAndTypes
-        
+
     }
-    
-    func savePersisentValue(value:Any, key:String)->Void
-    {
+
+    func savePersisentValue(value: Any, key: String) {
          defaults.set(value, forKey: key)
          defaults.synchronize()
     }
-    func removePersisentValue(key:String)->Void
-    {
-         defaults.removeObject(forKey:key)
+    func removePersisentValue(key: String) {
+         defaults.removeObject(forKey: key)
          defaults.synchronize()
     }
-    
-    func fetchPersistentValue(key:String)->Any?
-    {
+
+    func fetchPersistentValue(key: String)->Any? {
         return defaults.object(forKey: key)
-        
+
     }
     func convergedRemovedSpriteEvent(sprite: SKSpriteNode) {
-       
+
         if let coin = sprite as? Coin {
             playerGetsTreasure(coin)
             playSound(gameVars.coinSoundEffect)
@@ -357,11 +304,8 @@ extension GameScene: BatDelegate, GridDelegate, AnnouncerRoundCompletedDelegate,
         }
     }
      // MARK: AnnouncerRoundCompletedDelegate
-    func currentRoundNumber() -> UInt
-    {
+    func currentRoundNumber() -> UInt {
         return gameVars.round
     }
 
-     
-    
 }

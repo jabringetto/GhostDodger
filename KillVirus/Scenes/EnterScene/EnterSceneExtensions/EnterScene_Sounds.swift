@@ -10,58 +10,43 @@ import Foundation
 import SpriteKit
 import AVFoundation
 
-extension EnterScene
-{
+extension EnterScene {
 
-    
-    func loadEnterSceneBackgroundMusic()->Void
-    {
+    func loadEnterSceneBackgroundMusic() {
         loadSound("VirusDodger_EnterScene.mp3", player: &sceneVars.enterMusicPlayer, volume: 0.5)
     }
-    func playEnterSceneBackgroundMusic()->Void
-    {
+    func playEnterSceneBackgroundMusic() {
         sceneVars.enterMusicPlayer?.numberOfLoops = -1
         sceneVars.enterMusicPlayer?.play()
     }
-    func playSound(_ player:AVAudioPlayer?)->Void
-    {
-       
+    func playSound(_ player: AVAudioPlayer?) {
+
         guard let soundPlayer = player else {
            print("failed to play sound")
-            
+
             return
-            
-            
+
         }
-        if(soundPlayer.isPlaying)
-        {
+        if soundPlayer.isPlaying {
             soundPlayer.pause()
             soundPlayer.currentTime = 0.0
             soundPlayer.play()
-            
-        }
-        else
-        {
+
+        } else {
             soundPlayer.play()
         }
-     
-        
+
     }
-    private func loadSound(_ filename:String, player:inout AVAudioPlayer?, volume:Float)->Void
-    {
-        let path = Bundle.main.path(forResource:filename, ofType:nil) ?? ""
+    private func loadSound(_ filename: String, player:inout AVAudioPlayer?, volume: Float) {
+        let path = Bundle.main.path(forResource: filename, ofType: nil) ?? ""
         let url = URL(fileURLWithPath: path)
         do {
                 player = try AVAudioPlayer(contentsOf: url)
                 player?.volume = volume
-                player?.prepareToPlay()        }
-        catch
-        {
+                player?.prepareToPlay()        } catch {
                    print("loading sound failed")
         }
 
     }
-    
-    
-    
+
 }

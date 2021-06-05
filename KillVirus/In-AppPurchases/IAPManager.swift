@@ -9,10 +9,8 @@
 import Foundation
 import StoreKit
 
-
 class IAPManager: NSObject {
-   
-    
+
     static let shared = IAPManager()
     var onReceiveProductsHandler: ((Result<[SKProduct], IAPManagerError>) -> Void)?
     var onBuyProductHandler: ((Result<Bool, Error>) -> Void)?
@@ -37,19 +35,19 @@ class IAPManager: NSObject {
         // Keep the handler (closure) that will be called when requesting for
         // products on the App Store is finished.
         onReceiveProductsHandler = productsReceiveHandler
-     
+
         // Get the product identifiers.
         guard let productIDs = getProductIDs() else {
             productsReceiveHandler(.failure(.noProductIDsFound))
             return
         }
-     
+
         // Initialize a product request.
         let request = SKProductsRequest(productIdentifiers: Set(productIDs))
-     
+
         // Set self as the its delegate.
         request.delegate = self
-     
+
         // Make the request.
         request.start()
     }
@@ -63,28 +61,26 @@ class IAPManager: NSObject {
     func buy(product: SKProduct, withHandler handler: @escaping ((_ result: Result<Bool, Error>) -> Void)) {
         let payment = SKPayment(product: product)
         SKPaymentQueue.default().add(payment)
-     
+
         // Keep the completion handler.
         onBuyProductHandler = handler
     }
 
     func purchase(product: SKProduct) -> Bool {
-        
+
         if !IAPManager.shared.canMakePayments() {
             return false
         } else {
 
             IAPManager.shared.buy(product: product) { (result) in
-                
-                
+
                 DispatchQueue.main.async {
                    // self.delegate?.didFinishLongProcess()
                     switch result {
                     case .success(_):
-                        
-                    break //self.updateGameDataWithPurchasedProduct(product)
-                    
-                    
+
+                    break // self.updateGameDataWithPurchasedProduct(product)
+
                     case .failure(let error): break // self.delegate?.showIAPRelatedError(error)
                     }
                 }
@@ -116,7 +112,7 @@ extension IAPManager: SKProductsRequestDelegate {
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         // Get the available products contained in the response.
         let products = response.products
-     
+
         // Check if there are any products available.
         if products.count > 0 {
             // Call the following handler passing the received products.
@@ -127,30 +123,28 @@ extension IAPManager: SKProductsRequestDelegate {
         }
     }
     func request(_ request: SKRequest, didFailWithError error: Error) {
-     
+
         onReceiveProductsHandler?(.failure(.productRequestFailed))
     }
 
     func requestDidFinish(_ request: SKRequest) {
-     
-    }
-    
 
- 
+    }
+
 }
 // MARK: SKPaymentTransactionObserver
 extension IAPManager: SKPaymentTransactionObserver {
-    
+
         func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
             transactions.forEach { (transaction) in
- 
+
                 switch transaction.transactionState {
                 case .purchased:
                     onBuyProductHandler?(.success(true))
                     SKPaymentQueue.default().finishTransaction(transaction)
-                    
+
                 case .restored: break
-                 
+
                 case .failed:
                 if let error = transaction.error as? SKError {
                     if error.code != .paymentCancelled {
@@ -161,19 +155,18 @@ extension IAPManager: SKPaymentTransactionObserver {
                         print("IAP Error:", error.localizedDescription)
                 }
                 SKPaymentQueue.default().finishTransaction(transaction)
-                 
+
                 case .deferred, .purchasing: break
-    
+
                 @unknown default: break
-                    
+
                 }
             }
         }
         func startObserving() {
             SKPaymentQueue.default().add(self)
         }
-         
-         
+
         func stopObserving() {
             SKPaymentQueue.default().remove(self)
         }

@@ -10,20 +10,15 @@ import UIKit
 import SpriteKit
 
 final class Skull: GameSprite {
-    
-   
+
     private var skullTextures = [SKTexture]()
     private var skullAnimation = SKAction()
-    
-    convenience init(_ itemType: GameItemType)
-    {
-        
-        if(itemType == GameItemType.skull)
-        {
-            self.init(imageNamed:"Skull")
-        }
-        else
-        {
+
+    convenience init(_ itemType: GameItemType) {
+
+        if itemType == GameItemType.skull {
+            self.init(imageNamed: "Skull")
+        } else {
             self.init()
         }
         self.xScale = GameSceneConstants.skullScaleFactor
@@ -31,22 +26,19 @@ final class Skull: GameSprite {
         setupSkull()
         setupPhysics()
     }
-    
-    func setupPhysics()->Void
-    {
-        self.physicsBody = SKPhysicsBody.init(circleOfRadius:self.size.width*GameSceneConstants.gameItemPhysicsRadius)
+
+    func setupPhysics() {
+        self.physicsBody = SKPhysicsBody.init(circleOfRadius: self.size.width*GameSceneConstants.gameItemPhysicsRadius)
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.categoryBitMask = PhysicsCategory.Skull
         self.physicsBody?.contactTestBitMask = PhysicsCategory.Bat
     }
-    func setupSkull()->Void
-    {
+    func setupSkull() {
         skullTextures = setupTextures("Skull")
-        skullAnimation = SKAction.animate(with: skullTextures, timePerFrame:GameSceneConstants.skullAnimationTimePerFrame)
-        let forever = SKAction.repeat(skullAnimation,count: -1)
+        skullAnimation = SKAction.animate(with: skullTextures, timePerFrame: GameSceneConstants.skullAnimationTimePerFrame)
+        let forever = SKAction.repeat(skullAnimation, count: -1)
         self.run(forever)
-        
-    }
 
+    }
 
 }

@@ -8,42 +8,34 @@
 import SpriteKit
 import Foundation
 
-final class Whirlpool:SKSpriteNode
-{
-    
+final class Whirlpool: SKSpriteNode {
+
     var whirlpoolTextures = [SKTexture]()
     var whirlpoolAnimation = SKAction()
     var whirlpoolForever = SKAction()
     var countdownLabel = SKLabelNode()
- 
-    
-    convenience init(timePerFrame:TimeInterval)
-    {
-          self.init(imageNamed:"Whirlpool0001")
+
+    convenience init(timePerFrame: TimeInterval) {
+          self.init(imageNamed: "Whirlpool0001")
           addTexturesAndScale()
-          setupAnimation(timePerFrame:timePerFrame)
+          setupAnimation(timePerFrame: timePerFrame)
           addCountdownLabel()
-       
+
     }
-    private func addTexturesAndScale()->Void
-     {
+    private func addTexturesAndScale() {
          whirlpoolTextures = setupTextures("Whirlpool")
-        self.xScale = 0.5 //GameSceneConstants.forceFieldScaleConstant
+        self.xScale = 0.5 // GameSceneConstants.forceFieldScaleConstant
         self.yScale = 0.5 // GameSceneConstants.forceFieldScaleConstant 
      }
-    private func addCountdownLabel()->Void
-    {
+    private func addCountdownLabel() {
         countdownLabel.fontSize = 48
         countdownLabel.fontColor = UIColor.white
         self.addChild(countdownLabel)
     }
-    private func setupAnimation(timePerFrame:TimeInterval)->Void
-    {
-        whirlpoolAnimation  = SKAction.animate(with: whirlpoolTextures, timePerFrame:timePerFrame)
-        whirlpoolForever = SKAction.repeat(whirlpoolAnimation,count: -1)
+    private func setupAnimation(timePerFrame: TimeInterval) {
+        whirlpoolAnimation  = SKAction.animate(with: whirlpoolTextures, timePerFrame: timePerFrame)
+        whirlpoolForever = SKAction.repeat(whirlpoolAnimation, count: -1)
         self.run(whirlpoolForever)
 
     }
 }
-
-

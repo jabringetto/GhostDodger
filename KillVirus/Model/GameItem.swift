@@ -9,35 +9,32 @@
 import UIKit
 import SpriteKit
 
-enum GameItemType:Int
-{
+enum GameItemType: Int {
     case none
-    
+
     case ruby
-    
+
     case emerald
-    
+
     case silverCoin
-    
+
     case goldCoin
-    
+
     case skull
-    
+
     case virus
 }
-struct PositionAndType:Codable
-{
-    let position:CGPoint
-    let type:Int
+struct PositionAndType: Codable {
+    let position: CGPoint
+    let type: Int
 }
 final class GameItem: SKNode {
-    
-    var itemType:GameItemType?
-    var itemSprite:SKSpriteNode?
-    var pointValue:Int = 0
-    
-    convenience init(type:GameItemType, sprite:SKSpriteNode?)
-    {
+
+    var itemType: GameItemType?
+    var itemSprite: SKSpriteNode?
+    var pointValue: Int = 0
+
+    convenience init(type: GameItemType, sprite: SKSpriteNode?) {
            self.init()
            self.itemType = type
            self.itemSprite = sprite
@@ -72,5 +69,3 @@ extension UIColor {
         return nil
     }
 }
-
-

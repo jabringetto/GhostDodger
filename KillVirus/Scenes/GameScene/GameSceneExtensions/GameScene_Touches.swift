@@ -9,27 +9,21 @@
 import Foundation
 import SpriteKit
 
-extension GameScene
-{
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
-     {
+extension GameScene {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
          gameVars.screenTouched = true
          let touch = touches.first!
-         let location = touch.location(in:self)
-         let nodes = self.nodes(at:location)
-         for node in nodes
-         {
-            if (node.name == "pauseButton")
-            {
+         let location = touch.location(in: self)
+         let nodes = self.nodes(at: location)
+         for node in nodes {
+            if node.name == "pauseButton" {
                 pauseButtonPressed()
             }
-            if (node.name == "gameOver")
-            {
+            if node.name == "gameOver" {
                 resetGame()
                 resetUpgradeMinimums()
             }
-            if (node.name == "roundCompletedPlayButton")
-            {
+            if node.name == "roundCompletedPlayButton" {
                 gameVars.round += 1
                 savePersistentValues()
                 clearRoundPersistence()
@@ -37,38 +31,33 @@ extension GameScene
                 removeCyclone()
                 resetGame()
             }
-            if(node.name == "upgradesButton")
-            {
+            if node.name == "upgradesButton" {
                 self.gameSceneDelegate?.displayUpgradeScene()
             }
-            if(node.name == "cycloneDashboardIndicator")
-            {
+            if node.name == "cycloneDashboardIndicator" {
                 addCyclone()
             }
-            if(node.name == "forceFieldDashboardIndicator")
-            {
+            if node.name == "forceFieldDashboardIndicator" {
                 addForceField()
             }
-            
+
          }
         screenTouched(location)
-       
+
      }
-     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?)
-     {
-         
+     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+
          let touch = touches.first!
-         let location = touch.location(in:self)
+         let location = touch.location(in: self)
          screenTouched(location)
-         //gameVars.currentTouchLocation = location
-         
+         // gameVars.currentTouchLocation = location
+
      }
      override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
          let touch = touches.first!
-         let location = touch.location(in:self)
+         let location = touch.location(in: self)
         // gameVars.currentTouchLocation = location
          screenTouched(location)
      }
 
-    
 }

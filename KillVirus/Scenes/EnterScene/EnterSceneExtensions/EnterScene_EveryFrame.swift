@@ -10,41 +10,35 @@ import Foundation
 import UIKit
 import SpriteKit
 
-extension EnterScene
-{
+extension EnterScene {
      // MARK: Every Frame
-     override func update(_ currentTime: TimeInterval)
-     {
+     override func update(_ currentTime: TimeInterval) {
         moveLayers()
         incrementCounters()
         moveLetters()
         moveCoins()
         moveSkull()
      }
-    private func incrementCounters()->Void
-    {
+    private func incrementCounters() {
         sceneVars.virusLettersSineArgument += CGFloat.pi / 30.0
         sceneVars.skullRotationCounter += 1
-        if(sceneVars.skullRotationCounter == 160)
-        {
+        if sceneVars.skullRotationCounter == 160 {
             sceneVars.skullRotationCounter = 0
         }
-        
+
     }
-    private func moveLetters()->Void
-    {
+    private func moveLetters() {
 
         for (index, sprite) in sceneVars.virusLetters.enumerated() {
-            
+
             let delta = 2.0 * CGFloat(index) *  (CGFloat.pi / 30.0)
             sprite.position.y += 2.0 * sin(sceneVars.virusLettersSineArgument + delta)
-            
+
         }
         sceneVars.letterO.zRotation += 0.5
-         
+
     }
-    private func moveCoins()->Void
-    {
+    private func moveCoins() {
         sceneVars.enterGoldCoin.position.y += 1.0 * sin(sceneVars.virusLettersSineArgument * 0.5)
         sceneVars.enterGoldCoin.position.x += 1.0 * cos(sceneVars.virusLettersSineArgument * 0.5)
         sceneVars.enterGoldCoin.zRotation += cos(sceneVars.virusLettersSineArgument * 0.5) / 200.0
@@ -52,33 +46,25 @@ extension EnterScene
         sceneVars.enterSilverCoin.position.x += 1.0 * sin(sceneVars.virusLettersSineArgument * 0.5)
         sceneVars.enterSilverCoin.zRotation += sin(sceneVars.virusLettersSineArgument * 0.5) / 200.0
     }
-    private func moveSkull()->Void
-    {
+    private func moveSkull() {
         let skullRotation = sceneVars.virusLettersSineArgument / 3.0
-        if(sceneVars.skullRotationCounter < 10)
-        {
+        if sceneVars.skullRotationCounter < 10 {
             sceneVars.enterSkull.zRotation += skullRotation
         }
-        if(sceneVars.skullRotationCounter > 130)
-        {
+        if sceneVars.skullRotationCounter > 130 {
             sceneVars.enterSkull.zRotation -= skullRotation
         }
     }
-     private func moveLayers()->Void
-     {
+     private func moveLayers() {
         sceneVars.conveyorLayer.position.x -= EnterSceneConstants.conveyorSpeed
         sceneVars.letterLayer.position.x -= 4.0 * EnterSceneConstants.conveyorSpeed
-        if(sceneVars.letterLayer.position.x < -2.0 * sceneVars.lowercaseLetterR.position.x )
-        {
+        if sceneVars.letterLayer.position.x < -2.0 * sceneVars.lowercaseLetterR.position.x {
             sceneVars.letterLayer.position.x  +=  sceneVars.lowercaseLetterR.position.x * 3.0
         }
-        if(sceneVars.conveyorLayer.position.x < -5.0 * EnterSceneConstants.conveyorSpacing)
-        {
+        if sceneVars.conveyorLayer.position.x < -5.0 * EnterSceneConstants.conveyorSpacing {
             sceneVars.conveyorLayer.position.x += 6.0 * EnterSceneConstants.conveyorSpacing
         }
-     
+
      }
-    
-    
-    
+
 }

@@ -9,14 +9,13 @@
 import Foundation
 import SpriteKit
 
-protocol ConvergeAndShrinkDelegate:AnyObject {
-    
-    func shrinkCompleted(sprite:SKSpriteNode)->Void
+protocol ConvergeAndShrinkDelegate: AnyObject {
+
+    func shrinkCompleted(sprite: SKSpriteNode)
 }
 
-class GameSprite:SKSpriteNode
-{
+class GameSprite: SKSpriteNode {
     var convergingOnCyclone = false
-    weak var delegate:ConvergeAndShrinkDelegate?
-    
+    weak var delegate: ConvergeAndShrinkDelegate?
+
 }

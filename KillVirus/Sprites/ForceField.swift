@@ -8,60 +8,53 @@
 
 import SpriteKit
 
-protocol ForceFieldDelegate:class {
-    
-    func forceFieldCountdownComplete()->Void
+protocol ForceFieldDelegate: class {
+
+    func forceFieldCountdownComplete()
 }
 
-
-final class ForceField:SKSpriteNode
-{
-    weak var delegate:ForceFieldDelegate?
+final class ForceField: SKSpriteNode {
+    weak var delegate: ForceFieldDelegate?
     var forceFieldTextures = [SKTexture]()
     var forceFieldAnimation = SKAction()
     var forceFieldForever = SKAction()
     let forceFieldKey =  "forceFieldForever"
     var countdownLabel = SKLabelNode()
-    var timer:Int = 1800
-    let frameRate:Int = 60
-    
-    convenience init()
-    {
-        self.init(imageNamed:"ForceField0001")
+    var timer: Int = 1800
+    let frameRate: Int = 60
+
+    convenience init() {
+        self.init(imageNamed: "ForceField0001")
         addTexturesAndScale()
         setupAnimation(timePerFrame: 0.1)
         addCountdownLabel()
-     
+
     }
-    private func addTexturesAndScale()->Void
-    {
+    private func addTexturesAndScale() {
         forceFieldTextures = setupTextures("ForceField")
         self.xScale = GameSceneConstants.forceFieldScaleConstant
         self.yScale = GameSceneConstants.forceFieldScaleConstant
     }
-    private func addCountdownLabel()->Void
-    {
+    private func addCountdownLabel() {
         countdownLabel.fontSize = 48
         countdownLabel.fontColor = UIColor.white
         countdownLabel.position = CGPoint(x: 0.0, y: 60.0)
         self.addChild(countdownLabel)
     }
-    private func setupAnimation(timePerFrame:TimeInterval)->Void
-    {
-        forceFieldAnimation = SKAction.animate(with: forceFieldTextures, timePerFrame:timePerFrame)
-        forceFieldForever = SKAction.repeat(forceFieldAnimation,count: -1)
+    private func setupAnimation(timePerFrame: TimeInterval) {
+        forceFieldAnimation = SKAction.animate(with: forceFieldTextures, timePerFrame: timePerFrame)
+        forceFieldForever = SKAction.repeat(forceFieldAnimation, count: -1)
         self.run(forceFieldForever, withKey: forceFieldKey)
 
     }
-    func timerCountDown()->Void
-    {
+    func timerCountDown() {
         timer -= 1
-        let seconds:Int = timer / frameRate + 1
+        let seconds: Int = timer / frameRate + 1
         countdownLabel.text = String(seconds)
-        if(seconds == 0) {
+        if seconds == 0 {
             delegate?.forceFieldCountdownComplete()
             timer = 1800
         }
     }
-    
+
 }
