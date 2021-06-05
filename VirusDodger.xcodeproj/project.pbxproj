@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D004C9CF2472241A0066AF56 /* Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D004C9CE2472241A0066AF56 /* Dashboard.swift */; };
+		D00B6337266B3A040070BBF4 /* skull.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D00B6336266B3A040070BBF4 /* skull.atlas */; };
 		D0391B4323A436B300752CEC /* Bat.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D0391B4223A436B300752CEC /* Bat.atlas */; };
 		D0391B4523A436F600752CEC /* Bat.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0391B4423A436F600752CEC /* Bat.swift */; };
 		D03982BF23B70EA600308022 /* Emerald.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D0CA810721CF1B0D00BE7E96 /* Emerald.atlas */; };
@@ -15,7 +16,6 @@
 		D06771202546353200DB0552 /* GameSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = D067711F2546353200DB0552 /* GameSprite.swift */; };
 		D07AFA9D245C9542004DC615 /* SKSpriteNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07AFA9C245C9542004DC615 /* SKSpriteNode+Extensions.swift */; };
 		D084CBB32471B75F00378317 /* Buzzer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D084CBB22471B75F00378317 /* Buzzer.mp3 */; };
-		D08C540923EA432D005D8441 /* Skull.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D08C540823EA432C005D8441 /* Skull.atlas */; };
 		D09163A2255211A30098E82C /* UpgradesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09163A1255211A30098E82C /* UpgradesController.swift */; };
 		D09E156124C4E41D009A3EF4 /* EnterScene_Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09E156024C4E41D009A3EF4 /* EnterScene_Layout.swift */; };
 		D09E156424C4E72C009A3EF4 /* EnterScene_EveryFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09E156324C4E72C009A3EF4 /* EnterScene_EveryFrame.swift */; };
@@ -62,13 +62,13 @@
 
 /* Begin PBXFileReference section */
 		D004C9CE2472241A0066AF56 /* Dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dashboard.swift; sourceTree = "<group>"; };
+		D00B6336266B3A040070BBF4 /* skull.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = skull.atlas; sourceTree = "<group>"; };
 		D0391B4223A436B300752CEC /* Bat.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Bat.atlas; sourceTree = "<group>"; };
 		D0391B4423A436F600752CEC /* Bat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bat.swift; sourceTree = "<group>"; };
 		D03E468825E02B9300C32FEE /* VirusDodger_EnterScene.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = VirusDodger_EnterScene.mp3; sourceTree = "<group>"; };
 		D067711F2546353200DB0552 /* GameSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSprite.swift; sourceTree = "<group>"; };
 		D07AFA9C245C9542004DC615 /* SKSpriteNode+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKSpriteNode+Extensions.swift"; sourceTree = "<group>"; };
 		D084CBB22471B75F00378317 /* Buzzer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Buzzer.mp3; sourceTree = "<group>"; };
-		D08C540823EA432C005D8441 /* Skull.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Skull.atlas; path = ../../../../MISC/MISC_2020_02_03/Skull.atlas; sourceTree = "<group>"; };
 		D09163A1255211A30098E82C /* UpgradesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradesController.swift; sourceTree = "<group>"; };
 		D09E156024C4E41D009A3EF4 /* EnterScene_Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterScene_Layout.swift; sourceTree = "<group>"; };
 		D09E156324C4E72C009A3EF4 /* EnterScene_EveryFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterScene_EveryFrame.swift; sourceTree = "<group>"; };
@@ -194,9 +194,9 @@
 				D0CA810721CF1B0D00BE7E96 /* Emerald.atlas */,
 				D0F4116B24F2DE6500897B54 /* ForceField.atlas */,
 				D0CA810521CF1AF400BE7E96 /* RubyFrame.atlas */,
-				D08C540823EA432C005D8441 /* Skull.atlas */,
 				D0D3C750245AAC2100C47DA6 /* Virus.atlas */,
 				D09E2DA6245FCDCE005AB915 /* VirusWithFace.atlas */,
+				D00B6336266B3A040070BBF4 /* skull.atlas */,
 				D0C15413250B4B2B00D2B661 /* Whirlpool.atlas */,
 			);
 			path = Assets;
@@ -426,6 +426,7 @@
 				D0C7D59B25E220B600A384AC /* VirusDodger_GameScene.mp3 in Resources */,
 				D0F4116C24F2DE6500897B54 /* ForceField.atlas in Resources */,
 				D0DE71B323BBEF5B00B87144 /* Treasure.mp3 in Resources */,
+				D00B6337266B3A040070BBF4 /* skull.atlas in Resources */,
 				D03982BF23B70EA600308022 /* Emerald.atlas in Resources */,
 				D084CBB32471B75F00378317 /* Buzzer.mp3 in Resources */,
 				D0DE71B023B94A1000B87144 /* Kaching.mp3 in Resources */,
@@ -436,7 +437,6 @@
 				D0CA80F521CF13A400BE7E96 /* Main.storyboard in Resources */,
 				D0CA810621CF1AF400BE7E96 /* RubyFrame.atlas in Resources */,
 				D0B2D1E3249DC3D800A4B2E6 /* Coin01.mp3 in Resources */,
-				D08C540923EA432D005D8441 /* Skull.atlas in Resources */,
 				D03E468925E02B9300C32FEE /* VirusDodger_EnterScene.mp3 in Resources */,
 				D09E2DA7245FCDCE005AB915 /* VirusWithFace.atlas in Resources */,
 				D0C15414250B4B2B00D2B661 /* Whirlpool.atlas in Resources */,
