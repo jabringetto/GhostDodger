@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-protocol ForceFieldDelegate: class {
+protocol ForceFieldDelegate: AnyObject {
 
     func forceFieldCountdownComplete()
 }
