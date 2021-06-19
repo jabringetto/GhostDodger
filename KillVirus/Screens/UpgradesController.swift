@@ -78,13 +78,16 @@ class UpgradesController: UIViewController, UpgradesSceneDelegate {
                     if let product = self?.productFor(upgradeType) {
                         IAPManager.shared.buy(product: product, withHandler: { result in
 
-                            switch result {
-                            case .success(_):
-                                self?.scene.addBoughtCyclone()
-                                let alert = self?.thankYouForPurchaseAlert(upgradeType, paid) ?? UIAlertController()
-                                self?.present(alert, animated: false, completion: nil)
-                            case .failure(let error):
-                                print(error.localizedDescription)
+                            DispatchQueue.main.async {
+                                switch result {
+                                case .success(_):
+
+                                    self?.scene.addBoughtCyclone()
+                                    let alert = self?.thankYouForPurchaseAlert(upgradeType, paid) ?? UIAlertController()
+                                    self?.present(alert, animated: false, completion: nil)
+                                case .failure(let error):
+                                    print(error.localizedDescription)
+                                }
                             }
 
                         })
@@ -108,13 +111,17 @@ class UpgradesController: UIViewController, UpgradesSceneDelegate {
                 let paidForceFieldAction =  UIAlertAction(title: "Buy", style: .default, handler: { [weak self]  _ in
                     if let product = self?.productFor(upgradeType) {
                         IAPManager.shared.buy(product: product, withHandler: { result  in
-                            switch result {
-                            case .success(_):
-                                self?.scene.addBoughtForceField()
-                                let alert = self?.thankYouForPurchaseAlert(upgradeType, paid) ?? UIAlertController()
-                                self?.present(alert, animated: false, completion: nil)
-                            case .failure(let error):
-                                print(error.localizedDescription)
+
+                            DispatchQueue.main.async {
+                                switch result {
+                                case .success(_):
+                                    self?.scene.addBoughtForceField()
+                                    let alert = self?.thankYouForPurchaseAlert(upgradeType, paid) ?? UIAlertController()
+                                    self?.present(alert, animated: false, completion: nil)
+                                case .failure(let error):
+                                    print(error.localizedDescription)
+                                }
+
                             }
 
                         })
