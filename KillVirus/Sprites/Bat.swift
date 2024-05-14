@@ -22,13 +22,13 @@ final class Bat: SKSpriteNode {
     let deadEyeRight = SKSpriteNode(imageNamed: "DeadEyeRight")
     let deadEyeLeft = SKSpriteNode(imageNamed: "DeadEyeLeft")
     let flapKey =  "flapWingsForever"
-    let virusHitCounterDuration: Int = 30
+    let ghostHitCounterDuration: Int = 30
     var batTextures = [SKTexture]()
     var batAnimation = SKAction()
     var flapWingsForever = SKAction()
     var noAnimation = SKAction()
-    var virusHitCounter = 0
-    var isHitByVirus = false
+    var ghostHitCounter = 0
+    var isHitByGhost = false
     var healthPoints: UInt = 20
     var healthPointsHealingCounter = 0
     var healTimeInSeconds: Int = 4
@@ -72,22 +72,7 @@ final class Bat: SKSpriteNode {
         batTextures =  secondHalfTextures + firstHalfTextures
         setupAnimation(timePerFrame: GameSceneConstants.batAnimationTimePerFrame)
     }
-    func randomizeAnimation() {
-        let numTextures: UInt = UInt(batTextures.count)
-        guard numTextures > 1 else { return }
-        let randomIndex = UInt.random(in: 0 ..< numTextures)
-        var firstHalfTextures = [SKTexture]()
-        var secondHalfTextures = [SKTexture]()
-        for (index, texture) in batTextures.enumerated() {
-            if index < randomIndex {
-                firstHalfTextures.append(texture)
-            } else {
-                 secondHalfTextures.append(texture)
-            }
-        }
-        batTextures =  secondHalfTextures + firstHalfTextures
-        setupAnimation(timePerFrame: GameSceneConstants.batAnimationTimePerFrame)
-    }
+
     func setupPhysics() {
         self.physicsBody = SKPhysicsBody.init(circleOfRadius: self.size.width * GameSceneConstants.batPhysicsBodySizeRatio)
         self.physicsBody?.affectedByGravity = false
@@ -134,7 +119,7 @@ final class Bat: SKSpriteNode {
             greenEyeLeft.isHidden = false
             self.removeAction(forKey: flapKey)
             setupAnimation(timePerFrame: GameSceneConstants.batAnimationTimePerFrame*4.0)
-            self.isHitByVirus = true
+            self.isHitByGhost = true
             self.delegate?.savePersistentValues()
         } else {
             die()
@@ -142,14 +127,14 @@ final class Bat: SKSpriteNode {
 
     }
     func incrementVirusHitCounter() {
-        if self.isHitByVirus {
-            virusHitCounter += 1
+        if self.isHitByGhost {
+            ghostHitCounter += 1
         }
-        if virusHitCounter == virusHitCounterDuration {
-            self.isHitByVirus = false
+        if ghostHitCounter == ghostHitCounterDuration {
+            self.isHitByGhost = false
             greenEyeRight.isHidden = true
             greenEyeLeft.isHidden = true
-            virusHitCounter = 0
+            ghostHitCounter = 0
             setupAnimation(timePerFrame: GameSceneConstants.batAnimationTimePerFrame)
 
         }

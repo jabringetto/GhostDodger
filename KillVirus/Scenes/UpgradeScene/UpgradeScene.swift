@@ -126,13 +126,13 @@ final class UpgradeScene: SKScene {
         let yPosDesc: CGFloat =  0.0
         upgradeVars.cycloneUpgradeDescLabel.fontSize = 14.0
         upgradeVars.cycloneUpgradeDescLabel.fontColor = .white
-        upgradeVars.cycloneUpgradeDescLabel.text = "Suck down virus and treasure: 30 seconds | 800 pts/$0.99."
+        upgradeVars.cycloneUpgradeDescLabel.text = "Suck down ghosts and treasure: 30 seconds | 800 pts/$0.99."
         upgradeVars.cycloneUpgradeDescLabel.position.y = yPosDesc
         upgradeVars.cycloneBlackBar.addChild(upgradeVars.cycloneUpgradeDescLabel)
 
         upgradeVars.forceFieldUpgradeDescLabel.fontSize = 14.0
         upgradeVars.forceFieldUpgradeDescLabel.fontColor = .white
-        upgradeVars.forceFieldUpgradeDescLabel.text = "Repel all incoming virus: 30 seconds | 800 pts/$0.99."
+        upgradeVars.forceFieldUpgradeDescLabel.text = "Repel all incoming ghosts: 30 seconds | 800 pts/$0.99."
         upgradeVars.forceFieldUpgradeDescLabel.position.y = yPosDesc
         upgradeVars.forceFieldBlackBar.addChild(upgradeVars.forceFieldUpgradeDescLabel)
 

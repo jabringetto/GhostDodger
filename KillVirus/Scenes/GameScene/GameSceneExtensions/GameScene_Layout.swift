@@ -41,11 +41,13 @@ extension GameScene {
     func addBat() {
         gameVars.bat.alpha = 1.0
 
-        if let batPosX = fetchPersistentValue(key: "batPositionX") as? CGFloat, let batPosY = fetchPersistentValue(key: "batPositionY") as? CGFloat {
+        if let batPosX = fetchPersistentValue(key: "batPositionX") as? CGFloat,
+           let batPosY = fetchPersistentValue(key: "batPositionY") as? CGFloat {
             gameVars.bat.position.x = batPosX
             gameVars.bat.position.y = batPosY
         } else {
-            gameVars.bat.position = CGPoint(x: 0.0, y: gameVars.screenHeight * GameSceneConstants.batVerticalPositionMultiplier)
+            gameVars.bat.position = CGPoint(x: 0.0,
+                                            y: gameVars.screenHeight * GameSceneConstants.batVerticalPositionMultiplier)
         }
 
         self.addChild(gameVars.bat)
@@ -74,7 +76,7 @@ extension GameScene {
 
         gameVars.grid = Grid.init(width, height)
         gameVars.grid.delegate = self
-        gameVars.grid.updateVirusAndSkullOccurence()
+        gameVars.grid.updateGhostAndSkullOccurence()
         gameVars.grid.populateGridItems(gameVars.backLayer)
     }
     private func addGameOver() {

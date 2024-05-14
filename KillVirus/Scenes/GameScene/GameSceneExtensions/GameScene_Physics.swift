@@ -17,6 +17,7 @@ struct PhysicsCategory {
      static let Coin: UInt32 = 0b11  // 3
      static let Skull: UInt32 = 0b100 // 4
      static let Virus: UInt32 = 0b101 // 5
+     static let Ghost: UInt32 = 0b110 // 6
  }
 
 extension GameScene: SKPhysicsContactDelegate {
@@ -39,10 +40,10 @@ extension GameScene: SKPhysicsContactDelegate {
         let firstBodyTheBat: Bool = firstBody.categoryBitMask == PhysicsCategory.Bat
         let secondBodyAGem: Bool = secondBody.categoryBitMask == PhysicsCategory.Gem
         let secondBodyACoin: Bool = secondBody.categoryBitMask == PhysicsCategory.Coin
-        let secondBodyAVirus: Bool = secondBody.categoryBitMask == PhysicsCategory.Virus
+        let secondBodyAGhost: Bool = secondBody.categoryBitMask == PhysicsCategory.Ghost
         let secondBodyASkull: Bool = secondBody.categoryBitMask == PhysicsCategory.Skull
 
-        if firstBodyTheBat && (secondBodyAGem || secondBodyACoin || secondBodyAVirus || secondBodyASkull) {
+        if firstBodyTheBat && (secondBodyAGem || secondBodyACoin || secondBodyAGhost || secondBodyASkull) {
 
             if let itemSprite = secondBody.node as? SKSpriteNode {
                 gameVars.grid.removeSpriteFromPersistence(sprite: itemSprite)
@@ -55,14 +56,16 @@ extension GameScene: SKPhysicsContactDelegate {
                 } else {
                     playSound(gameVars.buzzerSoundEffect)
                     gameVars.bat.die()
-                    gameVars.healthMeter.updateGreenBar(gameVars.bat.healthPoints, GameSceneConstants.batMaxHealthPoints)
+                    gameVars.healthMeter.updateGreenBar(gameVars.bat.healthPoints,
+                                                        GameSceneConstants.batMaxHealthPoints)
 
                 }
 
-                if secondBodyAVirus {
+                if secondBodyAGhost {
                     playSound(gameVars.buzzerSoundEffect)
                     gameVars.bat.hitByVirus()
-                    gameVars.healthMeter.updateGreenBar(gameVars.bat.healthPoints, GameSceneConstants.batMaxHealthPoints)
+                    gameVars.healthMeter.updateGreenBar(gameVars.bat.healthPoints,
+                                                        GameSceneConstants.batMaxHealthPoints)
 
                 } else if secondBodyAGem || secondBodyACoin {
 

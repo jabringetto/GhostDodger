@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D0CA80EB21CF13A400BE7E96"
-               BuildableName = "Virus Dodger.app"
-               BlueprintName = "VirusDodger"
-               ReferencedContainer = "container:VirusDodger.xcodeproj">
+               BuildableName = "Ghost Dodger.app"
+               BlueprintName = "GhostDodger"
+               ReferencedContainer = "container:GhostDodger.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D0CA80EB21CF13A400BE7E96"
-            BuildableName = "Virus Dodger.app"
-            BlueprintName = "VirusDodger"
-            ReferencedContainer = "container:VirusDodger.xcodeproj">
+            BuildableName = "Ghost Dodger.app"
+            BlueprintName = "GhostDodger"
+            ReferencedContainer = "container:GhostDodger.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <StoreKitConfigurationFileReference
@@ -65,9 +65,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D0CA80EB21CF13A400BE7E96"
-            BuildableName = "Virus Dodger.app"
-            BlueprintName = "VirusDodger"
-            ReferencedContainer = "container:VirusDodger.xcodeproj">
+            BuildableName = "Ghost Dodger.app"
+            BlueprintName = "GhostDodger"
+            ReferencedContainer = "container:GhostDodger.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -45,6 +45,7 @@ struct GameSceneConstants {
     static let gameOverConvergenceCoefficent: CGFloat = 0.99
     static let gameOverInitialPosition: CGFloat = 1000.0
     static let gemScale: CGFloat = 0.3
+    static let ghostScale: CGFloat = 0.2
     static let gameSceneHorizontalPadding: CGFloat = -20.0
     static let gameSceneBottomPadding: CGFloat = 25.0
     static let gemConvergeSpeed: CGFloat = 1.3
@@ -58,6 +59,7 @@ struct GameSceneConstants {
     static let skullScaleFactor: CGFloat = 0.2
     static let skullFollowRange: CGFloat = 200.0
     static let skullFollowMarginY: CGFloat = -30.0
+    static let ghostAnimationTimePerFrame: TimeInterval = 0.06
     static let skullAnimationTimePerFrame: TimeInterval = 0.02
     static let virusPhysicsBodySizeRatio: CGFloat = 0.4
     static let virusAnimationTimePerFrame: TimeInterval = 0.2

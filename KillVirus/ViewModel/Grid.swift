@@ -28,6 +28,7 @@ final class Grid: ConvergeAndShrinkDelegate {
     private var positionDataDict = [String: PositionAndType]()
     private var skulls = [Skull]()
     private var virus = [Virus]()
+    private var ghosts = [Ghost]()
     private var coins = [Coin]()
     private var gems = [Gem]()
     private var convergingSpritesPlayer = [String: SKSpriteNode]()
@@ -36,10 +37,10 @@ final class Grid: ConvergeAndShrinkDelegate {
     convenience init(_ width: CGFloat, _ height: CGFloat) {
         self.init()
         columnHalfWidth = width / 12.0
-        updateVirusAndSkullOccurence()
+        updateGhostAndSkullOccurence()
         populatePositions()
     }
-    func updateVirusAndSkullOccurence() {
+    func updateGhostAndSkullOccurence() {
 
         guard let round = self.delegate?.fetchPersistentValue(key: "round") as? UInt else {return}
 
@@ -73,6 +74,11 @@ final class Grid: ConvergeAndShrinkDelegate {
                 if type == GameItemType.skull {
                     if let aSkull = sprite as? Skull {
                         skulls.append(aSkull)
+                    }
+                }
+                if type == GameItemType.ghost {
+                    if let aGhost = sprite as? Ghost {
+                        ghosts.append(aGhost)
                     }
                 }
                 if type == GameItemType.virus {
@@ -135,7 +141,8 @@ final class Grid: ConvergeAndShrinkDelegate {
              return Skull.init(type)
         case GameItemType.virus:
             return Virus.init(type)
-
+        case GameItemType.ghost:
+            return Ghost.init(type)
         default:
             return nil
         }
@@ -145,7 +152,7 @@ final class Grid: ConvergeAndShrinkDelegate {
         if primaryRoll > 90 && primaryRoll <= 100 {
               type = secondaryTypeForRoll(secondaryRoll)
         } else if primaryRoll > virusOccurenceLowerLimit && primaryRoll <= 90 {
-            type = .virus
+            type = .ghost
         }
         return type
     }
@@ -189,12 +196,26 @@ final class Grid: ConvergeAndShrinkDelegate {
             let range = GameSceneConstants.skullFollowRange
             skull.followPointWithinYRange(layerPosition, targetPosition, followSpeed, yRange: range)
         }
+        for aGhost in ghosts {
+
+            if let gameScene = self.delegate as? GameScene {
+                let forceDeployed = gameScene.gameVars.forceFieldDeployed
+                let cycloneDeployed = gameScene.gameVars.cycloneDeployed
+                aGhost.followLikeAGhost(layerPosition, targetPosition, followSpeed,
+                                        forceFieldDeployed: forceDeployed,
+                                        cycloneDeployed: cycloneDeployed, radius: 90.0)
+
+            }
+
+        }
         for aVirus in virus {
 
             if let gameScene = self.delegate as? GameScene {
                 let forceDeployed = gameScene.gameVars.forceFieldDeployed
                 let cycloneDeployed = gameScene.gameVars.cycloneDeployed
-                aVirus.followLikeAVirus(layerPosition, targetPosition, followSpeed, forceFieldDeployed: forceDeployed, cycloneDeployed: cycloneDeployed, radius: 90.0)
+                aVirus.followLikeAVirus(layerPosition, targetPosition, followSpeed,
+                                        forceFieldDeployed: forceDeployed,
+                                        cycloneDeployed: cycloneDeployed, radius: 90.0)
 
             }
 

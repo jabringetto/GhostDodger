@@ -19,6 +19,8 @@ enum GameItemType: Int {
     case silverCoin
 
     case goldCoin
+    
+    case ghost
 
     case skull
 

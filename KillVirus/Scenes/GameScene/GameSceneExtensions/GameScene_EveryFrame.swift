@@ -88,7 +88,7 @@ extension GameScene {
 
        }
        private func batFollowFinger() {
-            let batIsMobile = gameVars.screenTouched && !gameVars.bat.isHitByVirus && !gameVars.bat.immobilized
+            let batIsMobile = gameVars.screenTouched && !gameVars.bat.isHitByGhost && !gameVars.bat.immobilized
            if batIsMobile {
                if let touchLocation = gameVars.currentTouchLocation {
                    let deltaX = touchLocation.x - gameVars.bat.position.x

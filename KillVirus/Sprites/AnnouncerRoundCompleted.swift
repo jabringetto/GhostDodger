@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-protocol AnnouncerRoundCompletedDelegate: class {
+protocol AnnouncerRoundCompletedDelegate: AnyObject {
 
     func currentRoundNumber() -> UInt
 }

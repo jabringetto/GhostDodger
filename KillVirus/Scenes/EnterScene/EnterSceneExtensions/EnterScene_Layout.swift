@@ -27,7 +27,13 @@ extension EnterScene {
     func addEnterBat() {
        sceneVars.enterBat.xScale = EnterSceneConstants.enterBatScale
        sceneVars.enterBat.yScale = EnterSceneConstants.enterBatScale
+       sceneVars.enterBat.position.x = EnterSceneConstants.conveyorSpacing
        sceneVars.conveyorLayer.addChild(sceneVars.enterBat)
+    }
+    func addEnterGhost() {
+        sceneVars.enterGhost.xScale = EnterSceneConstants.enterBatScale
+        sceneVars.enterGhost.yScale = EnterSceneConstants.enterBatScale
+        sceneVars.conveyorLayer.addChild(sceneVars.enterGhost)
     }
     func addVirusWithFace() {
         sceneVars.virusWithFace = VirusWithFace.init(GameItemType.virus)
@@ -73,11 +79,11 @@ extension EnterScene {
             sceneVars.letterE.position.x = width * 1.28
             sceneVars.lowercaseLetterR.position.x = width * 1.4
 
-        sceneVars.virusLetters.append( sceneVars.letterV)
-        sceneVars.virusLetters.append( sceneVars.letterI)
-        sceneVars.virusLetters.append( sceneVars.letterR)
-        sceneVars.virusLetters.append( sceneVars.letterU)
-        sceneVars.virusLetters.append( sceneVars.letterS)
+//        sceneVars.virusLetters.append( sceneVars.letterV)
+//        sceneVars.virusLetters.append( sceneVars.letterI)
+//        sceneVars.virusLetters.append( sceneVars.letterR)
+//        sceneVars.virusLetters.append( sceneVars.letterU)
+//        sceneVars.virusLetters.append( sceneVars.letterS)
 
         sceneVars.virusLetters.append( sceneVars.letterD)
         sceneVars.virusLetters.append( sceneVars.letterO)

@@ -30,7 +30,7 @@ final class Virus: GameSprite {
     }
     func setupTexturesAndAnimation() {
         virusTextures = setupTextures("Virus")
-        virusAnimation = SKAction.animate(with: virusTextures, timePerFrame: GameSceneConstants.virusAnimationTimePerFrame)
+        virusAnimation = SKAction.animate(with: virusTextures, timePerFrame: GameSceneConstants.virusWithFaceAnimationTimePerFrame)
         let forever = SKAction.repeat(virusAnimation, count: -1)
         self.run(forever)
         self.xScale = GameSceneConstants.virusScaleFactor

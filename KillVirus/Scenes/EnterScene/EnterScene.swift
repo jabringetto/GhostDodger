@@ -31,6 +31,7 @@ struct EnterSceneVars {
      var enterSilverCoin = Coin.init(.silverCoin)
      var enterSkull = Skull.init(.skull)
      var enterEmerald = Gem.init(.emerald)
+     var enterGhost = Ghost.init(.ghost)
      var virusLetters = [SKSpriteNode]()
      var virusLettersSineArgument: CGFloat = 0.0
      var skullRotationCounter: Int = 0
@@ -61,8 +62,8 @@ class EnterScene: SKScene {
         addBackground()
         self.addChild(sceneVars.conveyorLayer)
         self.addChild(sceneVars.letterLayer)
+        addEnterGhost()
         addEnterBat()
-        addVirusWithFace()
         addEnterRuby()
         addEnterCoins()
         addEnterSkull()
