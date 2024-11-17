@@ -35,11 +35,6 @@ struct EnterSceneVars {
      var virusLetters = [SKSpriteNode]()
      var virusLettersSineArgument: CGFloat = 0.0
      var skullRotationCounter: Int = 0
-     var letterV =  SKSpriteNode(imageNamed: "Letter_V")
-     var letterI =  SKSpriteNode(imageNamed: "Letter_I")
-     var letterR =  SKSpriteNode(imageNamed: "Letter_R")
-     var letterU =  SKSpriteNode(imageNamed: "Letter_U")
-     var letterS =  SKSpriteNode(imageNamed: "Letter_S")
      var letterD = SKSpriteNode(imageNamed: "Letter_D")
      var letterO = SKSpriteNode(imageNamed: "Letter_O")
      var lowercaseLetterD = SKSpriteNode(imageNamed: "Letter_D_lowercase")

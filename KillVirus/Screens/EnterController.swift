@@ -29,7 +29,8 @@ class EnterViewController: UIViewController {
 
     }
     func showGameInProgressAlert() {
-        let alert = UIAlertController.init(title: "Game In Progress", message: "Our records indicate a saved game currently in progress. You may continue your saved game or discard and begin a new game.", preferredStyle: .actionSheet)
+        let alertMessage = "Our records indicate a saved game currently in progress. You may continue your saved game or discard and begin a new game."
+        let alert = UIAlertController.init(title: "Game In Progress", message: alertMessage, preferredStyle: .actionSheet)
         let discardAction = UIAlertAction(title: "Discard", style: .cancel, handler: { [weak self] _ in
             self?.removeAllPersistence()
             self?.performSegue(withIdentifier: "enterSegue", sender: self)
