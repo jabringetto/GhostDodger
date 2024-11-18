@@ -21,6 +21,7 @@ struct PhysicsCategory {
  }
 
 extension GameScene: SKPhysicsContactDelegate {
+    
     func configurePhysicsWorld() {
           physicsWorld.gravity = CGVector(dx: 0, dy: 0)
           physicsWorld.contactDelegate = self
@@ -37,53 +38,35 @@ extension GameScene: SKPhysicsContactDelegate {
             firstBody = contact.bodyB
             secondBody = contact.bodyA
         }
-        let firstBodyTheBat: Bool = firstBody.categoryBitMask == PhysicsCategory.Bat
-        let secondBodyAGem: Bool = secondBody.categoryBitMask == PhysicsCategory.Gem
-        let secondBodyACoin: Bool = secondBody.categoryBitMask == PhysicsCategory.Coin
-        let secondBodyAGhost: Bool = secondBody.categoryBitMask == PhysicsCategory.Ghost
-        let secondBodyASkull: Bool = secondBody.categoryBitMask == PhysicsCategory.Skull
-
-        if firstBodyTheBat && (secondBodyAGem || secondBodyACoin || secondBodyAGhost || secondBodyASkull) {
-
-            if let itemSprite = secondBody.node as? SKSpriteNode {
-                gameVars.grid.removeSpriteFromPersistence(sprite: itemSprite)
-
-                if !secondBodyASkull {
-                    itemSprite.physicsBody = nil
-                    gameVars.currentlyCapturedItem = itemSprite
-                    let itemKey: String =  String(Float(itemSprite.position.x)) + String(Float(itemSprite.position.y))
-                    gameVars.grid.addConvergingPlayerSpriteForKey(sprite: itemSprite, key: itemKey)
-                } else {
-                    playSound(gameVars.buzzerSoundEffect)
-                    gameVars.bat.die()
-                    gameVars.healthMeter.updateGreenBar(gameVars.bat.healthPoints,
-                                                        GameSceneConstants.batMaxHealthPoints)
-
-                }
-
-                if secondBodyAGhost {
-                    playSound(gameVars.buzzerSoundEffect)
-                    gameVars.bat.hitByVirus()
-                    gameVars.healthMeter.updateGreenBar(gameVars.bat.healthPoints,
-                                                        GameSceneConstants.batMaxHealthPoints)
-
-                } else if secondBodyAGem || secondBodyACoin {
-
-                    if secondBodyAGem {
-                        playSound(gameVars.treasureSoundEffect)
-                    }
-                    if secondBodyACoin {
-                        playSound(gameVars.coinSoundEffect)
-                    }
-
-                    playerGetsTreasure(itemSprite)
-
-                }
-
-            }
-
+        
+        guard firstBody.categoryBitMask == PhysicsCategory.Bat else { return }
+        
+        switch secondBody.categoryBitMask {
+        case PhysicsCategory.Coin :
+            guard let coinSprite = secondBody.node as? SKSpriteNode else { break }
+            captureAndConverge(coinSprite)
+            playerGetsTreasure(coinSprite)
+            
+        case PhysicsCategory.Gem:
+            guard let gemSprite = secondBody.node as? SKSpriteNode else { break }
+            captureAndConverge(gemSprite)
+            playerGetsTreasure(gemSprite)
+            
+        case PhysicsCategory.Ghost:
+            guard let ghostSprite = secondBody.node as? SKSpriteNode else { break }
+            captureAndConverge(ghostSprite)
+            playerTouchesEnemy(.ghost)
+            
+        case PhysicsCategory.Skull:
+            playerTouchesEnemy(.skull)
+        
+        default:
+            guard let someSprite = secondBody.node as? SKSpriteNode else { break }
+            print("Unexpected physics contact with sprite; \(someSprite)")
+            guard let someSpriteName = someSprite.name  else { break }
+            print("Unexpected physics contact with sprite named; \(someSpriteName)")
+   
         }
-
     }
 
 }

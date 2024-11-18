@@ -28,14 +28,42 @@ extension GameScene: BatDelegate, GridDelegate, AnnouncerRoundCompletedDelegate,
     func updateRoundLabel() {
         gameVars.roundLabel.text = GameSceneConstants.roundLabelPrefix + String(gameVars.round)
     }
+    func updateHealthMeter() {
+        gameVars.healthMeter.updateGreenBar(gameVars.bat.healthPoints,
+                                            GameSceneConstants.batMaxHealthPoints)
+    }
+    
+    func captureAndConverge(_ itemSprite: SKSpriteNode) {
+        itemSprite.physicsBody = nil
+        gameVars.currentlyCapturedItem = itemSprite
+        let itemKey: String =  String(Float(itemSprite.position.x)) + String(Float(itemSprite.position.y))
+        gameVars.grid.addConvergingPlayerSpriteForKey(sprite: itemSprite, key: itemKey)
+    }
+    
+    func playerTouchesEnemy(_ enemyType: GameItemType) {
+        guard enemyType == .skull || enemyType == .ghost else { print("Not an enemy!"); return }
+        playSound(gameVars.buzzerSoundEffect)
+        updateHealthMeter()
+        switch enemyType {
+        case .skull:
+            gameVars.bat.die()
+        case .ghost:
+            gameVars.bat.hitByVirus()
+        default:
+            print("Not an enemy!") ; break
+        }
+    }
+    
     func playerGetsTreasure(_ treasure: SKSpriteNode) {
         if let gem = treasure as? Gem {
             pointsLabelAdded(gem.pointValue, gem.position)
             gem.pointValue = 0
+            playSound(gameVars.treasureSoundEffect)
 
         } else if let coin = treasure as? Coin {
             pointsLabelAdded(coin.pointValue, coin.position)
             coin.pointValue = 0
+            playSound(gameVars.coinSoundEffect)
 
         }
         gameVars.scoreLabel.text = GameSceneConstants.scoreLabelPrefix + String(gameVars.score)
