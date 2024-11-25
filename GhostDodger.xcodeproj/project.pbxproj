@@ -281,7 +281,7 @@
 		D0CA80E321CF13A400BE7E96 = {
 			isa = PBXGroup;
 			children = (
-				D0CA80EE21CF13A400BE7E96 /* KillVirus */,
+				D0CA80EE21CF13A400BE7E96 /* GhostDodger */,
 				D085C655266B4C210090C8D6 /* SwiftLint */,
 			);
 			sourceTree = "<group>";
@@ -296,7 +296,7 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		D0CA80EE21CF13A400BE7E96 /* KillVirus */ = {
+		D0CA80EE21CF13A400BE7E96 /* GhostDodger */ = {
 			isa = PBXGroup;
 			children = (
 				D0CA80EF21CF13A400BE7E96 /* AppDelegate.swift */,
@@ -308,7 +308,7 @@
 				D0DE71B123BBEF4600B87144 /* Sounds */,
 				D0FA7FA42586F18D00EA7163 /* In-AppPurchases */,
 			);
-			path = KillVirus;
+			path = GhostDodger;
 			sourceTree = "<group>";
 		};
 		D0D04E13254DF2DC00BF0F07 /* UpgradeScene */ = {
@@ -816,7 +816,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = ARU8D4B27U;
-				INFOPLIST_FILE = KillVirus/Info.plist;
+				INFOPLIST_FILE = GhostDodger/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -836,7 +836,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = ARU8D4B27U;
-				INFOPLIST_FILE = KillVirus/Info.plist;
+				INFOPLIST_FILE = GhostDodger/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
