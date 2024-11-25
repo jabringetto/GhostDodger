@@ -1,6 +1,6 @@
 //
 //  UpgradeScene.swift
-//  KillVirus
+//  Ghost Dodger
 //
 //  Created by Jeremy Bringetto on 10/31/20.
 //  Copyright © 2020 Jeremy Bringetto. All rights reserved.

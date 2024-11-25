@@ -1,6 +1,6 @@
 //
 //  IAPManager.swift
-//  KillVirus
+//  Ghost Dodger
 //
 //  Created by Jeremy Bringetto on 12/13/20.
 //  appcoda.com/in-app-purchases-guide/

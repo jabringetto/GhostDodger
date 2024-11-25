@@ -105,7 +105,6 @@ final class Grid: ConvergeAndShrinkDelegate {
     }
     func populateGameItems() {
         if let persistentPostionsAndTypes = self.delegate?.fetchPersistentGridData() {
-
             if persistentPostionsAndTypes.count > 0 {
                 positionsAndTypes = persistentPostionsAndTypes
             }

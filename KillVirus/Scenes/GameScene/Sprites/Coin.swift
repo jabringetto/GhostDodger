@@ -10,7 +10,6 @@ import UIKit
 import SpriteKit
 
 final class Coin: GameSprite {
-
     var pointValue: UInt = 0
 
     convenience init(_ coinType: GameItemType) {

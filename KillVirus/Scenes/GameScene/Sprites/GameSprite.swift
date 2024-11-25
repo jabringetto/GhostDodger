@@ -17,5 +17,4 @@ protocol ConvergeAndShrinkDelegate: AnyObject {
 class GameSprite: SKSpriteNode {
     var convergingOnCyclone = false
     weak var delegate: ConvergeAndShrinkDelegate?
-
 }
