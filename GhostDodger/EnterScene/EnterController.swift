@@ -19,8 +19,6 @@ final class EnterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: false)
-        // Do any additional setup after loading the view, typically from a nib.
-
         scene = EnterScene.init(size: enterView.frame.size)
         scene.sceneVars.setScreenDimensions(UIScreen.main.bounds.width, UIScreen.main.bounds.height)
         scene.scaleMode = .resizeFill

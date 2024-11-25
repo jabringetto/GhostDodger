@@ -212,20 +212,8 @@
 			isa = PBXGroup;
 			children = (
 				D0D94A6423D123C8007CCC5E /* Grid.swift */,
-				D0C2503323DB6022009D65DD /* GameSceneExtensions */,
-				D0CA810321CF162400BE7E96 /* GameScene.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		D0C2502623D7B156009D65DD /* Screens */ = {
-			isa = PBXGroup;
-			children = (
-				D0CA80F121CF13A400BE7E96 /* EnterController.swift */,
-				D0CA810121CF153600BE7E96 /* GameViewController.swift */,
-				D09163A1255211A30098E82C /* UpgradesController.swift */,
-			);
-			path = Screens;
 			sourceTree = "<group>";
 		};
 		D0C2502723D7B1BC009D65DD /* Assets */ = {
@@ -245,22 +233,15 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
-		D0C2502B23DB5C4D009D65DD /* Scenes */ = {
-			isa = PBXGroup;
-			children = (
-				D0DEDFC7245F5CFC0074CB7B /* EnterScene */,
-				D0C2503223DB6019009D65DD /* GameScene */,
-				D0D04E13254DF2DC00BF0F07 /* UpgradeScene */,
-			);
-			path = Scenes;
-			sourceTree = "<group>";
-		};
 		D0C2503223DB6019009D65DD /* GameScene */ = {
 			isa = PBXGroup;
 			children = (
+				D0CA810121CF153600BE7E96 /* GameViewController.swift */,
+				D0CA810321CF162400BE7E96 /* GameScene.swift */,
+				D0C2503323DB6022009D65DD /* GameSceneExtensions */,
 				D0C2502423D7B103009D65DD /* Model */,
-				D0C2502323D7B0F4009D65DD /* Sprites */,
 				D0C2502523D7B11D009D65DD /* ViewModel */,
+				D0C2502323D7B0F4009D65DD /* Sprites */,
 			);
 			path = GameScene;
 			sourceTree = "<group>";
@@ -302,8 +283,9 @@
 				D0CA80EF21CF13A400BE7E96 /* AppDelegate.swift */,
 				D0CA80FB21CF13A600BE7E96 /* Info.plist */,
 				D0FA7FA52586F1CB00EA7163 /* Storyboards */,
-				D0C2502623D7B156009D65DD /* Screens */,
-				D0C2502B23DB5C4D009D65DD /* Scenes */,
+				D0DEDFC7245F5CFC0074CB7B /* EnterScene */,
+				D0C2503223DB6019009D65DD /* GameScene */,
+				D0D04E13254DF2DC00BF0F07 /* UpgradeScene */,
 				D0C2502723D7B1BC009D65DD /* Assets */,
 				D0DE71B123BBEF4600B87144 /* Sounds */,
 				D0FA7FA42586F18D00EA7163 /* In-AppPurchases */,
@@ -314,6 +296,7 @@
 		D0D04E13254DF2DC00BF0F07 /* UpgradeScene */ = {
 			isa = PBXGroup;
 			children = (
+				D09163A1255211A30098E82C /* UpgradesController.swift */,
 				D0D04E11254DF2D400BF0F07 /* UpgradeScene.swift */,
 			);
 			path = UpgradeScene;
@@ -383,6 +366,7 @@
 		D0DEDFC7245F5CFC0074CB7B /* EnterScene */ = {
 			isa = PBXGroup;
 			children = (
+				D0CA80F121CF13A400BE7E96 /* EnterController.swift */,
 				D0DEDFC5245F5CF50074CB7B /* EnterScene.swift */,
 				D09E156224C4E427009A3EF4 /* EnterSceneExtensions */,
 			);
