@@ -13,7 +13,7 @@ protocol AnnouncerRoundCompletedDelegate: AnyObject {
     func currentRoundNumber() -> UInt
 }
 
-class AnnouncerRoundCompleted: SKSpriteNode {
+final class AnnouncerRoundCompleted: SKSpriteNode {
       weak var delegate: AnnouncerRoundCompletedDelegate?
       var playButton = SKSpriteNode(imageNamed: "PlayButton")
       var completedLabel = SKLabelNode(fontNamed: "Arial")

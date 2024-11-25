@@ -9,7 +9,7 @@
 import UIKit
 import SpriteKit
 
-class GameViewController: UIViewController, GameSceneDelegate, UpgradesControllerDelegate {
+final class GameViewController: UIViewController, GameSceneDelegate, UpgradesControllerDelegate {
 
     @IBOutlet weak var gameView: SKView!
 

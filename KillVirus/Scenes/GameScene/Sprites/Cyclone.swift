@@ -14,7 +14,7 @@ protocol CycloneDelegate: AnyObject {
     func cycloneCountdownComplete()
 }
 
-class Cyclone: SKSpriteNode {
+final class Cyclone: SKSpriteNode {
       weak var delegate: CycloneDelegate?
       private var bigWhirlpool01 = Whirlpool(timePerFrame: 1/60.0)
       private var bigWhirlpool02 = Whirlpool(timePerFrame: 1/60.0)

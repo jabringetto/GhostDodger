@@ -14,7 +14,7 @@ protocol UpgradesControllerDelegate: AnyObject {
     func receiveVarsUpdate(newVars: GameSceneVars)
 }
 
-class UpgradesController: UIViewController, UpgradesSceneDelegate {
+final class UpgradesController: UIViewController, UpgradesSceneDelegate {
 
     weak var delegate: UpgradesControllerDelegate?
     @IBOutlet weak var upgradeView: SKView!

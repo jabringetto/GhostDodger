@@ -48,7 +48,7 @@ struct EnterSceneVars {
         screenHeight = height
      }
 }
-class EnterScene: SKScene {
+final class EnterScene: SKScene {
 
     var sceneVars = EnterSceneVars()
 

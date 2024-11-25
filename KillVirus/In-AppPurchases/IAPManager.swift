@@ -9,7 +9,7 @@
 import Foundation
 import StoreKit
 
-class IAPManager: NSObject {
+final class IAPManager: NSObject {
 
     static let shared = IAPManager()
     var onReceiveProductsHandler: ((Result<[SKProduct], IAPManagerError>) -> Void)?

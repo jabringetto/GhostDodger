@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class AnnouncerCountdown: SKSpriteNode {
+final class AnnouncerCountdown: SKSpriteNode {
       var getReadyLabel = SKLabelNode(fontNamed: "Arial-Bold")
       var counterLabel = SKLabelNode(fontNamed: "Arial-Bold")
       init() {

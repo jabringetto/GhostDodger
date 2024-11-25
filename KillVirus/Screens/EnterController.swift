@@ -9,7 +9,7 @@
 import UIKit
 import SpriteKit
 
-class EnterViewController: UIViewController {
+final class EnterViewController: UIViewController {
 
     @IBOutlet weak var enterView: SKView!
 
