@@ -48,7 +48,7 @@ extension GameScene: BatDelegate, GridDelegate, AnnouncerRoundCompletedDelegate,
         case .skull:
             gameVars.bat.die()
         case .ghost:
-            gameVars.bat.hitByVirus()
+            gameVars.bat.hitByGhost()
         default:
             print("Not an enemy!") ; break
         }

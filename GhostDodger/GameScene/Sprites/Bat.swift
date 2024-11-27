@@ -105,27 +105,17 @@ final class Bat: SKSpriteNode {
         self.addChild(deadEyeLeft)
     }
 
-    func hitBySkull() {
-        if healthPoints > 0 {
-            self.healthPoints -= 1
-        } else {
-            die()
-        }
+    func hitByGhost() {
+        guard healthPoints > 0 else { die() ; return }
+        self.healthPoints -= 1
+        greenEyeRight.isHidden = false
+        greenEyeLeft.isHidden = false
+        self.removeAction(forKey: flapKey)
+        setupAnimation(timePerFrame: GameSceneConstants.batAnimationTimePerFrame*4.0)
+        self.isHitByGhost = true
+        self.delegate?.savePersistentValues()
     }
-    func hitByVirus() {
-        if healthPoints > 0 {
-            self.healthPoints -= 1
-            greenEyeRight.isHidden = false
-            greenEyeLeft.isHidden = false
-            self.removeAction(forKey: flapKey)
-            setupAnimation(timePerFrame: GameSceneConstants.batAnimationTimePerFrame*4.0)
-            self.isHitByGhost = true
-            self.delegate?.savePersistentValues()
-        } else {
-            die()
-        }
 
-    }
     func incrementVirusHitCounter() {
         if self.isHitByGhost {
             ghostHitCounter += 1

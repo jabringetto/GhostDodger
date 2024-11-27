@@ -189,6 +189,7 @@ final class UpgradeScene: SKScene {
         self.addChild(upgradeVars.forceField)
 
     }
+
     fileprivate func addUpgradeCyclone() {         upgradeVars.cyclone.xScale *= UpgradeSceneConstants.upgradeSceneScaleMultiplier
         upgradeVars.cyclone.yScale *= UpgradeSceneConstants.upgradeSceneScaleMultiplier
         self.addChild(upgradeVars.cyclone)
@@ -281,12 +282,10 @@ final class UpgradeScene: SKScene {
     }
 
     override func update(_ currentTime: TimeInterval) {
-
         moveBatsSinusoidally()
         upgradeVars.forceField.position = upgradeVars.forceFieldBat.position
         upgradeVars.cyclone.position.x =  upgradeVars.cycloneBat.position.x
         upgradeVars.cyclone.position.y =  upgradeVars.cycloneBat.position.y - upgradeVars.cycloneDeltaY
-
     }
 
 }

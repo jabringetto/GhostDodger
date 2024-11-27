@@ -26,10 +26,12 @@ enum GameItemType: Int {
 
     case virus
 }
+
 struct PositionAndType: Codable {
     let position: CGPoint
     let type: Int
 }
+
 final class GameItem: SKNode {
 
     var itemType: GameItemType?

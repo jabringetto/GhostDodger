@@ -81,7 +81,6 @@ final class UpgradesController: UIViewController, UpgradesSceneDelegate {
                             DispatchQueue.main.async {
                                 switch result {
                                 case .success(_):
-
                                     self?.scene.addBoughtCyclone()
                                     let alert = self?.thankYouForPurchaseAlert(upgradeType, paid) ?? UIAlertController()
                                     self?.present(alert, animated: false, completion: nil)

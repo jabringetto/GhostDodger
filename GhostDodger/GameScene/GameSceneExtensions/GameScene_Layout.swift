@@ -109,7 +109,8 @@ extension GameScene {
     }
     private func addBlackBar() {
         gameVars.blackBar.size = CGSize(width: gameVars.screenWidth, height: GameSceneConstants.blackBarHeight)
-        let blackBarYPos = GameSceneConstants.gameSceneBottomPadding  - (gameVars.screenHeight / 2.0 - GameSceneConstants.blackBarHeight * 0.5)
+        let offset = gameVars.screenHeight / 2.0 - GameSceneConstants.blackBarHeight * 0.5
+        let blackBarYPos = GameSceneConstants.gameSceneBottomPadding - offset
         gameVars.blackBar.position = CGPoint(x: 0.0, y: blackBarYPos)
         gameVars.blackBar.alpha = GameSceneConstants.blackBarAlpha
         gameVars.blackBar.name = "blackBar"
@@ -118,13 +119,15 @@ extension GameScene {
     private func addHealthMeter() {
         gameVars.healthMeter.setup()
         let healthMeterXPos =  -gameVars.screenWidth / 2.0 + GameSceneConstants.healthMeterPadding
-        let healthMeterYPos = GameSceneConstants.gameSceneBottomPadding  - (gameVars.screenHeight / 2.0 - GameSceneConstants.healthMeterPadding)
+        let offset = gameVars.screenHeight / 2.0 - GameSceneConstants.healthMeterPadding
+        let healthMeterYPos = GameSceneConstants.gameSceneBottomPadding - offset
         gameVars.healthMeter.position = CGPoint(x: healthMeterXPos, y: healthMeterYPos)
         gameVars.healthMeter.updateGreenBar(gameVars.bat.healthPoints, GameSceneConstants.batMaxHealthPoints)
         self.addChild(gameVars.healthMeter)
     }
     private func addScoreLabel() {
-        let scoreLabelYPos = GameSceneConstants.gameSceneBottomPadding  - (gameVars.screenHeight / 2.0 - GameSceneConstants.scoreLabelPadding)
+        let offset = gameVars.screenHeight / 2.0 - GameSceneConstants.scoreLabelPadding
+        let scoreLabelYPos = GameSceneConstants.gameSceneBottomPadding - offset
         gameVars.scoreLabel = SKLabelNode(fontNamed: "Arial-Bold")
         gameVars.scoreLabel.fontSize = GameSceneConstants.menuLabelFontSize
         gameVars.scoreLabel.text = GameSceneConstants.scoreLabelPrefix + String(gameVars.score)
@@ -135,12 +138,14 @@ extension GameScene {
         gameVars.roundLabel = SKLabelNode(fontNamed: "Arial-Bold")
         gameVars.roundLabel.fontSize = GameSceneConstants.menuLabelFontSize
         gameVars.roundLabel.text = GameSceneConstants.roundLabelPrefix + String(gameVars.round)
-        gameVars.roundLabel.position = CGPoint(x: -20.0, y: GameSceneConstants.gameSceneBottomPadding - (gameVars.screenHeight / 2.0 - GameSceneConstants.roundLabelPadding))
+        let offset = gameVars.screenHeight / 2.0 - GameSceneConstants.roundLabelPadding
+        gameVars.roundLabel.position = CGPoint(x: -20.0, y: GameSceneConstants.gameSceneBottomPadding - offset)
         self.addChild( gameVars.roundLabel)
     }
     private func addPauseButton() {
         let pauseButtonX = gameVars.screenWidth / 2.0 - GameSceneConstants.healthMeterPadding*0.5
-        let pauseButtonY = GameSceneConstants.gameSceneBottomPadding - (gameVars.screenHeight / 2.0 - GameSceneConstants.roundLabelPadding)
+        let offset = gameVars.screenHeight / 2.0 - GameSceneConstants.roundLabelPadding
+        let pauseButtonY = GameSceneConstants.gameSceneBottomPadding - offset
         gameVars.pauseButton.position = CGPoint(x: pauseButtonX, y: pauseButtonY)
         gameVars.pauseButton.name = "pauseButton"
         gameVars.pauseButton.isHidden = true
