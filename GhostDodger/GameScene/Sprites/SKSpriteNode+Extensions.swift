@@ -15,7 +15,7 @@ extension SKSpriteNode {
 
         var textures = [SKTexture]()
         let atlas = SKTextureAtlas(named: spriteName)
-        guard  atlas.textureNames.count > 0 else {return textures}
+        guard atlas.textureNames.count > 0 else {return textures}
         for index in 1...atlas.textureNames.count {
             var name: String = ""
             if index < 10 {

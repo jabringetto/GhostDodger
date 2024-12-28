@@ -83,6 +83,6 @@ extension EnterScene {
         sceneVars.letterG.position.y -= sceneVars.letterG.size.height * 0.5
     }
     private func centerLetterVertically(letterNode: SKSpriteNode) {
-        letterNode.position.y = sceneVars.screenHeight * 0.30 + (letterNode.size.height * 0.5)
+        letterNode.position.y = sceneVars.screenHeight * 0.20 + (letterNode.size.height * 0.5)
     }
 }
