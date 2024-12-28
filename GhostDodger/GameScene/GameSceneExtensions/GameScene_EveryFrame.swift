@@ -11,6 +11,17 @@ import SpriteKit
 
 extension GameScene {
        override func update(_ currentTime: TimeInterval) {
+          // Skip update if too soon
+          guard currentTime - lastUpdateTime >= minimumFrameInterval else { return }
+          
+          // Implement frame dropping if needed
+          let deltaTime = currentTime - lastUpdateTime
+          if deltaTime > minimumFrameInterval * 2 {
+              // Frame drop occurred, adjust game state if needed
+          }
+          
+          lastUpdateTime = currentTime
+          
           if gameVars.gamePausedState == 0 {
              moveBackgroundLayers()
              batFollowFinger()

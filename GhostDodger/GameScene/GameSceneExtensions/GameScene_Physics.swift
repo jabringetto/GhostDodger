@@ -25,6 +25,7 @@ extension GameScene: SKPhysicsContactDelegate {
     func configurePhysicsWorld() {
           physicsWorld.gravity = CGVector(dx: 0, dy: 0)
           physicsWorld.contactDelegate = self
+          optimizePhysics()
     }
 
     func didBegin(_ contact: SKPhysicsContact) {
@@ -66,6 +67,44 @@ extension GameScene: SKPhysicsContactDelegate {
             guard let someSpriteName = someSprite.name  else { break }
             print("Unexpected physics contact with sprite named; \(someSpriteName)")
    
+        }
+    }
+
+    private func optimizePhysics() {
+        physicsWorld.speed = 1.0
+        physicsWorld.gravity = .zero
+        
+        // Reduce physics body precision for better performance
+        let scale: CGFloat = 0.8 // Adjust between 0.5-1.0 based on needs
+        
+        // Apply to all physics bodies
+        enumerateChildNodes(withName: "//.*") { node, _ in
+            if let body = node.physicsBody {
+                // Disable precise collision detection for better performance
+                body.usesPreciseCollisionDetection = false
+                
+                // Only optimize moving bodies (non-static)
+                if !body.isDynamic {
+                    return
+                }
+                
+                // Create simplified circular physics bodies
+                if let sprite = node as? SKSpriteNode {
+                    let size = sprite.size
+                    let radius = min(size.width, size.height) * scale * 0.5
+                    let newBody = SKPhysicsBody(circleOfRadius: radius)
+                    
+                    // Copy over the important physics properties
+                    newBody.isDynamic = true
+                    newBody.affectedByGravity = false
+                    newBody.allowsRotation = false
+                    newBody.categoryBitMask = body.categoryBitMask
+                    newBody.collisionBitMask = body.collisionBitMask
+                    newBody.contactTestBitMask = body.contactTestBitMask
+                    
+                    node.physicsBody = newBody
+                }
+            }
         }
     }
 

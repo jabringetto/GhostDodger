@@ -24,8 +24,21 @@ final class GameController: UIViewController, GameSceneDelegate, UpgradesControl
         gameScene.backgroundColor = .init(red: 0.65, green: 0.32, blue: 0.00, alpha: 1.0)
         gameScene.gameSceneDelegate = self
         gameView.presentScene(gameScene)
-        gameView.showsFPS = true
-        gameView.showsNodeCount = true
+
+        if let view = self.view as? SKView {
+            // Performance optimizations
+            view.ignoresSiblingOrder = true
+            view.shouldCullNonVisibleNodes = true
+            
+           // #if DEBUG
+            view.showsFPS = true
+            view.showsNodeCount = true
+           // #endif
+            
+            // Reduce texture memory usage
+            view.preferredFramesPerSecond = 60
+            view.allowsTransparency = false
+        }
 
       //  upgradeScene = UpgradeScene.init(size: gameView.frame.size)
        // upgradeScene.scaleMode = .resizeFill
