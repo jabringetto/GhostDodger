@@ -173,7 +173,7 @@ final class GameScene: SKScene {
         playGameSceneBackgroundMusic()
     }
 
-    private func setupAudioEngine() {
+    func setupAudioEngine() {
         let soundMappings: [(name: String, volume: Float)] = [
             ("Coin01.mp3", GameSceneConstants.coinSoundEffectVolume),
             ("Buzzer.mp3", GameSceneConstants.buzzerSoundEffectVolume),
