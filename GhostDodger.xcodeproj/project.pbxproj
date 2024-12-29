@@ -151,7 +151,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		D0DE1E842D21FC4300950162 /* Ghost DodgerTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "Ghost DodgerTests"; sourceTree = "<group>"; };
+		D0DE1E842D21FC4300950162 /* GhostDodgerTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = GhostDodgerTests; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -288,7 +288,7 @@
 			children = (
 				D0CA80EE21CF13A400BE7E96 /* GhostDodger */,
 				D085C655266B4C210090C8D6 /* SwiftLint */,
-				D0DE1E842D21FC4300950162 /* Ghost DodgerTests */,
+				D0DE1E842D21FC4300950162 /* GhostDodgerTests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -491,7 +491,7 @@
 				D0DE1E882D21FC4300950162 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				D0DE1E842D21FC4300950162 /* Ghost DodgerTests */,
+				D0DE1E842D21FC4300950162 /* GhostDodgerTests */,
 			);
 			name = "Ghost DodgerTests";
 			packageProductDependencies = (
