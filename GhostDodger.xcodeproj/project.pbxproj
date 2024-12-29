@@ -58,6 +58,8 @@
 		D0D94A6323D10A40007CCC5E /* GameItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D94A6223D10A40007CCC5E /* GameItem.swift */; };
 		D0D94A6523D123C8007CCC5E /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D94A6423D123C8007CCC5E /* Grid.swift */; };
 		D0D94A6723D21624007CCC5E /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D94A6623D21624007CCC5E /* Coin.swift */; };
+		D0DE1E772D20AA8600950162 /* HowToHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DE1E762D20AA8600950162 /* HowToHostingController.swift */; };
+		D0DE1E792D20AAA000950162 /* HowToPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DE1E782D20AA8F00950162 /* HowToPlayView.swift */; };
 		D0DE71B023B94A1000B87144 /* Kaching.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D0DE71AF23B94A1000B87144 /* Kaching.mp3 */; };
 		D0DE71B323BBEF5B00B87144 /* Treasure.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D0DE71B223BBEF5B00B87144 /* Treasure.mp3 */; };
 		D0DEDFC6245F5CF50074CB7B /* EnterScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DEDFC5245F5CF50074CB7B /* EnterScene.swift */; };
@@ -125,6 +127,8 @@
 		D0D94A6223D10A40007CCC5E /* GameItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameItem.swift; sourceTree = "<group>"; };
 		D0D94A6423D123C8007CCC5E /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		D0D94A6623D21624007CCC5E /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
+		D0DE1E762D20AA8600950162 /* HowToHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToHostingController.swift; sourceTree = "<group>"; };
+		D0DE1E782D20AA8F00950162 /* HowToPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayView.swift; sourceTree = "<group>"; };
 		D0DE71AF23B94A1000B87144 /* Kaching.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Kaching.mp3; sourceTree = "<group>"; };
 		D0DE71B223BBEF5B00B87144 /* Treasure.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Treasure.mp3; sourceTree = "<group>"; };
 		D0DEDFC5245F5CF50074CB7B /* EnterScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterScene.swift; sourceTree = "<group>"; };
@@ -286,6 +290,7 @@
 				D0CA80FB21CF13A600BE7E96 /* Info.plist */,
 				D0FA7FA52586F1CB00EA7163 /* Storyboards */,
 				D0DEDFC7245F5CFC0074CB7B /* EnterScene */,
+				D0DE1E752D20AA1000950162 /* HowToScene */,
 				D0C2503223DB6019009D65DD /* GameScene */,
 				D0D04E13254DF2DC00BF0F07 /* UpgradeScene */,
 				D0C2502723D7B1BC009D65DD /* Assets */,
@@ -350,6 +355,15 @@
 				D067711F2546353200DB0552 /* GameSprite.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		D0DE1E752D20AA1000950162 /* HowToScene */ = {
+			isa = PBXGroup;
+			children = (
+				D0DE1E762D20AA8600950162 /* HowToHostingController.swift */,
+				D0DE1E782D20AA8F00950162 /* HowToPlayView.swift */,
+			);
+			path = HowToScene;
 			sourceTree = "<group>";
 		};
 		D0DE71B123BBEF4600B87144 /* Sounds */ = {
@@ -565,10 +579,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0DE1E772D20AA8600950162 /* HowToHostingController.swift in Sources */,
 				D0FA7FAB2586F44900EA7163 /* IAPManager.swift in Sources */,
 				D0D94A6723D21624007CCC5E /* Coin.swift in Sources */,
 				D0DEDFC9245F5D620074CB7B /* VirusWithFace.swift in Sources */,
 				D0C2503523DB6318009D65DD /* GameScene_Layout.swift in Sources */,
+				D0DE1E792D20AAA000950162 /* HowToPlayView.swift in Sources */,
 				D0CA80F221CF13A400BE7E96 /* EnterController.swift in Sources */,
 				D0391B4523A436F600752CEC /* Bat.swift in Sources */,
 				D0C2503923DB8176009D65DD /* GameScene_Sounds.swift in Sources */,
@@ -805,6 +821,7 @@
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = ARU8D4B27U;
 				INFOPLIST_FILE = GhostDodger/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -825,6 +842,7 @@
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = ARU8D4B27U;
 				INFOPLIST_FILE = GhostDodger/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

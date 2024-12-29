@@ -55,7 +55,7 @@
                     <navigationItem key="navigationItem" id="Dbx-bE-aY6"/>
                     <connections>
                         <outlet property="enterView" destination="Zf2-fC-rzj" id="Nvi-0X-reh"/>
-                        <segue destination="4lK-X5-0QJ" kind="show" identifier="enterSegue" id="dOG-cF-h8I"/>
+                        <segue destination="M41-vx-IEP" kind="show" identifier="howToSegue" id="9K1-mb-fCM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -77,6 +77,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aAL-g1-P6p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-84" y="115"/>
+        </scene>
+        <!--How To Play Controller-->
+        <scene sceneID="OIs-33-Ejc">
+            <objects>
+                <viewController title="How To Play Controller" id="M41-vx-IEP" customClass="HowToHostingController" customModule="Ghost_Dodger" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="c61-34-7Ce">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="9sW-CL-WCf"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="qom-DS-JOZ"/>
+                    <connections>
+                        <segue destination="4lK-X5-0QJ" kind="show" identifier="enterGameSegue" id="85R-NH-aNS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ahf-dQ-ne9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1433" y="115"/>
         </scene>
         <!--Game Controller-->
         <scene sceneID="Can-UG-caP">
@@ -107,7 +126,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KA7-Mt-EAM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1438" y="120"/>
+            <point key="canvasLocation" x="2156" y="115"/>
         </scene>
         <!--Upgrades Controller-->
         <scene sceneID="RXA-Ff-TIC">
@@ -137,7 +156,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Im9-oC-umT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2277.5999999999999" y="116.49175412293854"/>
+            <point key="canvasLocation" x="2889" y="115"/>
         </scene>
     </scenes>
     <resources>
