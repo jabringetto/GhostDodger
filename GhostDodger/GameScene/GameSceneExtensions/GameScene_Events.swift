@@ -107,7 +107,6 @@ extension GameScene: BatDelegate, GridDelegate, AnnouncerRoundCompletedDelegate,
         varsInitialValues = GameSceneVars()
         uptakePersistentValues()
         gameSetup()
-        loadAllSounds()
     }
     func resetUpgradeMinimums() {
         gameVars.forceFieldReserve = max(GameSceneConstants.forceFieldMinReserve, gameVars.forceFieldReserve)

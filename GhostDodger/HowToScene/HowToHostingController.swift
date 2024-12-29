@@ -7,21 +7,22 @@
 //
 
 import UIKit
-
-import UIKit
 import SwiftUI
 
 class HowToHostingController: UIViewController, HowToPlayViewDelegate {
-    
+    private let soundManager = SoundManager.shared
     let defaults = UserDefaults.standard
+    var sceneVars = EnterSceneVars()
+    private var howToPlayView: HowToPlayView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Create the SwiftUI view and hosting controller.
+        // Create the SwiftUI view and hosting controller
         var howToPlayView = HowToPlayView()
         howToPlayView.delegate = self
-      //  howToPlayView.loadEnterSceneBackgroundMusic()
+        self.howToPlayView = howToPlayView
+        
         let hostingController = UIHostingController(rootView: howToPlayView)
         addChild(hostingController)
         view.addSubview(hostingController.view)
@@ -35,8 +36,9 @@ class HowToHostingController: UIViewController, HowToPlayViewDelegate {
             hostingController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
         
-        // Notify the hosting controller that it's now in the view hierarchy
         hostingController.didMove(toParent: self)
+        
+        addBackgroundMusic()
     }
     
     private func showGameInProgressAlert() {
@@ -44,15 +46,16 @@ class HowToHostingController: UIViewController, HowToPlayViewDelegate {
         let alert = UIAlertController.init(title: "Game In Progress", message: alertMessage, preferredStyle: .actionSheet)
         let discardAction = UIAlertAction(title: "Discard", style: .cancel, handler: { [weak self] _ in
             self?.removeAllPersistence()
+            self?.stopBackgroundMusic()
             self?.performSegue(withIdentifier: "enterGameSegue", sender: self)
         })
-        let continueAction = UIAlertAction(title: "Continue", style: .default, handler: { _ in
-            self.performSegue(withIdentifier: "enterGameSegue", sender: self)
+        let continueAction = UIAlertAction(title: "Continue", style: .default, handler: { [weak self] _ in
+            self?.stopBackgroundMusic()
+            self?.performSegue(withIdentifier: "enterGameSegue", sender: self)
         })
         alert.addAction(discardAction)
         alert.addAction(continueAction)
         self.present(alert, animated: false, completion: nil)
-        
     }
     
     func didPressEnterButton() {
@@ -60,6 +63,7 @@ class HowToHostingController: UIViewController, HowToPlayViewDelegate {
         if inProgress {
             showGameInProgressAlert()
         } else {
+            stopBackgroundMusic()
             self.performSegue(withIdentifier: "enterGameSegue", sender: self)
         }
     }
@@ -90,6 +94,17 @@ class HowToHostingController: UIViewController, HowToPlayViewDelegate {
         removePersisentValue(key: "cycloneReserve")
         removePersisentValue(key: "forceFieldReserve")
         
+    }
+    
+    // MARK: Background Music
+    
+    private func addBackgroundMusic() {
+        sceneVars.enterMusicPlayer = soundManager.loadSound("VirusDodger_EnterScene.mp3", volume: 0.5)
+        soundManager.playBackgroundMusic(sceneVars.enterMusicPlayer)
+    }
+
+    func stopBackgroundMusic() {
+        soundManager.stopBackgroundMusic(sceneVars.enterMusicPlayer)
     }
     
     

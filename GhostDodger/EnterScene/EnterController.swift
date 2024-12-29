@@ -14,6 +14,8 @@ final class EnterViewController: UIViewController {
     @IBOutlet weak var enterView: SKView!
 
     var scene = EnterScene()
+    private let soundManager = SoundManager.shared
+    var sceneVars = EnterSceneVars()
   
 
     override func viewDidLoad() {
@@ -24,19 +26,21 @@ final class EnterViewController: UIViewController {
         scene.scaleMode = .resizeFill
         scene.backgroundColor = UIColor.black
         enterView.presentScene(scene)
+        addBackgroundMusic()
 
     }
 
     @IBAction func enterButtonPressed(_ sender: Any) {
-
-
         self.performSegue(withIdentifier: "howToSegue", sender: self)
-
+    }
+    
+    private func addBackgroundMusic() {
+        sceneVars.enterMusicPlayer = soundManager.loadSound("VirusDodger_EnterScene.mp3", volume: 0.5)
+        soundManager.playBackgroundMusic(sceneVars.enterMusicPlayer)
     }
 
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        scene.sceneVars.enterMusicPlayer?.stop()
+        soundManager.stopBackgroundMusic(sceneVars.enterMusicPlayer)
     }
 
 }

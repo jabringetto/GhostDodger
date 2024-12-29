@@ -49,10 +49,11 @@ struct EnterSceneVars {
      }
 }
 final class EnterScene: SKScene {
-
+    private let soundManager = SoundManager.shared
     var sceneVars = EnterSceneVars()
 
     override func didMove(to view: SKView) {
+        super.didMove(to: view)
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         addBackground()
         self.addChild(sceneVars.conveyorLayer)
@@ -64,7 +65,6 @@ final class EnterScene: SKScene {
         addEnterSkull()
         setLetterPositions(width: sceneVars.screenWidth, height: sceneVars.screenHeight)
         addLetters()
-        loadEnterSceneBackgroundMusic()
-        playEnterSceneBackgroundMusic()
     }
+    
 }

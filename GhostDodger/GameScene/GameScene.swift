@@ -155,6 +155,7 @@ final class GameScene: SKScene {
     weak var gameSceneDelegate: GameSceneDelegate?
     var gameVars = GameSceneVars()
     var varsInitialValues = GameSceneVars()
+    private let soundManager = SoundManager.shared
     let defaults = UserDefaults.standard
     private var textureCache: [String: SKTexture] = [:]
     private let textureQueue = DispatchQueue(label: "com.ghostdodger.textureloading")
@@ -169,29 +170,10 @@ final class GameScene: SKScene {
         gameSetup()
         configurePhysicsWorld()
         setupAudioEngine()
-        loadAllSounds()
-        preloadTextures()
-    }
-
-    private func preloadTextures() {
-        textureQueue.async {
-            // Preload common textures
-            let textureAtlases = ["Bat", "Ghost", "Skull", "Virus", "VirusWithFace", "ForceField"]
-            
-            for atlasName in textureAtlases {
-                 let atlas = SKTextureAtlas(named: atlasName)
-                    atlas.preload {
-                        // Cache first frame of each animation
-                        if let firstTexture = atlas.textureNames.first {
-                            self.textureCache[atlasName] = atlas.textureNamed(firstTexture)
-                        }
-                    }
-            }
-        }
+        playGameSceneBackgroundMusic()
     }
 
     private func setupAudioEngine() {
-        // Map the existing sound effects to the new system
         let soundMappings: [(name: String, volume: Float)] = [
             ("Coin01.mp3", GameSceneConstants.coinSoundEffectVolume),
             ("Buzzer.mp3", GameSceneConstants.buzzerSoundEffectVolume),
@@ -199,33 +181,21 @@ final class GameScene: SKScene {
             ("VirusDodger_GameScene.mp3", 0.4)
         ]
         
-        for (soundName, volume) in soundMappings {
-            if let url = Bundle.main.url(forResource: soundName.replacingOccurrences(of: ".mp3", with: ""), 
-                                       withExtension: "mp3") {
-                do {
-                    let player = try AVAudioPlayer(contentsOf: url)
-                    player.volume = volume
-                    player.prepareToPlay()
-                    gameSoundPlayers[soundName] = player
-                    
-                    // Set the appropriate game variable reference
-                    switch soundName {
-                    case "Coin01.mp3":
-                        gameVars.coinSoundEffect = player
-                    case "Buzzer.mp3":
-                        gameVars.buzzerSoundEffect = player
-                    case "Treasure.mp3":
-                        gameVars.treasureSoundEffect = player
-                    case "VirusDodger_GameScene.mp3":
-                        gameVars.backgroundMusicPlayer = player
-                    default:
-                        break
-                    }
-                } catch {
-                    print("Could not load sound: \(soundName)")
-                }
-            }
-        }
+        let players = soundManager.preloadSounds(soundMappings)
+        
+        // Set the appropriate game variable reference
+        gameVars.coinSoundEffect = players["Coin01.mp3"]
+        gameVars.buzzerSoundEffect = players["Buzzer.mp3"]
+        gameVars.treasureSoundEffect = players["Treasure.mp3"]
+        gameVars.backgroundMusicPlayer = players["VirusDodger_GameScene.mp3"]
+    }
+
+    func playGameSceneBackgroundMusic() {
+        soundManager.playBackgroundMusic(gameVars.backgroundMusicPlayer)
+    }
+
+    func playSound(_ player: AVAudioPlayer?) {
+        soundManager.playSound(player)
     }
 
 }
