@@ -38,12 +38,8 @@ final class EnterViewController: UIViewController {
         soundManager.playEnterBackgroundMusic()
     }
 
-    func stopBackgroundMusic() {
-        soundManager.stopEnterBackgroundMusic()
-    }
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        soundManager.stopBackgroundMusic(sceneVars.enterMusicPlayer)
+        soundManager.stopEnterBackgroundMusic()
     }
 
 }

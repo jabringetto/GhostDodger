@@ -173,24 +173,12 @@ final class GameScene: SKScene {
         playGameSceneBackgroundMusic()
     }
 
-    func setupAudioEngine() {
-        let soundMappings: [(name: String, volume: Float)] = [
-            ("Coin01.mp3", GameSceneConstants.coinSoundEffectVolume),
-            ("Buzzer.mp3", GameSceneConstants.buzzerSoundEffectVolume),
-            ("Treasure.mp3", 1.0),
-            ("VirusDodger_GameScene.mp3", 0.4)
-        ]
-        
-        let players = soundManager.preloadSounds(soundMappings)
-        
-        // Set the appropriate game variable reference
-        gameVars.coinSoundEffect = players["Coin01.mp3"]
-        gameVars.buzzerSoundEffect = players["Buzzer.mp3"]
-        gameVars.treasureSoundEffect = players["Treasure.mp3"]
-    }
-
     func playGameSceneBackgroundMusic() {
         soundManager.playGameSceneBackgroundMusic()
+    }
+
+    func setupAudioEngine() {
+        soundManager.assignSoundEffects(&gameVars)
     }
 
     func playSound(_ player: AVAudioPlayer?) {

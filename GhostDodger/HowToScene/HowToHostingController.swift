@@ -106,6 +106,4 @@ class HowToHostingController: UIViewController, HowToPlayViewDelegate {
         soundManager.stopHowToHostingBackgroundMusic()
     }
     
-    
-    
 }

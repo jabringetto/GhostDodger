@@ -118,4 +118,29 @@ extension SoundManager {
         guard let player = soundPlayers[filename] else { return }
         stopBackgroundMusic(player)
     }
+    
+    // MARK: - Setup Audio Engine
+    func setupAudioEngine() -> [String: AVAudioPlayer] {
+        let soundMappings: [(name: String, volume: Float)] = [
+            ("Coin01.mp3", GameSceneConstants.coinSoundEffectVolume),
+            ("Buzzer.mp3", GameSceneConstants.buzzerSoundEffectVolume),
+            ("Treasure.mp3", 1.0),
+            ("VirusDodger_GameScene.mp3", 0.4)
+        ]
+        
+        return preloadSounds(soundMappings)
+    }
+    
+    func assignSoundEffects(_ gameVars: inout GameSceneVars) {
+        
+        let players = setupAudioEngine()
+        
+        // Set the appropriate game variable reference
+        gameVars.coinSoundEffect = players["Coin01.mp3"]
+        gameVars.buzzerSoundEffect = players["Buzzer.mp3"]
+        gameVars.treasureSoundEffect = players["Treasure.mp3"]
+        gameVars.backgroundMusicPlayer = players["VirusDodger_GameScene.mp3"]
+        
+        
+    }
 }
