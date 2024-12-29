@@ -107,14 +107,14 @@ extension SoundManager {
     
     // MARK: - HowToHostingController Background Music
     func playHowToHostingBackgroundMusic() {
-        let filename = "HowToHostingScene.mp3" // Replace with actual filename
+        let filename = "VirusDodger_EnterScene.mp3"
         let volume: Float = 0.5
         guard let player = loadSound(filename, volume: volume) else { return }
         playBackgroundMusic(player)
     }
     
     func stopHowToHostingBackgroundMusic() {
-        let filename = "HowToHostingScene.mp3" // Replace with actual filename
+        let filename = "VirusDodger_EnterScene.mp3"
         guard let player = soundPlayers[filename] else { return }
         stopBackgroundMusic(player)
     }
