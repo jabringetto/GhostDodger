@@ -117,6 +117,8 @@ extension GameScene: BatDelegate, GridDelegate, AnnouncerRoundCompletedDelegate,
         uptakePersistentValues()
         
         // Reinitialize audio
+        // Stop and reset all audio players
+        soundManager.stopGameSceneBackgroundMusic()
         setupAudioEngine()
         playGameSceneBackgroundMusic()
         

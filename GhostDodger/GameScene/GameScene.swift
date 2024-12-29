@@ -155,7 +155,7 @@ final class GameScene: SKScene {
     weak var gameSceneDelegate: GameSceneDelegate?
     var gameVars = GameSceneVars()
     var varsInitialValues = GameSceneVars()
-    private let soundManager = SoundManager.shared
+    let soundManager = SoundManager.shared
     let defaults = UserDefaults.standard
     private var textureCache: [String: SKTexture] = [:]
     private let textureQueue = DispatchQueue(label: "com.ghostdodger.textureloading")
@@ -187,11 +187,10 @@ final class GameScene: SKScene {
         gameVars.coinSoundEffect = players["Coin01.mp3"]
         gameVars.buzzerSoundEffect = players["Buzzer.mp3"]
         gameVars.treasureSoundEffect = players["Treasure.mp3"]
-        gameVars.backgroundMusicPlayer = players["VirusDodger_GameScene.mp3"]
     }
 
     func playGameSceneBackgroundMusic() {
-        soundManager.playBackgroundMusic(gameVars.backgroundMusicPlayer)
+        soundManager.playGameSceneBackgroundMusic()
     }
 
     func playSound(_ player: AVAudioPlayer?) {

@@ -73,4 +73,49 @@ final class SoundManager: AudioManager {
         
         return players
     }
+    
+}
+
+extension SoundManager {
+    // MARK: - EnterController Background Music
+    func playEnterBackgroundMusic() {
+        let filename = "VirusDodger_EnterScene.mp3"
+        let volume: Float = 0.5
+        guard let player = loadSound(filename, volume: volume) else { return }
+        playBackgroundMusic(player)
+    }
+    
+    func stopEnterBackgroundMusic() {
+        let filename = "VirusDodger_EnterScene.mp3"
+        guard let player = soundPlayers[filename] else { return }
+        stopBackgroundMusic(player)
+    }
+    
+    // MARK: - GameScene Background Music
+    func playGameSceneBackgroundMusic() {
+        let filename = "VirusDodger_GameScene.mp3"
+        let volume: Float = 0.4
+        guard let player = loadSound(filename, volume: volume) else { return }
+        playBackgroundMusic(player)
+    }
+    
+    func stopGameSceneBackgroundMusic() {
+        let filename = "VirusDodger_GameScene.mp3"
+        guard let player = soundPlayers[filename] else { return }
+        stopBackgroundMusic(player)
+    }
+    
+    // MARK: - HowToHostingController Background Music
+    func playHowToHostingBackgroundMusic() {
+        let filename = "HowToHostingScene.mp3" // Replace with actual filename
+        let volume: Float = 0.5
+        guard let player = loadSound(filename, volume: volume) else { return }
+        playBackgroundMusic(player)
+    }
+    
+    func stopHowToHostingBackgroundMusic() {
+        let filename = "HowToHostingScene.mp3" // Replace with actual filename
+        guard let player = soundPlayers[filename] else { return }
+        stopBackgroundMusic(player)
+    }
 }

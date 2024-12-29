@@ -99,12 +99,11 @@ class HowToHostingController: UIViewController, HowToPlayViewDelegate {
     // MARK: Background Music
     
     private func addBackgroundMusic() {
-        sceneVars.enterMusicPlayer = soundManager.loadSound("VirusDodger_EnterScene.mp3", volume: 0.5)
-        soundManager.playBackgroundMusic(sceneVars.enterMusicPlayer)
+        soundManager.playHowToHostingBackgroundMusic()
     }
 
     func stopBackgroundMusic() {
-        soundManager.stopBackgroundMusic(sceneVars.enterMusicPlayer)
+        soundManager.stopHowToHostingBackgroundMusic()
     }
     
     

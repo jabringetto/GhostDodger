@@ -35,8 +35,11 @@ final class EnterViewController: UIViewController {
     }
     
     private func addBackgroundMusic() {
-        sceneVars.enterMusicPlayer = soundManager.loadSound("VirusDodger_EnterScene.mp3", volume: 0.5)
-        soundManager.playBackgroundMusic(sceneVars.enterMusicPlayer)
+        soundManager.playEnterBackgroundMusic()
+    }
+
+    func stopBackgroundMusic() {
+        soundManager.stopEnterBackgroundMusic()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
