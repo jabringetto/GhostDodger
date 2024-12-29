@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -70,6 +70,16 @@
 		D0FA7FAB2586F44900EA7163 /* IAPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FA7FAA2586F44900EA7163 /* IAPManager.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		D0DE1E872D21FC4300950162 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D0CA80E421CF13A400BE7E96 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D0CA80EB21CF13A400BE7E96;
+			remoteInfo = GhostDodger;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		D004C9CE2472241A0066AF56 /* Dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dashboard.swift; sourceTree = "<group>"; };
 		D00B6336266B3A040070BBF4 /* Skull.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Skull.atlas; sourceTree = "<group>"; };
@@ -127,6 +137,7 @@
 		D0DE1E762D20AA8600950162 /* HowToHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToHostingController.swift; sourceTree = "<group>"; };
 		D0DE1E782D20AA8F00950162 /* HowToPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayView.swift; sourceTree = "<group>"; };
 		D0DE1E7D2D20DD4800950162 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		D0DE1E832D21FC4300950162 /* Ghost DodgerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Ghost DodgerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0DE71AF23B94A1000B87144 /* Kaching.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Kaching.mp3; sourceTree = "<group>"; };
 		D0DE71B223BBEF5B00B87144 /* Treasure.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Treasure.mp3; sourceTree = "<group>"; };
 		D0DEDFC5245F5CF50074CB7B /* EnterScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterScene.swift; sourceTree = "<group>"; };
@@ -139,6 +150,10 @@
 		D0FA7FAE258700A200EA7163 /* StoreKitConfig.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = StoreKitConfig.storekit; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		D0DE1E842D21FC4300950162 /* Ghost DodgerTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "Ghost DodgerTests"; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		D085C651266B4C210090C8D6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -148,6 +163,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D0CA80E921CF13A400BE7E96 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0DE1E802D21FC4300950162 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -266,6 +288,7 @@
 			children = (
 				D0CA80EE21CF13A400BE7E96 /* GhostDodger */,
 				D085C655266B4C210090C8D6 /* SwiftLint */,
+				D0DE1E842D21FC4300950162 /* Ghost DodgerTests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -274,6 +297,7 @@
 			children = (
 				D0CA80EC21CF13A400BE7E96 /* Ghost Dodger.app */,
 				D085C654266B4C210090C8D6 /* SwiftLint.app */,
+				D0DE1E832D21FC4300950162 /* Ghost DodgerTests.xctest */,
 			);
 			name = Products;
 			path = ..;
@@ -453,13 +477,36 @@
 			productReference = D0CA80EC21CF13A400BE7E96 /* Ghost Dodger.app */;
 			productType = "com.apple.product-type.application";
 		};
+		D0DE1E822D21FC4300950162 /* Ghost DodgerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D0DE1E892D21FC4300950162 /* Build configuration list for PBXNativeTarget "Ghost DodgerTests" */;
+			buildPhases = (
+				D0DE1E7F2D21FC4300950162 /* Sources */,
+				D0DE1E802D21FC4300950162 /* Frameworks */,
+				D0DE1E812D21FC4300950162 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D0DE1E882D21FC4300950162 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				D0DE1E842D21FC4300950162 /* Ghost DodgerTests */,
+			);
+			name = "Ghost DodgerTests";
+			packageProductDependencies = (
+			);
+			productName = "Ghost DodgerTests";
+			productReference = D0DE1E832D21FC4300950162 /* Ghost DodgerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		D0CA80E421CF13A400BE7E96 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1250;
+				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = "Jeremy Bringetto";
 				TargetAttributes = {
@@ -469,6 +516,10 @@
 					D0CA80EB21CF13A400BE7E96 = {
 						CreatedOnToolsVersion = 10.1;
 						LastSwiftMigration = 1100;
+					};
+					D0DE1E822D21FC4300950162 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = D0CA80EB21CF13A400BE7E96;
 					};
 				};
 			};
@@ -487,6 +538,7 @@
 			targets = (
 				D0CA80EB21CF13A400BE7E96 /* GhostDodger */,
 				D085C653266B4C210090C8D6 /* SwiftLint */,
+				D0DE1E822D21FC4300950162 /* Ghost DodgerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -525,6 +577,13 @@
 				D08F7758277F5C1F00B2024C /* Ghost.atlas in Resources */,
 				D0C15414250B4B2B00D2B661 /* Whirlpool.atlas in Resources */,
 				D0D3C751245AAC2100C47DA6 /* Virus.atlas in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0DE1E812D21FC4300950162 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,7 +682,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D0DE1E7F2D21FC4300950162 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D0DE1E882D21FC4300950162 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D0CA80EB21CF13A400BE7E96 /* GhostDodger */;
+			targetProxy = D0DE1E872D21FC4300950162 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D085C65C266B4C210090C8D6 /* Main.storyboard */ = {
@@ -859,6 +933,55 @@
 			};
 			name = Release;
 		};
+		D0DE1E8A2D21FC4300950162 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ARU8D4B27U;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jabringetto.Ghost-DodgerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ghost Dodger.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Ghost Dodger";
+			};
+			name = Debug;
+		};
+		D0DE1E8B2D21FC4300950162 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ARU8D4B27U;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jabringetto.Ghost-DodgerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ghost Dodger.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Ghost Dodger";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -885,6 +1008,15 @@
 			buildConfigurations = (
 				D0CA80FF21CF13A600BE7E96 /* Debug */,
 				D0CA810021CF13A600BE7E96 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D0DE1E892D21FC4300950162 /* Build configuration list for PBXNativeTarget "Ghost DodgerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0DE1E8A2D21FC4300950162 /* Debug */,
+				D0DE1E8B2D21FC4300950162 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
