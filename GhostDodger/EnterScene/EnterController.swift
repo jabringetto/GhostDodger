@@ -14,7 +14,7 @@ final class EnterViewController: UIViewController {
     @IBOutlet weak var enterView: SKView!
 
     var scene = EnterScene()
-    private let soundManager = SoundManager.shared
+    private let soundManager = EnterSoundManager.shared
     var sceneVars = EnterSceneVars()
   
 
@@ -34,12 +34,14 @@ final class EnterViewController: UIViewController {
         self.performSegue(withIdentifier: "howToSegue", sender: self)
     }
     
-    private func addBackgroundMusic() {
-        soundManager.playEnterBackgroundMusic()
-    }
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         soundManager.stopEnterBackgroundMusic()
+    }
+    
+    // MARK: Background Music
+    
+    private func addBackgroundMusic() {
+        soundManager.playEnterBackgroundMusic()
     }
 
 }

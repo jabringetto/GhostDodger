@@ -49,7 +49,7 @@ struct EnterSceneVars {
      }
 }
 final class EnterScene: SKScene {
-    private let soundManager = SoundManager.shared
+    private let soundManager = EnterSoundManager.shared
     var sceneVars = EnterSceneVars()
 
     override func didMove(to view: SKView) {

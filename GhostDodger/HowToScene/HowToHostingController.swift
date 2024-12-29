@@ -10,7 +10,7 @@ import UIKit
 import SwiftUI
 
 class HowToHostingController: UIViewController, HowToPlayViewDelegate {
-    private let soundManager = SoundManager.shared
+    private let soundManager = EnterSoundManager.shared
     let defaults = UserDefaults.standard
     var sceneVars = EnterSceneVars()
     private var howToPlayView: HowToPlayView!
@@ -99,11 +99,11 @@ class HowToHostingController: UIViewController, HowToPlayViewDelegate {
     // MARK: Background Music
     
     private func addBackgroundMusic() {
-        soundManager.playHowToHostingBackgroundMusic()
+        soundManager.playEnterBackgroundMusic()
     }
 
     func stopBackgroundMusic() {
-        soundManager.stopHowToHostingBackgroundMusic()
+        soundManager.stopEnterBackgroundMusic()
     }
     
 }

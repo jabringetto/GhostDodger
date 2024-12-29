@@ -155,13 +155,8 @@ final class GameScene: SKScene {
     weak var gameSceneDelegate: GameSceneDelegate?
     var gameVars = GameSceneVars()
     var varsInitialValues = GameSceneVars()
-    let soundManager = SoundManager.shared
+    let soundManager = GameSoundManager.shared
     let defaults = UserDefaults.standard
-    private var textureCache: [String: SKTexture] = [:]
-    private let textureQueue = DispatchQueue(label: "com.ghostdodger.textureloading")
-    // Audio system
-    let gameAudioEngine = AVAudioEngine()
-    var gameSoundPlayers = [String: AVAudioPlayer]()
     var lastUpdateTime: TimeInterval = 0
     let minimumFrameInterval: TimeInterval = 1.0 / 60.0 // Target 60 FPS
 
@@ -172,6 +167,8 @@ final class GameScene: SKScene {
         setupAudioEngine()
         playGameSceneBackgroundMusic()
     }
+    
+    // MARK: Background Music and Sound Effects
 
     func playGameSceneBackgroundMusic() {
         soundManager.playGameSceneBackgroundMusic()
