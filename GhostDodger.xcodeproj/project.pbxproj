@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		D004C9CF2472241A0066AF56 /* Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D004C9CE2472241A0066AF56 /* Dashboard.swift */; };
 		D00B6337266B3A040070BBF4 /* Skull.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D00B6336266B3A040070BBF4 /* Skull.atlas */; };
-		D0304E2E2D1FCEF1005AF779 /* LoadingScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0304E2D2D1FCEE8005AF779 /* LoadingScene.swift */; };
 		D0391B4323A436B300752CEC /* Bat.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D0391B4223A436B300752CEC /* Bat.atlas */; };
 		D0391B4523A436F600752CEC /* Bat.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0391B4423A436F600752CEC /* Bat.swift */; };
 		D03982BF23B70EA600308022 /* Emerald.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D0CA810721CF1B0D00BE7E96 /* Emerald.atlas */; };
@@ -26,7 +25,6 @@
 		D08F7755277E814500B2024C /* Ghost.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08F7754277E814500B2024C /* Ghost.swift */; };
 		D08F7758277F5C1F00B2024C /* Ghost.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D08F7757277F5BEB00B2024C /* Ghost.atlas */; };
 		D09163A2255211A30098E82C /* UpgradesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09163A1255211A30098E82C /* UpgradesController.swift */; };
-		D09E156124C4E41D009A3EF4 /* EnterScene_Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09E156024C4E41D009A3EF4 /* EnterScene_Layout.swift */; };
 		D09E156424C4E72C009A3EF4 /* EnterScene_EveryFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09E156324C4E72C009A3EF4 /* EnterScene_EveryFrame.swift */; };
 		D09E2DA7245FCDCE005AB915 /* VirusWithFace.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D09E2DA6245FCDCE005AB915 /* VirusWithFace.atlas */; };
 		D0B2D1E3249DC3D800A4B2E6 /* Coin01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D0B2D1E2249DC3D800A4B2E6 /* Coin01.mp3 */; };
@@ -38,7 +36,6 @@
 		D0C15418250D616200D2B661 /* Cyclone.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C15417250D616200D2B661 /* Cyclone.swift */; };
 		D0C2502F23DB5E54009D65DD /* GameScene_Physics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C2502E23DB5E54009D65DD /* GameScene_Physics.swift */; };
 		D0C2503123DB5F87009D65DD /* GameScene_Touches.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C2503023DB5F87009D65DD /* GameScene_Touches.swift */; };
-		D0C2503523DB6318009D65DD /* GameScene_Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C2503423DB6318009D65DD /* GameScene_Layout.swift */; };
 		D0C2503723DB7D4F009D65DD /* GameScene_EveryFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C2503623DB7D4F009D65DD /* GameScene_EveryFrame.swift */; };
 		D0C7D59B25E220B600A384AC /* VirusDodger_GameScene.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D0C7D59A25E220B600A384AC /* VirusDodger_GameScene.mp3 */; };
 		D0CA80F021CF13A400BE7E96 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CA80EF21CF13A400BE7E96 /* AppDelegate.swift */; };
@@ -84,7 +81,6 @@
 /* Begin PBXFileReference section */
 		D004C9CE2472241A0066AF56 /* Dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dashboard.swift; sourceTree = "<group>"; };
 		D00B6336266B3A040070BBF4 /* Skull.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Skull.atlas; sourceTree = "<group>"; };
-		D0304E2D2D1FCEE8005AF779 /* LoadingScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScene.swift; sourceTree = "<group>"; };
 		D0391B4223A436B300752CEC /* Bat.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Bat.atlas; sourceTree = "<group>"; };
 		D0391B4423A436F600752CEC /* Bat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bat.swift; sourceTree = "<group>"; };
 		D03E468825E02B9300C32FEE /* VirusDodger_EnterScene.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = VirusDodger_EnterScene.mp3; sourceTree = "<group>"; };
@@ -102,7 +98,6 @@
 		D08F7754277E814500B2024C /* Ghost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ghost.swift; sourceTree = "<group>"; };
 		D08F7757277F5BEB00B2024C /* Ghost.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Ghost.atlas; sourceTree = "<group>"; };
 		D09163A1255211A30098E82C /* UpgradesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradesController.swift; sourceTree = "<group>"; };
-		D09E156024C4E41D009A3EF4 /* EnterScene_Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterScene_Layout.swift; sourceTree = "<group>"; };
 		D09E156324C4E72C009A3EF4 /* EnterScene_EveryFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterScene_EveryFrame.swift; sourceTree = "<group>"; };
 		D09E2DA6245FCDCE005AB915 /* VirusWithFace.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = VirusWithFace.atlas; sourceTree = "<group>"; };
 		D0B2D1E2249DC3D800A4B2E6 /* Coin01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Coin01.mp3; sourceTree = "<group>"; };
@@ -114,7 +109,6 @@
 		D0C15417250D616200D2B661 /* Cyclone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cyclone.swift; sourceTree = "<group>"; };
 		D0C2502E23DB5E54009D65DD /* GameScene_Physics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene_Physics.swift; sourceTree = "<group>"; };
 		D0C2503023DB5F87009D65DD /* GameScene_Touches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene_Touches.swift; sourceTree = "<group>"; };
-		D0C2503423DB6318009D65DD /* GameScene_Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene_Layout.swift; sourceTree = "<group>"; };
 		D0C2503623DB7D4F009D65DD /* GameScene_EveryFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene_EveryFrame.swift; sourceTree = "<group>"; };
 		D0C7D59A25E220B600A384AC /* VirusDodger_GameScene.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = VirusDodger_GameScene.mp3; sourceTree = "<group>"; };
 		D0CA80EC21CF13A400BE7E96 /* Ghost Dodger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ghost Dodger.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -199,7 +193,6 @@
 		D09E156224C4E427009A3EF4 /* EnterSceneExtensions */ = {
 			isa = PBXGroup;
 			children = (
-				D09E156024C4E41D009A3EF4 /* EnterScene_Layout.swift */,
 				D09E156324C4E72C009A3EF4 /* EnterScene_EveryFrame.swift */,
 			);
 			path = EnterSceneExtensions;
@@ -276,7 +269,6 @@
 		D0C2503323DB6022009D65DD /* GameSceneExtensions */ = {
 			isa = PBXGroup;
 			children = (
-				D0C2503423DB6318009D65DD /* GameScene_Layout.swift */,
 				D0C2503623DB7D4F009D65DD /* GameScene_EveryFrame.swift */,
 				D0C2502E23DB5E54009D65DD /* GameScene_Physics.swift */,
 				D0C2503023DB5F87009D65DD /* GameScene_Touches.swift */,
@@ -423,7 +415,6 @@
 			isa = PBXGroup;
 			children = (
 				D0CA80F121CF13A400BE7E96 /* EnterController.swift */,
-				D0304E2D2D1FCEE8005AF779 /* LoadingScene.swift */,
 				D0DEDFC5245F5CF50074CB7B /* EnterScene.swift */,
 				D09E156224C4E427009A3EF4 /* EnterSceneExtensions */,
 			);
@@ -658,7 +649,6 @@
 				D0FA7FAB2586F44900EA7163 /* IAPManager.swift in Sources */,
 				D0D94A6723D21624007CCC5E /* Coin.swift in Sources */,
 				D0DEDFC9245F5D620074CB7B /* VirusWithFace.swift in Sources */,
-				D0C2503523DB6318009D65DD /* GameScene_Layout.swift in Sources */,
 				D0DE1E792D20AAA000950162 /* HowToPlayView.swift in Sources */,
 				D0CA80F221CF13A400BE7E96 /* EnterController.swift in Sources */,
 				D0391B4523A436F600752CEC /* Bat.swift in Sources */,
@@ -681,10 +671,8 @@
 				D0B2D1E6249DD3A800A4B2E6 /* AnnouncerCountdown.swift in Sources */,
 				D08F7755277E814500B2024C /* Ghost.swift in Sources */,
 				D0B2D1E824A05B6100A4B2E6 /* AnnouncerRoundCompleted.swift in Sources */,
-				D0304E2E2D1FCEF1005AF779 /* LoadingScene.swift in Sources */,
 				D0CA810921CF2CE800BE7E96 /* Gem.swift in Sources */,
 				D0E3AA312475EC0100A7A18B /* GameScene_Events.swift in Sources */,
-				D09E156124C4E41D009A3EF4 /* EnterScene_Layout.swift in Sources */,
 				D0C2502F23DB5E54009D65DD /* GameScene_Physics.swift in Sources */,
 				D0C15416250B4D4400D2B661 /* Whirlpool.swift in Sources */,
 				D09E156424C4E72C009A3EF4 /* EnterScene_EveryFrame.swift in Sources */,

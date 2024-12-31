@@ -51,20 +51,26 @@ struct EnterSceneVars {
 final class EnterScene: SKScene {
     private let soundManager = EnterSoundManager.shared
     var sceneVars = EnterSceneVars()
+    private let layoutManager = EnterSceneLayoutManager()
 
     override func didMove(to view: SKView) {
         super.didMove(to: view)
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        addBackground()
-        self.addChild(sceneVars.conveyorLayer)
-        self.addChild(sceneVars.letterLayer)
-        addEnterGhost()
-        addEnterBat()
-        addEnterRuby()
-        addEnterCoins()
-        addEnterSkull()
-        setLetterPositions(width: sceneVars.screenWidth, height: sceneVars.screenHeight)
-        addLetters()
+        layoutManager.setupScene(self)
+        
+        #if DEBUG
+        // Debug: Print node hierarchy
+        printNodeHierarchy(self, level: 0)
+        #endif
     }
     
+    #if DEBUG
+    private func printNodeHierarchy(_ node: SKNode, level: Int) {
+        let indent = String(repeating: "  ", count: level)
+        print("\(indent)Node: \(type(of: node)), zPosition: \(node.zPosition), position: \(node.position)")
+        node.children.forEach { child in
+            printNodeHierarchy(child, level: level + 1)
+        }
+    }
+    #endif
 }

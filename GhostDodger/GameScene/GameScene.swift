@@ -159,10 +159,11 @@ final class GameScene: SKScene {
     let defaults = UserDefaults.standard
     var lastUpdateTime: TimeInterval = 0
     let minimumFrameInterval: TimeInterval = 1.0 / 60.0 // Target 60 FPS
+    let layoutManager = GameSceneLayoutManager()
 
     override func didMove(to view: SKView) {
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        sceneSetup()
+        layoutManager.setupScene(self)
         configurePhysicsWorld()
         setupAudioEngine()
         playGameSceneBackgroundMusic()
