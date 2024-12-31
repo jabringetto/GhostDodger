@@ -12,6 +12,10 @@ import SpriteKit
 import AVFoundation
 
 extension EnterScene {
+    
+    func setupScene() {
+        
+    }
     func addBackground() {
         sceneVars.background.size.width = sceneVars.screenWidth
         sceneVars.background.size.height = sceneVars.screenHeight

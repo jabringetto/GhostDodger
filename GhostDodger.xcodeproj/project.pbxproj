@@ -59,6 +59,7 @@
 		D0DE1E772D20AA8600950162 /* HowToHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DE1E762D20AA8600950162 /* HowToHostingController.swift */; };
 		D0DE1E792D20AAA000950162 /* HowToPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DE1E782D20AA8F00950162 /* HowToPlayView.swift */; };
 		D0DE1E7E2D20DD5000950162 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DE1E7D2D20DD4800950162 /* SoundManager.swift */; };
+		D0DE1E8F2D236E4000950162 /* LayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DE1E8E2D236E3F00950162 /* LayoutManager.swift */; };
 		D0DE71B023B94A1000B87144 /* Kaching.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D0DE71AF23B94A1000B87144 /* Kaching.mp3 */; };
 		D0DE71B323BBEF5B00B87144 /* Treasure.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D0DE71B223BBEF5B00B87144 /* Treasure.mp3 */; };
 		D0DEDFC6245F5CF50074CB7B /* EnterScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DEDFC5245F5CF50074CB7B /* EnterScene.swift */; };
@@ -138,6 +139,7 @@
 		D0DE1E782D20AA8F00950162 /* HowToPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayView.swift; sourceTree = "<group>"; };
 		D0DE1E7D2D20DD4800950162 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		D0DE1E832D21FC4300950162 /* Ghost DodgerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Ghost DodgerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0DE1E8E2D236E3F00950162 /* LayoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutManager.swift; sourceTree = "<group>"; };
 		D0DE71AF23B94A1000B87144 /* Kaching.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Kaching.mp3; sourceTree = "<group>"; };
 		D0DE71B223BBEF5B00B87144 /* Treasure.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Treasure.mp3; sourceTree = "<group>"; };
 		D0DEDFC5245F5CF50074CB7B /* EnterScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterScene.swift; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 				D0CA80FB21CF13A600BE7E96 /* Info.plist */,
 				D0C2502723D7B1BC009D65DD /* Assets */,
 				D0DE1E7A2D20DCCE00950162 /* Audio */,
+				D0DE1E902D236E5300950162 /* Layout */,
 				D0DEDFC7245F5CFC0074CB7B /* EnterScene */,
 				D0C2503223DB6019009D65DD /* GameScene */,
 				D0DE1E752D20AA1000950162 /* HowToScene */,
@@ -393,6 +396,14 @@
 				D0DE71B123BBEF4600B87144 /* SoundFiles */,
 			);
 			path = Audio;
+			sourceTree = "<group>";
+		};
+		D0DE1E902D236E5300950162 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				D0DE1E8E2D236E3F00950162 /* LayoutManager.swift */,
+			);
+			path = Layout;
 			sourceTree = "<group>";
 		};
 		D0DE71B123BBEF4600B87144 /* SoundFiles */ = {
@@ -655,6 +666,7 @@
 				D06771202546353200DB0552 /* GameSprite.swift in Sources */,
 				D0D04E12254DF2D400BF0F07 /* UpgradeScene.swift in Sources */,
 				D004C9CF2472241A0066AF56 /* Dashboard.swift in Sources */,
+				D0DE1E8F2D236E4000950162 /* LayoutManager.swift in Sources */,
 				D0C2503123DB5F87009D65DD /* GameScene_Touches.swift in Sources */,
 				D0D94A6523D123C8007CCC5E /* Grid.swift in Sources */,
 				D0CA810421CF162400BE7E96 /* GameScene.swift in Sources */,

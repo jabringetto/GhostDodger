@@ -11,7 +11,7 @@ import SpriteKit
 
 extension GameScene {
 
-    func gameSetup() {
+    func sceneSetup() {
         uptakePersistentValues()
         addBackground()
         addBackLayer()

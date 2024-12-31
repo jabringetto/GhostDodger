@@ -122,7 +122,7 @@ extension GameScene: BatDelegate, GridDelegate, AnnouncerRoundCompletedDelegate,
         setupAudioEngine()
         playGameSceneBackgroundMusic()
         
-        gameSetup()
+        sceneSetup()
     }
 
     func resetUpgradeMinimums() {

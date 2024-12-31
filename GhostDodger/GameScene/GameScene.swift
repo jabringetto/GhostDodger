@@ -162,7 +162,7 @@ final class GameScene: SKScene {
 
     override func didMove(to view: SKView) {
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        gameSetup()
+        sceneSetup()
         configurePhysicsWorld()
         setupAudioEngine()
         playGameSceneBackgroundMusic()
