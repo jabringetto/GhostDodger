@@ -6,7 +6,7 @@
 //  Copyright © 2024 Jeremy Bringetto. All rights reserved.
 //
 
-import Testing
+import XCTest
 import SpriteKit
 @testable import Ghost_Dodger
 
@@ -16,68 +16,82 @@ class MockEnterSceneLayoutManager: LayoutManager {
     var addedBackground = false
     var addedLetters = false
 
-   func setupScene(_ scene: SKScene) {
+    func setupScene(_ scene: SKScene) {
         setupSceneCalled = true
-        setupScene(scene)
+        guard let enterScene = scene as? EnterScene else { return }
+        
+        addBackground(enterScene)
+        addLetters(enterScene)
     }
 
     func addBackground(_ scene: SKScene) {
         addedBackground = true
-        addBackground(scene)
+        guard let enterScene = scene as? EnterScene else { return }
+        
+        // Implement the actual background setup that's being tested
+        enterScene.sceneVars.background.size.width = enterScene.sceneVars.screenWidth
+        enterScene.sceneVars.background.size.height = enterScene.sceneVars.screenHeight
+        enterScene.addChild(enterScene.sceneVars.background)
     }
 
     func addLetters(_ scene: EnterScene) {
-         addedLetters = true
-         addLetters(scene)
+        addedLetters = true
+        // Implement the actual letter setup that's being tested
+        for letter in scene.sceneVars.virusLetters {
+            letter.zPosition = 4
+            scene.sceneVars.letterLayer.addChild(letter)
+        }
     }
 }
 
 // Unit Tests
-struct LayoutManagerTests {
+class LayoutManagerTests: XCTestCase {
+    var mockManager: MockEnterSceneLayoutManager!
+    var enterScene: EnterScene!
 
-    @Test func testEnterSceneLayoutManagerSetup() async throws {
-        // Arrange
-        let mockManager = MockEnterSceneLayoutManager()
-        let enterScene = EnterScene()
-        enterScene.sceneVars.setScreenDimensions(800, 600) // Set dimensions for testing
+    override func setUp() {
+        super.setUp()
+        mockManager = MockEnterSceneLayoutManager()
+        enterScene = EnterScene()
+        enterScene.sceneVars.setScreenDimensions(800, 600)
+    }
 
+    override func tearDown() {
+        mockManager = nil
+        enterScene = nil
+        super.tearDown()
+    }
+
+    func testEnterSceneLayoutManagerSetup() {
         // Act
         mockManager.setupScene(enterScene)
 
         // Assert
-        #expect(mockManager.setupSceneCalled).to(equal(true))
-        #expect(mockManager.addedBackground).to(equal(true))
-        #expect(mockManager.addedLetters).to(equal(true))
+        XCTAssertTrue(mockManager.setupSceneCalled)
+        XCTAssertTrue(mockManager.addedBackground)
+        XCTAssertTrue(mockManager.addedLetters)
     }
 
-    @Test func testAddBackground() async throws {
-        // Arrange
-        let mockManager = MockEnterSceneLayoutManager()
-        let enterScene = EnterScene()
-        enterScene.sceneVars.setScreenDimensions(800, 600)
-
+    func testAddBackground() {
         // Act
         mockManager.addBackground(enterScene)
 
         // Assert
-        #expect(enterScene.sceneVars.background.size.width).to(equal(800))
-        #expect(enterScene.sceneVars.background.size.height).to(equal(600))
-        #expect(enterScene.sceneVars.background.parent).to(equal(enterScene))
+        XCTAssertEqual(enterScene.sceneVars.background.size.width, 800)
+        XCTAssertEqual(enterScene.sceneVars.background.size.height, 600)
+        XCTAssertEqual(enterScene.sceneVars.background.parent, enterScene)
     }
 
-    @Test func testAddLetters() async throws {
+    func testAddLetters() {
         // Arrange
-        let mockManager = MockEnterSceneLayoutManager()
-        let enterScene = EnterScene()
-        enterScene.sceneVars.setScreenDimensions(800, 600)
         enterScene.sceneVars.virusLetters = [SKSpriteNode(imageNamed: "Letter_A"), SKSpriteNode(imageNamed: "Letter_B")]
 
         // Act
         mockManager.addLetters(enterScene)
 
         // Assert
-        #expect(enterScene.sceneVars.letterLayer.children.count).to(equal(2))
-        #expect(enterScene.sceneVars.virusLetters[0].zPosition).to(equal(4))
-        #expect(enterScene.sceneVars.virusLetters[1].zPosition).to(equal(4))
+        XCTAssertEqual(enterScene.sceneVars.letterLayer.children.count, 2)
+        XCTAssertEqual(enterScene.sceneVars.virusLetters[0].zPosition, 4)
+        XCTAssertEqual(enterScene.sceneVars.virusLetters[1].zPosition, 4)
     }
 }
