@@ -17,10 +17,10 @@ final class EnterSceneLayoutManager: LayoutManager {
     func setupScene(_ scene: SKScene) {
         guard let enterScene = scene as? EnterScene else { return }
         
-        // Add layers first with proper z-positions
+        // Set z-positions for layers
         enterScene.sceneVars.background.zPosition = -10  // Background at back
         enterScene.sceneVars.conveyorLayer.zPosition = 0 // Conveyor layer in middle
-        enterScene.sceneVars.letterLayer.zPosition = 10  // Letter layer in front
+        enterScene.sceneVars.letterLayer.zPosition = 3  // Letter layer in front
         
         // Add nodes to scene in order
         addBackground(enterScene)
@@ -45,8 +45,9 @@ final class EnterSceneLayoutManager: LayoutManager {
     
     func addLetters(_ scene: EnterScene) {
         // Set z-positions for letters if needed
+        setLetterPositions(scene, width: scene.sceneVars.screenWidth, height: scene.sceneVars.screenHeight)
         for letter in scene.sceneVars.virusLetters {
-            letter.zPosition = 2  // Ensure letters are visible within letter layer
+            letter.zPosition = 4  // Ensure letters are visible within letter layer
             scene.sceneVars.letterLayer.addChild(letter)
         }
     }
