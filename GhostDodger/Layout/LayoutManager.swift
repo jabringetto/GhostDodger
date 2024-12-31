@@ -1,5 +1,5 @@
 //
-//  Untitled.swift
+//  LayoutManager.swift
 //  GhostDodger
 //
 //  Created by Jeremy Bringetto on 12/30/24.
