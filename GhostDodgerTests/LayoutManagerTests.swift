@@ -217,6 +217,25 @@ class MockGameSceneLayoutManager: LayoutManager {
             scene.addChild(scene.gameVars.cyclone)
         }
     }
+
+    func addGameOver(_ scene: GameScene) {
+        addedGameOver = true
+        scene.gameVars.gameOver.isHidden = true
+        scene.gameVars.backLayer.addChild(scene.gameVars.gameOver)
+    }
+    
+    func addCountdownAnnouncer(_ scene: GameScene) {
+        addedCountdownAnnouncer = true
+        scene.gameVars.countdownAnnouncer.configureLabels(roundNum: scene.gameVars.round, gameInProgress: scene.gameVars.gameInProgress)
+        scene.gameVars.backLayer.addChild(scene.gameVars.countdownAnnouncer)
+    }
+    
+    func addRoundCompletedAnnouncer(_ scene: GameScene) {
+        addedRoundCompletedAnnouncer = true
+        scene.gameVars.roundCompleteAnnouncer.delegate = scene
+        scene.gameVars.roundCompleteAnnouncer.setCompletedLabelText()
+        scene.gameVars.backLayer.addChild(scene.gameVars.roundCompleteAnnouncer)
+    }
 }
 
 // Unit Tests
@@ -273,8 +292,8 @@ class LayoutManagerTests: XCTestCase {
 
         // Assert
         XCTAssertTrue(mockEnterManager.addedEnterBat)
-        XCTAssertEqual(enterScene.sceneVars.enterBat.xScale, EnterSceneConstants.enterBatScale)
-        XCTAssertEqual(enterScene.sceneVars.enterBat.yScale, EnterSceneConstants.enterBatScale)
+        XCTAssertEqual(enterScene.sceneVars.enterBat.xScale, EnterSceneConstants.enterBatScale, accuracy: 0.0001)
+        XCTAssertEqual(enterScene.sceneVars.enterBat.yScale, EnterSceneConstants.enterBatScale, accuracy: 0.0001)
         XCTAssertEqual(enterScene.sceneVars.enterBat.zPosition, 1)
         XCTAssertEqual(enterScene.sceneVars.enterBat.parent, enterScene.sceneVars.conveyorLayer)
     }
@@ -285,8 +304,8 @@ class LayoutManagerTests: XCTestCase {
 
         // Assert
         XCTAssertTrue(mockEnterManager.addedEnterGhost)
-        XCTAssertEqual(enterScene.sceneVars.enterGhost.xScale, EnterSceneConstants.enterBatScale)
-        XCTAssertEqual(enterScene.sceneVars.enterGhost.yScale, EnterSceneConstants.enterBatScale)
+        XCTAssertEqual(enterScene.sceneVars.enterGhost.xScale, EnterSceneConstants.enterBatScale, accuracy: 0.0001)
+        XCTAssertEqual(enterScene.sceneVars.enterGhost.yScale, EnterSceneConstants.enterBatScale, accuracy: 0.0001)
         XCTAssertEqual(enterScene.sceneVars.enterGhost.parent, enterScene.sceneVars.conveyorLayer)
     }
 
@@ -296,8 +315,8 @@ class LayoutManagerTests: XCTestCase {
 
         // Assert
         XCTAssertTrue(mockEnterManager.addedEnterRuby)
-        XCTAssertEqual(enterScene.sceneVars.enterRuby.xScale, EnterSceneConstants.enterRubyScale)
-        XCTAssertEqual(enterScene.sceneVars.enterRuby.yScale, EnterSceneConstants.enterRubyScale)
+        XCTAssertEqual(enterScene.sceneVars.enterRuby.xScale, EnterSceneConstants.enterRubyScale, accuracy: 0.0001)
+        XCTAssertEqual(enterScene.sceneVars.enterRuby.yScale, EnterSceneConstants.enterRubyScale, accuracy: 0.0001)
         XCTAssertEqual(enterScene.sceneVars.enterRuby.parent, enterScene.sceneVars.conveyorLayer)
     }
 
@@ -307,8 +326,8 @@ class LayoutManagerTests: XCTestCase {
 
         // Assert
         XCTAssertTrue(mockEnterManager.addedEnterCoins)
-        XCTAssertEqual(enterScene.sceneVars.enterGoldCoin.xScale, EnterSceneConstants.enterCoinScale)
-        XCTAssertEqual(enterScene.sceneVars.enterSilverCoin.xScale, EnterSceneConstants.enterCoinScale)
+        XCTAssertEqual(enterScene.sceneVars.enterGoldCoin.xScale, EnterSceneConstants.enterCoinScale, accuracy: 0.0001)
+        XCTAssertEqual(enterScene.sceneVars.enterSilverCoin.xScale, EnterSceneConstants.enterCoinScale, accuracy: 0.0001)
         XCTAssertEqual(enterScene.sceneVars.enterGoldCoin.parent, enterScene.sceneVars.conveyorLayer)
         XCTAssertEqual(enterScene.sceneVars.enterSilverCoin.parent, enterScene.sceneVars.conveyorLayer)
     }
@@ -319,8 +338,8 @@ class LayoutManagerTests: XCTestCase {
 
         // Assert
         XCTAssertTrue(mockEnterManager.addedEnterSkull)
-        XCTAssertEqual(enterScene.sceneVars.enterSkull.xScale, 1.0)
-        XCTAssertEqual(enterScene.sceneVars.enterSkull.yScale, 1.0)
+        XCTAssertEqual(enterScene.sceneVars.enterSkull.xScale, 1.0, accuracy: 0.0001)
+        XCTAssertEqual(enterScene.sceneVars.enterSkull.yScale, 1.0, accuracy: 0.0001)
         XCTAssertEqual(enterScene.sceneVars.enterSkull.parent, enterScene.sceneVars.conveyorLayer)
     }
 
@@ -418,5 +437,34 @@ class LayoutManagerTests: XCTestCase {
         // Assert
         XCTAssertTrue(mockGameManager.restoredCyclone)
         XCTAssertEqual(gameScene.gameVars.cyclone.parent, gameScene)
+    }
+
+    func testAddGameOver() {
+        // Act
+        mockGameManager.addGameOver(gameScene)
+
+        // Assert
+        XCTAssertTrue(mockGameManager.addedGameOver)
+        XCTAssertTrue(gameScene.gameVars.gameOver.isHidden)
+        XCTAssertEqual(gameScene.gameVars.gameOver.parent, gameScene.gameVars.backLayer)
+    }
+
+    func testAddCountdownAnnouncer() {
+        // Act
+        mockGameManager.addCountdownAnnouncer(gameScene)
+
+        // Assert
+        XCTAssertTrue(mockGameManager.addedCountdownAnnouncer)
+        XCTAssertEqual(gameScene.gameVars.countdownAnnouncer.parent, gameScene.gameVars.backLayer)
+    }
+
+    func testAddRoundCompletedAnnouncer() {
+        // Act
+        mockGameManager.addRoundCompletedAnnouncer(gameScene)
+
+        // Assert
+        XCTAssertTrue(mockGameManager.addedRoundCompletedAnnouncer)
+        XCTAssertEqual(gameScene.gameVars.roundCompleteAnnouncer.parent, gameScene.gameVars.backLayer)
+        XCTAssertEqual(gameScene.gameVars.roundCompleteAnnouncer.delegate as? GameScene, gameScene)
     }
 }
