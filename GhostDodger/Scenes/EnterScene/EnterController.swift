@@ -16,8 +16,8 @@ final class EnterViewController: UIViewController {
     var scene = EnterScene()
     private let soundManager = EnterSoundManager.shared
     var sceneVars = EnterSceneVars()
-  
-
+    @IBOutlet weak var enterButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: false)

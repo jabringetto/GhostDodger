@@ -36,7 +36,6 @@ extension EnterScene {
         }
         sceneVars.letterO.zRotation += 0.5
         sceneVars.letterOh.zRotation -= 0.5
-        
         sceneVars.letterUpperCaseG.zRotation = 0.1*cos(sceneVars.enterLettersSineArgument)
         sceneVars.letterH.zRotation = -0.1*sin(sceneVars.enterLettersSineArgument)
         sceneVars.letterD.zRotation = -0.1*sin(sceneVars.enterLettersSineArgument)

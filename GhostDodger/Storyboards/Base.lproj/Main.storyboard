@@ -54,6 +54,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Dbx-bE-aY6"/>
                     <connections>
+                        <outlet property="enterButton" destination="VMJ-Jf-KGn" id="1qI-UQ-vFe"/>
                         <outlet property="enterView" destination="Zf2-fC-rzj" id="Nvi-0X-reh"/>
                         <segue destination="M41-vx-IEP" kind="show" identifier="howToSegue" id="9K1-mb-fCM"/>
                     </connections>

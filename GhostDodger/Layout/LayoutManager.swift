@@ -102,7 +102,6 @@ final class EnterSceneLayoutManager: LayoutManager {
         scene.sceneVars.letterS.position.x = width * 0.39
         scene.sceneVars.letterT.position.x = width * 0.53
         
-        
         scene.sceneVars.letterD.position.x = width * 0.9
         scene.sceneVars.letterO.position.x = width * 1.05
         scene.sceneVars.lowercaseLetterD.position.x = width * 1.21
