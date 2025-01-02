@@ -75,15 +75,22 @@ final class EnterScene: SKScene {
     }
     
     private func setupEnterButton() {
-        // Position the button at the bottom center of the screen
-        enterButton.position = CGPoint(x: frame.midX, y: frame.height * 0.15)
+        // Scale down the button
+        enterButton.xScale = 0.8
+        enterButton.yScale = 0.8
+        
+        // Position the button lower on the screen (95% down)
+        enterButton.position = CGPoint(x: 0, y: -(frame.height * 0.45))
         enterButton.name = "enterButton"
         enterButton.zPosition = 5
         
-        // Create smoke particle effect
-        if let smokeParticles = SKEmitterNode(fileNamed: "SmokeParticles") {
+        // Create and configure smoke particle effect
+        if let smokePath = Bundle.main.path(forResource: "SmokeParticles", ofType: "sks"),
+           let data = try? Data(contentsOf: URL(fileURLWithPath: smokePath)),
+           let smokeParticles = try? NSKeyedUnarchiver.unarchivedObject(ofClass: SKEmitterNode.self, from: data) {
             smokeParticles.position = CGPoint(x: 0, y: -enterButton.size.height/2)
-            smokeParticles.zPosition = -1
+            smokeParticles.zPosition = 4
+            smokeParticles.targetNode = self
             enterButton.addChild(smokeParticles)
         }
         

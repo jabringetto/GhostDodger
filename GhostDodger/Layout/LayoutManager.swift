@@ -52,14 +52,6 @@ final class EnterSceneLayoutManager: LayoutManager {
         }
     }
     
-    func addEnterBat(_ scene: EnterScene) {
-        scene.sceneVars.enterBat.xScale = EnterSceneConstants.enterBatScale
-        scene.sceneVars.enterBat.yScale = EnterSceneConstants.enterBatScale
-        scene.sceneVars.enterBat.position.x = EnterSceneConstants.conveyorSpacing
-        scene.sceneVars.enterBat.zPosition = 1  // Ensure bat is visible within conveyor layer
-        scene.sceneVars.conveyorLayer.addChild(scene.sceneVars.enterBat)
-    }
-    
     func addEnterGhost(_ scene: EnterScene) {
         scene.sceneVars.enterGhost.xScale = EnterSceneConstants.enterBatScale
         scene.sceneVars.enterGhost.yScale = EnterSceneConstants.enterBatScale
@@ -70,9 +62,17 @@ final class EnterSceneLayoutManager: LayoutManager {
     func addEnterRuby(_ scene: EnterScene) {
         scene.sceneVars.enterRuby.xScale = EnterSceneConstants.enterRubyScale
         scene.sceneVars.enterRuby.yScale = EnterSceneConstants.enterRubyScale
-        scene.sceneVars.enterRuby.position.x = EnterSceneConstants.conveyorSpacing * 2.0
+        scene.sceneVars.enterRuby.position.x = EnterSceneConstants.conveyorSpacing
         scene.sceneVars.enterRuby.spinSlowly()
         scene.sceneVars.conveyorLayer.addChild(scene.sceneVars.enterRuby)
+    }
+    
+    func addEnterBat(_ scene: EnterScene) {
+        scene.sceneVars.enterBat.xScale = EnterSceneConstants.enterBatScale
+        scene.sceneVars.enterBat.yScale = EnterSceneConstants.enterBatScale
+        scene.sceneVars.enterBat.position.x =  EnterSceneConstants.conveyorSpacing * 2.0
+        scene.sceneVars.enterBat.zPosition = 1  // Ensure bat is visible within conveyor layer
+        scene.sceneVars.conveyorLayer.addChild(scene.sceneVars.enterBat)
     }
     
     func addEnterCoins(_ scene: EnterScene) {

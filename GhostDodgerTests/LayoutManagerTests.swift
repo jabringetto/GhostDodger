@@ -44,7 +44,7 @@ class MockEnterSceneLayoutManager: LayoutManager {
     
     func addLetters(_ scene: EnterScene) {
         addedLetters = true
-        for letter in scene.sceneVars.virusLetters {
+        for letter in scene.sceneVars.enterLetters {
             letter.zPosition = 4
             scene.sceneVars.letterLayer.addChild(letter)
         }
