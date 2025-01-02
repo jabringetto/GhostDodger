@@ -46,7 +46,7 @@ final class EnterSceneLayoutManager: LayoutManager {
     func addLetters(_ scene: EnterScene) {
         // Set z-positions for letters if needed
         setLetterPositions(scene, width: scene.sceneVars.screenWidth, height: scene.sceneVars.screenHeight)
-        for letter in scene.sceneVars.virusLetters {
+        for letter in scene.sceneVars.enterLetters {
             letter.zPosition = 4  // Ensure letters are visible within letter layer
             scene.sceneVars.letterLayer.addChild(letter)
         }
@@ -95,21 +95,36 @@ final class EnterSceneLayoutManager: LayoutManager {
     }
     
     func setLetterPositions(_ scene: EnterScene, width: CGFloat, height: CGFloat) {
-        scene.sceneVars.letterD.position.x = width * 0.6
-        scene.sceneVars.letterO.position.x = width * 0.82
-        scene.sceneVars.lowercaseLetterD.position.x = width * 1.0
-        scene.sceneVars.letterG.position.x = width * 1.12
-        scene.sceneVars.letterE.position.x = width * 1.28
-        scene.sceneVars.lowercaseLetterR.position.x = width * 1.4
         
-        scene.sceneVars.virusLetters.append(scene.sceneVars.letterD)
-        scene.sceneVars.virusLetters.append(scene.sceneVars.letterO)
-        scene.sceneVars.virusLetters.append(scene.sceneVars.lowercaseLetterD)
-        scene.sceneVars.virusLetters.append(scene.sceneVars.letterG)
-        scene.sceneVars.virusLetters.append(scene.sceneVars.letterE)
-        scene.sceneVars.virusLetters.append(scene.sceneVars.lowercaseLetterR)
+        scene.sceneVars.letterUpperCaseG.position.x = width * -0.1
+        scene.sceneVars.letterH.position.x = width * 0.1
+        scene.sceneVars.letterOh.position.x = width * 0.25
+        scene.sceneVars.letterS.position.x = width * 0.39
+        scene.sceneVars.letterT.position.x = width * 0.53
         
-        for letter in scene.sceneVars.virusLetters {
+        
+        scene.sceneVars.letterD.position.x = width * 0.9
+        scene.sceneVars.letterO.position.x = width * 1.05
+        scene.sceneVars.lowercaseLetterD.position.x = width * 1.21
+        scene.sceneVars.letterG.position.x = width * 1.31
+        scene.sceneVars.letterE.position.x = width * 1.45
+        scene.sceneVars.lowercaseLetterR.position.x = width * 1.55
+        
+        scene.sceneVars.enterLetters.append(scene.sceneVars.letterUpperCaseG)
+        scene.sceneVars.enterLetters.append(scene.sceneVars.letterH)
+        scene.sceneVars.enterLetters.append(scene.sceneVars.letterOh)
+        scene.sceneVars.enterLetters.append(scene.sceneVars.letterS)
+        scene.sceneVars.enterLetters.append(scene.sceneVars.letterT)
+        
+        
+        scene.sceneVars.enterLetters.append(scene.sceneVars.letterD)
+        scene.sceneVars.enterLetters.append(scene.sceneVars.letterO)
+        scene.sceneVars.enterLetters.append(scene.sceneVars.lowercaseLetterD)
+        scene.sceneVars.enterLetters.append(scene.sceneVars.letterG)
+        scene.sceneVars.enterLetters.append(scene.sceneVars.letterE)
+        scene.sceneVars.enterLetters.append(scene.sceneVars.lowercaseLetterR)
+        
+        for letter in scene.sceneVars.enterLetters {
             centerLetterVertically(letter: letter, scene: scene)
             letter.xScale = EnterSceneConstants.enterLettersScale
             letter.yScale = EnterSceneConstants.enterLettersScale

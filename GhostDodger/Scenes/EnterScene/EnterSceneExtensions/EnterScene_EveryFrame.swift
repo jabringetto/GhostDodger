@@ -20,7 +20,7 @@ extension EnterScene {
         moveSkull()
      }
     private func incrementCounters() {
-        sceneVars.virusLettersSineArgument += CGFloat.pi / 30.0
+        sceneVars.enterLettersSineArgument += CGFloat.pi / 30.0
         sceneVars.skullRotationCounter += 1
         if sceneVars.skullRotationCounter == 160 {
             sceneVars.skullRotationCounter = 0
@@ -29,25 +29,34 @@ extension EnterScene {
     }
     private func moveLetters() {
 
-        for (index, sprite) in sceneVars.virusLetters.enumerated() {
-
+        for (index, sprite) in sceneVars.enterLetters.enumerated() {
             let delta = 2.0 * CGFloat(index) *  (CGFloat.pi / 30.0)
-            sprite.position.y += 2.0 * sin(sceneVars.virusLettersSineArgument + delta)
-
+            sprite.position.y += 2.0 * sin(sceneVars.enterLettersSineArgument + delta)
+       
         }
         sceneVars.letterO.zRotation += 0.5
-
+        sceneVars.letterOh.zRotation -= 0.5
+        
+        sceneVars.letterUpperCaseG.zRotation = 0.1*cos(sceneVars.enterLettersSineArgument)
+        sceneVars.letterH.zRotation = -0.1*sin(sceneVars.enterLettersSineArgument)
+        sceneVars.letterD.zRotation = -0.1*sin(sceneVars.enterLettersSineArgument)
+        sceneVars.letterS.zRotation = 0.25*cos(sceneVars.enterLettersSineArgument)
+        sceneVars.letterT.zRotation = 0.5*sin(sceneVars.enterLettersSineArgument)
+        sceneVars.letterE.zRotation = 0.25*cos(sceneVars.enterLettersSineArgument)
+        sceneVars.lowercaseLetterD.zRotation = 0.5*sin(sceneVars.enterLettersSineArgument)
+        sceneVars.letterG.zRotation = 0.25*cos(sceneVars.enterLettersSineArgument)
+        sceneVars.lowercaseLetterR.zRotation = 0.5*sin(sceneVars.enterLettersSineArgument)
     }
     private func moveCoins() {
-        sceneVars.enterGoldCoin.position.y += 1.0 * sin(sceneVars.virusLettersSineArgument * 0.5)
-        sceneVars.enterGoldCoin.position.x += 1.0 * cos(sceneVars.virusLettersSineArgument * 0.5)
-        sceneVars.enterGoldCoin.zRotation += cos(sceneVars.virusLettersSineArgument * 0.5) / 200.0
-        sceneVars.enterSilverCoin.position.y += 1.0 * cos(sceneVars.virusLettersSineArgument * 0.5)
-        sceneVars.enterSilverCoin.position.x += 1.0 * sin(sceneVars.virusLettersSineArgument * 0.5)
-        sceneVars.enterSilverCoin.zRotation += sin(sceneVars.virusLettersSineArgument * 0.5) / 200.0
+        sceneVars.enterGoldCoin.position.y += 1.0 * sin(sceneVars.enterLettersSineArgument * 0.5)
+        sceneVars.enterGoldCoin.position.x += 1.0 * cos(sceneVars.enterLettersSineArgument * 0.5)
+        sceneVars.enterGoldCoin.zRotation += cos(sceneVars.enterLettersSineArgument * 0.5) / 200.0
+        sceneVars.enterSilverCoin.position.y += 1.0 * cos(sceneVars.enterLettersSineArgument * 0.5)
+        sceneVars.enterSilverCoin.position.x += 1.0 * sin(sceneVars.enterLettersSineArgument * 0.5)
+        sceneVars.enterSilverCoin.zRotation += sin(sceneVars.enterLettersSineArgument * 0.5) / 200.0
     }
     private func moveSkull() {
-        let skullRotation = sceneVars.virusLettersSineArgument / 3.0
+        let skullRotation = sceneVars.enterLettersSineArgument / 3.0
         if sceneVars.skullRotationCounter < 10 {
             sceneVars.enterSkull.zRotation += skullRotation
         }

@@ -32,9 +32,16 @@ struct EnterSceneVars {
      var enterSkull = Skull.init(.skull)
      var enterEmerald = Gem.init(.emerald)
      var enterGhost = Ghost.init(.ghost)
-     var virusLetters = [SKSpriteNode]()
-     var virusLettersSineArgument: CGFloat = 0.0
+     var enterLetters = [SKSpriteNode]()
+     var enterLettersSineArgument: CGFloat = 0.0
      var skullRotationCounter: Int = 0
+    
+     var letterUpperCaseG = SKSpriteNode(imageNamed: "Letter_G_Uppercase")
+     var letterH = SKSpriteNode(imageNamed: "Letter_h")
+     var letterOh = SKSpriteNode(imageNamed: "Letter_O")
+     var letterS = SKSpriteNode(imageNamed: "Letter_S")
+     var letterT = SKSpriteNode(imageNamed: "Letter_t")
+    
      var letterD = SKSpriteNode(imageNamed: "Letter_D")
      var letterO = SKSpriteNode(imageNamed: "Letter_O")
      var lowercaseLetterD = SKSpriteNode(imageNamed: "Letter_D_lowercase")
