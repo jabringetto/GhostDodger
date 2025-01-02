@@ -51,22 +51,23 @@ struct HowToPlayView: View {
                     ForEach(sprites) { spriteInfo in
                         VStack {
                             Text(spriteInfo.description)
-                                .font(.system(size: 18))
+                                .font(.system(size: 23))
                                 .foregroundColor(.black)
                                 .multilineTextAlignment(.center)
-                                .lineLimit(nil) // Allows unlimited lines
-                                .frame(width: UIScreen.main.bounds.width - 40) // Fixed width with margins
+                                .lineLimit(nil)
+                                .frame(width: UIScreen.main.bounds.width - 40)
                                 .padding(.horizontal, 20)
                                 .padding(.bottom, 20)
                             
                             AnimatedSpriteView(atlasName: spriteInfo.atlasName)
-                                .frame(width: 150, height: 150)
+                                .frame(width: 195, height: 195)
                         }
                         .tag(sprites.firstIndex(where: { $0.id == spriteInfo.id }) ?? 0)
                     }
                 }
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
-                .frame(height: 300)
+                .frame(height: 390)
+                .padding(.top, 20)
                 
                 Spacer()
                 
