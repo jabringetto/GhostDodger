@@ -55,29 +55,52 @@ struct EnterSceneVars {
         screenHeight = height
      }
 }
+
+protocol EnterSceneDelegate: AnyObject {
+    func didPressEnterButton()
+}
+
 final class EnterScene: SKScene {
+    weak var enterSceneDelegate: EnterSceneDelegate?
     private let soundManager = EnterSoundManager.shared
     var sceneVars = EnterSceneVars()
     private let layoutManager = EnterSceneLayoutManager()
-
+    private let enterButton = SKSpriteNode(imageNamed: "EnterButton")
+    
     override func didMove(to view: SKView) {
         super.didMove(to: view)
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         layoutManager.setupScene(self)
-        
-        #if DEBUG
-        // Debug: Print node hierarchy
-        printNodeHierarchy(self, level: 0)
-        #endif
+        setupEnterButton()
     }
     
-    #if DEBUG
-    private func printNodeHierarchy(_ node: SKNode, level: Int) {
-        let indent = String(repeating: "  ", count: level)
-        print("\(indent)Node: \(type(of: node)), zPosition: \(node.zPosition), position: \(node.position)")
-        node.children.forEach { child in
-            printNodeHierarchy(child, level: level + 1)
+    private func setupEnterButton() {
+        // Position the button at the bottom center of the screen
+        enterButton.position = CGPoint(x: frame.midX, y: frame.height * 0.15)
+        enterButton.name = "enterButton"
+        enterButton.zPosition = 5
+        
+        // Create smoke particle effect
+        if let smokeParticles = SKEmitterNode(fileNamed: "SmokeParticles") {
+            smokeParticles.position = CGPoint(x: 0, y: -enterButton.size.height/2)
+            smokeParticles.zPosition = -1
+            enterButton.addChild(smokeParticles)
+        }
+        
+        addChild(enterButton)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return }
+        let location = touch.location(in: self)
+        let touchedNodes = nodes(at: location)
+        
+        if touchedNodes.contains(enterButton) {
+            enterButton.run(SKAction.sequence([
+                SKAction.scale(to: 0.9, duration: 0.1),
+                SKAction.scale(to: 1.0, duration: 0.1)
+            ]))
+            enterSceneDelegate?.didPressEnterButton()
         }
     }
-    #endif
 }

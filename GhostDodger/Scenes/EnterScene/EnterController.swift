@@ -16,7 +16,6 @@ final class EnterViewController: UIViewController {
     var scene = EnterScene()
     private let soundManager = EnterSoundManager.shared
     var sceneVars = EnterSceneVars()
-    @IBOutlet weak var enterButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,13 +26,9 @@ final class EnterViewController: UIViewController {
         scene.backgroundColor = UIColor.black
         enterView.presentScene(scene)
         addBackgroundMusic()
-
+        scene.enterSceneDelegate = self
     }
 
-    @IBAction func enterButtonPressed(_ sender: Any) {
-        self.performSegue(withIdentifier: "howToSegue", sender: self)
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         soundManager.stopEnterBackgroundMusic()
     }
@@ -44,4 +39,10 @@ final class EnterViewController: UIViewController {
         soundManager.playEnterBackgroundMusic()
     }
 
+}
+
+extension EnterViewController: EnterSceneDelegate {
+    func didPressEnterButton() {
+        performSegue(withIdentifier: "howToSegue", sender: self)
+    }
 }
