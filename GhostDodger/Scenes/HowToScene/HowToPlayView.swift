@@ -53,20 +53,24 @@ struct HowToPlayView: View {
                             Text(spriteInfo.description)
                                 .font(.system(size: 23))
                                 .foregroundColor(.black)
-                                .multilineTextAlignment(.center)
+                                .multilineTextAlignment(.leading)
                                 .lineLimit(nil)
-                                .frame(width: UIScreen.main.bounds.width - 40)
+                                .frame(
+                                    width: UIScreen.main.bounds.width - 40,
+                                    alignment: .leading
+                                )
                                 .padding(.horizontal, 20)
                                 .padding(.bottom, 20)
                             
                             AnimatedSpriteView(atlasName: spriteInfo.atlasName)
                                 .frame(width: 195, height: 195)
                         }
+                        .frame(maxHeight: .infinity)
                         .tag(sprites.firstIndex(where: { $0.id == spriteInfo.id }) ?? 0)
                     }
                 }
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
-                .frame(height: 390)
+                .frame(minHeight: 390)
                 .padding(.top, 20)
                 
                 Spacer()
