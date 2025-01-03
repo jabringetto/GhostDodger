@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,8 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-                    IAPManager.shared.startObserving()
-                    return true
+        setupAudioSession()
+        return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -50,6 +51,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         IAPManager.shared.stopObserving()
+    }
+
+    private func setupAudioSession() {
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.ambient, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+            
+            // Add notification observer for interruptions
+            NotificationCenter.default.addObserver(self,
+                selector: #selector(handleAudioSessionInterruption),
+                name: AVAudioSession.interruptionNotification,
+                object: nil)
+        } catch {
+            print("Failed to setup audio session: \(error)")
+        }
+    }
+
+    @objc private func handleAudioSessionInterruption(notification: Notification) {
+        guard let userInfo = notification.userInfo,
+              let typeValue = userInfo[AVAudioSessionInterruptionTypeKey] as? UInt,
+              let type = AVAudioSession.InterruptionType(rawValue: typeValue) else {
+            return
+        }
+        
+        switch type {
+        case .began:
+            // Interruption began, audio stopped
+            break
+        case .ended:
+            guard let optionsValue = userInfo[AVAudioSessionInterruptionOptionKey] as? UInt else { return }
+            let options = AVAudioSession.InterruptionOptions(rawValue: optionsValue)
+            
+            if options.contains(.shouldResume) {
+                // Resume audio
+                if let currentVC = UIApplication.shared.keyWindow?.rootViewController {
+                    if let gameController = currentVC as? GameController {
+                        gameController.gameScene.playGameSceneBackgroundMusic()
+                    } else if let enterController = currentVC as? EnterViewController {
+                        enterController.soundManager.playEnterBackgroundMusic()
+                    }
+                }
+            }
+        @unknown default:
+            break
+        }
     }
 
 }

@@ -64,7 +64,7 @@ class HowToHostingController: UIViewController, HowToPlayViewDelegate {
             showGameInProgressAlert()
         } else {
             stopBackgroundMusic()
-            self.performSegue(withIdentifier: "enterGameSegue", sender: self)
+            performSegue(withIdentifier: "enterGameSegue", sender: self)
         }
     }
 

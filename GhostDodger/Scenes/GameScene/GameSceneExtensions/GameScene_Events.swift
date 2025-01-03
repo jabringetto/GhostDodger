@@ -105,8 +105,7 @@ extension GameScene: BatDelegate, GridDelegate, AnnouncerRoundCompletedDelegate,
         gameVars.backLayer.removeAllChildren()
         self.removeAllChildren()
         
-        // Stop and reset all audio players
-        gameVars.backgroundMusicPlayer?.stop()
+        // Stop all sound effects but don't stop background music yet
         gameVars.coinSoundEffect?.stop()
         gameVars.buzzerSoundEffect?.stop()
         gameVars.treasureSoundEffect?.stop()
@@ -116,11 +115,15 @@ extension GameScene: BatDelegate, GridDelegate, AnnouncerRoundCompletedDelegate,
         varsInitialValues = GameSceneVars()
         uptakePersistentValues()
         
-        // Reinitialize audio
-        // Stop and reset all audio players
+        // Now handle background music restart
         soundManager.stopGameSceneBackgroundMusic()
         setupAudioEngine()
-        playGameSceneBackgroundMusic()
+        
+        // Ensure we start the music from the beginning
+        if let player = gameVars.backgroundMusicPlayer {
+            player.currentTime = 0
+            soundManager.playBackgroundMusic(player)
+        }
         
         layoutManager.setupScene(self)
     }

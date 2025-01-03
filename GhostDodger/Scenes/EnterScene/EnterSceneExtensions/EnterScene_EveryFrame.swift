@@ -64,7 +64,7 @@ extension EnterScene {
         }
     }
      private func moveLayers() {
-        sceneVars.conveyorLayer.position.x -= EnterSceneConstants.conveyorSpeed
+         sceneVars.conveyorLayer.position.x -= 2.0 * EnterSceneConstants.conveyorSpeed
         sceneVars.letterLayer.position.x -= 4.0 * EnterSceneConstants.conveyorSpeed
         if sceneVars.letterLayer.position.x < -2.0 * sceneVars.lowercaseLetterR.position.x {
             sceneVars.letterLayer.position.x  +=  sceneVars.lowercaseLetterR.position.x * 3.0

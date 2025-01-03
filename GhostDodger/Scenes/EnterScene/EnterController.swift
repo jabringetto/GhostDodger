@@ -14,7 +14,7 @@ final class EnterViewController: UIViewController {
     @IBOutlet weak var enterView: SKView!
 
     var scene = EnterScene()
-    private let soundManager = EnterSoundManager.shared
+    let soundManager = EnterSoundManager.shared
     var sceneVars = EnterSceneVars()
     
     override func viewDidLoad() {
