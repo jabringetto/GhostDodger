@@ -38,14 +38,14 @@ struct HowToPlayView: View {
                 .edgesIgnoringSafeArea(.all)
             
             VStack {
-                // Title
-                Text("How To Play")
-                    .font(.system(size: 32, weight: .regular))
-                    .foregroundColor(.black)
+                // Replace Text with Image at the top
+                Image("HowToPlay")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: UIScreen.main.bounds.width * 0.8)
                     .padding(.top, 60)
-                    .padding(.bottom, 20)
+                    .padding(.bottom, 0)
                    
-                
                 // Sprite Carousel
                 TabView(selection: $currentIndex) {
                     ForEach(sprites) { spriteInfo in
@@ -70,8 +70,8 @@ struct HowToPlayView: View {
                     }
                 }
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
-                .frame(minHeight: 390)
-                .padding(.top, 20)
+                .frame(minHeight: 200)
+                .padding(.top, 00)
                 
                 Spacer()
                 
