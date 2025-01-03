@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C1DF69B14A6B6E5BDD909C1D /* Pods_GhostDodger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B53916A2DA5ACBD7A4589E /* Pods_GhostDodger.framework */; };
 		D004C9CF2472241A0066AF56 /* Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D004C9CE2472241A0066AF56 /* Dashboard.swift */; };
 		D0060CBB2D26500B00A29B0A /* SmokeParticles.sks in Resources */ = {isa = PBXBuildFile; fileRef = D0060CB92D264DBC00A29B0A /* SmokeParticles.sks */; };
 		D00B6337266B3A040070BBF4 /* Skull.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D00B6336266B3A040070BBF4 /* Skull.atlas */; };
@@ -19,6 +20,7 @@
 		D0768FCC2D28413800ED3D9B /* GameOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0768FCA2D28413800ED3D9B /* GameOverView.swift */; };
 		D0768FCF2D28417600ED3D9B /* GameCenterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0768FCD2D28417600ED3D9B /* GameCenterManager.swift */; };
 		D0768FD42D288E5300ED3D9B /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0768FD12D288D8100ED3D9B /* Color+Hex.swift */; };
+		D0768FD72D28981400ED3D9B /* AdMobManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0768FD52D28981400ED3D9B /* AdMobManager.swift */; };
 		D07AFA9D245C9542004DC615 /* SKSpriteNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07AFA9C245C9542004DC615 /* SKSpriteNode+Extensions.swift */; };
 		D084CBB32471B75F00378317 /* Buzzer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D084CBB22471B75F00378317 /* Buzzer.mp3 */; };
 		D085C657266B4C210090C8D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D085C656266B4C210090C8D6 /* AppDelegate.swift */; };
@@ -84,6 +86,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		62B53916A2DA5ACBD7A4589E /* Pods_GhostDodger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GhostDodger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B21E2A7B3567F2A53E55FB7 /* Pods-GhostDodger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GhostDodger.release.xcconfig"; path = "Target Support Files/Pods-GhostDodger/Pods-GhostDodger.release.xcconfig"; sourceTree = "<group>"; };
 		D004C9CE2472241A0066AF56 /* Dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dashboard.swift; sourceTree = "<group>"; };
 		D0060CB92D264DBC00A29B0A /* SmokeParticles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SmokeParticles.sks; sourceTree = "<group>"; };
 		D00B6336266B3A040070BBF4 /* Skull.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Skull.atlas; sourceTree = "<group>"; };
@@ -96,6 +100,7 @@
 		D0768FCD2D28417600ED3D9B /* GameCenterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterManager.swift; sourceTree = "<group>"; };
 		D0768FD02D28453400ED3D9B /* GhostDodger.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GhostDodger.entitlements; sourceTree = "<group>"; };
 		D0768FD12D288D8100ED3D9B /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
+		D0768FD52D28981400ED3D9B /* AdMobManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobManager.swift; sourceTree = "<group>"; };
 		D07AFA9C245C9542004DC615 /* SKSpriteNode+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKSpriteNode+Extensions.swift"; sourceTree = "<group>"; };
 		D084CBB22471B75F00378317 /* Buzzer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Buzzer.mp3; sourceTree = "<group>"; };
 		D085C654266B4C210090C8D6 /* SwiftLint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftLint.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,11 +160,8 @@
 		D0FA7FA72586F32500EA7163 /* IAP_ProductIDs.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = IAP_ProductIDs.plist; sourceTree = "<group>"; };
 		D0FA7FAA2586F44900EA7163 /* IAPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPManager.swift; sourceTree = "<group>"; };
 		D0FA7FAE258700A200EA7163 /* StoreKitConfig.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = StoreKitConfig.storekit; sourceTree = "<group>"; };
+		F828D91C319ED03D4495C4AB /* Pods-GhostDodger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GhostDodger.debug.xcconfig"; path = "Target Support Files/Pods-GhostDodger/Pods-GhostDodger.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		D0DE1E842D21FC4300950162 /* GhostDodgerTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = GhostDodgerTests; sourceTree = "<group>"; };
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		D085C651266B4C210090C8D6 /* Frameworks */ = {
@@ -173,6 +175,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1DF69B14A6B6E5BDD909C1D /* Pods_GhostDodger.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,12 +189,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B664157BA08C853B77705A1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				62B53916A2DA5ACBD7A4589E /* Pods_GhostDodger.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		970573861C29AF3063F3B269 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F828D91C319ED03D4495C4AB /* Pods-GhostDodger.debug.xcconfig */,
+				8B21E2A7B3567F2A53E55FB7 /* Pods-GhostDodger.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		D0768FCE2D28417600ED3D9B /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				D0768FCD2D28417600ED3D9B /* GameCenterManager.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		D0768FD62D28981400ED3D9B /* Services 2 */ = {
+			isa = PBXGroup;
+			children = (
+				D0768FD52D28981400ED3D9B /* AdMobManager.swift */,
+			);
+			path = "Services 2";
 			sourceTree = "<group>";
 		};
 		D085C655266B4C210090C8D6 /* SwiftLint */ = {
@@ -265,6 +293,7 @@
 				D0768FC92D28413800ED3D9B /* GameOverHostingController.swift */,
 				D0768FCE2D28417600ED3D9B /* Services */,
 				D0768FCA2D28413800ED3D9B /* GameOverView.swift */,
+				D0768FD62D28981400ED3D9B /* Services 2 */,
 				D0D94A6423D123C8007CCC5E /* GameGrid.swift */,
 				D0C2503323DB6022009D65DD /* GameSceneExtensions */,
 				D0C2502323D7B0F4009D65DD /* Sprites */,
@@ -288,7 +317,8 @@
 			children = (
 				D0CA80EE21CF13A400BE7E96 /* GhostDodger */,
 				D085C655266B4C210090C8D6 /* SwiftLint */,
-				D0DE1E842D21FC4300950162 /* GhostDodgerTests */,
+				970573861C29AF3063F3B269 /* Pods */,
+				1B664157BA08C853B77705A1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -482,10 +512,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D0CA80FE21CF13A600BE7E96 /* Build configuration list for PBXNativeTarget "GhostDodger" */;
 			buildPhases = (
+				51189A7AE3AA278CD0B55AEA /* [CP] Check Pods Manifest.lock */,
 				D0CA80E821CF13A400BE7E96 /* Sources */,
 				D0CA80E921CF13A400BE7E96 /* Frameworks */,
 				D0CA80EA21CF13A400BE7E96 /* Resources */,
 				D085C64F266B44290090C8D6 /* ShellScript */,
+				1D67297DF28D74F01695B234 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -509,12 +541,7 @@
 			dependencies = (
 				D0DE1E882D21FC4300950162 /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				D0DE1E842D21FC4300950162 /* GhostDodgerTests */,
-			);
 			name = "Ghost DodgerTests";
-			packageProductDependencies = (
-			);
 			productName = "Ghost DodgerTests";
 			productReference = D0DE1E832D21FC4300950162 /* Ghost DodgerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -610,6 +637,45 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1D67297DF28D74F01695B234 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GhostDodger/Pods-GhostDodger-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GhostDodger/Pods-GhostDodger-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GhostDodger/Pods-GhostDodger-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		51189A7AE3AA278CD0B55AEA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GhostDodger-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D085C64F266B44290090C8D6 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -700,6 +766,7 @@
 				D09E156424C4E72C009A3EF4 /* EnterScene_EveryFrame.swift in Sources */,
 				D07AFA9D245C9542004DC615 /* SKSpriteNode+Extensions.swift in Sources */,
 				D0B75C8123D240F000623DCE /* Skull.swift in Sources */,
+				D0768FD72D28981400ED3D9B /* AdMobManager.swift in Sources */,
 				D0D3C74B245A8F3C00C47DA6 /* Virus.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -915,6 +982,7 @@
 		};
 		D0CA80FF21CF13A600BE7E96 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F828D91C319ED03D4495C4AB /* Pods-GhostDodger.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = GhostDodger/GhostDodger.entitlements;
@@ -937,6 +1005,7 @@
 		};
 		D0CA810021CF13A600BE7E96 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8B21E2A7B3567F2A53E55FB7 /* Pods-GhostDodger.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = GhostDodger/GhostDodger.entitlements;

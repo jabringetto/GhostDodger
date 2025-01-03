@@ -46,12 +46,21 @@ class GameOverHostingController: UIHostingController<GameOverView>, GKGameCenter
         
         viewModel.onPlayAgain = { [weak self] in
             guard let self = self else { return }
-            self.delegate?.gameOverHostingControllerDidRequestPlayAgain(self)
+            // Show an ad before starting new game
+            AdMobManager.shared.showInterstitial(from: self) {
+                self.delegate?.gameOverHostingControllerDidRequestPlayAgain(self)
+            }
         }
         
         modalPresentationStyle = .overFullScreen
         modalTransitionStyle = .crossDissolve
         view.backgroundColor = .clear
+        
+        // Show an ad when game over screen appears
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            guard let self = self else { return }
+            AdMobManager.shared.showInterstitial(from: self)
+        }
     }
     
     @MainActor required dynamic init?(coder aDecoder: NSCoder) {

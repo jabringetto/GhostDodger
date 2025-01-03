@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import GoogleMobileAds
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,6 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Initialize Game Center
         _ = GameCenterManager.shared
+        
+        // Initialize AdMob
+        _ = AdMobManager.shared
         
         // Listen for Game Center authentication view controller
         NotificationCenter.default.addObserver(
