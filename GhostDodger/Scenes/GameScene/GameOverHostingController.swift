@@ -6,27 +6,45 @@ protocol GameOverHostingControllerDelegate: AnyObject {
     func gameOverHostingControllerDidRequestPlayAgain(_ controller: GameOverHostingController)
 }
 
-class GameOverHostingController: UIHostingController<GameOverView>, GKGameCenterControllerDelegate {
-    weak var delegate: GameOverHostingControllerDelegate?
+class GameOverViewModel: ObservableObject {
+    let score: UInt
+    var onViewLeaderboard: () -> Void = { }
+    var onPlayAgain: () -> Void = { }
     
     init(score: UInt) {
-        var rootView = GameOverView(
+        self.score = score
+    }
+}
+
+class GameOverHostingController: UIHostingController<GameOverView>, GKGameCenterControllerDelegate {
+    weak var delegate: GameOverHostingControllerDelegate?
+    private let viewModel: GameOverViewModel
+    
+    init(score: UInt) {
+        let viewModel = GameOverViewModel(score: score)
+        self.viewModel = viewModel
+        
+        let rootView = GameOverView(
             score: score,
             onSubmitScore: { },  // Handled directly in GameOverView
-            onViewLeaderboard: { },  // Will be set after init
-            onPlayAgain: { }
+            onViewLeaderboard: { [weak viewModel] in
+                viewModel?.onViewLeaderboard()
+            },
+            onPlayAgain: { [weak viewModel] in
+                viewModel?.onPlayAgain()
+            }
         )
         super.init(rootView: rootView)
         
-        // Update closures after init
-        rootView.onViewLeaderboard = { [weak self] in
+        // Set up view model actions
+        viewModel.onViewLeaderboard = { [weak self] in
             guard let self = self else { return }
             let gcViewController = GKGameCenterViewController(state: .leaderboards)
             gcViewController.gameCenterDelegate = self
             self.present(gcViewController, animated: true)
         }
         
-        rootView.onPlayAgain = { [weak self] in
+        viewModel.onPlayAgain = { [weak self] in
             guard let self = self else { return }
             self.delegate?.gameOverHostingControllerDidRequestPlayAgain(self)
         }
