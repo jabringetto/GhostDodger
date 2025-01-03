@@ -75,14 +75,14 @@ struct HowToPlayView: View {
                 
                 Spacer()
                 
-                // Play Button
+                // Replace text button with image button
                 Button(action: {
                     delegate?.didPressEnterButton()
                 }) {
-                    Text("P L A Y  N O W")
-                        .font(.system(size: 32, weight: .regular))
-                        .foregroundColor(.black)
-                        .padding(.bottom, 50)
+                    Image("PlayNowButton")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: UIScreen.main.bounds.width * 0.5)
                 }
                 .padding(.bottom, 50)
             }
