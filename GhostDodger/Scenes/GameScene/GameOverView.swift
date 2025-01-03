@@ -10,6 +10,9 @@ struct GameOverView: View {
     @State private var showingSubmitError = false
     @State private var errorMessage = ""
     
+    private let buttonTextColor = Color(hex: "D5BF9D")
+   
+    
     var body: some View {
         ZStack {
             Color.black.opacity(0.3)
@@ -23,7 +26,7 @@ struct GameOverView: View {
                 
                 Text("Final Score: \(score)")
                     .font(.system(size: 30, weight: .bold))
-                    .foregroundColor(.white)
+                    .foregroundColor(buttonTextColor)
                 
                 VStack(spacing: 15) {
                     Button(action: {
@@ -38,28 +41,28 @@ struct GameOverView: View {
                     }) {
                         Text("Submit High Score")
                             .font(.headline)
-                            .foregroundColor(.white)
-                            .frame(width: 220, height: 50)
-                            .background(Color.blue)
-                            .cornerRadius(25)
+                            .foregroundColor(buttonTextColor)
+                            .frame(width: 240, height: 50)
+                            .background(Color.black)
+                            .cornerRadius(10)
                     }
                     
                     Button(action: onViewLeaderboard) {
                         Text("View Leaderboard")
                             .font(.headline)
-                            .foregroundColor(.white)
-                            .frame(width: 220, height: 50)
-                            .background(Color.green)
-                            .cornerRadius(25)
+                            .foregroundColor(buttonTextColor)
+                            .frame(width: 240, height: 50)
+                            .background(Color.black)
+                            .cornerRadius(10)
                     }
                     
                     Button(action: onPlayAgain) {
                         Text("Play Again")
                             .font(.headline)
-                            .foregroundColor(.white)
-                            .frame(width: 220, height: 50)
-                            .background(Color.orange)
-                            .cornerRadius(25)
+                            .foregroundColor(buttonTextColor)
+                            .frame(width: 240, height: 50)
+                            .background(Color.black)
+                            .cornerRadius(10)
                     }
                 }
             }
