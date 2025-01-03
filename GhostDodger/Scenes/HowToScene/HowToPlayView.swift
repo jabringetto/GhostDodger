@@ -19,14 +19,15 @@ struct HowToPlayView: View {
     weak var delegate: HowToPlayViewDelegate?
     var sceneVars = EnterSceneVars()
     @State private var currentIndex = 0
+    @State private var rotation: Double = -5  // Initial rotation angle
     
     private let sprites: [GameSpriteInfo] = [
         GameSpriteInfo(atlasName: "Bat", description: "This is the player, this is you! During the game, place your finger on the screen and drag to fly around. The bat will always follow your finger as it moves."),
         GameSpriteInfo(atlasName: "Ghost", description: "Watch out! Don't let ghosts catch you or you'll lose health points as seen on your health meter. If you run out of health points, you die."),
         GameSpriteInfo(atlasName: "RubyFrame", description: "This is a ruby, an example of treasure you can collect to earn points. You may buy upgrades with the points you earn. Other types of treasure include emeralds, silver coins, and gold coins."),
-        GameSpriteInfo(atlasName: "ForceField", description: "Buy this ForceField upgrade for 800 points or $0.99 to repel all ghosts!"),
+        GameSpriteInfo(atlasName: "ForceField", description: "Buy this ForceField upgrade for 800 points or $0.99 to repel all ghosts! Duration: 30 seconds"),
         GameSpriteInfo(atlasName: "Skull", description: "Avoid skulls - they move through force fields and are instant death on contact!"),
-        GameSpriteInfo(atlasName: "Whirlpool", description: "Buy this Whirlpool upgrade for 800 points or $0.99 to suck down ghosts and collect treasure."),
+        GameSpriteInfo(atlasName: "Whirlpool", description: "Buy this Cyclone upgrade for 800 points or $0.99 to suck down ghosts and collect treasure. Duration: 30 seconds"),
     ]
     
     var body: some View {
@@ -38,13 +39,23 @@ struct HowToPlayView: View {
                 .edgesIgnoringSafeArea(.all)
             
             VStack {
-                // Replace Text with Image at the top
+                // Animated HowToPlay Image at the top
                 Image("HowToPlay")
                     .resizable()
                     .scaledToFit()
                     .frame(width: UIScreen.main.bounds.width * 0.8)
                     .padding(.top, 60)
                     .padding(.bottom, 0)
+                    .rotationEffect(.degrees(rotation))
+                    .onAppear {
+                        // Create continuous rocking animation
+                        withAnimation(
+                            .easeInOut(duration: 1)
+                            .repeatForever(autoreverses: true)
+                        ) {
+                            rotation = 2  // Target rotation angle
+                        }
+                    }
                    
                 // Sprite Carousel
                 TabView(selection: $currentIndex) {
@@ -75,7 +86,7 @@ struct HowToPlayView: View {
                 
                 Spacer()
                 
-                // Replace text button with image button
+                // Animated Play Now button
                 Button(action: {
                     delegate?.didPressEnterButton()
                 }) {
@@ -83,8 +94,18 @@ struct HowToPlayView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: UIScreen.main.bounds.width * 0.5)
+                        .rotationEffect(.degrees(rotation))
                 }
                 .padding(.bottom, 50)
+                .onAppear {
+                    // Create continuous rocking animation
+                    withAnimation(
+                        .easeInOut(duration: 1)
+                        .repeatForever(autoreverses: true)
+                    ) {
+                        rotation = 2  // Target rotation angle
+                    }
+                }
             }
         }
     }
