@@ -10,16 +10,22 @@ class GameOverHostingController: UIHostingController<GameOverView>, GKGameCenter
     weak var delegate: GameOverHostingControllerDelegate?
     
     init(score: UInt) {
-        super.init(rootView: GameOverView(
+        var rootView = GameOverView(
             score: score,
             onSubmitScore: { },  // Handled directly in GameOverView
-            onViewLeaderboard: {
-                GameCenterManager.shared.showLeaderboard(from: UIApplication.shared.windows.first?.rootViewController ?? UIViewController())
-            },
+            onViewLeaderboard: { },  // Will be set after init
             onPlayAgain: { }
-        ))
+        )
+        super.init(rootView: rootView)
         
-        // Update closure after init since we need self
+        // Update closures after init
+        rootView.onViewLeaderboard = { [weak self] in
+            guard let self = self else { return }
+            let gcViewController = GKGameCenterViewController(state: .leaderboards)
+            gcViewController.gameCenterDelegate = self
+            self.present(gcViewController, animated: true)
+        }
+        
         rootView.onPlayAgain = { [weak self] in
             guard let self = self else { return }
             self.delegate?.gameOverHostingControllerDidRequestPlayAgain(self)

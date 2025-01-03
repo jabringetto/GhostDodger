@@ -4,7 +4,7 @@ import GameKit
 struct GameOverView: View {
     let score: UInt
     let onSubmitScore: () -> Void
-    let onViewLeaderboard: () -> Void
+    var onViewLeaderboard: () -> Void
     var onPlayAgain: () -> Void
     @State private var showingSubmitSuccess = false
     @State private var showingSubmitError = false
