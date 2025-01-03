@@ -17,6 +17,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         setupAudioSession()
+        
+        // Initialize Game Center
+        _ = GameCenterManager.shared
+        
+        // Listen for Game Center authentication view controller
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(presentGameCenterAuth(_:)),
+            name: NSNotification.Name("PresentGameCenterAuth"),
+            object: nil
+        )
+        
         return true
     }
 
@@ -95,6 +107,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         @unknown default:
             break
+        }
+    }
+
+    @objc private func presentGameCenterAuth(_ notification: Notification) {
+        if let viewController = notification.object as? UIViewController,
+           let rootViewController = window?.rootViewController {
+            rootViewController.present(viewController, animated: true)
         }
     }
 

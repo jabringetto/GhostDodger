@@ -151,7 +151,7 @@ struct GameSceneVars {
 
 }
 
-final class GameScene: SKScene {
+final class GameScene: SKScene, GameOverHostingControllerDelegate {
     weak var gameSceneDelegate: GameSceneDelegate?
     var gameVars = GameSceneVars()
     var varsInitialValues = GameSceneVars()
@@ -181,6 +181,15 @@ final class GameScene: SKScene {
 
     func playSound(_ player: AVAudioPlayer?) {
         soundManager.playSound(player)
+    }
+
+    // MARK: - GameOverHostingControllerDelegate
+    
+    func gameOverHostingControllerDidRequestPlayAgain(_ controller: GameOverHostingController) {
+        controller.dismiss(animated: true) { [weak self] in
+            self?.resetGame()
+            self?.resetUpgradeMinimums()
+        }
     }
 
 }

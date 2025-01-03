@@ -279,8 +279,13 @@ extension GameScene: BatDelegate, GridDelegate, AnnouncerRoundCompletedDelegate,
         gameVars.forceFieldDashboard.isHidden = true
         gameVars.cycloneDashboard.isHidden = true
         recordDisplacement()
-        showGameOver()
-
+        
+        // Present GameOverView
+        if let viewController = self.view?.window?.rootViewController {
+            let gameOverController = GameOverHostingController(score: gameVars.score)
+            gameOverController.delegate = self
+            viewController.present(gameOverController, animated: true)
+        }
     }
 
     // MARK: ForceFieldDelegate
