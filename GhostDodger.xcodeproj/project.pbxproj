@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C1DF69B14A6B6E5BDD909C1D /* Pods_GhostDodger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B53916A2DA5ACBD7A4589E /* Pods_GhostDodger.framework */; };
+		D00193692D28A5AD003ADF1D /* AdMobManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00193672D28A5AD003ADF1D /* AdMobManager.swift */; };
 		D004C9CF2472241A0066AF56 /* Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D004C9CE2472241A0066AF56 /* Dashboard.swift */; };
 		D0060CBB2D26500B00A29B0A /* SmokeParticles.sks in Resources */ = {isa = PBXBuildFile; fileRef = D0060CB92D264DBC00A29B0A /* SmokeParticles.sks */; };
 		D00B6337266B3A040070BBF4 /* Skull.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D00B6336266B3A040070BBF4 /* Skull.atlas */; };
@@ -20,7 +21,6 @@
 		D0768FCC2D28413800ED3D9B /* GameOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0768FCA2D28413800ED3D9B /* GameOverView.swift */; };
 		D0768FCF2D28417600ED3D9B /* GameCenterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0768FCD2D28417600ED3D9B /* GameCenterManager.swift */; };
 		D0768FD42D288E5300ED3D9B /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0768FD12D288D8100ED3D9B /* Color+Hex.swift */; };
-		D0768FD72D28981400ED3D9B /* AdMobManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0768FD52D28981400ED3D9B /* AdMobManager.swift */; };
 		D07AFA9D245C9542004DC615 /* SKSpriteNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07AFA9C245C9542004DC615 /* SKSpriteNode+Extensions.swift */; };
 		D084CBB32471B75F00378317 /* Buzzer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D084CBB22471B75F00378317 /* Buzzer.mp3 */; };
 		D085C657266B4C210090C8D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D085C656266B4C210090C8D6 /* AppDelegate.swift */; };
@@ -88,6 +88,7 @@
 /* Begin PBXFileReference section */
 		62B53916A2DA5ACBD7A4589E /* Pods_GhostDodger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GhostDodger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B21E2A7B3567F2A53E55FB7 /* Pods-GhostDodger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GhostDodger.release.xcconfig"; path = "Target Support Files/Pods-GhostDodger/Pods-GhostDodger.release.xcconfig"; sourceTree = "<group>"; };
+		D00193672D28A5AD003ADF1D /* AdMobManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobManager.swift; sourceTree = "<group>"; };
 		D004C9CE2472241A0066AF56 /* Dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dashboard.swift; sourceTree = "<group>"; };
 		D0060CB92D264DBC00A29B0A /* SmokeParticles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SmokeParticles.sks; sourceTree = "<group>"; };
 		D00B6336266B3A040070BBF4 /* Skull.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Skull.atlas; sourceTree = "<group>"; };
@@ -100,7 +101,6 @@
 		D0768FCD2D28417600ED3D9B /* GameCenterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterManager.swift; sourceTree = "<group>"; };
 		D0768FD02D28453400ED3D9B /* GhostDodger.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GhostDodger.entitlements; sourceTree = "<group>"; };
 		D0768FD12D288D8100ED3D9B /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
-		D0768FD52D28981400ED3D9B /* AdMobManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobManager.swift; sourceTree = "<group>"; };
 		D07AFA9C245C9542004DC615 /* SKSpriteNode+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKSpriteNode+Extensions.swift"; sourceTree = "<group>"; };
 		D084CBB22471B75F00378317 /* Buzzer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Buzzer.mp3; sourceTree = "<group>"; };
 		D085C654266B4C210090C8D6 /* SwiftLint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftLint.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -206,20 +206,20 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		D00193682D28A5AD003ADF1D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D00193672D28A5AD003ADF1D /* AdMobManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		D0768FCE2D28417600ED3D9B /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				D0768FCD2D28417600ED3D9B /* GameCenterManager.swift */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		D0768FD62D28981400ED3D9B /* Services 2 */ = {
-			isa = PBXGroup;
-			children = (
-				D0768FD52D28981400ED3D9B /* AdMobManager.swift */,
-			);
-			path = "Services 2";
 			sourceTree = "<group>";
 		};
 		D085C655266B4C210090C8D6 /* SwiftLint */ = {
@@ -293,7 +293,6 @@
 				D0768FC92D28413800ED3D9B /* GameOverHostingController.swift */,
 				D0768FCE2D28417600ED3D9B /* Services */,
 				D0768FCA2D28413800ED3D9B /* GameOverView.swift */,
-				D0768FD62D28981400ED3D9B /* Services 2 */,
 				D0D94A6423D123C8007CCC5E /* GameGrid.swift */,
 				D0C2503323DB6022009D65DD /* GameSceneExtensions */,
 				D0C2502323D7B0F4009D65DD /* Sprites */,
@@ -336,6 +335,7 @@
 		D0CA80EE21CF13A400BE7E96 /* GhostDodger */ = {
 			isa = PBXGroup;
 			children = (
+				D00193682D28A5AD003ADF1D /* Services */,
 				D0768FD02D28453400ED3D9B /* GhostDodger.entitlements */,
 				D0CA80EF21CF13A400BE7E96 /* AppDelegate.swift */,
 				D0CA80FB21CF13A600BE7E96 /* Info.plist */,
@@ -766,7 +766,7 @@
 				D09E156424C4E72C009A3EF4 /* EnterScene_EveryFrame.swift in Sources */,
 				D07AFA9D245C9542004DC615 /* SKSpriteNode+Extensions.swift in Sources */,
 				D0B75C8123D240F000623DCE /* Skull.swift in Sources */,
-				D0768FD72D28981400ED3D9B /* AdMobManager.swift in Sources */,
+				D00193692D28A5AD003ADF1D /* AdMobManager.swift in Sources */,
 				D0D3C74B245A8F3C00C47DA6 /* Virus.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

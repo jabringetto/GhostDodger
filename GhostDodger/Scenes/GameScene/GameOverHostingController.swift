@@ -47,7 +47,7 @@ class GameOverHostingController: UIHostingController<GameOverView>, GKGameCenter
         viewModel.onPlayAgain = { [weak self] in
             guard let self = self else { return }
             // Show an ad before starting new game
-            AdMobManager.shared.showInterstitial(from: self) {
+            AdMobManager.shared.presentInterstitialAd(from: self) {
                 self.delegate?.gameOverHostingControllerDidRequestPlayAgain(self)
             }
         }
@@ -59,7 +59,7 @@ class GameOverHostingController: UIHostingController<GameOverView>, GKGameCenter
         // Show an ad when game over screen appears
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
             guard let self = self else { return }
-            AdMobManager.shared.showInterstitial(from: self)
+            AdMobManager.shared.presentInterstitialAd(from: self)
         }
     }
     
