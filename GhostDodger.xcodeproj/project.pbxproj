@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		C1DF69B14A6B6E5BDD909C1D /* Pods_GhostDodger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B53916A2DA5ACBD7A4589E /* Pods_GhostDodger.framework */; };
 		D00193692D28A5AD003ADF1D /* AdMobManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00193672D28A5AD003ADF1D /* AdMobManager.swift */; };
+		D001936D2D28B7F4003ADF1D /* SoundManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D001936B2D28B7F4003ADF1D /* SoundManagerTests.swift */; };
+		D001936E2D28B7F4003ADF1D /* LayoutManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D001936A2D28B7F4003ADF1D /* LayoutManagerTests.swift */; };
 		D004C9CF2472241A0066AF56 /* Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D004C9CE2472241A0066AF56 /* Dashboard.swift */; };
 		D0060CBB2D26500B00A29B0A /* SmokeParticles.sks in Resources */ = {isa = PBXBuildFile; fileRef = D0060CB92D264DBC00A29B0A /* SmokeParticles.sks */; };
 		D00B6337266B3A040070BBF4 /* Skull.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D00B6336266B3A040070BBF4 /* Skull.atlas */; };
@@ -89,6 +91,8 @@
 		62B53916A2DA5ACBD7A4589E /* Pods_GhostDodger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GhostDodger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B21E2A7B3567F2A53E55FB7 /* Pods-GhostDodger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GhostDodger.release.xcconfig"; path = "Target Support Files/Pods-GhostDodger/Pods-GhostDodger.release.xcconfig"; sourceTree = "<group>"; };
 		D00193672D28A5AD003ADF1D /* AdMobManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobManager.swift; sourceTree = "<group>"; };
+		D001936A2D28B7F4003ADF1D /* LayoutManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutManagerTests.swift; sourceTree = "<group>"; };
+		D001936B2D28B7F4003ADF1D /* SoundManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManagerTests.swift; sourceTree = "<group>"; };
 		D004C9CE2472241A0066AF56 /* Dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dashboard.swift; sourceTree = "<group>"; };
 		D0060CB92D264DBC00A29B0A /* SmokeParticles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SmokeParticles.sks; sourceTree = "<group>"; };
 		D00B6336266B3A040070BBF4 /* Skull.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Skull.atlas; sourceTree = "<group>"; };
@@ -206,20 +210,43 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		D00193682D28A5AD003ADF1D /* Services */ = {
+		D001936C2D28B7F4003ADF1D /* GhostDodgerTests */ = {
 			isa = PBXGroup;
 			children = (
-				D00193672D28A5AD003ADF1D /* AdMobManager.swift */,
+				D001936A2D28B7F4003ADF1D /* LayoutManagerTests.swift */,
+				D001936B2D28B7F4003ADF1D /* SoundManagerTests.swift */,
 			);
-			path = Services;
+			path = GhostDodgerTests;
 			sourceTree = "<group>";
 		};
-		D0768FCE2D28417600ED3D9B /* Services */ = {
+		D00193712D28B9C6003ADF1D /* App */ = {
 			isa = PBXGroup;
 			children = (
-				D0768FCD2D28417600ED3D9B /* GameCenterManager.swift */,
+				D0CA80EF21CF13A400BE7E96 /* AppDelegate.swift */,
+				D0768FD02D28453400ED3D9B /* GhostDodger.entitlements */,
+				D0CA80FB21CF13A600BE7E96 /* Info.plist */,
+				D0FA7FA52586F1CB00EA7163 /* Storyboards */,
 			);
-			path = Services;
+			path = App;
+			sourceTree = "<group>";
+		};
+		D00193722D28BAE3003ADF1D /* In-Game */ = {
+			isa = PBXGroup;
+			children = (
+				D0CA810121CF153600BE7E96 /* GameController.swift */,
+				D0CA810321CF162400BE7E96 /* GameScene.swift */,
+				D0D94A6423D123C8007CCC5E /* GameGrid.swift */,
+			);
+			path = "In-Game";
+			sourceTree = "<group>";
+		};
+		D00193732D28BAF0003ADF1D /* GameOver */ = {
+			isa = PBXGroup;
+			children = (
+				D0768FC92D28413800ED3D9B /* GameOverHostingController.swift */,
+				D0768FCA2D28413800ED3D9B /* GameOverView.swift */,
+			);
+			path = GameOver;
 			sourceTree = "<group>";
 		};
 		D085C655266B4C210090C8D6 /* SwiftLint */ = {
@@ -281,6 +308,7 @@
 				D09E2DA6245FCDCE005AB915 /* VirusWithFace.atlas */,
 				D00B6336266B3A040070BBF4 /* Skull.atlas */,
 				D0C15413250B4B2B00D2B661 /* Whirlpool.atlas */,
+				D0DE71B123BBEF4600B87144 /* SoundFiles */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -288,12 +316,8 @@
 		D0C2503223DB6019009D65DD /* GameScene */ = {
 			isa = PBXGroup;
 			children = (
-				D0CA810121CF153600BE7E96 /* GameController.swift */,
-				D0CA810321CF162400BE7E96 /* GameScene.swift */,
-				D0768FC92D28413800ED3D9B /* GameOverHostingController.swift */,
-				D0768FCE2D28417600ED3D9B /* Services */,
-				D0768FCA2D28413800ED3D9B /* GameOverView.swift */,
-				D0D94A6423D123C8007CCC5E /* GameGrid.swift */,
+				D00193722D28BAE3003ADF1D /* In-Game */,
+				D00193732D28BAF0003ADF1D /* GameOver */,
 				D0C2503323DB6022009D65DD /* GameSceneExtensions */,
 				D0C2502323D7B0F4009D65DD /* Sprites */,
 			);
@@ -315,6 +339,7 @@
 			isa = PBXGroup;
 			children = (
 				D0CA80EE21CF13A400BE7E96 /* GhostDodger */,
+				D001936C2D28B7F4003ADF1D /* GhostDodgerTests */,
 				D085C655266B4C210090C8D6 /* SwiftLint */,
 				970573861C29AF3063F3B269 /* Pods */,
 				1B664157BA08C853B77705A1 /* Frameworks */,
@@ -335,16 +360,10 @@
 		D0CA80EE21CF13A400BE7E96 /* GhostDodger */ = {
 			isa = PBXGroup;
 			children = (
-				D00193682D28A5AD003ADF1D /* Services */,
-				D0768FD02D28453400ED3D9B /* GhostDodger.entitlements */,
-				D0CA80EF21CF13A400BE7E96 /* AppDelegate.swift */,
-				D0CA80FB21CF13A600BE7E96 /* Info.plist */,
+				D00193712D28B9C6003ADF1D /* App */,
 				D0C2502723D7B1BC009D65DD /* Assets */,
-				D0DE1E7A2D20DCCE00950162 /* Audio */,
-				D0DE1E902D236E5300950162 /* Layout */,
+				D0DE1E7A2D20DCCE00950162 /* Managers */,
 				D0DE1E952D2384D400950162 /* Scenes */,
-				D0FA7FA52586F1CB00EA7163 /* Storyboards */,
-				D0FA7FA42586F18D00EA7163 /* In-AppPurchases */,
 			);
 			path = GhostDodger;
 			sourceTree = "<group>";
@@ -417,21 +436,17 @@
 			path = HowToScene;
 			sourceTree = "<group>";
 		};
-		D0DE1E7A2D20DCCE00950162 /* Audio */ = {
+		D0DE1E7A2D20DCCE00950162 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				D0DE1E7D2D20DD4800950162 /* SoundManager.swift */,
-				D0DE71B123BBEF4600B87144 /* SoundFiles */,
-			);
-			path = Audio;
-			sourceTree = "<group>";
-		};
-		D0DE1E902D236E5300950162 /* Layout */ = {
-			isa = PBXGroup;
-			children = (
+				D00193672D28A5AD003ADF1D /* AdMobManager.swift */,
+				D0FA7FAA2586F44900EA7163 /* IAPManager.swift */,
+				D0768FCD2D28417600ED3D9B /* GameCenterManager.swift */,
 				D0DE1E8E2D236E3F00950162 /* LayoutManager.swift */,
+				D0DE1E7D2D20DD4800950162 /* SoundManager.swift */,
+				D0FA7FA42586F18D00EA7163 /* In-AppPurchases */,
 			);
-			path = Layout;
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		D0DE1E952D2384D400950162 /* Scenes */ = {
@@ -471,7 +486,6 @@
 		D0FA7FA42586F18D00EA7163 /* In-AppPurchases */ = {
 			isa = PBXGroup;
 			children = (
-				D0FA7FAA2586F44900EA7163 /* IAPManager.swift */,
 				D0FA7FA72586F32500EA7163 /* IAP_ProductIDs.plist */,
 				D0FA7FAE258700A200EA7163 /* StoreKitConfig.storekit */,
 			);
@@ -775,6 +789,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D001936D2D28B7F4003ADF1D /* SoundManagerTests.swift in Sources */,
+				D001936E2D28B7F4003ADF1D /* LayoutManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -985,11 +1001,11 @@
 			baseConfigurationReference = F828D91C319ED03D4495C4AB /* Pods-GhostDodger.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = GhostDodger/GhostDodger.entitlements;
+				CODE_SIGN_ENTITLEMENTS = GhostDodger/App/GhostDodger.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = ARU8D4B27U;
-				INFOPLIST_FILE = GhostDodger/Info.plist;
+				INFOPLIST_FILE = GhostDodger/App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1008,11 +1024,11 @@
 			baseConfigurationReference = 8B21E2A7B3567F2A53E55FB7 /* Pods-GhostDodger.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = GhostDodger/GhostDodger.entitlements;
+				CODE_SIGN_ENTITLEMENTS = GhostDodger/App/GhostDodger.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = ARU8D4B27U;
-				INFOPLIST_FILE = GhostDodger/Info.plist;
+				INFOPLIST_FILE = GhostDodger/App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1038,7 +1054,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jabringetto.Ghost-DodgerTests";
@@ -1063,7 +1079,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jabringetto.Ghost-DodgerTests";
