@@ -46,14 +46,13 @@ final class UpgradesController: UIViewController, UpgradesSceneDelegate {
         var alert = UIAlertController()
         let type = typeStringForType(upgradeType)
         if paid {
-            alert = UIAlertController.init(title: "Thank you!", message: "Your have purchased one \(type) for $0.99", preferredStyle: .alert)
+            alert = UIAlertController.init(title: "Thank you!", message: "Your have purchased a 3-pack of \(type)s for $0.99", preferredStyle: .alert)
         } else {
-            alert = UIAlertController.init(title: "Thank you!", message: "Your have purchased one \(type) for 800 points.", preferredStyle: .alert)
+            alert = UIAlertController.init(title: "Thank you!", message: "Your have purchased a 3-pack of \(type)s for 800 points.", preferredStyle: .alert)
         }
         let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(okAction)
         return alert
-
     }
     func typeStringForType(_ type: UpgradeType) -> String {
         switch type {
@@ -161,17 +160,15 @@ final class UpgradesController: UIViewController, UpgradesSceneDelegate {
         return title
     }
     func messageForUpgradeType(_ upgradeType: UpgradeType, isPaid: Bool) -> String {
-
         var price: UInt = 0
         let priceMoney = "$0.99"
-        var message = "Buy a 30 second "
+        var message = "Buy a 3-pack of 30-second "
         if upgradeType == .cyclone {
-            message += "cyclone "
+            message += "cyclones "
             price = GameSceneConstants.cycloneUpgradePrice
         } else if upgradeType == .forceField {
-            message += "force field "
+            message += "force fields "
             price = GameSceneConstants.forceFieldUpgradePrice
-
         }
         if isPaid {
             message += "for " + priceMoney + "?"

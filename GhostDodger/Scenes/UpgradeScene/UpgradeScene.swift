@@ -126,13 +126,13 @@ final class UpgradeScene: SKScene {
         let yPosDesc: CGFloat =  0.0
         upgradeVars.cycloneUpgradeDescLabel.fontSize = 14.0
         upgradeVars.cycloneUpgradeDescLabel.fontColor = .white
-        upgradeVars.cycloneUpgradeDescLabel.text = "Suck down ghosts and treasure: 30 seconds | 800 pts/$0.99."
+        upgradeVars.cycloneUpgradeDescLabel.text = "Suck down ghosts and treasure: 30 seconds | 3-pack for 800 pts/$0.99"
         upgradeVars.cycloneUpgradeDescLabel.position.y = yPosDesc
         upgradeVars.cycloneBlackBar.addChild(upgradeVars.cycloneUpgradeDescLabel)
 
         upgradeVars.forceFieldUpgradeDescLabel.fontSize = 14.0
         upgradeVars.forceFieldUpgradeDescLabel.fontColor = .white
-        upgradeVars.forceFieldUpgradeDescLabel.text = "Repel all incoming ghosts: 30 seconds | 800 pts/$0.99."
+        upgradeVars.forceFieldUpgradeDescLabel.text = "Repel all incoming ghosts: 30 seconds | 3-pack for 800 pts/$0.99"
         upgradeVars.forceFieldUpgradeDescLabel.position.y = yPosDesc
         upgradeVars.forceFieldBlackBar.addChild(upgradeVars.forceFieldUpgradeDescLabel)
 
@@ -218,16 +218,15 @@ final class UpgradeScene: SKScene {
         }
     }
     func addBoughtCyclone() {
-
         guard var gameVars = gameVars else { return }
-        gameVars.cycloneReserve += 1
+        gameVars.cycloneReserve += 3
         self.gameVars = gameVars
         self.varsDelegate?.updateVars(newVars: gameVars)
         upgradeVars.cycloneReserveLabel.text = "RESERVE: " + String(gameVars.cycloneReserve)
     }
     func addBoughtForceField() {
         guard var gameVars = gameVars else { return }
-        gameVars.forceFieldReserve += 1
+        gameVars.forceFieldReserve += 3
         self.gameVars = gameVars
         self.varsDelegate?.updateVars(newVars: gameVars)
         upgradeVars.forceFieldReserveLabel.text = "RESERVE: " + String(gameVars.forceFieldReserve)
@@ -237,7 +236,7 @@ final class UpgradeScene: SKScene {
         let pointsAvailable = gameVars.score
 
         if pointsAvailable >= GameSceneConstants.cycloneUpgradePrice {
-            gameVars.cycloneReserve += 1
+            gameVars.cycloneReserve += 3
             gameVars.score -=  GameSceneConstants.cycloneUpgradePrice
             self.gameVars = gameVars
             self.varsDelegate?.updateVars(newVars: gameVars)
@@ -253,7 +252,7 @@ final class UpgradeScene: SKScene {
         guard var gameVars = gameVars else { return }
         let pointsAvailable = gameVars.score
         if pointsAvailable >= GameSceneConstants.forceFieldUpgradePrice {
-            gameVars.forceFieldReserve += 1
+            gameVars.forceFieldReserve += 3
             gameVars.score -=  GameSceneConstants.forceFieldUpgradePrice
             self.gameVars = gameVars
             self.varsDelegate?.updateVars(newVars: gameVars)

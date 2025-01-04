@@ -25,9 +25,9 @@ struct HowToPlayView: View {
         GameSpriteInfo(atlasName: "Bat", description: "This is the player, this is you! During the game, place your finger on the screen and drag to fly around. The bat will always follow your finger as it moves."),
         GameSpriteInfo(atlasName: "Ghost", description: "Watch out! Don't let ghosts catch you or you'll lose health points as seen on your health meter. If you run out of health points, you die."),
         GameSpriteInfo(atlasName: "RubyFrame", description: "This is a ruby, an example of treasure you can collect to earn points. You may buy upgrades with the points you earn. Other types of treasure include emeralds, silver coins, and gold coins."),
-        GameSpriteInfo(atlasName: "ForceField", description: "Buy this ForceField upgrade for 800 points or $0.99 to repel all ghosts! Duration: 30 seconds"),
+        GameSpriteInfo(atlasName: "ForceField", description: "Buy this ForceField 3-pack upgrade for 800 points or $0.99 to repel all ghosts! Each force field lasts 30 seconds."),
         GameSpriteInfo(atlasName: "Skull", description: "Avoid skulls - they move through force fields and are instant death on contact!"),
-        GameSpriteInfo(atlasName: "Whirlpool", description: "Buy this Cyclone upgrade for 800 points or $0.99 to suck down ghosts and collect treasure. Duration: 30 seconds"),
+        GameSpriteInfo(atlasName: "Whirlpool", description: "Buy this Cyclone 3-pack upgrade for 800 points or $0.99 to suck down ghosts and collect treasure. Each cyclone lasts 30 seconds."),
     ]
     
     var body: some View {
